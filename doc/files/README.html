@@ -1,0 +1,682 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: README</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>X12Parser - a library to manipulate <a href="../classes/X12.html">X12</a> structures using native Ruby syntax</h1>
+<p>
+$Id: README 92 2009-05-13 22:12:10Z ikk $
+</p>
+<p>
+<b>WARNING</b> <tt>The project is in development. Contributors are
+welcome.</tt>
+</p>
+<p>
+Project home is at <a
+href="http://rubyforge.org/projects/x12parser">rubyforge.org/projects/x12parser</a>/.
+Please note, this is a different project from <a
+href="http://rubyforge.org/projects/x12-parser/">Chris Parker's port</a> of
+<a
+href="http://search.cpan.org/~prasad/X12-0.09/lib/X12/Parser.pm">X12::Parser
+Perl module</a>.
+</p>
+<h2>The goal</h2>
+<p>
+The idea is to access <a href="../classes/X12.html">X12</a> messages
+directly from Ruby, i.e., using a syntax like
+</p>
+<pre>
+  message.L1000.L1010[1].AK4.DataElementReferenceNumber
+</pre>
+<p>
+This syntax can be used to get and set any field of an <a
+href="../classes/X12.html">X12</a> message and it makes <a
+href="../classes/X12.html">X12</a> parsing much more straightforward and
+self-documenting.
+</p>
+<h2>The problem</h2>
+<p>
+<a href="../classes/X12.html">X12</a> is a set of &quot;standards&quot;
+possessing all the elegance of an elephant designed by committee, and quite
+literally so, see <a href="http://www.x12.org">www.x12.org</a>. <a
+href="../classes/X12.html">X12</a> defines rough syntax for specifying text
+messages, but each of more than 300 specifications defines its own message
+structure. While messages themselves are easy to parse with a simple
+tokenizer, their semantics is heavily dependent on the domain. For example,
+this is <a href="../classes/X12.html">X12</a>/997 message conveying
+&quot;Functional Acknowledgment&quot;:
+</p>
+<pre>
+  ST*997*2878~AK1*HS*293328532~AK2*270*307272179~AK3*NM1*8*L1010_0*8~
+  AK4*0:0*66*1~AK4*0:1*66*1~AK4*0:2*66*1~AK3*NM1*8*L1010_1*8~AK4*1:0*
+  66*1~AK4*1:1*66*1~AK3*NM1*8*L1010_2*8~AK4*2:0*66*1~AK5*R*5~AK9*R*1*
+  1*0~SE*8*2878~
+</pre>
+<p>
+I.e., <a href="../classes/X12.html">X12</a> defines an alphabet and
+somewhat of a dictionary - not a grammar or semantics for each particular
+data interchange conversation. Because of many entrenched implementations
+and government mandates, the <a href="../classes/X12.html">X12</a> is not
+going to die anytime soon, unfortunately.
+</p>
+<p>
+The message above can be easily represented in Ruby as a nested array:
+</p>
+<pre>
+ m = [
+      ['ST', '997', '2878'],
+      ['AK1', 'HS', '293328532'],
+      ['AK2', '270', '307272179'],
+      ['AK3', 'NM1', '8', 'L1010_0', '8'],
+      ['AK4', '0:0', '66', '1'],
+      ['AK4', '0:1', '66', '1'],
+      ['AK4', '0:2', '66', '1'],
+      ['AK3', 'NM1', '8', 'L1010_1', '8'],
+      ['AK4', '1:0', '66', '1'],
+      ['AK4', '1:1', '66', '1'],
+      ['AK3', 'NM1', '8', 'L1010_2', '8'],
+      ['AK4', '2:0', '66', '1'],
+      ['AK5', 'R', '5'],
+      ['AK9', 'R', '1', '1', '0'],
+      ['SE', '8', '2878'],
+     ]
+</pre>
+<p>
+but it will not help any since, say, segment &#8216;AK4&#8217; is
+ambiguously defined and its meaning not at all obvious until the
+message&#8216;s structure is interpreted and correct &#8216;AK4&#8217;
+segment is found.
+</p>
+<h2>The solution</h2>
+<h3>Message structure</h3>
+<p>
+Each participant in EDI has to know the structure of the data coming across
+the wire - <a href="../classes/X12.html">X12</a> or no <a
+href="../classes/X12.html">X12</a>. The <a
+href="../classes/X12.html">X12</a> structures are defined in so-called
+Implementation Guides - thick books with all the data pieces spelled out.
+There is no other choice, but to invent a computer-readable definition
+language that will codify these books. For familiarity sake we&#8216;ll use
+XML. For example, the <a href="../classes/X12.html">X12</a>/997 message can
+be defined as
+</p>
+<pre>
+  &lt;Definition&gt;
+    &lt;Loop name=&quot;997&quot;&gt;
+      &lt;Segment name=&quot;ST&quot; min=&quot;1&quot; max=&quot;1&quot;/&gt;
+      &lt;Segment name=&quot;AK1&quot; min=&quot;1&quot; max=&quot;1&quot;/&gt;
+      &lt;Loop name=&quot;L1000&quot; max=&quot;999999&quot; required=&quot;y&quot;&gt;
+        &lt;Segment name=&quot;AK2&quot; max=&quot;1&quot; required=&quot;n&quot;/&gt;
+        &lt;Loop name=&quot;L1010&quot; max=&quot;999999&quot; required=&quot;n&quot;&gt;
+          &lt;Segment name=&quot;AK3&quot; max=&quot;1&quot; required=&quot;n&quot;/&gt;
+          &lt;Segment name=&quot;AK4&quot; max=&quot;99&quot; required=&quot;n&quot;/&gt;
+        &lt;/Loop&gt;
+        &lt;Segment name=&quot;AK5&quot; max=&quot;1&quot; required=&quot;y&quot;/&gt;
+      &lt;/Loop&gt;
+      &lt;Segment name=&quot;AK9&quot; max=&quot;1&quot; required=&quot;y&quot;/&gt;
+      &lt;Segment name=&quot;SE&quot;  max=&quot;1&quot; required=&quot;y&quot;/&gt;
+    &lt;/Loop&gt;
+  &lt;/Definition&gt;
+</pre>
+<p>
+Namely, the 997 is a &#8216;loop&#8217; containing segments ST (only one),
+AK1 (also only one), another loop L1000 (zero or many repeats), segments
+AK9 and SE. The loop L1000 can contain a segment AK2 (optional) and another
+loop L1010 (zero or many), and so on.
+</p>
+<p>
+The segments&#8217; structure can be further defined as, for example,
+</p>
+<pre>
+  &lt;Segment name=&quot;AK2&quot;&gt;
+    &lt;Field name=&quot;TransactionSetIdentifierCode&quot; required=&quot;y&quot; min=&quot;3&quot; max=&quot;3&quot; validation=&quot;T143&quot;/&gt;
+    &lt;Field name=&quot;TransactionSetControlNumber&quot;  required=&quot;y&quot; min=&quot;4&quot; max=&quot;9&quot;/&gt;
+  &lt;/Segment&gt;
+</pre>
+<p>
+which defines a segment AK2 as having two fields:
+TransactionSetIdentifierCode and TransactionSetControlNumber. The field
+TransactionSetIdentifierCode is defined as having a type of string
+(default), being required, having length of minimum 3 and maximum 3
+characters, and being validated against a table T143. The validation table
+is defined as
+</p>
+<pre>
+  &lt;Table name=&quot;T143&quot;&gt;
+    &lt;Entry name=&quot;100&quot; value=&quot;Insurance Plan Description&quot;/&gt;
+    &lt;Entry name=&quot;101&quot; value=&quot;Name and Address Lists&quot;/&gt;
+    ...
+    &lt;Entry name=&quot;997&quot; value=&quot;Functional Acknowledgment&quot;/&gt;
+    &lt;Entry name=&quot;998&quot; value=&quot;Set Cancellation&quot;/&gt;
+  &lt;/Table&gt;
+</pre>
+<p>
+with entries having just names and values.
+</p>
+<p>
+This message is fully flashed out in an example &#8216;misc/997.xml&#8217;
+file, copied from the ASC X12N 276/277 (004010X093) &quot;Health Care Claim
+Status Request and Response&quot; National Electronic Data Interchange
+Transaction Set Implementation Guide.
+</p>
+<p>
+Now expressions like
+</p>
+<pre>
+  message.L1000.L1010[1].AK4.DataElementReferenceNumber
+</pre>
+<p>
+start making sense of sorts, overall <a
+href="../classes/X12.html">X12</a>&#8216;s idiocy notwithstanding -
+it&#8216;s a field called &#8216;DataElementReferenceNumber&#8217; of a
+first of possibly many segments &#8216;AK4&#8217; found in the second
+repeat of the loop &#8216;L1010&#8217; inside the enclosing loop
+&#8216;L1000&#8217;. The meaning of the value &#8216;66&#8217; found in
+this field is still in the eye of the beholder, but, at least its location
+is clearly identified in the message.
+</p>
+<h3><a href="../classes/X12.html">X12</a> Structure Definition Language</h3>
+<p>
+The syntax of the <a href="../classes/X12.html">X12</a> structure
+definition language should be apparent from the &#8216;997.xml&#8217; file
+enclosed with the package. A more detailed description follows in Appendix
+A.
+</p>
+<h3>Parsing</h3>
+<p>
+Here is how to parse an <a href="../classes/X12.html">X12</a>/997 message
+(the source is in example/parse.rb):
+</p>
+<pre>
+  require 'x12'
+
+  # Read message definition and create an actual parser
+  # by compiling the XML file
+  parser = X12::Parser.new('misc/997.xml')
+
+  # Define a test message to parse
+  m997='ST*997*2878~AK1*HS*293328532~AK2*270*307272179~'\
+  'AK3*NM1*8*L1010_0*8~AK4*0:0*66*1~AK4*0:1*66*1~AK4*0:2*'\
+  '66*1~AK3*NM1*8*L1010_1*8~AK4*1:0*66*1~AK4*1:1*66*1~AK3*'\
+  'NM1*8*L1010_2*8~AK4*2:0*66*1~AK5*R*5~AK9*R*1*1*0~SE*8*2878~'
+
+  # Parse the message
+  r = parser.parse('997', m997)
+
+  # Access components of the message as desired
+
+  # Whole ST segment: -&gt; ST*997*2878~
+  puts r.ST
+
+  # One filed, Group Control Number of AK1 -&gt; 293328532
+  puts r.AK1.GroupControlNumber
+
+  # Individual loop, namely, third L1010 sub-loop of
+  # L1000 loop: -&gt; AK3*NM1*8*L1010_2*8~AK4*2:0*66*1~
+  puts r.L1000.L1010[2]
+
+  # First encounter of Data Element Reference Number of the
+  # first L1010 sub-loop of L1000 loop -&gt; 66
+  puts r.L1000.L1010.AK4.DataElementReferenceNumber
+
+  # Number of L1010 sub-loops in L1000 loop -&gt; 3
+  puts r.L1000.L1010.size
+</pre>
+<h3>Generating</h3>
+<p>
+Here is how to perform a reverse operation and generate a well-formed 997
+message (the source is in example/factory.rb):
+</p>
+<pre>
+  require 'x12'
+
+  # Read message definition and create an actual parser
+  # by compiling .d12 file
+  parser = X12::Parser.new('misc/997.xml')
+
+  # Make a new 997 message
+  r = parser.factory('997')
+
+  #
+  # Set various fields as desired
+  #
+
+  # Set fields directly
+  r.ST.TransactionSetIdentifierCode = 997
+  r.ST.TransactionSetControlNumber  = '2878'
+
+  # Set fields inside a segment (AK1 in this case)
+  r.AK1 { |ak1|
+    ak1.FunctionalIdentifierCode = 'HS'
+    ak1.GroupControlNumber       = 293328532
+  }
+
+  # Set fields deeply inside a segment inside
+  # nested loops (L1000/L1010/AK4 in this case)
+  r.L1000.L1010.AK4.DataElementSyntaxErrorCode = 55
+  r.L1000.AK2.TransactionSetIdentifierCode     = 270
+
+  # Set nested loops
+  r.L1000.L1010 {|l|
+    l.AK3 {|s|
+      s.SegmentIdCode      = 'NM1'
+      s.LoopIdentifierCode = 'L1000D'
+    }
+    l.AK4 {|s|
+      s.CopyOfBadDataElement = 'Bad element'
+    }
+  }
+
+  # Add loop repeats
+  r.L1000.repeat {|l1000|
+    (0..1).each {|loop_repeat| # Two repeats of the loop L1010
+      l1000.L1010.repeat {|l1010|
+        l1010.AK3 {|s|
+          s.SegmentIdCode                   = 'DMG'
+          s.SegmentPositionInTransactionSet = 0
+          s.LoopIdentifierCode              = 'L1010'
+          s.SegmentSyntaxErrorCode          = 22
+        } if loop_repeat == 0 # AK3 only in the first repeat of L1010
+        (0..1).each {|ak4_repeat| # Two repeats of the segment AK4
+          l1010.AK4.repeat {|s|
+            s.PositionInSegment          = loop_repeat
+            s.DataElementSyntaxErrorCode = ak4_repeat
+          } # s
+        } # ak4_repeat
+      } # l1010
+    } # loop_repeat
+
+    l1000.AK5{|a|
+      a.TransactionSetAcknowledgmentCode = 666
+      a.TransactionSetSyntaxErrorCode4   = 999
+    } # a
+  } # l1000
+
+  # Print the message as a string -&gt; ST*997*2878~AK1*HS*293328532~
+  # AK2*270*~AK3*NM1**L1000D~AK4***55*Bad element~AK5*~AK3*DMG*0*
+  # L1010*22~AK4*0**0~AK4*0**1~AK4*1**0~AK4*1**1~AK5*666****999~
+  # AK9****~SE**~
+  puts r.render
+</pre>
+<h2>Download</h2>
+<p>
+The latest <a href="../classes/X12.html">X12</a> library version can be
+downloaded from <a
+href="http://rubyforge.org/frs/?group_id=7297">rubyforge.org/frs/?group_id=7297</a>
+</p>
+<h2>Installation</h2>
+<p>
+You can install <a href="../classes/X12.html">X12</a> library with the
+following command.
+</p>
+<pre>
+  % gem install X12
+</pre>
+<h2>License</h2>
+<p>
+<a href="../classes/X12.html">X12</a> library is released under the Lesser
+GPL license, see <a
+href="http://www.gnu.org/licenses/lgpl.txt">www.gnu.org/licenses/lgpl.txt</a>
+</p>
+<h2>Major deficiencies</h2>
+<ul>
+<li>Validation is not implemented.
+
+</li>
+<li>Field types and sizes are ignored.
+
+</li>
+<li>No access methods for composites&#8217; fields.
+
+</li>
+</ul>
+<h2>Support</h2>
+<p>
+Please use the following:
+</p>
+<ul>
+<li>forums on Rubyforge for general discussions, <a
+href="http://rubyforge.org/forum/?group_id=7297">rubyforge.org/forum/?group_id=7297</a>
+
+</li>
+<li>trackers to submit bugs or feature requests, <a
+href="http://rubyforge.org/tracker/?group_id=7297">rubyforge.org/tracker/?group_id=7297</a>
+
+</li>
+<li>to contact the author, send mail to prelude rubyforge org
+
+</li>
+</ul>
+<h2>Acknowledgments</h2>
+<p>
+The authors of the project were inspired by the following works:
+</p>
+<ol>
+<li>The Perl <a href="../classes/X12.html">X12</a> parser by Prasad
+Poruporuthan, <a
+href="http://search.cpan.org/~prasad/X12-0.09/lib/X12/Parser.pm">search.cpan.org/~prasad/X12-0.09/lib/X12/Parser.pm</a>
+
+</li>
+<li>The Ruby port of the above by Chris Parker, <a
+href="http://rubyforge.org/projects/x12-parser">rubyforge.org/projects/x12-parser</a>/
+
+</li>
+</ol>
+<h2>Appendix A. Structure definition language</h2>
+<p>
+The structure definition language uses XML to describe <a
+href="../classes/X12.html">X12</a> message format. A message definition can
+be in a single file or in several. If the definition parser encounters an
+element (segment, composite, or table), which has not been previously
+defined, it tries to load the definition from the file with the same name
+and in the same directory. For example, if a loop mentions a segment named
+&#8216;ST&#8217; and this segment is not defined, the parser will try to
+load and parse a file called &#8216;ST.xml&#8217;. This convention works
+for any name unless it conflicts with a Microsoft&#8216;s device name, see
+Appendix B.
+</p>
+<p>
+Each element in a structure definition (except &#8216;Definition&#8217;)
+must have an attribute called &#8216;name&#8217;. It is used to set/get
+respective content from Ruby. If an element&#8216;s &#8216;name&#8217;
+attribute cannot be a valid Ruby identifier (for example,
+&#8216;270&#8217;), the parser will prepend the name with &#8216;_&#8217;
+(underscore). I.e., this expression is not valid:
+</p>
+<pre>
+  @r.FG[1].270[1].ST.TransactionSetIdentifierCode
+</pre>
+<p>
+but his one is
+</p>
+<pre>
+  @r.FG[1]._270[1].ST.TransactionSetIdentifierCode
+</pre>
+<p>
+Each XML file has to have a single root element, one of the following:
+</p>
+<h3>Definition</h3>
+<p>
+The &#8216;Definition&#8217; element can have nested loops, segments,
+composites, and tables. It is used to provide &#8216;artificial&#8217; root
+element for XML document when several definitions are in one physical file.
+For example, this is `misc/997single.xml&#8217; (edited for size):
+</p>
+<pre>
+  &lt;Definition&gt;
+    &lt;Segment name=&quot;ST&quot;&gt;
+      &lt;Field name=&quot;TransactionSetIdentifierCode&quot; min=&quot;3&quot; max=&quot;3&quot; validation=&quot;T143&quot;/&gt;
+      &lt;Field name=&quot;TransactionSetControlNumber&quot;  min=&quot;4&quot; max=&quot;9&quot;/&gt;
+      &lt;Field name=&quot;ImplementationConventionReference&quot; required=&quot;y&quot; min=&quot;1&quot; max=&quot;35&quot;/&gt;
+    &lt;/Segment&gt;
+
+    &lt;Composite name=&quot;C030&quot;&gt;
+      &lt;Field name=&quot;ElementPositionInSegment&quot; type=&quot;long&quot; required=&quot;n&quot; min=&quot;1&quot; max=&quot;2&quot;/&gt;
+      &lt;Field name=&quot;ComponentDataElementPositionInComposite&quot; type=&quot;long&quot; required=&quot;y&quot; min=&quot;1&quot; max=&quot;2&quot;/&gt;
+      &lt;Field name=&quot;RepeatingDataElementPosition&quot; type=&quot;long&quot; required=&quot;y&quot; min=&quot;1&quot; max=&quot;4&quot;/&gt;
+    &lt;/Composite&gt;
+
+    &lt;Segment name=&quot;AK1&quot;&gt;
+      &lt;Field name=&quot;FunctionalIdentifierCode&quot; min=&quot;2&quot; max=&quot;2&quot; validation=&quot;T479&quot;/&gt;
+      &lt;Field name=&quot;GroupControlNumber&quot; type=&quot;long&quot; min=&quot;1&quot; max=&quot;9&quot;/&gt;
+    &lt;/Segment&gt;
+
+    &lt;Table name=&quot;T723&quot;&gt;
+      &lt;Entry name=&quot;1&quot; value=&quot;Mandatory data element missing&quot;/&gt;
+      &lt;Entry name=&quot;2&quot; value=&quot;Conditional required data element missing.&quot;/&gt;
+      &lt;!-- ... other entries --&gt;
+      &lt;Entry name=&quot;13&quot; value=&quot;Too Many Components&quot;/&gt;
+    &lt;/Table&gt;
+
+    &lt;!-- ... other segments or composites or tables --&gt;
+
+    &lt;Loop name=&quot;997&quot;&gt;
+      &lt;Segment name=&quot;ST&quot; min=&quot;1&quot; max=&quot;1&quot;/&gt;
+      &lt;Segment name=&quot;AK1&quot; min=&quot;1&quot; max=&quot;1&quot;/&gt;
+      &lt;Loop name=&quot;L1000&quot; max=&quot;999999&quot; required=&quot;y&quot;&gt;
+        &lt;Segment name=&quot;AK2&quot; max=&quot;1&quot; required=&quot;n&quot;/&gt;
+        &lt;Loop name=&quot;L1010&quot; max=&quot;999999&quot; required=&quot;n&quot;&gt;
+          &lt;Segment name=&quot;AK3&quot; max=&quot;1&quot; required=&quot;n&quot;/&gt;
+          &lt;Segment name=&quot;AK4&quot; max=&quot;99&quot; required=&quot;n&quot;/&gt;
+        &lt;/Loop&gt;
+        &lt;Segment name=&quot;AK5&quot; max=&quot;1&quot; required=&quot;y&quot;/&gt;
+      &lt;/Loop&gt;
+      &lt;Segment name=&quot;AK9&quot; max=&quot;1&quot; required=&quot;y&quot;/&gt;
+      &lt;Segment name=&quot;SE&quot;  max=&quot;1&quot; required=&quot;y&quot;/&gt;
+    &lt;/Loop&gt;
+
+  &lt;/Definition&gt;
+</pre>
+<p>
+This element does not have any attributes and cannot be addressed from
+Ruby&#8216;s API.
+</p>
+<h3>Loop</h3>
+<p>
+The &#8216;Loop&#8217; element is a main element to define either loops or
+whole messages. Loops can have nested segments and other loops.
+</p>
+<p>
+Note, that a segment defined inside a loop takes precedence over previously
+defined segments. This is convenient if a special version of a segment is
+required. For example, this is a general definition of an &#8216;ST&#8217;
+segment stored in a &#8216;ST.xml&#8217; file:
+</p>
+<pre>
+  &lt;Segment name=&quot;ST&quot;&gt;
+    &lt;Field name=&quot;TransactionSetIdentifierCode&quot; min=&quot;3&quot; max=&quot;3&quot; validation=&quot;T143&quot;/&gt;
+    &lt;Field name=&quot;TransactionSetControlNumber&quot; min=&quot;4&quot; max=&quot;9&quot;/&gt;
+    &lt;Field name=&quot;ImplementationConventionReference&quot; required=&quot;y&quot; min=&quot;1&quot; max=&quot;35&quot;/&gt;
+  &lt;/Segment&gt;
+</pre>
+<p>
+If you want the <a href="../classes/X12.html">X12</a> parser to look for a
+particular message type, say &#8216;997&#8217;, do this:
+</p>
+<pre>
+  &lt;Loop name=&quot;997&quot;&gt;
+    &lt;Segment name=&quot;ST&quot;  max=&quot;1&quot;&gt;
+      &lt;Field name=&quot;TransactionSetIdentifierCode&quot; const=&quot;997&quot;/&gt;
+      &lt;Field name=&quot;TransactionSetControlNumber&quot; min=&quot;4&quot; max=&quot;9&quot;/&gt;
+    &lt;/Segment&gt;
+    &lt;Segment name=&quot;AK1&quot; max=&quot;1&quot;/&gt;
+    &lt;!-- ... the rest of the 997 definition --&gt;
+  &lt;/Loop&gt;
+</pre>
+<p>
+A loop can have the following attributes:
+</p>
+<ul>
+<li>min - minimal number of repeats allowed, default is 0.
+
+</li>
+<li>max - maximum number of repeats allowed, default is &#8216;inf&#8217;
+(infinite).
+
+</li>
+<li>required - if the loop is required (boolean), default is false. The true
+value implies min=&quot;1&quot;.
+
+</li>
+<li>comment - ignored
+
+</li>
+</ul>
+<h3>Segment</h3>
+<p>
+Segments can only have nested fields. Attributes are as follows:
+</p>
+<ul>
+<li>min - minimal number of repeats allowed, default is 0. Value min&gt;0
+implies required=&quot;y&quot;.
+
+</li>
+<li>max - maximum number of repeats allowed, default is &#8216;inf&#8217;
+(infinite).
+
+</li>
+<li>required - if the segment is required (boolean), default is false. The true
+value implies min=&quot;1&quot;.
+
+</li>
+<li>comment - ignored
+
+</li>
+</ul>
+<p>
+All attributed except &#8216;name&#8217; are ignored in standalone
+definitions outside any loop.
+</p>
+<h3>Composite</h3>
+<p>
+Same as a segment.
+</p>
+<h3>Table</h3>
+<p>
+Tables can only have entries defined as name-value pairs. Order is not
+important. Only required attribute is &#8216;name&#8217;.
+</p>
+<h3>Field</h3>
+<p>
+A field cannot have any nested elements, but its attributes are very
+important:
+</p>
+<ul>
+<li>min - minimal number of characters allowed, default is 0. Value min&gt;0
+DOES NOT imply required=&quot;y&quot; - the field can be missing, but may
+require a minimum length if present.
+
+</li>
+<li>max - maximum number of characters allowed, default is &#8216;inf&#8217;
+(infinite).
+
+</li>
+<li>required - if the field is required (boolean), default is false. The true
+value DOES NOT imply min=&quot;1&quot;.
+
+</li>
+<li>type - one of the &#8216;string&#8217; (default), &#8216;integer&#8217;,
+&#8216;long&#8217;, or &#8216;double&#8217;. These abbreviations are also
+valid: &#8216;str&#8217;, &#8216;int&#8217;.
+
+</li>
+<li>const - forces the field to have this value, if present.
+
+</li>
+<li>validation - the name of a validation table, if any.
+
+</li>
+<li>comment - ignored
+
+</li>
+</ul>
+<h2>Appendix B. Microsoft&#8216;s device file names</h2>
+<p>
+Apparently, in Microsoft&#8216;s operating systems one cannot create a file
+named like &#8216;device_name.whatever&#8217;, for example,
+&#8216;CON.xml&#8217; is highly illegal. For such cases, the <a
+href="../classes/X12.html">X12</a> parser creates an exception and expects
+&#8216;CON_.xml&#8217; instead.
+</p>
+<p>
+Here is the full device list according to Microsoft (see <a
+href="http://support.microsoft.com/kb/74496">support.microsoft.com/kb/74496</a>):
+</p>
+<pre>
+   Name    Function
+   ----    --------
+   CON     Keyboard and display
+   PRN     System list device, usually a parallel port
+   AUX     Auxiliary device, usually a serial port
+   CLOCK$  System real-time clock
+   NUL     Bit-bucket device
+   A:-Z:   Drive letters
+   COM1    First serial communications port
+   LPT1    First parallel printer port
+   LPT2    Second parallel printer port
+   LPT3    Third parallel printer port
+   COM2    Second serial communications port
+   COM3    Third serial communications port
+   COM4    Fourth serial communications port
+</pre>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+</body>
+</html>

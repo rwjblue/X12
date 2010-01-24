@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>File: CHANGELOG</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <h1>CHANGELOG</h1>
+<p>
+$Id: CHANGELOG 92 2009-05-13 22:12:10Z ikk $
+</p>
+<h2>5/15/09 - Release 1.1.0</h2>
+<ul>
+<li>Ported <a href="../classes/X12.html">X12</a> definitions and definition
+parser from proprietary d12 language to XML.
+
+</li>
+<li>Added <a href="../classes/X12.html">X12</a> definitions for 270 message and
+all its dependent segments and validation tables.
+
+</li>
+</ul>
+<h2>3/19/09 - Release 0.1.0</h2>
+<ul>
+<li>Implemented field constants.
+
+</li>
+<li>Implemented separate definition files for segments and validation tables.
+
+</li>
+</ul>
+<h2>11/15/08 - Release 0.0.5, first public one</h2>
+<ul>
+<li>Added comments.
+
+</li>
+<li>Added examples.
+
+</li>
+<li>Wrote README
+
+</li>
+</ul>
+<h2>4/10/08 - Release 0.0.1</h2>
+<ul>
+<li>Internal release for testing
+
+</li>
+</ul>
+
+    </div>
+
+
+   </div>
+
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+
+
+  </div>
+
+
+</body>
+</html>

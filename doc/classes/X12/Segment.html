@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Class: X12::Segment</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Class</strong></td>
+          <td class="class-name-in-header">X12::Segment</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/X12/Segment_rb.html">
+                lib/X12/Segment.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        <tr class="top-aligned-row">
+            <td><strong>Parent:</strong></td>
+            <td>
+                <a href="Base.html">
+                Base
+               </a>
+            </td>
+        </tr>
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+$Id: Segment.rb 82 2009-05-13 18:07:22Z ikk $
+</p>
+<p>
+Implements a segment containing fields or composites
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000004">find_field</a>&nbsp;&nbsp;
+      <a href="#M000001">parse</a>&nbsp;&nbsp;
+      <a href="#M000003">regexp</a>&nbsp;&nbsp;
+      <a href="#M000002">render</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000004" class="method-detail">
+        <a name="M000004"></a>
+
+        <div class="method-heading">
+          <a href="#M000004" class="method-signature">
+          <span class="method-name">find_field</span><span class="method-args">(str)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Finds a field in the segment. Returns EMPTY if not found.
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000004-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000004-source">
+<pre>
+     <span class="ruby-comment cmt"># File lib/X12/Segment.rb, line 87</span>
+ 87:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">str</span>)
+ 88:       <span class="ruby-comment cmt">#puts &quot;Finding field [#{str}] in #{self.class} #{name}&quot;</span>
+ 89:       <span class="ruby-comment cmt"># If there is such a field to begin with</span>
+ 90:       <span class="ruby-identifier">field_num</span> = <span class="ruby-keyword kw">nil</span>
+ 91:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each_index</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+ 92:         <span class="ruby-identifier">field_num</span> = <span class="ruby-identifier">i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">name</span>
+ 93:       }
+ 94:       <span class="ruby-keyword kw">return</span> <span class="ruby-constant">EMPTY</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">field_num</span>.<span class="ruby-identifier">nil?</span>
+ 95:       <span class="ruby-comment cmt">#puts field_num</span>
+ 96: 
+ 97:       <span class="ruby-comment cmt"># Parse the segment if not parsed already</span>
+ 98:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@fields</span>
+ 99:         <span class="ruby-ivar">@fields</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">chop</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">field_separator</span>)))
+100:         <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each_index</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">content</span> = <span class="ruby-ivar">@fields</span>[<span class="ruby-identifier">i</span><span class="ruby-operator">+</span><span class="ruby-value">1</span>] }
+101:       <span class="ruby-keyword kw">end</span>
+102:       <span class="ruby-comment cmt">#puts self.nodes[field_num].inspect</span>
+103:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">field_num</span>]
+104:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000001" class="method-detail">
+        <a name="M000001"></a>
+
+        <div class="method-heading">
+          <a href="#M000001" class="method-signature">
+          <span class="method-name">parse</span><span class="method-args">(str)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Parses this segment out of a string, puts the match into value, returns the
+rest of the string - nil if cannot <a href="Segment.html#M000001">parse</a>
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000001-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000001-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/X12/Segment.rb, line 34</span>
+34:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>)
+35:       <span class="ruby-identifier">s</span> = <span class="ruby-identifier">str</span>
+36:       <span class="ruby-comment cmt">#puts &quot;Parsing segment #{name} from #{s} with regexp [#{regexp.source}]&quot;</span>
+37:       <span class="ruby-identifier">m</span> = <span class="ruby-identifier">regexp</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">s</span>)
+38:       <span class="ruby-comment cmt">#puts &quot;Matched #{m ? m[0] : 'nothing'}&quot;</span>
+39:       
+40:       <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">m</span>
+41: 
+42:       <span class="ruby-identifier">s</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span>
+43:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">parsed_str</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>]
+44:       <span class="ruby-identifier">s</span> = <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">s</span>)
+45: 
+46:       <span class="ruby-comment cmt">#puts &quot;Parsed segment &quot;+self.inspect</span>
+47:       <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">s</span>
+48:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000003" class="method-detail">
+        <a name="M000003"></a>
+
+        <div class="method-heading">
+          <a href="#M000003" class="method-signature">
+          <span class="method-name">regexp</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a <a href="Segment.html#M000003">regexp</a> that matches this
+particular segment
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000003-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000003-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/X12/Segment.rb, line 67</span>
+67:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">regexp</span>
+68:       <span class="ruby-keyword kw">unless</span> <span class="ruby-ivar">@regexp</span>
+69:         <span class="ruby-keyword kw">if</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">type</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^&quot;.+&quot;$/</span> }
+70:           <span class="ruby-comment cmt"># It's a very special regexp if there are constant fields</span>
+71:           <span class="ruby-identifier">re_str</span> = <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-node">&quot;^#{name}#{Regexp.escape(field_separator)}&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+72:             <span class="ruby-identifier">field_re</span> = <span class="ruby-identifier">i</span>.<span class="ruby-identifier">simple_regexp</span>(<span class="ruby-identifier">field_separator</span>, <span class="ruby-identifier">segment_separator</span>)<span class="ruby-operator">+</span><span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">field_separator</span>)<span class="ruby-operator">+</span><span class="ruby-value str">'?'</span>
+73:             <span class="ruby-identifier">field_re</span> = <span class="ruby-node">&quot;(#{field_re})?&quot;</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">required</span>
+74:             <span class="ruby-identifier">s</span><span class="ruby-operator">+</span><span class="ruby-identifier">field_re</span>
+75:           } <span class="ruby-operator">+</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">segment_separator</span>)
+76:           <span class="ruby-ivar">@regexp</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">re_str</span>)
+77:         <span class="ruby-keyword kw">else</span>
+78:           <span class="ruby-comment cmt"># Simple match</span>
+79:           <span class="ruby-ivar">@regexp</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;^#{name}#{Regexp.escape(field_separator)}[^#{Regexp.escape(segment_separator)}]*#{Regexp.escape(segment_separator)}&quot;</span>)
+80:         <span class="ruby-keyword kw">end</span>
+81:         <span class="ruby-comment cmt">#puts sprintf(&quot;%s %p&quot;, name, @regexp)</span>
+82:       <span class="ruby-keyword kw">end</span>
+83:       <span class="ruby-ivar">@regexp</span>
+84:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+      <div id="method-M000002" class="method-detail">
+        <a name="M000002"></a>
+
+        <div class="method-heading">
+          <a href="#M000002" class="method-signature">
+          <span class="method-name">render</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Render all components of this segment as string suitable for EDI
+</p>
+          <p><a class="source-toggle" href="#"
+            onclick="toggleCode('M000002-source');return false;">[Source]</a></p>
+          <div class="method-source-code" id="M000002-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/X12/Segment.rb, line 51</span>
+51:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">render</span>
+52:       <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value str">''</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">repeat_str</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+53:         <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">repeats</span>.<span class="ruby-identifier">begin</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span> <span class="ruby-keyword kw">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">i</span>.<span class="ruby-identifier">has_content?</span>
+54:           <span class="ruby-comment cmt"># Skip optional empty segments</span>
+55:           <span class="ruby-identifier">repeat_str</span>
+56:         <span class="ruby-keyword kw">else</span>
+57:           <span class="ruby-comment cmt"># Have to render no matter how empty</span>
+58:           <span class="ruby-identifier">repeat_str</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">name</span><span class="ruby-operator">+</span><span class="ruby-identifier">i</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value str">''</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">nodes_str</span>, <span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+59:             <span class="ruby-identifier">field</span> = <span class="ruby-identifier">j</span>.<span class="ruby-identifier">render</span>
+60:             (<span class="ruby-identifier">j</span>.<span class="ruby-identifier">required</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">nodes_str</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">''</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">field</span> <span class="ruby-operator">!=</span> <span class="ruby-value str">''</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">field_separator</span><span class="ruby-operator">+</span><span class="ruby-identifier">field</span><span class="ruby-operator">+</span><span class="ruby-identifier">nodes_str</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">nodes_str</span>
+61:           } <span class="ruby-operator">+</span> <span class="ruby-identifier">segment_separator</span>
+62:         <span class="ruby-keyword kw">end</span>
+63:       }
+64:     <span class="ruby-keyword kw">end</span>
+</pre>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+</body>
+</html>

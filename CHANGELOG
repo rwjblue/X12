@@ -1,0 +1,23 @@
+= CHANGELOG
+
+$Id: CHANGELOG 92 2009-05-13 22:12:10Z ikk $
+
+== 5/15/09 - Release 1.1.0
+
+* Ported X12 definitions and definition parser from proprietary d12 language to XML.
+* Added X12 definitions for 270 message and all its dependent segments and validation tables.
+
+== 3/19/09 - Release 0.1.0
+
+* Implemented field constants.
+* Implemented separate definition files for segments and validation tables.
+
+== 11/15/08 - Release 0.0.5, first public one
+
+* Added comments.
+* Added examples.
+* Wrote README
+
+== 4/10/08 - Release 0.0.1
+* Internal release for testing
+
