@@ -54,6 +54,21 @@ CLEAN.exclude(
               )
 
 
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |s|
+    s.name = "X12"
+    s.summary = "EDI X12 parsing for ruby"
+    s.email = "jkane@acumenholdings.com"
+    s.homepage = "http://github.com/acumenbrands/X12"
+    s.description = "EDI X12 parsing for ruby"
+    s.authors = ["Jim Kane"]
+    s.files =  FileList["[A-Z]*", "{bin,generators,lib,test}/**/*", 'lib/jeweler/templates/.gitignore']
+  end
+rescue LoadError
+  puts "Jeweler, or one of its dependencies, is not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end
+
 #puts "Files to clobber: #{CLOBBER}"
 #puts "Files to clean: #{CLEAN}"
 
