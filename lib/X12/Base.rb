@@ -66,8 +66,10 @@ module X12
         end
         i.nodes.each{|j|
           case 
-          when j.kind_of?(X12::Base)  : j.show(ind+'  ')
-          when j.kind_of?(X12::Field) : puts "#{ind+'  '}#{j.name} -> '#{j.to_s}'"
+          when j.kind_of?(X12::Base)  
+            j.show(ind+'  ')
+          when j.kind_of?(X12::Field) 
+            puts "#{ind+'  '}#{j.name} -> '#{j.to_s}'"
           end
         } 
         count += 1
