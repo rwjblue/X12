@@ -41,7 +41,7 @@ require 'X12/Parser'
 
 module X12
 
-  VERSION = '1.1.0'
+  VERSION = '1.1.0.doxo'
   EMPTY = Empty.new()
   TEST_REPEAT = 100
 end
