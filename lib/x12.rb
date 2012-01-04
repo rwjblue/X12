@@ -23,17 +23,15 @@
 #
 $:.unshift(File.dirname(__FILE__))
 
-require 'rubygems'
-
-require 'X12/Base'
-require 'X12/Empty'
-require 'X12/Field'
-require 'X12/Composite'
-require 'X12/Segment'
-require 'X12/Table'
-require 'X12/Loop'
-require 'X12/XMLDefinitions'
-require 'X12/Parser'
+require 'x12/base'
+require 'x12/empty'
+require 'x12/field'
+require 'x12/composite'
+require 'x12/segment'
+require 'x12/table'
+require 'x12/loop'
+require 'x12/xml_definitions'
+require 'x12/parser'
 
 # $Id: X12.rb 91 2009-05-13 22:11:10Z ikk $
 #
