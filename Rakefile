@@ -44,7 +44,6 @@ CLEAN.include(
               '**/*.log',
               'doc/**/*',
               '**/*.tmp',
-              'lib/X12/X12syntax.rb'
               )
 CLEAN.exclude(
               )
