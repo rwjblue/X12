@@ -23,7 +23,6 @@
 #
 
 require "rexml/document"
-include REXML 
 
 module X12
 
@@ -32,6 +31,7 @@ module X12
   # A class for parsing X12 message definition expressed in XML format.
 
   class XMLDefinitions < Hash
+    include REXML 
 
     # Parse definitions out of XML file
     def initialize(str)
