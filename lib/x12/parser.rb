@@ -23,8 +23,6 @@
 #
 
 require "rexml/document"
-include REXML 
-
 require 'pp'
 
 module X12
@@ -34,6 +32,7 @@ module X12
   # Main class for creating X12 parsers and factories.
 
   class Parser
+    include REXML 
 
     # These constitute prohibited file names under Microsoft
     MS_DEVICES = [   

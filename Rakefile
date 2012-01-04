@@ -33,16 +33,12 @@ require 'rake/contrib/rubyforgepublisher'
 require 'fileutils'
 require 'pp'
 
-require File.join(File.dirname(__FILE__), 'lib', 'X12')
+require File.join(File.dirname(__FILE__), 'lib', 'x12')
 
 PKG_NAME        = 'X12'
 PKG_VERSION     = X12::VERSION
 PKG_FILE_NAME   = "#{PKG_NAME}-#{PKG_VERSION}"
 PKG_DESTINATION = "../#{PKG_NAME}"
-
-RAKE            = $0
-RUBY_DIR        = File.expand_path(File.dirname(RAKE)+'../..')
-RUBY            = "#{RUBY_DIR}/bin/ruby.exe"
 
 CLEAN.include(
               '**/*.log',
@@ -75,35 +71,34 @@ end
 desc "Default Task"
 task :default => [ :example, :test ]
 
-# Run examples
+desc 'Run examples'
 task :example do |x|
   Dir['example/*.rb'].each {|f|
     puts "Running #{f}"
-    sh(RUBY, '-I', 'lib', f) do |ok, res|
+    ruby '-I', 'lib', f do |ok, res|
       fail "Command failed (status = #{res.exitstatus})" unless ok
     end
   }
 end
 
-# Run examples in scratch dir
+desc 'Run examples in scratch dir'
 task :scratch do |x|
   Dir['scratch/p270.rb'].each {|f|
     puts "Running #{f}"
-    sh(RUBY, '-I', 'lib', f) do |ok, res|
+    ruby '-I', 'lib', f do |ok, res|
       fail "Command failed (status = #{res.exitstatus})" unless ok
     end
   }
 end
 
-task :test do |x|
-  Rake::TestTask.new { |t|
+desc 'Run tests in test dir'
+Rake::TestTask.new do |t|
 #    t.libs << "test"
-    t.test_files = Dir['test/tc_*.rb']
+  t.test_files = Dir['test/tc_*.rb']
 #    t.test_files = Dir['test/tc_factory_270interchange.rb']
 #    t.test_files = Dir['test/tc_parse_270interchange.rb']
-    t.verbose = true
-  }
-end # :test
+  t.verbose = true
+end
 
 file 'doc/index.html' => ['misc/rdoc_template.rb' ]
 task :rdoc => ['doc/index.html']
