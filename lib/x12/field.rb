@@ -56,7 +56,7 @@ module X12
       unless @content
         @content = $1 if self.type =~ /"(.*)"/ # If it's a constant
       end
-      @content || ''
+      sanitize(@content || '')
     end # render
 
     # Check if it's been set yet and it's not a constant
@@ -94,6 +94,11 @@ module X12
         "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
       end # case
     end # str_regexp
+
+    private
+      def sanitize(content)
+        content.to_s.gsub(%r/\s/, ' ').gsub(%r/[#{Regexp.escape(X12::Separators.field_separator)}#{Regexp.escape(X12::Separators.segment_separator)}]/, '')
+      end
 
   end
 end

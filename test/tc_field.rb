@@ -21,26 +21,32 @@
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #++
 #
-$:.unshift(File.dirname(__FILE__))
+require 'x12'
+require 'test/unit'
 
-require 'x12/separators'
-require 'x12/base'
-require 'x12/empty'
-require 'x12/field'
-require 'x12/composite'
-require 'x12/segment'
-require 'x12/table'
-require 'x12/loop'
-require 'x12/xml_definitions'
-require 'x12/parser'
+class TestField < Test::Unit::TestCase
 
-# $Id: X12.rb 91 2009-05-13 22:11:10Z ikk $
-#
-# Package implementing direct manipulation of X12 structures using Ruby syntax.
+  def setup
+    @field = X12::Field.new('test', 'string', false, 0, 10, nil)
+  end # setup
 
-module X12
+  def teardown
+    # Nothing
+  end # teardown
 
-  VERSION = '1.2.0.doxo'
-  EMPTY = Empty.new()
-  TEST_REPEAT = 100
-end
+  def test_content_with_separators
+    @field.content = "Foo#{X12::Separators.field_separator}#{X12::Separators.segment_separator}#{X12::Separators.composite_separator}bar"
+    assert_equal 'Foo:bar', @field.render, 'Fields should strip out field and segment separators'
+  end
+
+  def test_content_with_newlines
+    @field.content = "Foo\nbar"
+    assert_equal 'Foo bar', @field.render, 'Fields should replace new lines with spaces'
+  end
+  
+  def test_content_with_tabs
+    @field.content = "Foo\tbar"
+    assert_equal 'Foo bar', @field.render, 'Fields should replace tabs with spaces'
+  end
+
+end # TestList
