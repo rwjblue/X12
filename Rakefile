@@ -43,7 +43,7 @@ PKG_DESTINATION = "../#{PKG_NAME}"
 CLEAN.include(
               '**/*.log',
               'doc/**/*',
-              '**/*.tmp',
+              '**/*.tmp'
               )
 CLEAN.exclude(
               )
