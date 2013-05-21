@@ -72,7 +72,7 @@ module X12
     # Returns simplified string regexp for this field, takes field separator and segment separator as arguments
     def simple_regexp(field_sep, segment_sep)
       case self.type
-      when /"(.*)"/ : $1
+      when /"(.*)"/ then $1
       else "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
       end # case
     end # simple_regexp
@@ -80,10 +80,10 @@ module X12
     # Returns proper validating string regexp for this field, takes field separator and segment separator as arguments
     def proper_regexp(field_sep, segment_sep)
       case self.type
-      when 'I'      : "\\d{#{@min_length},#{@max_length}}"
-      when 'S'      : "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
-      when /C.*/    : "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
-      when /"(.*)"/ : $1
+      when 'I'      then "\\d{#{@min_length},#{@max_length}}"
+      when 'S'      then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
+      when /C.*/    then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
+      when /"(.*)"/ then $1
       else "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
       end # case
     end # str_regexp

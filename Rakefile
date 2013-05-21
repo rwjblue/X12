@@ -26,9 +26,9 @@ require 'rubygems'
 require 'rake'
 require 'rake/clean'
 require 'rake/testtask'
-require 'rake/rdoctask'
+require 'rdoc/task'
 require 'rake/packagetask'
-require 'rake/gempackagetask'
+require 'rubygems/package_task'
 require 'rake/contrib/rubyforgepublisher'
 require 'fileutils'
 require 'pp'
@@ -151,7 +151,7 @@ spec = Gem::Specification.new do |s|
   s.test_files = Dir.glob( "test/tc_*rb" )
 end
 
-Rake::GemPackageTask.new(spec) do |p|
+Gem::PackageTask.new(spec) do |p|
   p.gem_spec = spec
   p.need_tar = true
   p.need_zip = true
