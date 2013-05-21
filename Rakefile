@@ -42,7 +42,7 @@ PKG_DESTINATION = "../#{PKG_NAME}"
 
 RAKE            = $0
 RUBY_DIR        = File.expand_path(File.dirname(RAKE)+'../..')
-RUBY            = "#{RUBY_DIR}/bin/ruby.exe"
+RUBY            = "#{RUBY_DIR}/bin/ruby"
 
 CLEAN.include(
               '**/*.log',
