@@ -21,7 +21,7 @@
 #     Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301  USA
 #++
 #
-require 'x12'
+require 'X12'
 
 # Read message definition and create an actual parser
 # by compiling .d12 file
