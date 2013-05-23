@@ -39,7 +39,7 @@ module X12
       @min_length = min_length.to_i
       @max_length = max_length.to_i 
       @validation = validation
-      @content = nil
+      @content    = nil
     end
 
     # Returns printable string with field's content
@@ -56,7 +56,6 @@ module X12
       unless @content
         @content = $1 if self.type =~ /"(.*)"/ # If it's a constant
       end
-puts inspect
       @content || ''
     end # render
 
@@ -65,6 +64,7 @@ puts inspect
       !(@content.nil? || is_constant?)
     end
 
+    # Constants are always pre-set, so if @content is nil, then it's definitely not a constant.
     def is_constant?
       @content && ('"' + @content + '"' == self.type)
     end
