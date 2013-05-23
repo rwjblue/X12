@@ -44,7 +44,7 @@ module X12
 
     # Returns printable string with field's content
     def inspect
-      "Field #{name}|#{type}|#{required}|#{min_length}-#{max_length}|#{validation} <#{@content}>"
+      "<Field #{name}::#{ is_constant? ? "const(#{type})" : type } (#{required ? 'required' : 'optional'})|#{min_length}...#{max_length}|#{validation} \"#{@content}\">"
     end
 
     # Synonym for 'render'
@@ -56,12 +56,17 @@ module X12
       unless @content
         @content = $1 if self.type =~ /"(.*)"/ # If it's a constant
       end
+puts inspect
       @content || ''
     end # render
 
     # Check if it's been set yet and it's not a constant
     def has_content?
-      !@content.nil? && ('"'+@content+'"' != self.type)
+      !(@content.nil? || is_constant?)
+    end
+
+    def is_constant?
+      @content && ('"' + @content + '"' == self.type)
     end
 
     # Erase the content
