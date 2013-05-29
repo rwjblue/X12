@@ -62,11 +62,11 @@ module X12
     end # parse
 
     # Render all components of this loop as string suitable for EDI
-    def render
+    def render(parent = self)
       if self.has_content?
         self.to_a.inject(''){|loop_str, i|
           loop_str += i.nodes.inject(''){|nodes_str, j|
-            nodes_str += j.render
+            nodes_str += j.render(parent)
           } 
         }
       else

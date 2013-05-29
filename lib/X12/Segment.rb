@@ -48,17 +48,17 @@ module X12
     end # parse
 
     # Render all components of this segment as string suitable for EDI
-    def render
-      self.to_a.inject(''){|repeat_str, i|
+    def render(parent = self)
+      self.to_a.inject(''){ |repeat_str, i|
         if i.repeats.begin < 1 and !i.has_content?
           # Skip optional empty segments
           repeat_str
         else
           # Have to render no matter how empty
-          repeat_str += i.name+i.nodes.reverse.inject(''){|nodes_str, j|
-            field = j.render
-            (j.required or nodes_str != '' or field != '') ? field_separator+field+nodes_str : nodes_str
-          } + segment_separator
+          repeat_str += i.name + i.nodes.reverse.inject(''){ |nodes_str, j|
+            field = j.render(parent)
+            (j.required or nodes_str != '' or field != '') ? parent.field_separator + field + nodes_str : nodes_str
+          } + parent.segment_separator
         end
       }
     end # render

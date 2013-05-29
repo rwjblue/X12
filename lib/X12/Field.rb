@@ -52,7 +52,7 @@ module X12
       render
     end
 
-    def render
+    def render(parent = self)
       unless @content
         @content = $1 if self.type =~ /"(.*)"/ # If it's a constant
       end
