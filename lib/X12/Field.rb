@@ -39,12 +39,12 @@ module X12
       @min_length = min_length.to_i
       @max_length = max_length.to_i 
       @validation = validation
-      @content = nil
+      @content    = nil
     end
 
     # Returns printable string with field's content
     def inspect
-      "Field #{name}|#{type}|#{required}|#{min_length}-#{max_length}|#{validation} <#{@content}>"
+      "<Field #{name}::#{ is_constant? ? "const(#{type})" : type } (#{required ? 'required' : 'optional'})|#{min_length}...#{max_length}|#{validation} \"#{@content}\">"
     end
 
     # Synonym for 'render'
@@ -52,7 +52,7 @@ module X12
       render
     end
 
-    def render
+    def render(parent = self)
       unless @content
         @content = $1 if self.type =~ /"(.*)"/ # If it's a constant
       end
@@ -61,7 +61,12 @@ module X12
 
     # Check if it's been set yet and it's not a constant
     def has_content?
-      !@content.nil? && ('"'+@content+'"' != self.type)
+      !(@content.nil? || is_constant?)
+    end
+
+    # Constants are always pre-set, so if @content is nil, then it's definitely not a constant.
+    def is_constant?
+      @content && ('"' + @content + '"' == self.type)
     end
 
     # Erase the content
@@ -72,7 +77,7 @@ module X12
     # Returns simplified string regexp for this field, takes field separator and segment separator as arguments
     def simple_regexp(field_sep, segment_sep)
       case self.type
-      when /"(.*)"/ : $1
+      when /"(.*)"/ then $1
       else "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
       end # case
     end # simple_regexp
@@ -80,10 +85,10 @@ module X12
     # Returns proper validating string regexp for this field, takes field separator and segment separator as arguments
     def proper_regexp(field_sep, segment_sep)
       case self.type
-      when 'I'      : "\\d{#{@min_length},#{@max_length}}"
-      when 'S'      : "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
-      when /C.*/    : "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
-      when /"(.*)"/ : $1
+      when 'I'      then "\\d{#{@min_length},#{@max_length}}"
+      when 'S'      then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
+      when /C.*/    then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
+      when /"(.*)"/ then $1
       else "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
       end # case
     end # str_regexp
