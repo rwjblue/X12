@@ -127,18 +127,17 @@ module X12
     def parse_segment(e)
       name, min, max, type, required, validation = parse_attributes(e)
 
-      fields = e.get_elements("Field").inject([]) {|f, field|
-        f << parse_field(field)
-      }
-      Segment.new(name, fields, Range.new(min, max))
+      fields = e.get_elements("Field").collect { |field| parse_field(field) }
+
+      s = Segment.new(name, fields, Range.new(min, max))
+      s.reset_segment_counter = parse_boolean(e.attributes["reset_segment_counter"])
+      s
     end
 
     def parse_composite(e)
       name, min, max, type, required, validation = parse_attributes(e)
 
-      fields = e.get_elements("Field").inject([]) {|f, field|
-        f << parse_field(field)
-      }
+      fields = e.get_elements("Field").collect { |field| parse_field(field) }
       Composite.new(name, fields)
     end
 

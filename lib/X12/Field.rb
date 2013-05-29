@@ -52,9 +52,15 @@ module X12
       render
     end
 
-    def render
+    def render(parent = self)
       unless @content
-        @content = $1 if self.type =~ /"(.*)"/ # If it's a constant
+        if self.type =~ /"(.*)"/ then # If it's a constant
+          if $1 == '@@counter' then
+            @content = parent.segments_rendered.to_s
+          else
+            @content = $1 
+          end
+        end
       end
       @content || ''
     end # render

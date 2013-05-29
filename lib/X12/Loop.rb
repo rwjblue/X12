@@ -27,7 +27,14 @@ module X12
   #
   # Implements nested loops of segments
 
+
   class Loop < Base
+    attr_accessor :segments_rendered
+
+    def initialize(*args)
+      @segments_rendered = 0
+      super(*args)
+    end
 
 #     def regexp
 #       @regexp ||= 
@@ -62,11 +69,11 @@ module X12
     end # parse
 
     # Render all components of this loop as string suitable for EDI
-    def render
-      if self.has_content?
+    def render(parent = self)
+      if self.has_content? then
         self.to_a.inject(''){|loop_str, i|
           loop_str += i.nodes.inject(''){|nodes_str, j|
-            nodes_str += j.render
+            nodes_str += j.render(parent)
           } 
         }
       else
