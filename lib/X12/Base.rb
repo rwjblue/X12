@@ -190,7 +190,7 @@ module X12
 
     # Check if any of the fields has been set yet
     def has_content?
-      self.nodes.find{|i| i.has_content?}
+      self.nodes.any? { |i| i.has_content? }
     end
 
     # Adds a repeat to a segment or loop. Returns a new segment/loop or self if empty.
