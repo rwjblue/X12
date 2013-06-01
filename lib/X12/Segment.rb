@@ -77,7 +77,7 @@ module X12
     # Returns a regexp that matches this particular segment
     def regexp
       unless @regexp
-        if self.nodes.find{ |i| i.is_constant? }
+        if self.nodes.any? { |i| i.is_constant? } then
           # It's a very special regexp if there are constant fields
           re_str = self.nodes.inject("^#{name}#{Regexp.escape(field_separator)}"){|s, i|
             field_re = i.simple_regexp(field_separator, segment_separator) + Regexp.escape(field_separator) + '?'
