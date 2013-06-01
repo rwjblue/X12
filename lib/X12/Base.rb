@@ -145,7 +145,7 @@ module X12
     # The main method implementing Ruby-like access methods for nested elements
     def method_missing(meth, *args, &block)
       str = meth.id2name
-      str = str[1..str.length] if str =~ /^_\d+$/ # to avoid pure number names like 270, 997, etc.
+      str = str[1..-1] if str =~ /^_\d+$/ # to avoid pure number names like 270, 997, etc.
       #puts "Missing #{str}"
       if str =~ /=$/
         # Assignment
@@ -155,7 +155,7 @@ module X12
         when X12::Segment
           res = find_field(str)
           throw Exception.new("No field '#{str}' in segment '#{self.name}'") if EMPTY == res
-          res.content = args[0].to_s
+          res.content = args[0]
           #puts res.inspect
         else
           throw Exception.new("Illegal assignment to #{meth} of #{self.class}")

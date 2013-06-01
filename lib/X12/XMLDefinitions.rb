@@ -96,16 +96,17 @@ module X12
       
       validation = e.attributes["validation"]
       const_value = e.attributes["const"]
+      var_name = e.attributes["var"]
       min = 1 if required and min < 1
       max = 999999 if max == 0
 
-      return name, min, max, type, required, validation, const_value
+      return name, min, max, type, required, validation, const_value, var_name
     end # parse_attributes
 
     def parse_field(e)
-      name, min, max, type, required, validation, const_value = parse_attributes(e)
+      name, min, max, type, required, validation, const_value, var_name = parse_attributes(e)
 
-      Field.new(name, type, required, min, max, validation, const_value)
+      Field.new(name, type, required, min, max, validation, const_value, var_name)
     end # parse_field
 
     def parse_table(e)
@@ -124,7 +125,7 @@ module X12
       fields = e.get_elements("Field").collect { |field| parse_field(field) }
 
       s = Segment.new(name, fields, Range.new(min, max))
-      s.reset_segment_counter = parse_boolean(e.attributes["reset_segment_counter"])
+      s.initial_segment = parse_boolean(e.attributes["initial_segment"])
       s
     end
 

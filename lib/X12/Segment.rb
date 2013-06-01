@@ -28,10 +28,10 @@ module X12
   # Implements a segment containing fields or composites
     
   class Segment < Base
-    attr_accessor :reset_segment_counter
+    attr_accessor :initial_segment
 
     def initialize(*args)
-      @reset_segment_counter = false
+      @initial_segment = false
       super(*args)
     end
 
@@ -54,21 +54,21 @@ module X12
     end # parse
 
     # Render all components of this segment as string suitable for EDI
-    def render(parent = self)
+    def render(root = self)
       self.to_a.inject(''){ |repeat_str, i|
         if i.repeats.begin < 1 and !i.has_content?
           # Skip optional empty segments
           repeat_str
         else
-          parent.segments_rendered = 0 if reset_segment_counter
+          root.segments_rendered = 0 if initial_segment
 
-          parent.segments_rendered += 1
+          root.segments_rendered += 1
 
           # Have to render no matter how empty
           repeat_str += i.name + i.nodes.reverse.inject(''){ |nodes_str, j|
-            field = j.render(parent)
-            (j.required or nodes_str != '' or field != '') ? parent.field_separator + field + nodes_str : nodes_str
-          } + parent.segment_separator
+            field = j.render(root)
+            (j.required or nodes_str != '' or field != '') ? root.field_separator + field + nodes_str : nodes_str
+          } + root.segment_separator
         end
       }
     end # render
