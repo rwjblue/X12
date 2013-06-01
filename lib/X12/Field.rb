@@ -56,9 +56,9 @@ module X12
 
     def render(root = self)
       case @var_name
-      when 'segments_rendered' then root.segments_rendered.to_s if root.respond_to? :segments_rendered
+      when 'segments_rendered' then root.segments_rendered.to_s if root.respond_to?(:segments_rendered)
       else is_constant? ? @const_value.to_s : @content.to_s
-      end || ''
+      end
     end # render
 
     # Check if it's been set yet and it's not a constant
