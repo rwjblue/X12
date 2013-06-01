@@ -60,9 +60,10 @@ module X12
           # Skip optional empty segments
           repeat_str
         else
-          root.segments_rendered = 0 if initial_segment
-
-          root.segments_rendered += 1
+          if root.respond_to?(:segments_rendered) then
+            root.segments_rendered = 0 if initial_segment
+            root.segments_rendered += 1
+          end
 
           # Have to render no matter how empty
           repeat_str += i.name + i.nodes.reverse.inject(''){ |nodes_str, j|
