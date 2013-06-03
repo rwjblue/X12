@@ -49,6 +49,20 @@ module X12
 #                    })
 #     end
 
+    # Recursively find a sub-element
+    def find(name)
+      #puts "Finding [#{name}] in #{self.class} #{name}"
+      # Breadth first
+      res = nodes.find{ |n| name == n.name }
+      return res if res
+      # Depth now
+      nodes.each{|i| 
+        res = i.find(name) if i.kind_of?(X12::Loop)
+        return res unless res.nil? or EMPTY == res # otherwise keep looping
+      }
+      return EMPTY
+    end
+
     # Parse a string and fill out internal structures with the pieces of it. Returns 
     # an unparsed portion of the string or the original string if nothing was parsed out.
     def parse(str)

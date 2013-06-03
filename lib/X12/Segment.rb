@@ -94,7 +94,9 @@ module X12
       @regexp
     end
 
+    # Recursively find a sub-element
     def find(name)
+      #puts "Finding [#{name}] in #{self.class} #{name}"
       find_field(name).render
     end
 

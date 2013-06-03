@@ -49,11 +49,6 @@ module X12
       "<Field #{name}::#{data_type}#{ is_constant? ? " const(#{@const_value})" : '' } (#{required ? 'required' : 'optional'})|#{min_length}...#{max_length}|#{validation} \"#{@content}\">"
     end
 
-    # Synonym for 'render'
-    def to_s
-      render
-    end
-
     def render(root = self)
       case @var_name
       when 'segments_rendered' then root.segments_rendered.to_s if root.respond_to?(:segments_rendered)
