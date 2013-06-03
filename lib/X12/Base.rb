@@ -120,8 +120,6 @@ module X12
           res = i.find(e) if i.kind_of?(X12::Loop)
           return res unless res.nil? or EMPTY==res # otherwise keep looping
         }
-        when X12::Segment
-        return find_field(e).to_s
       end # case
       return EMPTY
     end

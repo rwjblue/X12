@@ -94,6 +94,10 @@ module X12
       @regexp
     end
 
+    def find(name)
+      find_field(name).render
+    end
+
     # Finds a field in the segment. Returns EMPTY if not found.
     def find_field(field_name)
       #puts "Finding field [#{field_name}] in #{self.class} #{name}"
