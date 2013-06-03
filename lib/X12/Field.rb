@@ -28,23 +28,25 @@ module X12
   # Class to represent a segment field. Please note, it's not a descendant of Base.
 
   class Field
-    attr_reader :name, :type, :required, :min_length, :max_length, :validation
+    attr_reader :name, :data_type, :required, :min_length, :max_length, :validation
     attr_writer :content
 
     # Create a new field with given parameters
-    def initialize(name, type, required, min_length, max_length, validation)
-      @name       = name       
-      @type       = type       
-      @required   = required
-      @min_length = min_length.to_i
-      @max_length = max_length.to_i 
-      @validation = validation
-      @content    = nil
-    end
+    def initialize(name, data_type, required, min_length, max_length, validation, const_value = nil, var_name = nil)
+      @name        = name       
+      @data_type   = data_type       
+      @required    = required
+      @min_length  = min_length.to_i
+      @max_length  = max_length.to_i 
+      @validation  = validation
+      @content     = nil
+      @const_value = const_value
+      @var_name    = var_name
+     end
 
     # Returns printable string with field's content
     def inspect
-      "<Field #{name}::#{ is_constant? ? "const(#{type})" : type } (#{required ? 'required' : 'optional'})|#{min_length}...#{max_length}|#{validation} \"#{@content}\">"
+      "<Field #{name}::#{data_type}#{ is_constant? ? " const(#{@const_value})" : '' } (#{required ? 'required' : 'optional'})|#{min_length}...#{max_length}|#{validation} \"#{@content}\">"
     end
 
     # Synonym for 'render'
@@ -52,27 +54,21 @@ module X12
       render
     end
 
-    def render(parent = self)
-      unless @content
-        if self.type =~ /"(.*)"/ then # If it's a constant
-          if $1 == '@@counter' then
-            @content = parent.segments_rendered.to_s
-          else
-            @content = $1 
-          end
-        end
+    def render(root = self)
+      case @var_name
+      when 'segments_rendered' then root.segments_rendered.to_s if root.respond_to?(:segments_rendered)
+      else is_constant? ? @const_value.to_s : @content.to_s
       end
-      @content || ''
     end # render
 
     # Check if it's been set yet and it's not a constant
     def has_content?
-      !(@content.nil? || is_constant?)
+      !@content.nil?
     end
 
     # Constants are always pre-set, so if @content is nil, then it's definitely not a constant.
     def is_constant?
-      @content && ('"' + @content + '"' == self.type)
+      !@const_value.nil?
     end
 
     # Erase the content
@@ -82,19 +78,18 @@ module X12
 
     # Returns simplified string regexp for this field, takes field separator and segment separator as arguments
     def simple_regexp(field_sep, segment_sep)
-      case self.type
-      when /"(.*)"/ then $1
-      else "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
-      end # case
+      return Regexp.escape(@const_value) if is_constant?
+      "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
     end # simple_regexp
 
     # Returns proper validating string regexp for this field, takes field separator and segment separator as arguments
     def proper_regexp(field_sep, segment_sep)
-      case self.type
+      return Regexp.escape(@const_value) if is_constant?
+
+      case self.data_type
       when 'I'      then "\\d{#{@min_length},#{@max_length}}"
       when 'S'      then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
       when /C.*/    then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
-      when /"(.*)"/ then $1
       else "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
       end # case
     end # str_regexp

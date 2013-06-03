@@ -95,23 +95,18 @@ module X12
       throw Exception.new("Cannot parse attribute 'required' for: #{e.inspect}") if (required = parse_boolean(e.attributes["required"])).nil?
       
       validation = e.attributes["validation"]
+      const_value = e.attributes["const"]
+      var_name = e.attributes["var"]
       min = 1 if required and min < 1
       max = 999999 if max == 0
 
-      return name, min, max, type, required, validation
+      return name, min, max, type, required, validation, const_value, var_name
     end # parse_attributes
 
     def parse_field(e)
-      name, min, max, type, required, validation = parse_attributes(e)
+      name, min, max, type, required, validation, const_value, var_name = parse_attributes(e)
 
-      # FIXME - for compatibility with d12 - constants are stored in attribute 'type' and are enclosed in
-      # double quotes
-      const_field =  e.attributes["const"]
-      if(const_field)
-        type = "\"#{const_field}\""
-      end
-
-      Field.new(name, type, required, min, max, validation)
+      Field.new(name, type, required, min, max, validation, const_value, var_name)
     end # parse_field
 
     def parse_table(e)
@@ -130,7 +125,7 @@ module X12
       fields = e.get_elements("Field").collect { |field| parse_field(field) }
 
       s = Segment.new(name, fields, Range.new(min, max))
-      s.reset_segment_counter = parse_boolean(e.attributes["reset_segment_counter"])
+      s.initial_segment = parse_boolean(e.attributes["initial_segment"])
       s
     end
 

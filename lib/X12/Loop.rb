@@ -69,16 +69,13 @@ module X12
     end # parse
 
     # Render all components of this loop as string suitable for EDI
-    def render(parent = self)
+    def render(root = self)
+      res = ''
       if self.has_content? then
-        self.to_a.inject(''){|loop_str, i|
-          loop_str += i.nodes.inject(''){|nodes_str, j|
-            nodes_str += j.render(parent)
-          } 
-        }
-      else
-        ''
+        nodes.each { |n| res << n.render(root) } # Render children of this Loop
+        res << next_repeat.render(root) if next_repeat # Recursively render the repeats of this loop
       end
+      res
     end # render
 
   end # Loop

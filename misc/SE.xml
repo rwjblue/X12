@@ -24,6 +24,6 @@
 -->
 
 <Segment name="SE" comment="To indicate the end of the transaction set and provide the count of the transmitted segments (including the beginning (ST) and ending (SE) segments)">
-  <Field name="NumberOfIncludedSegments" type="long" required="y" min="1" max="10" comment="Total number of segments included in a transaction set including ST and SE segments"/>
+  <Field name="NumberOfIncludedSegments" type="long" required="y" min="1" max="10" var="segments_rendered" comment="Total number of segments included in a transaction set including ST and SE segments"/>
   <Field name="TransactionSetControlNumber" required="y" min="4" max="9" comment="Identifying control number that must be unique within the transaction set functional group assigned by the originator for a transaction set"/>
 </Segment>

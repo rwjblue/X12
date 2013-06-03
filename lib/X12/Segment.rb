@@ -28,10 +28,10 @@ module X12
   # Implements a segment containing fields or composites
     
   class Segment < Base
-    attr_accessor :reset_segment_counter
+    attr_accessor :initial_segment
 
     def initialize(*args)
-      @reset_segment_counter = false
+      @initial_segment = false
       super(*args)
     end
 
@@ -54,21 +54,22 @@ module X12
     end # parse
 
     # Render all components of this segment as string suitable for EDI
-    def render(parent = self)
+    def render(root = self)
       self.to_a.inject(''){ |repeat_str, i|
         if i.repeats.begin < 1 and !i.has_content?
           # Skip optional empty segments
           repeat_str
         else
-          parent.segments_rendered = 0 if reset_segment_counter
-
-          parent.segments_rendered += 1
+          if root.respond_to?(:segments_rendered) then
+            root.segments_rendered = 0 if initial_segment
+            root.segments_rendered += 1
+          end
 
           # Have to render no matter how empty
           repeat_str += i.name + i.nodes.reverse.inject(''){ |nodes_str, j|
-            field = j.render(parent)
-            (j.required or nodes_str != '' or field != '') ? parent.field_separator + field + nodes_str : nodes_str
-          } + parent.segment_separator
+            field = j.render(root)
+            (j.required or nodes_str != '' or field != '') ? root.field_separator + field + nodes_str : nodes_str
+          } + root.segment_separator
         end
       }
     end # render
@@ -76,10 +77,10 @@ module X12
     # Returns a regexp that matches this particular segment
     def regexp
       unless @regexp
-        if self.nodes.find{|i| i.type =~ /^".+"$/ }
+        if self.nodes.any? { |i| i.is_constant? } then
           # It's a very special regexp if there are constant fields
           re_str = self.nodes.inject("^#{name}#{Regexp.escape(field_separator)}"){|s, i|
-            field_re = i.simple_regexp(field_separator, segment_separator)+Regexp.escape(field_separator)+'?'
+            field_re = i.simple_regexp(field_separator, segment_separator) + Regexp.escape(field_separator) + '?'
             field_re = "(#{field_re})?" unless i.required
             s + field_re
           } + Regexp.escape(segment_separator)
@@ -94,23 +95,17 @@ module X12
     end
 
     # Finds a field in the segment. Returns EMPTY if not found.
-    def find_field(str)
-      #puts "Finding field [#{str}] in #{self.class} #{name}"
-      # If there is such a field to begin with
-      field_num = nil
-      self.nodes.each_index{|i|
-        field_num = i if str == self.nodes[i].name
-      }
-      return EMPTY if field_num.nil?
-      #puts field_num
+    def find_field(field_name)
+      #puts "Finding field [#{field_name}] in #{self.class} #{name}"
 
-      # Parse the segment if not parsed already
-      unless @fields
-        @fields = self.to_s.chop.split(Regexp.new(Regexp.escape(field_separator)))
-        self.nodes.each_index{|i| self.nodes[i].content = @fields[i+1] }
+      # If the segment hasn't been parsed yet, let's parse it
+      if @parsed_str && @fields.nil? then
+        segment_data = @parsed_str.gsub(Regexp.new("#{Regexp.escape(segment_separator)}$"), '')
+        @fields = segment_data.split(Regexp.new(Regexp.escape(field_separator)))
+        self.nodes.each_index{ |i| self.nodes[i].content = @fields[i + 1] }
       end
-      #puts self.nodes[field_num].inspect
-      return self.nodes[field_num]
+
+      self.nodes.find { |node| node.name == field_name } || EMPTY
     end
 
   end # Segment
