@@ -66,19 +66,21 @@ module X12
     # Parse a string and fill out internal structures with the pieces of it. Returns 
     # an unparsed portion of the string or the original string if nothing was parsed out.
     def parse(str)
-      #puts "Parsing loop #{name}: "+str
+      #puts "Parsing loop #{name}: " + str
       s = str
       nodes.each{|i|
         m = i.parse(s)
         s = m if m
       } 
+
       if str == s
         return nil
       else
         self.parsed_str = str[0..-s.length-1]
         s = do_repeats(s)
       end
-      #puts 'Parsed loop '+self.inspect
+
+      #puts 'Parsed loop ' + self.inspect
       return s
     end # parse
 

@@ -108,7 +108,7 @@ module X12
       if @parsed_str && @fields.nil? then
         segment_data = @parsed_str.gsub(Regexp.new("#{Regexp.escape(segment_separator)}$"), '')
         @fields = segment_data.split(Regexp.new(Regexp.escape(field_separator)))
-        self.nodes.each_index{ |i| self.nodes[i].content = @fields[i + 1] }
+        self.nodes.each_with_index{ |node, ind| node.parse(@fields[ind + 1]) }
       end
 
       self.nodes.find { |node| node.name == field_name } || EMPTY
