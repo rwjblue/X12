@@ -29,7 +29,7 @@ class Test270Factory < Test::Unit::TestCase
   @@p = nil
 @@result=<<-EOT
 ST*270*1001~
-BHT*0022*13*LNKJNFGRWDLR*20070724*1726~
+BHT*0022*13*LNKJNFGRWDLR*20070724*17260000~
 HL*1**20*1~
 NM1*PR*2*BIG PAYOR*****PI*CHICAGO BLUES~
 HL*2*1*21*1~
@@ -63,8 +63,8 @@ EOT
       bht.HierarchicalStructureCode='0022'
       bht.TransactionSetPurposeCode='13'
       bht.ReferenceIdentification='LNKJNFGRWDLR'
-      bht.Date='20070724'
-      bht.Time='1726'
+      bht.Date = Date.new(2007, 07, 24)
+      bht.Time = Time.new(0, nil, nil, 17, 26)
     }
 
     @r.L2000A {|l2000A|

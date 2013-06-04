@@ -33,8 +33,8 @@
     <Field name="HierarchicalStructureCode" required="y" const="0022"                       comment="Code indicating the hierarchical application structure of a transaction set that utilizes the HL segment to define the structure of the transaction set"/>
     <Field name="TransactionSetPurposeCode" required="y" min="2" max="2"  validation="T353" comment="Code identifying purpose of transaction set"/>
     <Field name="ReferenceIdentification"                min="1" max="50"                   comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-    <Field name="Date"                      required="y" min="8" max="8"                    comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-    <Field name="Time"                      required="y" min="4" max="8"                    comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+    <Field name="Date"                      required="y" min="8" max="8"  type="date"       comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+    <Field name="Time"                      required="y" min="4" max="8"  type="time"       comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
     <Field name="TransactionTypeCode"       required="n" min="2" max="2"  validation="T640" comment="Code specifying the type of transaction"/>
   </Segment>
 

@@ -60,7 +60,7 @@ module X12
         case self.data_type
 #        when 'int' then @content.to_s
 #        when 'long' then @content.to_s
-        when 'DT' then @content.strftime('%Y%m%d')[-(max_length), -1]
+        when 'DT' then @content.strftime('%Y%m%d')[-(max_length)..-1]
         when 'TM' then @content.strftime("%H%M%S%L")[0..(max_length - 1)]
         else @content.to_s
         end
@@ -115,7 +115,7 @@ module X12
           @content = Date.new(y, str[-4..-3].to_i, str[-2..-1].to_i)
         when 'TM' then # HHMM[SS[D[D]]]
           str = (str + '0000')[0..7] 
-          Time.new(1970, 1, 1, str[0..1].to_i, str[2..3].to_i, str[4..7].to_f / 100)
+          Time.new(0, nil, nil, str[0..1].to_i, str[2..3].to_i, str[4..7].to_f / 100)
         else str
         end
     end

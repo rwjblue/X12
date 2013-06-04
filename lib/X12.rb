@@ -24,6 +24,7 @@
 $:.unshift(File.dirname(__FILE__))
 
 require 'rubygems'
+require 'date'
 
 require 'X12/Base'
 require 'X12/Empty'
