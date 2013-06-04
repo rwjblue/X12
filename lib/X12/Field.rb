@@ -114,7 +114,7 @@ module X12
           y = (str[-8..-5] || Date.today.year - ( Date.today.year % 100) + str[-6..-5].to_i).to_i
           @content = Date.new(y, str[-4..-3].to_i, str[-2..-1].to_i)
         when 'TM' then # HHMM[SS[D[D]]]
-          str = (str + '0000')[0..7] 
+          str += '0000'
           Time.new(0, nil, nil, str[0..1].to_i, str[2..3].to_i, str[4..7].to_f / 100)
         else str
         end
