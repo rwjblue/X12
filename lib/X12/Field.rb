@@ -58,13 +58,13 @@ module X12
         end
       else
         case self.data_type
-#        when 'int' then @content.to_s
-#        when 'long' then @content.to_s
         when 'DT' then @content.strftime('%Y%m%d')[-(max_length)..-1]
         when 'TM' then 
           res = @content.strftime("%H%M%S%L")[0..(max_length - 1)].sub(/0{0,#{max_length - min_length}}$/, '')
           res += "0" if res.length == 5 # Special case to not allow minutes to lose the units digit if it's zero
           res
+#       when /N\d*/ then ...
+#       when 'R'    then ...
         else @content.to_s
         end
       end
@@ -101,10 +101,9 @@ module X12
                     then "\\d{#{@min_length},#{@max_length}}"
       when /N\d*/   then "[0-9+-]{#{@min_length},#{@max_length}}"  # Numeric with implied decimal point; may contain sign
       when 'R'      then "[0-9+-.]{#{@min_length},#{@max_length}}" # Real; may contain leading sign and a decimal point
-      when 'double' then "([+-.0-9]){#{@min_length},#{@max_length}}"
-      when 'string' then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
+      when 'AN'     then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
       when /C.*/    then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
-      else "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
+      else               "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
       end # case
     end # str_regexp
 
@@ -112,8 +111,8 @@ module X12
       @parsed_str = str
       @content = 
         case self.data_type
-#       when 'int' then str.to_i
-#       when 'long' then str.to_i
+#       when /N\d*/ then str.to_i # Numeric with implied decimal point
+#       when 'R'    then str.to_f # Real
         when 'DT' then # [CC]YYMMDD
           y = (str[-8..-5] || Date.today.year - ( Date.today.year % 100) + str[-6..-5].to_i).to_i
           @content = Date.new(y, str[-4..-3].to_i, str[-2..-1].to_i)
