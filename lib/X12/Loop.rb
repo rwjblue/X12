@@ -27,7 +27,14 @@ module X12
   #
   # Implements nested loops of segments
 
+
   class Loop < Base
+    attr_accessor :segments_rendered
+
+    def initialize(*args)
+      @segments_rendered = 0
+      super(*args)
+    end
 
 #     def regexp
 #       @regexp ||= 
@@ -42,36 +49,49 @@ module X12
 #                    })
 #     end
 
+    # Recursively find a sub-element
+    def find(name)
+      #puts "Finding [#{name}] in #{self.class} #{name}"
+      # Breadth first
+      res = nodes.find{ |n| name == n.name }
+      return res if res
+      # Depth now
+      nodes.each{|i| 
+        res = i.find(name) if i.kind_of?(X12::Loop)
+        return res unless res.nil? or EMPTY == res # otherwise keep looping
+      }
+      return EMPTY
+    end
+
     # Parse a string and fill out internal structures with the pieces of it. Returns 
     # an unparsed portion of the string or the original string if nothing was parsed out.
     def parse(str)
-      #puts "Parsing loop #{name}: "+str
+      #puts "Parsing loop #{name}: " + str
       s = str
       nodes.each{|i|
         m = i.parse(s)
         s = m if m
       } 
+
       if str == s
         return nil
       else
         self.parsed_str = str[0..-s.length-1]
         s = do_repeats(s)
       end
-      #puts 'Parsed loop '+self.inspect
+
+      #puts 'Parsed loop ' + self.inspect
       return s
     end # parse
 
     # Render all components of this loop as string suitable for EDI
-    def render(parent = self)
-      if self.has_content?
-        self.to_a.inject(''){|loop_str, i|
-          loop_str += i.nodes.inject(''){|nodes_str, j|
-            nodes_str += j.render(parent)
-          } 
-        }
-      else
-        ''
+    def render(root = self)
+      res = ''
+      if self.has_content? then
+        nodes.each { |n| res << n.render(root) } # Render children of this Loop
+        res << next_repeat.render(root) if next_repeat # Recursively render the repeats of this loop
       end
+      res
     end # render
 
   end # Loop

@@ -67,6 +67,8 @@ module X12
     def parse_type(s)
       return case s
              when nil                then 'string'
+             when 'date'             then 'DT'
+             when 'time'             then 'TM'
              when /^C.+$/            then s
              when /^i(nt(eger)?)?$/i then 'int'
              when /^l(ong)?$/i       then 'long'
@@ -95,23 +97,18 @@ module X12
       throw Exception.new("Cannot parse attribute 'required' for: #{e.inspect}") if (required = parse_boolean(e.attributes["required"])).nil?
       
       validation = e.attributes["validation"]
+      const_value = e.attributes["const"]
+      var_name = e.attributes["var"]
       min = 1 if required and min < 1
       max = 999999 if max == 0
 
-      return name, min, max, type, required, validation
+      return name, min, max, type, required, validation, const_value, var_name
     end # parse_attributes
 
     def parse_field(e)
-      name, min, max, type, required, validation = parse_attributes(e)
+      name, min, max, type, required, validation, const_value, var_name = parse_attributes(e)
 
-      # FIXME - for compatibility with d12 - constants are stored in attribute 'type' and are enclosed in
-      # double quotes
-      const_field =  e.attributes["const"]
-      if(const_field)
-        type = "\"#{const_field}\""
-      end
-
-      Field.new(name, type, required, min, max, validation)
+      Field.new(name, type, required, min, max, validation, const_value, var_name)
     end # parse_field
 
     def parse_table(e)
@@ -127,18 +124,17 @@ module X12
     def parse_segment(e)
       name, min, max, type, required, validation = parse_attributes(e)
 
-      fields = e.get_elements("Field").inject([]) {|f, field|
-        f << parse_field(field)
-      }
-      Segment.new(name, fields, Range.new(min, max))
+      fields = e.get_elements("Field").collect { |field| parse_field(field) }
+
+      s = Segment.new(name, fields, Range.new(min, max))
+      s.initial_segment = parse_boolean(e.attributes["initial_segment"])
+      s
     end
 
     def parse_composite(e)
       name, min, max, type, required, validation = parse_attributes(e)
 
-      fields = e.get_elements("Field").inject([]) {|f, field|
-        f << parse_field(field)
-      }
+      fields = e.get_elements("Field").collect { |field| parse_field(field) }
       Composite.new(name, fields)
     end
 

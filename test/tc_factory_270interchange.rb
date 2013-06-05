@@ -124,19 +124,16 @@ EOT
 
   def create_270(message, fg_num, mess_num)
     transactionSetControlNumber = "#{fg_num}00#{mess_num}"
-    count = 0
 
     message.ST.TransactionSetControlNumber  = transactionSetControlNumber
-    count += 1
 
     message.BHT {|bht|
       bht.HierarchicalStructureCode='0022'
       bht.TransactionSetPurposeCode='13'
       bht.ReferenceIdentification='LNKJNFGRWDLR'
-      bht.Date='20070724'
-      bht.Time='1726'
+      bht.Date = Date.new(2007, 07, 24)
+      bht.Time = Time.new(0, nil, nil, 17, 26)
     }
-    count += 1
 
     message.L2000A {|l2000A|
       l2000A.HL{|hl|
@@ -144,7 +141,6 @@ EOT
         hl.HierarchicalParentIdNumber=''
         hl.HierarchicalChildCode='1'
       }
-      count += 1
 
       l2000A.L2100A {|l2100A|
         l2100A.NM1 {|nm1|
@@ -154,7 +150,6 @@ EOT
           nm1.IdentificationCodeQualifier='PI'
           nm1.IdentificationCode='CHICAGO BLUES'
         }
-        count += 1
       }
     }
 
@@ -164,7 +159,6 @@ EOT
         hl.HierarchicalParentIdNumber='1'
         hl.HierarchicalChildCode='1'
       }
-      count += 1
       
       l2000B.L2100B {|l2100B|
         l2100B.NM1 {|nm1|
@@ -174,7 +168,6 @@ EOT
           nm1.IdentificationCodeQualifier='SV'
           nm1.IdentificationCode='daw'
         }
-        count += 1
       }
     }
 
@@ -184,7 +177,6 @@ EOT
         hl.HierarchicalParentIdNumber='2'
         hl.HierarchicalChildCode='0'
       }
-      count += 1
 
       l2000C.L2100C {|l2100C|
         l2100C.NM1 {|nm1|
@@ -193,33 +185,27 @@ EOT
           nm1.NameLastOrOrganizationName='LastName'
           nm1.NameFirst='FirstName'
         }
-        count += 1
 
         l2100C.DMG {|dmg|
           dmg.DateTimePeriodFormatQualifier='D8'
           dmg.DateTimePeriod='19700725'
         }
-        count += 1
 
         l2100C.DTP {|dtp|
           dtp.DateTimeQualifier='307'
           dtp.DateTimePeriodFormatQualifier='D8'
           dtp.DateTimePeriod='20070724'
         }
-        count += 1
 
         l2100C.L2110C {|l2110C|
           l2110C.EQ {|eq|
             eq.ServiceTypeCode='60'
           }
-          count += 1
         }
       }
     }
 
-    count += 1
     message.SE {|se|
-      se.NumberOfIncludedSegments = count
       se.TransactionSetControlNumber = transactionSetControlNumber
     }
 
@@ -232,8 +218,8 @@ EOT
       gs.FunctionalIdentifierCode='HS'
       gs.ApplicationSendersCode='0000000Eliginet'
       gs.ApplicationReceiversCode='CHICAGO BLUES'
-      gs.Date='20070724'
-      gs.Time='1726'
+      gs.Date = Date.new(2007, 07, 24)
+      gs.Time = Time.new(0, nil, nil, 17, 26)
       gs.GroupControlNumber=groupControlNumber
       gs.ResponsibleAgencyCode='X'
       gs.VersionReleaseIndustryIdentifierCode='004010X092A1'
@@ -260,8 +246,8 @@ EOT
       isa.InterchangeSenderId = '0000000Eliginet'
       isa.InterchangeIdQualifier2 = 'ZZ'
       isa.InterchangeReceiverId = 'CHICAGO BLUES'
-      isa.InterchangeDate = '070724'
-      isa.InterchangeTime = '1726'
+      isa.InterchangeDate = Date.new(2007, 07, 24)
+      isa.InterchangeTime = Time.new(0, nil, nil, 17, 26)
       isa.InterchangeControlStandardsIdentifier = 'U'
       isa.InterchangeControlVersionNumber = '00401'
       isa.InterchangeControlNumber = '230623206'

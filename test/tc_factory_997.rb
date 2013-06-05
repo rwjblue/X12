@@ -41,7 +41,7 @@ AK4*1**0~
 AK4*1**1~
 AK5*E****999~
 AK9****~
-SE**~
+SE*14*~
 EOT
 
   @@result = tmp.gsub!(/\n/,'')

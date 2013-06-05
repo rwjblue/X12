@@ -31,8 +31,7 @@ module X12
   class Base
 
     attr_reader :name, :repeats
-    attr_reader :segment_separator, :field_separator, :composite_separator, :next_repeat, :parsed_str, :nodes
-    attr_writer :segment_separator, :field_separator, :composite_separator, :next_repeat, :parsed_str, :nodes
+    attr_accessor :segment_separator, :field_separator, :composite_separator, :next_repeat, :parsed_str, :nodes
 
     # Creates a new base element with a given name, array of sub-elements, and array of repeats if any.
     def initialize(name, arr, repeats = nil)
@@ -108,25 +107,11 @@ module X12
       n
     end # dup
 
-    # Recursively find a sub-element, which also has to be of type Base.
+    # Method to be overloaded
     def find(e)
-      #puts "Finding [#{e}] in #{self.class} #{name}"
-      case self
-        when X12::Loop
-        # Breadth first
-        res = nodes.find{|i| e==i.name }
-        return res if res
-        # Depth now
-        nodes.each{|i| 
-          res = i.find(e) if i.kind_of?(X12::Loop)
-          return res unless res.nil? or EMPTY==res # otherwise keep looping
-        }
-        when X12::Segment
-        return find_field(e).to_s
-      end # case
       return EMPTY
     end
-    
+
     # Present self and all repeats as an array with self being #0
     def to_a
       res = [self]
@@ -140,13 +125,13 @@ module X12
 
     # Returns a parsed string representation of the element
     def to_s
-      @parsed_str || ''
+      @parsed_str || render
     end
 
     # The main method implementing Ruby-like access methods for nested elements
     def method_missing(meth, *args, &block)
       str = meth.id2name
-      str = str[1..str.length] if str =~ /^_\d+$/ # to avoid pure number names like 270, 997, etc.
+      str = str[1..-1] if str =~ /^_\d+$/ # to avoid pure number names like 270, 997, etc.
       #puts "Missing #{str}"
       if str =~ /=$/
         # Assignment
@@ -156,7 +141,7 @@ module X12
         when X12::Segment
           res = find_field(str)
           throw Exception.new("No field '#{str}' in segment '#{self.name}'") if EMPTY == res
-          res.content = args[0].to_s
+          res.content = args[0]
           #puts res.inspect
         else
           throw Exception.new("Illegal assignment to #{meth} of #{self.class}")
@@ -191,7 +176,7 @@ module X12
 
     # Check if any of the fields has been set yet
     def has_content?
-      self.nodes.find{|i| i.has_content?}
+      self.nodes.any? { |i| i.has_content? }
     end
 
     # Adds a repeat to a segment or loop. Returns a new segment/loop or self if empty.

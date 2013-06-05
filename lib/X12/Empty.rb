@@ -34,8 +34,7 @@ module X12
       super(nil, [])
     end
 
-    # Returns an empty string
-    def to_s
+    def render
       ''
     end
 
