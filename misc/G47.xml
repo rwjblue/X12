@@ -24,6 +24,6 @@
 -->
 
 <Segment name="G47" comment="To transmit identifying numbers, dates, and other basic data relating to the transaction set">
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="StatementNumber" min="1" max="16" comment="Identifying number for statement assigned by issuer for charges"/>
 </Segment>

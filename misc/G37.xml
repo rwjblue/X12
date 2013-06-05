@@ -25,6 +25,6 @@
 
 <Segment name="G37" comment="To indicate the type of activity performed and the start and end times for the activity">
   <Field name="LaborActivityCode" min="1" max="2" validation="T1523" comment="Code indicating a type of labor activity"/>
-  <Field name="Time1" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
-  <Field name="Time2" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <Field name="Time1" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <Field name="Time2" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
 </Segment>

@@ -34,7 +34,7 @@
   <Field name="Size" type="double" required="y" min="1" max="8" comment="Size of supplier units in pack"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="DateQualifier" required="y" min="2" max="2" validation="T432" comment="Code specifying type of date"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
   <Field name="AllowanceOrChargeRate" type="double" required="y" min="1" max="15" comment="Allowance or Charge Rate per Unit"/>
   <Field name="ProductServiceIdQualifier2" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>

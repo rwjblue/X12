@@ -24,9 +24,9 @@
 -->
 
 <Segment name="SA" comment="To identify a carrier and person taking action or making changes">
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ActionCode" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="Name" required="y" min="1" max="60" comment="Free-form name"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

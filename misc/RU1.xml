@@ -28,9 +28,9 @@
   <Field name="ReferenceIdentification1" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="Name" min="1" max="60" comment="Free-form name"/>
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="EmploymentCode" required="y" min="1" max="1" validation="T537" comment="Code indicating the type of last employer"/>
   <Field name="UnemployedReasonCode" required="y" min="1" max="1" validation="T545" comment="Code indicating reason reported by claimant for not now working"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ClaimProfile" required="y" min="14" max="14" comment="A series of code entries which identify the claimed status of an employee for each day in the 14-day claim cycle for unemployment or sickness benefits"/>
 </Segment>

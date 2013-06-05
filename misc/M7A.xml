@@ -26,7 +26,7 @@
 <Segment name="M7A" comment="To provide an audit trail of seal number changes">
   <Field name="SealNumber1" min="2" max="15" comment="Unique number on seal used to close a shipment"/>
   <Field name="SealNumber2" min="2" max="15" comment="Unique number on seal used to close a shipment"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="EntityIdentifierCode" required="y" min="2" max="3" validation="T98" comment="Code identifying an organizational entity, a physical location, property or an individual"/>
   <Field name="Name" required="y" min="1" max="60" comment="Free-form name"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>

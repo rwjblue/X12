@@ -24,8 +24,8 @@
 -->
 
 <Segment name="Y1" comment="To specify information used to make a reservation for space on an ocean vessel">
-  <Field name="SailingFlightDateEstimated" required="y" min="8" max="8" comment="Date for reservation expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="SailingFlightDateEstimated" type="date" required="y" min="8" max="8" comment="Date for reservation expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="StandardCarrierAlphaCode" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="TransportationMethodTypeCode" required="y" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>
   <Field name="EntityIdentifierCode" required="y" min="2" max="3" validation="T98" comment="Code identifying an organizational entity, a physical location, property or an individual"/>

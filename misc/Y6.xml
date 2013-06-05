@@ -26,5 +26,5 @@
 <Segment name="Y6" comment="To specify the authority for authorizing an action and the date authentication is made">
   <Field name="AuthorityIdentifierCode" required="y" min="2" max="2" validation="T313" comment="Code indicating authority for authentication"/>
   <Field name="Authority" min="1" max="20" comment="Name or code of authority for authorizing action or reservation"/>
-  <Field name="AuthorizationDate" min="8" max="8" comment="Date authentication is made expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="AuthorizationDate" type="date" min="8" max="8" comment="Date authentication is made expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

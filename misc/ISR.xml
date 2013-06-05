@@ -25,6 +25,6 @@
 
 <Segment name="ISR" comment="To specify detailed purchase order/item status">
   <Field name="ShipmentOrderStatusCode" min="2" max="2" validation="T368" comment="Code indicating the status of an order or shipment or the disposition of any difference between the quantity ordered and the quantity shipped for a line item or transaction"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="StatusReasonCode" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
 </Segment>

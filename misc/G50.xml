@@ -25,7 +25,7 @@
 
 <Segment name="G50" comment="To transmit identifying dates and numbers for this transaction set">
   <Field name="OrderStatusCode" min="1" max="1" validation="T473" comment="Code identifying purpose of transaction set"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="PurchaseOrderNumber" min="1" max="22" comment="Identifying number for Purchase Order assigned by the orderer/purchaser"/>
   <Field name="TaxExemptCode" required="y" min="1" max="1" validation="T441" comment="Code identifying exemption status from sales and use tax"/>
   <Field name="MasterReference" required="y" min="1" max="22" comment="Reference number assigned by the sender to relate a transaction set to a master transaction (When associating a group of purchase orders, invoices or other transaction sets, use the master reference (link) number to identify the group and the link sequence number to identify individual transaction sets within the group)"/>

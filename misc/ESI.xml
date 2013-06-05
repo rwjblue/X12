@@ -27,7 +27,7 @@
   <Field name="YesNoConditionOrResponseCode1" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="YesNoConditionOrResponseCode3" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
-  <Field name="Time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <Field name="Time" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="EmploymentStatusCode" required="y" min="2" max="2" validation="T584" comment="Code showing the general employment status of an employee/claimant"/>
   <Field name="WorkIntensityCode" required="y" min="1" max="1" validation="T1154" comment="Code identifying the level of intensity of work"/>

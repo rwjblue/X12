@@ -26,7 +26,7 @@
 <Segment name="BIX" comment="To transmit identifying numbers, dates, and other basic data relating to the transaction set">
   <Field name="TransactionSetPurposeCode" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="InspectionLocationTypeCode" min="1" max="2" validation="T831" comment="Code to define the location where a type of inspection is performed"/>
   <Field name="RampIdentification" required="y" min="1" max="9" comment="A mutually agreed upon ramp identity"/>
   <Field name="CityName" required="y" min="2" max="30" comment="Free-form text for city name"/>

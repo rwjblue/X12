@@ -24,13 +24,13 @@
 -->
 
 <Segment name="SS" comment="To specify information about rate level and rate docket independence">
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="RateLevel" required="y" min="1" max="5" comment="Identifies the broad tariff change which is reflected in the rate amounts and need not be separately applied; when a rail carrier's cost recovery (RCCR) change is not applicable, then &quot;N/A&quot; will appear in this element"/>
   <Field name="RateDistributionCode" min="1" max="1" validation="T698" comment="Code indicating the extent to which data intermediaries may distribute rate data (excluding revenue division information) to requesting recipients"/>
   <Field name="IndependenceCode" required="y" min="1" max="1" validation="T695" comment="Code indicating the capability of a carrier participating in the route of a rate to make independent changes to that rate"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date3" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date3" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="NumberOfPeriods" type="long" required="y" min="1" max="3" comment="Total number of periods"/>
-  <Field name="Date4" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date4" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="RateMaintenanceAuthorityCode" required="y" min="1" max="1" validation="T437" comment="Code indicating change authority"/>
 </Segment>

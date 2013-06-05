@@ -26,8 +26,8 @@
 <Segment name="V9" comment="To specify information about a specific event">
   <Field name="EventCode" min="3" max="3" validation="T304" comment="Code identifying the event about which a report is made"/>
   <Field name="Event" required="y" min="1" max="25" comment="Free-form description of event"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Time" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="CityName" required="y" min="2" max="30" comment="Free-form text for city name"/>
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>

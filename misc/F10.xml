@@ -24,7 +24,7 @@
 -->
 
 <Segment name="F10" comment="To identify a loss or damage claim">
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ReferenceIdentification1" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>

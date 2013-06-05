@@ -25,7 +25,7 @@
 
 <Segment name="BSC" comment="To indicate the beginning of a commission sales report transaction set and transmit reporting period dates">
   <Field name="TransactionSetPurposeCode" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date3" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date3" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

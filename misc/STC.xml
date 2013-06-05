@@ -25,13 +25,13 @@
 
 <Segment name="STC" comment="To report the status, required action, and paid information of a claim or service line">
   <Field name="HealthCareClaimStatus1" type="C043" min="0" max="inf" comment="Used to convey status of the entire claim or a specific service line"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="MonetaryAmount1" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="MonetaryAmount2" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="PaymentMethodCode" required="y" min="3" max="3" validation="T591" comment="Code identifying the method for the movement of payment instructions"/>
-  <Field name="Date3" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date3" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="CheckNumber" required="y" min="1" max="16" comment="Check identification number"/>
   <Field name="HealthCareClaimStatus2" type="C043" required="y" min="0" max="inf" comment="Used to convey status of the entire claim or a specific service line"/>
   <Field name="HealthCareClaimStatus3" type="C043" required="y" min="0" max="inf" comment="Used to convey status of the entire claim or a specific service line"/>

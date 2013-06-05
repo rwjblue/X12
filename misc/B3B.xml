@@ -26,9 +26,9 @@
 <Segment name="B3B" comment="To transmit identifying numbers, dates, and other basic data relating to the transaction set">
   <Field name="InvoiceNumber" min="1" max="22" comment="Identifying number assigned by issuer"/>
   <Field name="ShipmentMethodOfPayment" min="2" max="2" validation="T146" comment="Code identifying payment terms for transportation charges"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="NetAmountDue" type="double" min="1" max="12" comment="Total charges to be paid by the receiver of this transaction set expressed in the standard monetary denomination for the currency specified"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="TransportationMethodTypeCode" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>
   <Field name="ShipmentIdentificationNumber" required="y" min="1" max="30" comment="Identification number assigned to the shipment by the shipper that uniquely identifies the shipment from origin to ultimate destination and is not subject to modification; (Does not contain blanks or special characters)"/>

@@ -31,8 +31,8 @@
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
   <Field name="InterchangeTrainIdentification1" required="y" min="1" max="10" comment="Train identification (free-form)"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Time" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="StandardCarrierAlphaCode3" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="InterchangeTrainIdentification2" required="y" min="1" max="10" comment="Train identification (free-form)"/>

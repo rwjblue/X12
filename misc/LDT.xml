@@ -27,5 +27,5 @@
   <Field name="LeadTimeCode" min="2" max="2" validation="T345" comment="Code indicating the time range"/>
   <Field name="Quantity" type="double" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOfTimePeriodOrInterval" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

@@ -28,7 +28,7 @@
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="DateTimeQualifier" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="RequestReferenceNumber" required="y" min="1" max="45" comment="Reference number or RFQ number to use to identify a particular transaction set and query (additional reference number or description which can be used with contract number)"/>
   <Field name="ProductServiceIdQualifier1" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId1" required="y" min="1" max="48" comment="Identifying number for a product or service"/>

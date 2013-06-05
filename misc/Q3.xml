@@ -24,6 +24,6 @@
 -->
 
 <Segment name="Q3" comment="To specify estimated arrival date and shipment method of payment">
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ShipmentMethodOfPayment" min="2" max="2" validation="T146" comment="Code identifying payment terms for transportation charges"/>
 </Segment>

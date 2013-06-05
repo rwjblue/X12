@@ -28,7 +28,7 @@
   <Field name="BillOfLadingStatusCode" min="1" max="2" validation="T392" comment="Code indicating the status of a bill of lading"/>
   <Field name="CustomsEntryNumber" required="y" min="1" max="15" comment="Automated Commercial System Code Furnished by U.S. Customs Service"/>
   <Field name="CustomsEntryTypeCode" required="y" min="2" max="2" comment="Code defining the type of entry assigned by U.S. Customs"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="BillOfLadingWaybillNumber2" required="y" min="1" max="25" comment="Identification number assigned to the shipment by the carrier or consolidator"/>
   <Field name="StandardCarrierAlphaCode1" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>

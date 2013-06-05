@@ -41,5 +41,5 @@
   <Field name="AccountNumberQualifier3" required="y" min="1" max="3" validation="T569" comment="Code indicating the type of account"/>
   <Field name="DFIIdNumberQualifier3" required="y" min="2" max="2" validation="T506" comment="Code identifying the type of identification number of Depository Financial Institution (DFI)"/>
   <Field name="DFIIdentificationNumber3" required="y" min="3" max="12" comment="Depository Financial Institution (DFI) identification number"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

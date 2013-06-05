@@ -32,6 +32,6 @@
   <Field name="VesselName" required="y" min="2" max="28" comment="Name of ship as documented in &quot;Lloyd's Register of Ships&quot;"/>
   <Field name="FlightVoyageNumber" required="y" min="2" max="10" comment="Identifying designator for the particular flight or voyage on which the cargo travels"/>
   <Field name="DateTimeQualifier" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
 </Segment>

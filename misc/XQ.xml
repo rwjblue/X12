@@ -25,8 +25,8 @@
 
 <Segment name="XQ" comment="To specify reporting dates, actions to be taken and an identifying number">
   <Field name="TransactionHandlingCode" min="1" max="2" validation="T305" comment="Code designating the action to be taken by all parties"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
 </Segment>

@@ -27,11 +27,11 @@
   <Field name="TransactionSetPurposeCode" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
   <Field name="AcknowledgmentType" min="2" max="2" validation="T587" comment="Code specifying the type of acknowledgment"/>
   <Field name="PurchaseOrderNumber" min="1" max="22" comment="Identifying number for Purchase Order assigned by the orderer/purchaser"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ReleaseNumber" required="y" min="1" max="30" comment="Number identifying a release against a Purchase Order previously placed by the parties involved in the transaction"/>
   <Field name="RequestReferenceNumber" required="y" min="1" max="45" comment="Reference number or RFQ number to use to identify a particular transaction set and query (additional reference number or description which can be used with contract number)"/>
   <Field name="ContractNumber" required="y" min="1" max="30" comment="Contract number"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
 </Segment>

@@ -29,13 +29,13 @@
   <Field name="ShipmentIdentificationNumber" required="y" min="1" max="30" comment="Identification number assigned to the shipment by the shipper that uniquely identifies the shipment from origin to ultimate destination and is not subject to modification; (Does not contain blanks or special characters)"/>
   <Field name="ShipmentMethodOfPayment" min="2" max="2" validation="T146" comment="Code identifying payment terms for transportation charges"/>
   <Field name="WeightUnitCode" required="y" min="1" max="1" validation="T188" comment="Code specifying the weight unit"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="NetAmountDue" type="double" min="1" max="12" comment="Total charges to be paid by the receiver of this transaction set expressed in the standard monetary denomination for the currency specified"/>
   <Field name="CorrectionIndicator" required="y" min="2" max="2" validation="T202" comment="Code used to indicate that the transaction set contains information which corrects previous information"/>
-  <Field name="DeliveryDate" required="y" min="8" max="8" comment="Date for delivery of cargo to final consignee or to next mode expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="DeliveryDate" type="date" required="y" min="8" max="8" comment="Date for delivery of cargo to final consignee or to next mode expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="DateTimeQualifier" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TariffServiceCode" required="y" min="2" max="2" validation="T375" comment="Code specifying the types of services for rating purposes"/>
   <Field name="TransportationTermsCode" required="y" min="3" max="3" validation="T335" comment="Code identifying the trade terms which apply to the shipment transportation responsibility"/>
 </Segment>

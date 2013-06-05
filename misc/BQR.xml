@@ -26,9 +26,9 @@
 <Segment name="BQR" comment="To indicate the beginning of a Response to Request for Quote Transaction Set and transmit identifying numbers and dates">
   <Field name="TransactionSetPurposeCode" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
   <Field name="RequestForQuoteReferenceNumber" min="1" max="45" comment="Number assigned by the purchaser to identify his request for quote"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="DateTimeQualifier" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="BidTypeResponseCode" required="y" min="2" max="2" validation="T379" comment="Code indicating the type of response to the request for bid or quote"/>
   <Field name="SecurityLevelCode" required="y" min="2" max="2" validation="T786" comment="Code indicating the level of confidentiality assigned by the sender to the information following"/>
   <Field name="ChangeOrderSequenceNumber" required="y" min="1" max="8" comment="Number assigned by the orderer identifying a specific change or revision to a previously transmitted transaction set"/>

@@ -26,10 +26,10 @@
 <Segment name="M15" comment="To notify Customs of in-bond cargo movement or of a conveyance arrival or departure, or of transfer of custodial liability when an in-bond movement involves multiple legs">
   <Field name="NotificationEntityQualifier" min="1" max="2" comment="Code indicating type of notifications"/>
   <Field name="ReferenceIdentification1" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="StandardCarrierAlphaCode1" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
-  <Field name="Time" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <Field name="Time" type="time" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="SealNumber" required="y" min="2" max="15" comment="Unique number on seal used to close a shipment"/>
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>

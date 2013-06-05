@@ -26,12 +26,12 @@
 <Segment name="G23" comment="To specify the terms of sale">
   <Field name="TermsTypeCode" min="2" max="2" validation="T336" comment="Code identifying type of payment terms"/>
   <Field name="TermsBasisDateCode" min="1" max="2" validation="T333" comment="Code identifying the beginning of the terms period"/>
-  <Field name="TermsStartDate" required="y" min="8" max="8" comment="Date from which payment terms are calculated expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="TermsStartDate" type="date" required="y" min="8" max="8" comment="Date from which payment terms are calculated expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TermsDueDateQualifier" required="y" min="2" max="2" validation="T283" comment="Code identifying the method to be used for payment in conjunction with due date"/>
   <Field name="TermsDiscountPercent" type="double" required="y" min="1" max="6" comment="Terms discount percentage, expressed as a percent, available to the purchaser if an invoice is paid on or before the Terms Discount Due Date"/>
-  <Field name="TermsDiscountDueDate" required="y" min="8" max="8" comment="Date payment is due if discount is to be earned expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="TermsDiscountDueDate" type="date" required="y" min="8" max="8" comment="Date payment is due if discount is to be earned expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TermsDiscountDaysDue" type="long" required="y" min="1" max="3" comment="Number of days in the terms discount period by which payment is due if terms discount is earned"/>
-  <Field name="TermsNetDueDate" required="y" min="8" max="8" comment="Date when total invoice amount becomes due expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="TermsNetDueDate" type="date" required="y" min="8" max="8" comment="Date when total invoice amount becomes due expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TermsNetDays" type="long" required="y" min="1" max="3" comment="Number of days until total invoice amount is due (discount not applicable)"/>
   <Field name="TermsDiscountAmount" type="double" required="y" min="1" max="10" comment="Total amount of terms discount"/>
   <Field name="DiscountedAmountDue" type="double" required="y" min="1" max="10" comment="Amount of invoice due if paid by terms discount due date (total invoice or installment amount less cash discount)"/>

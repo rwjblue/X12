@@ -25,8 +25,8 @@
 
 <Segment name="BCM" comment="To indicate the beginning of the contractor cost data reports and transmit identifying numbers, descriptions, action codes, program and contract type, funding identification, and security level">
   <Field name="TransactionSetPurposeCode" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ContractNumber" required="y" min="1" max="30" comment="Contract number"/>
   <Field name="FreeFormDescription1" required="y" min="1" max="45" comment="Free-form descriptive text"/>
   <Field name="ContractActionCode" required="y" min="2" max="2" validation="T1308" comment="Code identifying the expected resultant type of contract action or current type of contract action"/>

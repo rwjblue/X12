@@ -26,7 +26,7 @@
 <Segment name="G26" comment="To specify vendor's conditions related to price change">
   <Field name="PriceConditionCode" min="2" max="2" validation="T290" comment="Code identifying a particular condition applicable to a price change"/>
   <Field name="DateQualifier" required="y" min="2" max="2" validation="T432" comment="Code specifying type of date"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="QuantityBasis" required="y" min="3" max="3" validation="T292" comment="Identifies the total product allocation condition"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>

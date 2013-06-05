@@ -42,6 +42,6 @@
   <Field name="Name2" required="y" min="1" max="60" comment="Free-form name"/>
   <Field name="Quantity4" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity5" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="OverrideAcademicCourseSourceCode" required="y" min="2" max="2" validation="T1152" comment="Code indicating the source of academic credit if not from the sending educational institution"/>
 </Segment>

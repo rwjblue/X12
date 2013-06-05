@@ -28,6 +28,6 @@
   <Field name="EquipmentInitial" min="1" max="4" comment="Prefix or alphabetic part of an equipment unit's identifying number"/>
   <Field name="EquipmentNumber" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
   <Field name="WaybillNumber" type="long" required="y" min="1" max="6" comment="Carrier accounting number of the waybill for the inbound movement"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="EquipmentNumberCheckDigit" type="long" required="y" min="1" max="1" comment="Number which designates the check digit applied to a piece of equipment"/>
 </Segment>

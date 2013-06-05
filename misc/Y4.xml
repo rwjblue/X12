@@ -26,7 +26,7 @@
 <Segment name="Y4" comment="To transmit information relative to containers available for release">
   <Field name="BookingNumber1" required="y" min="1" max="17" comment="Number assigned by the carrier for space reservation"/>
   <Field name="BookingNumber2" required="y" min="1" max="17" comment="Number assigned by the carrier for space reservation"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="StandardPointLocationCode" required="y" min="6" max="9" comment="Code (Standard Point Location) defined by National Motor Freight Tariff Association (NMFTA) or the Canadian Transportation Agency (CTA) point development group as the official code assigned to a city or point (for ratemaking purposes) within a city"/>
   <Field name="NumberOfContainers" type="long" required="y" min="1" max="4" comment="Number of shipping containers"/>
   <Field name="EquipmentType" required="y" min="4" max="4" comment="Code identifying equipment type"/>

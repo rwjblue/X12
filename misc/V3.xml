@@ -25,7 +25,7 @@
 
 <Segment name="V3" comment="To transmit vessel scheduling information">
   <Field name="CurrentPortOfLoading" min="2" max="24" comment="Port at which cargo is currently being loaded"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="NextPortOfDischarge" required="y" min="2" max="24" comment="Port at which vessel will make next discharge"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

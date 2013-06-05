@@ -30,6 +30,6 @@
   <Field name="IdentificationCodeQualifier" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>
   <Field name="IdentificationCode" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="InvoiceNumber" min="1" max="22" comment="Identifying number assigned by issuer"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

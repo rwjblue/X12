@@ -24,15 +24,15 @@
 -->
 
 <Segment name="BCD" comment="To transmit identifying dates and numbers for the transaction set and indicate the monetary value to the receiver of the transaction">
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="CreditDebitAdjustmentNumber" min="1" max="22" comment="Number assigned by issuer of a credit or debit memo"/>
   <Field name="TransactionHandlingCode" min="1" max="2" validation="T305" comment="Code designating the action to be taken by all parties"/>
   <Field name="Amount" type="double" min="1" max="15" comment="Monetary amount"/>
   <Field name="CreditDebitFlagCode" min="1" max="1" validation="T478" comment="Code indicating whether amount is a credit or debit"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="InvoiceNumber" required="y" min="1" max="22" comment="Identifying number assigned by issuer"/>
   <Field name="VendorOrderNumber" required="y" min="1" max="22" comment="Number assigned by a vendor referencing a particular customer purchase order"/>
-  <Field name="Date3" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date3" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="PurchaseOrderNumber" required="y" min="1" max="22" comment="Identifying number for Purchase Order assigned by the orderer/purchaser"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>

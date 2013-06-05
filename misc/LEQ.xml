@@ -31,6 +31,6 @@
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="ReferenceIdentification2" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="MonetaryAmount" type="double" min="1" max="18" comment="Monetary amount"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ExchangeRate" type="double" required="y" min="4" max="10" comment="Value to be used as a multiplier conversion factor to convert monetary value from one currency to another"/>
 </Segment>

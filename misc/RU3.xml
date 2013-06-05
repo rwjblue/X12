@@ -24,7 +24,7 @@
 -->
 
 <Segment name="RU3" comment="To communicate employing carrier response to a sickness or unemployment claim">
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="PayrollStatusCode1" required="y" min="2" max="2" validation="T585" comment="Code identifying work status according to payroll records"/>
   <Field name="WagesPaidCode1" required="y" min="1" max="1" validation="T590" comment="Code identifying whether wages were paid"/>
   <Field name="PayrollStatusCode2" required="y" min="2" max="2" validation="T585" comment="Code identifying work status according to payroll records"/>

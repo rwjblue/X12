@@ -29,12 +29,12 @@
   <Field name="PurchaseOrderNumber" min="1" max="22" comment="Identifying number for Purchase Order assigned by the orderer/purchaser"/>
   <Field name="ReleaseNumber" required="y" min="1" max="30" comment="Number identifying a release against a Purchase Order previously placed by the parties involved in the transaction"/>
   <Field name="ChangeOrderSequenceNumber" required="y" min="1" max="8" comment="Number assigned by the orderer identifying a specific change or revision to a previously transmitted transaction set"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="RequestReferenceNumber" required="y" min="1" max="45" comment="Reference number or RFQ number to use to identify a particular transaction set and query (additional reference number or description which can be used with contract number)"/>
   <Field name="ContractNumber" required="y" min="1" max="30" comment="Contract number"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date3" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date3" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ContractTypeCode" required="y" min="2" max="2" validation="T1166" comment="Code identifying a contract type"/>
   <Field name="SecurityLevelCode" required="y" min="2" max="2" validation="T786" comment="Code indicating the level of confidentiality assigned by the sender to the information following"/>
   <Field name="AcknowledgmentType" required="y" min="2" max="2" validation="T587" comment="Code specifying the type of acknowledgment"/>

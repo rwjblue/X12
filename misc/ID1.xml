@@ -43,7 +43,7 @@
   <Field name="Pack" type="long" required="y" min="1" max="6" comment="The number of inner containers, or number of eaches if there are no inner containers, per outer container"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
   <Field name="DateQualifier" required="y" min="2" max="2" validation="T432" comment="Code specifying type of date"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="NestingCode" required="y" min="1" max="1" validation="T814" comment="Code indicating orientation of exposure"/>
   <Field name="Nesting" type="double" required="y" min="1" max="6" comment="The amount of distance that one product fits into (or nests within) another product"/>
   <Field name="UnitOrBasisForMeasurementCode5" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>

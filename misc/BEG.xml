@@ -28,7 +28,7 @@
   <Field name="PurchaseOrderTypeCode" min="2" max="2" validation="T92" comment="Code specifying the type of Purchase Order"/>
   <Field name="PurchaseOrderNumber" min="1" max="22" comment="Identifying number for Purchase Order assigned by the orderer/purchaser"/>
   <Field name="ReleaseNumber" required="y" min="1" max="30" comment="Number identifying a release against a Purchase Order previously placed by the parties involved in the transaction"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ContractNumber" required="y" min="1" max="30" comment="Contract number"/>
   <Field name="AcknowledgmentType" required="y" min="2" max="2" validation="T587" comment="Code specifying the type of acknowledgment"/>
   <Field name="InvoiceTypeCode" required="y" min="3" max="3" validation="T1019" comment="Code defining the method by which invoices are to be processed"/>

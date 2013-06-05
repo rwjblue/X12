@@ -25,7 +25,7 @@
 
 <Segment name="PLB" comment="To convey provider level adjustment information for debit or credit transactions such as, accelerated payments, cost report settlements for a fiscal year and timeliness report penalties unrelated to a specific claim or service">
   <Field name="ReferenceIdentification" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="AdjustmentIdentifier1" type="C042" min="0" max="inf" comment="To provide the category and identifying reference information for an adjustment"/>
   <Field name="MonetaryAmount1" type="double" min="1" max="18" comment="Monetary amount"/>
   <Field name="AdjustmentIdentifier2" type="C042" required="y" min="0" max="inf" comment="To provide the category and identifying reference information for an adjustment"/>

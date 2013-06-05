@@ -24,8 +24,8 @@
 -->
 
 <Segment name="PR2" comment="To request price information based on certain parameters such as date, route, equipment type, and customer">
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="RouteCode" required="y" min="1" max="13" comment="Mutually defined route code"/>
   <Field name="CarTypeCode" required="y" min="1" max="4" comment="Code specifying type of rail car or intermodal equipment type and its general characteristics"/>
   <Field name="IdentificationCodeQualifier" required="y" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>

@@ -27,11 +27,11 @@
   <Field name="FlightVoyageNumber" required="y" min="2" max="10" comment="Identifying designator for the particular flight or voyage on which the cargo travels"/>
   <Field name="PortOrTerminalFunctionCode" required="y" min="1" max="1" validation="T115" comment="Code defining function performed at the port or terminal with respect to a shipment"/>
   <Field name="PortName" required="y" min="2" max="24" comment="Free-form name for the place at which an offshore carrier originates or terminates (by transshipment or otherwise) its actual ocean carriage of property"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="BookingNumber" required="y" min="1" max="17" comment="Number assigned by the carrier for space reservation"/>
   <Field name="StandardCarrierAlphaCode1" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="VesselName" required="y" min="2" max="28" comment="Name of ship as documented in &quot;Lloyd's Register of Ships&quot;"/>
   <Field name="PierNumber" required="y" min="1" max="4" comment="Identifying number for the pier"/>
   <Field name="PierName" required="y" min="2" max="14" comment="Free-form name of the pier"/>

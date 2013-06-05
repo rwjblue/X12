@@ -25,7 +25,7 @@
 
 <Segment name="BMS" comment="To indicate the beginning of the Material Safety Data Sheet Transaction Set, identify the distinct type of report, and transmit key identifying numbers and dates relating to that report">
   <Field name="TransactionSetPurposeCode" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="LanguageCode" required="y" min="2" max="3" comment="Code designating the language used in text, from a standard code list maintained by the International Standards Organization (ISO 639)"/>
   <Field name="ReferenceIdentification1" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="RevisionValue1" required="y" min="1" max="30" comment="Revision or engineering change level of the data items referred to by the specification number"/>

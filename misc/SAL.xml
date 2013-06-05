@@ -29,6 +29,6 @@
   <Field name="LaborRate" type="double" required="y" min="3" max="6" comment="The labor/time guide rate used by the division to reimburse the dealer for repair work"/>
   <Field name="NumberOfPeriods" type="long" required="y" min="1" max="3" comment="Total number of periods"/>
   <Field name="UnitOfTimePeriodOrInterval" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

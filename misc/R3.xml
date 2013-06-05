@@ -30,7 +30,7 @@
   <Field name="TransportationMethodTypeCode" required="y" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>
   <Field name="StandardPointLocationCode" required="y" min="6" max="9" comment="Code (Standard Point Location) defined by National Motor Freight Tariff Association (NMFTA) or the Canadian Transportation Agency (CTA) point development group as the official code assigned to a city or point (for ratemaking purposes) within a city"/>
   <Field name="InvoiceNumber" required="y" min="1" max="22" comment="Identifying number assigned by issuer"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="FreeFormDescription" required="y" min="1" max="45" comment="Free-form descriptive text"/>
   <Field name="ServiceLevelCode1" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>

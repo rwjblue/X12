@@ -25,7 +25,7 @@
 
 <Segment name="GH" comment="To indicate the list identity for the details following">
   <Field name="TransactionSetPurposeCode" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="NumberOfLineItems" type="long" required="y" min="1" max="6" comment="Total number of line items in the transaction set"/>
   <Field name="RevisionNumber" type="long" required="y" min="1" max="4" comment="A number which indicates the chronological sequence of revisions and updates to a ratemaking docket"/>
 </Segment>

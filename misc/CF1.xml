@@ -26,8 +26,8 @@
 <Segment name="CF1" comment="To transmit identifying numbers, dates, and other basic data related to the transaction set">
   <Field name="MasterReference" min="1" max="22" comment="Reference number assigned by the sender to relate a transaction set to a master transaction (When associating a group of purchase orders, invoices or other transaction sets, use the master reference (link) number to identify the group and the link sequence number to identify individual transaction sets within the group)"/>
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Count" type="long" required="y" min="1" max="9" comment="Occurrence counter"/>
   <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

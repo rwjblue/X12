@@ -25,13 +25,13 @@
 
 <Segment name="ADT" comment="Report the parturition status for the parent animal">
   <Field name="ParturitionStatusCode" min="1" max="1" validation="T1619" comment="Code identifying a parturition or birth delivery status"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TestPeriodOrIntervalValue1" type="long" required="y" min="1" max="6" comment="Numeric value of period or interval signifying when a test event occurs"/>
   <Field name="UnitOfTimePeriodOrInterval1" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TestPeriodOrIntervalValue2" type="long" required="y" min="1" max="6" comment="Numeric value of period or interval signifying when a test event occurs"/>
   <Field name="UnitOfTimePeriodOrInterval2" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
-  <Field name="Time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <Field name="Time" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="TestPeriodOrIntervalValue3" type="long" required="y" min="1" max="6" comment="Numeric value of period or interval signifying when a test event occurs"/>
   <Field name="UnitOfTimePeriodOrInterval3" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
 </Segment>
