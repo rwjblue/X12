@@ -67,6 +67,8 @@ module X12
     def parse_type(s)
       return case s
              when nil                then 'string'
+             when 'date'             then 'DT'
+             when 'time'             then 'TM'
              when /^C.+$/            then s
              when /^i(nt(eger)?)?$/i then 'int'
              when /^l(ong)?$/i       then 'long'

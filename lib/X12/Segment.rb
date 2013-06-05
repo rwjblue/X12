@@ -94,6 +94,12 @@ module X12
       @regexp
     end
 
+    # Recursively find a sub-element
+    def find(name)
+      #puts "Finding [#{name}] in #{self.class} #{name}"
+      find_field(name).render
+    end
+
     # Finds a field in the segment. Returns EMPTY if not found.
     def find_field(field_name)
       #puts "Finding field [#{field_name}] in #{self.class} #{name}"
@@ -102,7 +108,7 @@ module X12
       if @parsed_str && @fields.nil? then
         segment_data = @parsed_str.gsub(Regexp.new("#{Regexp.escape(segment_separator)}$"), '')
         @fields = segment_data.split(Regexp.new(Regexp.escape(field_separator)))
-        self.nodes.each_index{ |i| self.nodes[i].content = @fields[i + 1] }
+        self.nodes.each_with_index{ |node, ind| node.parse(@fields[ind + 1]) }
       end
 
       self.nodes.find { |node| node.name == field_name } || EMPTY

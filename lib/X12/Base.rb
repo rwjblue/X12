@@ -107,25 +107,11 @@ module X12
       n
     end # dup
 
-    # Recursively find a sub-element, which also has to be of type Base.
+    # Method to be overloaded
     def find(e)
-      #puts "Finding [#{e}] in #{self.class} #{name}"
-      case self
-        when X12::Loop
-        # Breadth first
-        res = nodes.find{|i| e==i.name }
-        return res if res
-        # Depth now
-        nodes.each{|i| 
-          res = i.find(e) if i.kind_of?(X12::Loop)
-          return res unless res.nil? or EMPTY==res # otherwise keep looping
-        }
-        when X12::Segment
-        return find_field(e).to_s
-      end # case
       return EMPTY
     end
-    
+
     # Present self and all repeats as an array with self being #0
     def to_a
       res = [self]
@@ -139,7 +125,7 @@ module X12
 
     # Returns a parsed string representation of the element
     def to_s
-      @parsed_str || ''
+      @parsed_str || render
     end
 
     # The main method implementing Ruby-like access methods for nested elements

@@ -63,8 +63,8 @@ EOT
       bht.HierarchicalStructureCode='0022'
       bht.TransactionSetPurposeCode='13'
       bht.ReferenceIdentification='LNKJNFGRWDLR'
-      bht.Date='20070724'
-      bht.Time='1726'
+      bht.Date = Date.new(2007, 07, 24)
+      bht.Time = Time.new(0, nil, nil, 17, 26)
     }
 
     @r.L2000A {|l2000A|
