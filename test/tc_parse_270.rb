@@ -78,7 +78,7 @@ EOT
   def test_absent
     assert_equal(X12::EMPTY, @r.L2000D.HHH)
     assert_equal(X12::EMPTY, @r.L2000B.L2111)
-    assert_equal('', @r.L2000C.L2100C.N3.AddressInformation1)
+    assert_nil(@r.L2000C.L2100C.N3.AddressInformation1)
   end # test_absent
 
   def test_timing

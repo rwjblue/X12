@@ -89,7 +89,7 @@ EOT
   end # test_ST
 
   def test_AK1
-    assert_equal('293328532', @r.AK1.GroupControlNumber)
+    assert_equal(293328532, @r.AK1.GroupControlNumber)
   end # test_AK1
 
   def test_AK2
@@ -113,7 +113,7 @@ EOT
     assert_equal(2, @r.L1000.L1010[1].AK4.size)
     assert_equal('AK4*1:1*66*1~', @r.L1000.L1010.to_a[1].AK4.to_a[1].to_s)
     assert_equal('AK4*1:1*66*1~', @r.L1000.L1010[1].AK4[1].to_s)
-    assert_equal('66', @r.L1000.L1010.AK4.DataElementReferenceNumber)
+    assert_equal(66, @r.L1000.L1010.AK4.DataElementReferenceNumber)
   end # test_AK4
 
   def test_absent

@@ -97,7 +97,7 @@ module X12
     # Recursively find a sub-element
     def find(name)
       #puts "Finding [#{name}] in #{self.class} #{name}"
-      find_field(name).render
+      find_field(name).content
     end
 
     # Finds a field in the segment. Returns EMPTY if not found.
