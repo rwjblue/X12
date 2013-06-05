@@ -97,10 +97,11 @@ module X12
 
       # Need to bring data types to X12 standards
       case self.data_type
-      when 'int', 'DT', 'TM' then
-                         "\\d{#{@min_length},#{@max_length}}"
-      when 'long'   then "(\\d+-){#{@min_length},#{@max_length}}"
-      when 'double' then "(\\d+-.){#{@min_length},#{@max_length}}"
+      when 'DT', 'TM'
+                    then "\\d{#{@min_length},#{@max_length}}"
+      when /N\d*/   then "[0-9+-]{#{@min_length},#{@max_length}}"  # Numeric with implied decimal point; may contain sign
+      when 'R'      then "[0-9+-.]{#{@min_length},#{@max_length}}" # Real; may contain leading sign and a decimal point
+      when 'double' then "([+-.0-9]){#{@min_length},#{@max_length}}"
       when 'string' then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
       when /C.*/    then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
       else "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"

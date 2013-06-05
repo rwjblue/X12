@@ -24,6 +24,6 @@
 -->
 
 <Segment name="GE" comment="To indicate the end of a functional group and to provide control information">
-  <Field name="NumberOfTransactionSetsIncluded" type="int" required="y" min="1" max="6" comment="Total number of transaction sets included in the functional group or interchange (transmission) group terminated by the trailer containing this data element"/> 
-  <Field name="GroupControlNumber"              type="int" required="y" min="1" max="9" comment="Assigned number originated and maintained by the sender"/>
+  <Field name="NumberOfTransactionSetsIncluded" type="long" required="y" min="1" max="6" comment="Total number of transaction sets included in the functional group or interchange (transmission) group terminated by the trailer containing this data element"/> 
+  <Field name="GroupControlNumber"              type="long" required="y" min="1" max="9" comment="Assigned number originated and maintained by the sender"/>
 </Segment>

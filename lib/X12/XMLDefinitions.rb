@@ -67,13 +67,13 @@ module X12
     def parse_type(s)
       return case s
              when nil                then 'string'
-             when 'date'             then 'DT'
-             when 'time'             then 'TM'
-             when /^C.+$/            then s
-             when /^i(nt(eger)?)?$/i then 'int'
-             when /^l(ong)?$/i       then 'long'
-             when /^d(ouble)?$/i     then 'double'
-             when /^s(tr(ing)?)?$/i  then 'string'
+             when 'date'             then 'DT'     # Date in [CC]YYMMDD format
+             when 'time'             then 'TM'     # Time in HHMM[SS[D[D]]] format
+             when /^C.+$/            then s        # Composite value
+             when /^N\d+$/           then s        # Numeric data with implied decimal point
+             when /^l(ong)?$/i       then 'N0'     # Long integer
+             when /^d(ouble)?$/i     then 'double' # Usually N1, N2, N4 -- need to convert.
+             when /^s(tr(ing)?)?$/i  then 'string' # Implied. Not actually used anywhere in misc/*.xml
              else
                nil
              end # case
@@ -82,7 +82,7 @@ module X12
     def parse_int(s)
       return case s
              when nil             then 0
-             when /^\d+$/         then s.to_i
+             when /^\d+$/     then s.to_i
              when /^inf(inite)?$/ then 999999
              else
                nil
