@@ -61,7 +61,10 @@ module X12
 #        when 'int' then @content.to_s
 #        when 'long' then @content.to_s
         when 'DT' then @content.strftime('%Y%m%d')[-(max_length)..-1]
-        when 'TM' then @content.strftime("%H%M%S%L")[0..(max_length - 1)]
+        when 'TM' then 
+          res = @content.strftime("%H%M%S%L")[0..(max_length - 1)].sub(/0{0,#{max_length - min_length}}$/, '')
+          res += "0" if res.length == 5 # Special case to not allow minutes to lose the units digit if it's zero
+          res
         else @content.to_s
         end
       end

@@ -32,8 +32,8 @@
   <Field name="InterchangeSenderId"                     required="y" min="15" max="15"                    comment="Identification code published by the sender for other parties to use as the receiver ID to route data to them; the sender always codes this value in the sender ID element"/>
   <Field name="InterchangeIdQualifier2"                 required="y" min="2"  max="2"/>
   <Field name="InterchangeReceiverId"                   required="y" min="15" max="15"                    comment="Identification code published by the receiver of the data; When sending, it is used by the sender as their sending ID, thus other parties sending to them will use this as a receiving ID to route data to them"/>
-  <Field name="InterchangeDate"                         required="y" min="6"  max="6"                     comment="Date of the interchange"/>
-  <Field name="InterchangeTime"                         required="y" min="4"  max="4"                     comment="Time of the interchange"/>
+  <Field name="InterchangeDate"                         required="y" min="6"  max="6"   type="date"       comment="Date of the interchange"/>
+  <Field name="InterchangeTime"                         required="y" min="4"  max="4"   type="time"       comment="Time of the interchange"/>
   <Field name="InterchangeControlStandardsIdentifier"   required="y" min="1"  max="1"   validation="TI10" comment="Code to identify the agency responsible for the control standard used by the message that is enclosed by the interchange header and trailer"/>
   <Field name="InterchangeControlVersionNumber"         required="y" min="5"  max="5"   validation="TI11" comment="This version number covers the interchange control segments"/>
   <Field name="InterchangeControlNumber" type="int"     required="y" min="9"  max="9"                     comment="A control number assigned by the interchange sender"/>

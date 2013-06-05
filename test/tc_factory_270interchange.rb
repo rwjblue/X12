@@ -218,8 +218,8 @@ EOT
       gs.FunctionalIdentifierCode='HS'
       gs.ApplicationSendersCode='0000000Eliginet'
       gs.ApplicationReceiversCode='CHICAGO BLUES'
-      gs.Date='20070724'
-      gs.Time='1726'
+      gs.Date = Date.new(2007, 07, 24)
+      gs.Time = Time.new(0, nil, nil, 17, 26)
       gs.GroupControlNumber=groupControlNumber
       gs.ResponsibleAgencyCode='X'
       gs.VersionReleaseIndustryIdentifierCode='004010X092A1'
@@ -246,8 +246,8 @@ EOT
       isa.InterchangeSenderId = '0000000Eliginet'
       isa.InterchangeIdQualifier2 = 'ZZ'
       isa.InterchangeReceiverId = 'CHICAGO BLUES'
-      isa.InterchangeDate = '070724'
-      isa.InterchangeTime = '1726'
+      isa.InterchangeDate = Date.new(2007, 07, 24)
+      isa.InterchangeTime = Time.new(0, nil, nil, 17, 26)
       isa.InterchangeControlStandardsIdentifier = 'U'
       isa.InterchangeControlVersionNumber = '00401'
       isa.InterchangeControlNumber = '230623206'
