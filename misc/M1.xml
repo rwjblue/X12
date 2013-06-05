@@ -26,7 +26,7 @@
 <Segment name="M1" comment="To specify details related to insurance">
   <Field name="CountryCode" min="2" max="3" comment="Code identifying the country"/>
   <Field name="CarriageValue" type="long" required="y" min="2" max="8" comment="Carriage value expressed in whole units of the standard monetary denomination for the currency specified"/>
-  <Field name="DeclaredValue" type="double" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
+  <Field name="DeclaredValue" type="N2" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
   <Field name="RateValueQualifier1" required="y" min="2" max="2" validation="T122" comment="Code qualifying how to extend charges or interpret value"/>
   <Field name="EntityIdentifierCode" required="y" min="2" max="3" validation="T98" comment="Code identifying an organizational entity, a physical location, property or an individual"/>
   <Field name="FreeFormMessage" required="y" min="1" max="30" comment="Free-form information"/>

@@ -28,6 +28,6 @@
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Count" type="long" required="y" min="1" max="9" comment="Occurrence counter"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

@@ -29,6 +29,6 @@
   <Field name="QuantityQualifier" required="y" min="2" max="2" validation="T673" comment="Code specifying the type of quantity"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
 </Segment>

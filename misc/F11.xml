@@ -27,8 +27,8 @@
   <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ReferenceIdentification1" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-  <Field name="Amount1" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="Amount2" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount1" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount2" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="StatusCode" min="2" max="2" validation="T546" comment="Code identifying the status of a business transaction, such as a claim, policy, real estate, or securities transaction"/>
   <Field name="Date2" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="DeclineAmendReasonCode" required="y" min="3" max="3" validation="T548" comment="Code indicating the reason for declination or amendment"/>

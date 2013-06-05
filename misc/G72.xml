@@ -31,7 +31,7 @@
   <Field name="AllowanceOrChargeRate" type="double" required="y" min="1" max="15" comment="Allowance or Charge Rate per Unit"/>
   <Field name="AllowanceOrChargeQuantity" type="double" required="y" min="1" max="10" comment="Quantity basis when allowance or charge quantity is different from the purchase order or invoice quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
-  <Field name="AllowanceOrChargeTotalAmount" type="double" required="y" min="1" max="15" comment="Total dollar amount for the allowance or charge"/>
+  <Field name="AllowanceOrChargeTotalAmount" type="N2" required="y" min="1" max="15" comment="Total dollar amount for the allowance or charge"/>
   <Field name="Percent" type="double" required="y" min="1" max="6" comment="Percent expressed as a percent"/>
   <Field name="DollarBasisForPercent" type="double" required="y" min="1" max="9" comment="Dollar basis to be used in the percent calculation of the allowance, charge or tax"/>
   <Field name="OptionNumber" required="y" min="1" max="20" comment="A unique number identifying available promotion or allowance options when more than one is offered"/>

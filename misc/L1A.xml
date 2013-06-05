@@ -24,6 +24,6 @@
 -->
 
 <Segment name="L1A" comment="To identify the road issuing the freight bill and the amount for which the freight bill was issued">
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="StandardCarrierAlphaCode" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
 </Segment>

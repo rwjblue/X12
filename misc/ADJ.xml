@@ -33,9 +33,9 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="ProductServiceIdQualifier" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
-  <Field name="Amount1" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="Amount2" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="Amount3" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount1" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount2" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount3" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity3" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>

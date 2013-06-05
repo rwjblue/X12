@@ -25,7 +25,7 @@
 
 <Segment name="G22" comment="To specify pricing information">
   <Field name="PrepricedOptionCode" min="1" max="1" validation="T288" comment="Code specifying prepricing option selected"/>
-  <Field name="PriceNewSuggestedRetail" type="double" required="y" min="2" max="7" comment="The consumer package price or retail unit price associated with the product applicable on or after an effective price date"/>
+  <Field name="PriceNewSuggestedRetail" type="N2" required="y" min="2" max="7" comment="The consumer package price or retail unit price associated with the product applicable on or after an effective price date"/>
   <Field name="MultiplePriceQuantity" type="long" required="y" min="1" max="2" comment="Quantity of units for a given price, e.g., 3 for $10.00"/>
   <Field name="FreeFormMessage" required="y" min="1" max="60" comment="Free-form text"/>
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>

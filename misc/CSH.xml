@@ -26,7 +26,7 @@
 <Segment name="CSH" comment="To specify general conditions or requirements of the sale">
   <Field name="SalesRequirementCode" required="y" min="1" max="2" validation="T563" comment="Code to identify a specific requirement or agreement of sale"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="AccountNumber" required="y" min="1" max="35" comment="Account number assigned"/>
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>

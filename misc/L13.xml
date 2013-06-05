@@ -39,5 +39,5 @@
   <Field name="ExportExceptionCode" required="y" min="2" max="2" validation="T1578" comment="Code specifying why a Shipper's Export Declaration (SED) is not required"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="HarborMaintenanceFee" required="y" min="1" max="2" comment="Code specifying the reason a commodity is exempt from Harbor Maintenance Fees"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
 </Segment>

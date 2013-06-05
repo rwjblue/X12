@@ -32,7 +32,7 @@
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="MonetaryAmount" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="CompositeUnitOfMeasure2" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="RangeMinimum" type="double" required="y" min="1" max="20" comment="The value specifying the minimum of the measurement range"/>
   <Field name="RangeMaximum" type="double" required="y" min="1" max="20" comment="The value specifying the maximum of the measurement range"/>

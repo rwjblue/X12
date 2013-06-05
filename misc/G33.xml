@@ -24,5 +24,5 @@
 -->
 
 <Segment name="G33" comment="To specify the total invoice amount, including charges less allowances, before terms discount">
-  <Field name="Amount" type="double" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" min="1" max="15" comment="Monetary amount"/>
 </Segment>
