@@ -58,8 +58,8 @@ module X12
         end
       else
         case self.data_type
-        when 'DT'    then @content.strftime('%Y%m%d')[-(max_length)..-1]
-        when 'TM'    then 
+        when 'DT'      then @content.strftime('%Y%m%d')[-(max_length)..-1]
+        when 'TM'      then 
           res = @content.strftime("%H%M%S%L")[0..(max_length - 1)].sub(/0{0,#{max_length - min_length}}$/, '')
           res += "0" if res.length == 5 # Special case to not allow minutes to lose the units digit if it's zero
           res
@@ -71,12 +71,12 @@ module X12
         # data element specification. For a data element defined as N4 with a minimum length of 4, the
         # value 0.0001 would be transmitted as '0001'. For an N4 data element with the minimum length of
         # 1, the value 0.0001 would be transmitted '1'."
-        when /^N\d*/ then @content.nil? ? '' : (("%0#{min_length + 1}.#{$1}f" % @content).gsub('.', ''))
+        when /^N(\d)*/ then @content.nil? ? '' : ("%0#{min_length}d" % (@content * (10**($1.to_i))))
         # "R: (Real) numeric data containing the numerals 0-9 and a decimal point in the proper position.
         # The decimal point is optional for integer values but required for fractional values. A leading + or -
         # sign may be used. The minus sign must be used for negative values."
-        when 'R'     then @content.to_s
-        else              @content.to_s
+        when 'R'       then @content.to_s
+        else                @content.to_s
         end
       end
     end # render
@@ -122,12 +122,12 @@ module X12
       @parsed_str = str
       @content = 
         case self.data_type
-        when /^N\d*/ then str.to_i / (10.0**($1.to_i)) # Numeric with implied decimal point
-        when 'R'     then str.to_f                     # Real
-        when 'DT'    then                              # [CC]YYMMDD
+        when /^N(\d)*/ then str.to_i / (10.0**($1.to_i)) # Numeric with implied decimal point
+        when 'R'       then str.to_f                     # Real
+        when 'DT'      then                              # [CC]YYMMDD
           y = (str[-8..-5] || Date.today.year - ( Date.today.year % 100) + str[-6..-5].to_i).to_i
           @content = Date.new(y, str[-4..-3].to_i, str[-2..-1].to_i)
-        when 'TM'    then                              # HHMM[SS[D[D]]]
+        when 'TM'      then                              # HHMM[SS[D[D]]]
           str += '0000'
           Time.new(0, nil, nil, str[0..1].to_i, str[2..3].to_i, str[4..7].to_f / 100)
         else         str
