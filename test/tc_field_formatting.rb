@@ -34,19 +34,15 @@ class FieldFormatting < Test::Unit::TestCase
     # Nothing
   end # teardown
 
-
-
-
-  def test_parse
-    # "Nn: Numeric data containing the numerals 0-9, and an implied decimal point. The 'N' indicates
-    # that the element contains a numeric value and the 'n' indicates the number of decimal places to
-    # the right of the implied decimal point. The actual decimal point is not transmitted. A leading + or -
-    # sign may be used. The minus sign must be used for negative values. Leading zeroes should be
-    # suppressed unless they are necessary to satisfy the minimum number of digits required by the
-    # data element specification. For a data element defined as N4 with a minimum length of 4, the
-    # value 0.0001 would be transmitted as '0001'. For an N4 data element with the minimum length of
-    # 1, the value 0.0001 would be transmitted '1'."
-
+  # "Nn: Numeric data containing the numerals 0-9, and an implied decimal point. The 'N' indicates
+  # that the element contains a numeric value and the 'n' indicates the number of decimal places to
+  # the right of the implied decimal point. The actual decimal point is not transmitted. A leading + or -
+  # sign may be used. The minus sign must be used for negative values. Leading zeroes should be
+  # suppressed unless they are necessary to satisfy the minimum number of digits required by the
+  # data element specification. For a data element defined as N4 with a minimum length of 4, the
+  # value 0.0001 would be transmitted as '0001'. For an N4 data element with the minimum length of
+  # 1, the value 0.0001 would be transmitted '1'."
+  def test_field_numeric
     f = X12::Field.new(name = 'test', data_type = 'N4', required = false, min = 4, max = 8, validation = nil)
     f.content = 0.0001
     assert_equal('0001', f.render)
@@ -71,16 +67,65 @@ class FieldFormatting < Test::Unit::TestCase
     f.content = 123
     assert_equal('00000123', f.render)
     assert_equal(f.content, f.parse(f.render))
+  end # test_field_numeric
 
-    # "R: (Real) numeric data containing the numerals 0-9 and a decimal point in the proper position.
-    # The decimal point is optional for integer values but required for fractional values. A leading + or -
-    # sign may be used. The minus sign must be used for negative values."
-
+  # "R: (Real) numeric data containing the numerals 0-9 and a decimal point in the proper position.
+  # The decimal point is optional for integer values but required for fractional values. A leading + or -
+  # sign may be used. The minus sign must be used for negative values."
+  def test_field_real
     f = X12::Field.new(name = 'test', data_type = 'R', required = false, min = 1, max = 8, validation = nil)
     f.content = 1234.56
     assert_equal('1234.56', f.render)
     assert_equal(f.content, f.parse(f.render))
+  end # test_field_real
 
-  end # test_ST
+  # "DT: Numeric date in the form CCYYMMDD."
+  def test_field_date
+    f = X12::Field.new(name = 'test', data_type = 'DT', required = false, min = 8, max = 8, validation = nil)
+    f.content = Date.new(2013, 01, 23)
+    assert_equal('20130123', f.render)
+    assert_equal(f.content, f.parse(f.render))
+
+    f = X12::Field.new(name = 'test', data_type = 'DT', required = false, min = 6, max = 6, validation = nil)
+    f.content = Date.new(2013, 01, 23)
+    assert_equal('130123', f.render)
+    assert_equal(f.content, f.parse(f.render))
+  end # test_field_date
+
+  # "TM: Numeric time in the form HHMM. Time is represented in 24-hour clock format."
+  def test_field_time
+    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 4, validation = nil)
+    f.content = Time.new(0, nil, nil, 17, 26)
+    assert_equal('1726', f.render)
+    assert_equal(f.content, f.parse(f.render))
+
+    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 8, validation = nil)
+    f.content = Time.new(0, nil, nil, 17, 26, 0)
+    assert_equal('1726', f.render)
+    assert_equal(f.content, f.parse(f.render))
+
+    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 6, validation = nil)
+    f.content = Time.new(0, nil, nil, 17, 26, 30.25)
+    assert_equal('172630', f.render)
+
+    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 8, validation = nil)
+    f.content = Time.new(0, nil, nil, 17, 26, 30)
+    assert_equal('172630', f.render)
+    assert_equal(f.content, f.parse(f.render))
+
+    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 6, max = 7, validation = nil)
+    f.content = Time.new(0, nil, nil, 17, 26, 30.25)
+    assert_equal('1726302', f.render)
+
+    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 8, validation = nil)
+    f.content = Time.new(0, nil, nil, 17, 26, 30.25)
+    assert_equal('17263025', f.render)
+    assert_equal(f.content, f.parse(f.render))
+
+    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 8, max = 8, validation = nil)
+    f.content = Time.new(0, nil, nil, 17, 26)
+    assert_equal('17260000', f.render)
+    assert_equal(f.content, f.parse(f.render))
+  end # test_field_time
 
 end # TestList
