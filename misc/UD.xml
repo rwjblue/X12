@@ -35,7 +35,7 @@
   <Field name="AssignedNumber2" type="long" required="y" min="1" max="6" comment="Number assigned for differentiation within a transaction set"/>
   <Field name="Description2" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="StateOrProvinceCode1" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CountryCode1" required="y" min="2" max="3" comment="Code identifying the country"/>

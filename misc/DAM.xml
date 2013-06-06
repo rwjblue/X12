@@ -26,18 +26,18 @@
 <Segment name="DAM" comment="To identify the part of the vehicle that was damaged">
   <Field name="DamageStatusCode1" required="y" min="2" max="2" validation="T1422" comment="Code indicating the condition of the damage at the time of the report"/>
   <Field name="DamageAreaCode1" required="y" min="2" max="2" comment="Code representing the location on the vehicle where the damage was repaired"/>
-  <Field name="Amount1" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount1" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
   <Field name="DamageStatusCode2" required="y" min="2" max="2" validation="T1422" comment="Code indicating the condition of the damage at the time of the report"/>
   <Field name="DamageAreaCode2" required="y" min="2" max="2" comment="Code representing the location on the vehicle where the damage was repaired"/>
-  <Field name="Amount2" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount2" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="DamageStatusCode3" required="y" min="2" max="2" validation="T1422" comment="Code indicating the condition of the damage at the time of the report"/>
   <Field name="DamageAreaCode3" required="y" min="2" max="2" comment="Code representing the location on the vehicle where the damage was repaired"/>
-  <Field name="Amount3" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount3" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="DamageStatusCode4" required="y" min="2" max="2" validation="T1422" comment="Code indicating the condition of the damage at the time of the report"/>
   <Field name="DamageAreaCode4" required="y" min="2" max="2" comment="Code representing the location on the vehicle where the damage was repaired"/>
-  <Field name="Amount4" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount4" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="DamageStatusCode5" required="y" min="2" max="2" validation="T1422" comment="Code indicating the condition of the damage at the time of the report"/>
   <Field name="DamageAreaCode5" required="y" min="2" max="2" comment="Code representing the location on the vehicle where the damage was repaired"/>
-  <Field name="Amount5" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount5" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
 </Segment>

@@ -28,10 +28,10 @@
   <Field name="TaxPaymentTypeCode" min="1" max="5" comment="Code identifying type of tax being paid"/>
   <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TaxInformationIdentificationNumber1" min="1" max="30" comment="Identifying number for Tax Information Field"/>
-  <Field name="TaxAmount1" type="double" min="1" max="10" comment="Amount of tax"/>
+  <Field name="TaxAmount1" type="N2" min="1" max="10" comment="Amount of tax"/>
   <Field name="TaxInformationIdentificationNumber2" required="y" min="1" max="30" comment="Identifying number for Tax Information Field"/>
-  <Field name="TaxAmount2" type="double" required="y" min="1" max="10" comment="Amount of tax"/>
+  <Field name="TaxAmount2" type="N2" required="y" min="1" max="10" comment="Amount of tax"/>
   <Field name="TaxInformationIdentificationNumber3" required="y" min="1" max="30" comment="Identifying number for Tax Information Field"/>
-  <Field name="TaxAmount3" type="double" required="y" min="1" max="10" comment="Amount of tax"/>
+  <Field name="TaxAmount3" type="N2" required="y" min="1" max="10" comment="Amount of tax"/>
   <Field name="TaxpayerVerification" required="y" min="1" max="6" comment="The taxpayer verification field may be used by the receiver to verify the taxpayer's identity"/>
 </Segment>

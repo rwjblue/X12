@@ -30,7 +30,7 @@
   <Field name="AllowanceOrChargeMethodOfHandlingCode" min="2" max="2" validation="T331" comment="Code indicating method of handling for an allowance or charge"/>
   <Field name="AllowanceOrChargeNumber" required="y" min="1" max="16" comment="The number assigned by a vendor referencing an allowance, promotion, deal or charge"/>
   <Field name="AllowanceOrChargeRate" type="double" required="y" min="1" max="15" comment="Allowance or Charge Rate per Unit"/>
-  <Field name="AllowanceOrChargeTotalAmount" type="double" required="y" min="1" max="15" comment="Total dollar amount for the allowance or charge"/>
+  <Field name="AllowanceOrChargeTotalAmount" type="N2" required="y" min="1" max="15" comment="Total dollar amount for the allowance or charge"/>
   <Field name="AllowanceChargePercentQualifier" required="y" min="1" max="1" validation="T378" comment="Code indicating on what basis allowance or charge percent is calculated"/>
   <Field name="Percent" type="double" required="y" min="1" max="6" comment="Percent expressed as a percent"/>
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>

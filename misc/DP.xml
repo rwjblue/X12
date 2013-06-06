@@ -26,8 +26,8 @@
 <Segment name="DP" comment="To describe the parts involved in the repair of vehicle damage and to specify actions taken related to the parts">
   <Field name="ActionCode" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="ProductServiceId1" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
-  <Field name="Amount1" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="Amount2" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount1" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount2" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="YesNoConditionOrResponseCode1" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="ConditionIndicator" required="y" min="2" max="3" validation="T1321" comment="Code indicating a condition"/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
@@ -38,7 +38,7 @@
   <Field name="ProductServiceId2" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="FreeFormDescription" required="y" min="1" max="45" comment="Free-form descriptive text"/>
   <Field name="Percent" type="double" required="y" min="1" max="6" comment="Percent expressed as a percent"/>
-  <Field name="AllowanceOrChargeTotalAmount" type="double" required="y" min="1" max="15" comment="Total dollar amount for the allowance or charge"/>
+  <Field name="AllowanceOrChargeTotalAmount" type="N2" required="y" min="1" max="15" comment="Total dollar amount for the allowance or charge"/>
   <Field name="YesNoConditionOrResponseCode6" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="YesNoConditionOrResponseCode7" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
 </Segment>

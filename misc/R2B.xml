@@ -26,5 +26,5 @@
 <Segment name="R2B" comment="To identify routing and proportion detail for carriers participating in the route">
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="Rule260JunctionCode" required="y" min="1" max="5" comment="Code indicating railroad interchange locations"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
 </Segment>

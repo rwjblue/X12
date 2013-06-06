@@ -24,7 +24,7 @@
 -->
 
 <Segment name="CGS" comment="To specify charges">
-  <Field name="Charge" type="double" required="y" min="1" max="12" comment="For a line item: freight or special charge; for the total invoice: the total charges -- expressed in the standard monetary denomination for the currency specified"/>
+  <Field name="Charge" type="N2" required="y" min="1" max="12" comment="For a line item: freight or special charge; for the total invoice: the total charges -- expressed in the standard monetary denomination for the currency specified"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
   <Field name="DateTimeQualifier" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>

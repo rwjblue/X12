@@ -29,7 +29,7 @@
   <Field name="SpecialServicesCode" min="2" max="10" validation="T560" comment="Code identifying the special service"/>
   <Field name="ServiceMarksAndNumbers" required="y" min="1" max="45" comment="Data used to identify the performance of the service specified by Special Services Code (560)"/>
   <Field name="AllowanceOrChargeRate" type="double" required="y" min="1" max="15" comment="Allowance or Charge Rate per Unit"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="SourceSubqualifier" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>

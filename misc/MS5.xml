@@ -24,9 +24,9 @@
 -->
 
 <Segment name="MS5" comment="To specify shipment rates and charges">
-  <Field name="DeclaredValue1" type="double" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
+  <Field name="DeclaredValue1" type="N2" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
   <Field name="RateValueQualifier" required="y" min="2" max="2" validation="T122" comment="Code qualifying how to extend charges or interpret value"/>
   <Field name="FreightRate" type="double" required="y" min="1" max="9" comment="Rate that applies to the specific commodity"/>
-  <Field name="DeclaredValue2" type="double" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
+  <Field name="DeclaredValue2" type="N2" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
 </Segment>

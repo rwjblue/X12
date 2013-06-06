@@ -27,7 +27,7 @@
   <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="CreditDebitAdjustmentNumber" min="1" max="22" comment="Number assigned by issuer of a credit or debit memo"/>
   <Field name="TransactionHandlingCode" min="1" max="2" validation="T305" comment="Code designating the action to be taken by all parties"/>
-  <Field name="Amount" type="double" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" min="1" max="15" comment="Monetary amount"/>
   <Field name="CreditDebitFlagCode" min="1" max="1" validation="T478" comment="Code indicating whether amount is a credit or debit"/>
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="InvoiceNumber" required="y" min="1" max="22" comment="Identifying number assigned by issuer"/>

@@ -36,8 +36,8 @@
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="YesNoConditionOrResponseCode1" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
-  <Field name="Amount1" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount1" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
-  <Field name="Amount2" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount2" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
 </Segment>
