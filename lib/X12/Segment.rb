@@ -65,7 +65,7 @@ module X12
         end
 
         nodes_str = ''
-        nodes.reverse.each { |fld|
+        nodes.reverse.each { |fld| # Building string in reverse in order to toss empty optional fields off the end.
           field = fld.render(root)
           nodes_str = root.field_separator + field + nodes_str if fld.required || nodes_str != '' || field != ''
         }
