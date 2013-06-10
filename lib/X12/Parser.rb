@@ -57,7 +57,7 @@ module X12
 
       # Deal with Microsoft devices
       base_name = File.basename(file_name, '.xml')
-      if MS_DEVICES.find{|i| i == base_name}
+      if MS_DEVICES.include?(base_name) then
         file_name = File.join(File.dirname, "#{base_name}_.xml")
       end
       #puts "Reading definition from #{file_name}"
@@ -124,7 +124,7 @@ module X12
       #puts "Trying to process segment #{segment.inspect}"
       unless @x12_definition[X12::Segment] && @x12_definition[X12::Segment][segment.name]
         # Try to find it in a separate file if missing from the @x12_definition structure
-        initialize(File.join(@dir_name, segment.name+'.xml'))
+        initialize(File.join(@dir_name, segment.name + '.xml'))
         segment_definition = @x12_definition[X12::Segment][segment.name]
         throw Exception.new("Cannot find a definition for segment #{segment.name}") unless segment_definition
       else

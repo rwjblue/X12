@@ -47,7 +47,7 @@ module X12
                          end
 
         self[syntax_element.class] ||= {}
-        self[syntax_element.class][syntax_element.name]=syntax_element
+        self[syntax_element.class][syntax_element.name] = syntax_element
       }
     end # initialize
 
