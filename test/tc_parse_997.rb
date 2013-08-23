@@ -25,6 +25,7 @@ require 'X12'
 require 'test/unit'
 
 class Test997Parse < Test::Unit::TestCase
+  TEST_REPEAT = 100
 
   @@p = nil
 #  @@parser = X12::Parser.new('misc/997single.xml')
@@ -130,7 +131,7 @@ EOT
 
   def test_timing
     start = Time::now
-    X12::TEST_REPEAT.times do
+    TEST_REPEAT.times do
       @r = @@parser.parse('997', @@m997)
       test_ST
       test_AK1
@@ -140,7 +141,7 @@ EOT
       test_absent
     end
     finish = Time::now
-    puts sprintf("Parses per second, 997: %.2f, elapsed: %.1f", X12::TEST_REPEAT.to_f/(finish-start), finish-start)
+    puts sprintf("Parses per second, 997: %.2f, elapsed: %.1f", TEST_REPEAT.to_f/(finish-start), finish-start)
   end # test_timing
 
 end # TestList

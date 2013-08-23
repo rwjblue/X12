@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class X12::Field - RDoc Documentation</title>
+<title>class X12::Field - X12 -- an X12 parsing library</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>X12/Field.rb
+    <li>lib/X12/Field.rb
   </ul>
 </nav>
 
@@ -94,7 +94,20 @@
   </div>
 
   <div id="project-metadata">
-    
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../CHANGELOG.html">CHANGELOG</a>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+    <li class="file"><a href="../TODO.html">TODO</a>
+  
+  </ul>
+</nav>
+
     <nav id="classindex-section" class="section project-section">
   <h3 class="section-header">Class and Module Index</h3>
 
@@ -272,7 +285,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File X12/Field.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 35</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">data_type</span>, <span class="ruby-identifier">required</span>, <span class="ruby-identifier">min_length</span>, <span class="ruby-identifier">max_length</span>, <span class="ruby-identifier">validation</span>, <span class="ruby-identifier">const_value</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">var_name</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@name</span>        = <span class="ruby-identifier">name</span>       
   <span class="ruby-ivar">@data_type</span>   = <span class="ruby-identifier">data_type</span>       
@@ -316,7 +329,7 @@
 
           
           <div class="method-source-code" id="has_content-3F-source">
-            <pre><span class="ruby-comment"># File X12/Field.rb, line 85</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 85</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_content?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@content</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -346,7 +359,7 @@
 
           
           <div class="method-source-code" id="inspect-source">
-            <pre><span class="ruby-comment"># File X12/Field.rb, line 48</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 48</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
   <span class="ruby-node">&quot;&lt;Field #{name}::#{data_type}#{ is_constant? ? &quot; const(#{@const_value})&quot; : '' } (#{required ? 'required' : 'optional'})|#{min_length}...#{max_length}|#{validation} \&quot;#{@content}\&quot;&gt;&quot;</span>
 <span class="ruby-keyword">end</span></pre>
@@ -377,7 +390,7 @@ not a constant.</p>
 
           
           <div class="method-source-code" id="is_constant-3F-source">
-            <pre><span class="ruby-comment"># File X12/Field.rb, line 90</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 90</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">is_constant?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@const_value</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -407,7 +420,7 @@ not a constant.</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File X12/Field.rb, line 121</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 121</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-identifier">str</span>
   <span class="ruby-ivar">@content</span> = 
@@ -450,7 +463,7 @@ separator and segment separator as arguments</p>
 
           
           <div class="method-source-code" id="proper_regexp-source">
-            <pre><span class="ruby-comment"># File X12/Field.rb, line 106</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">proper_regexp</span>(<span class="ruby-identifier">field_sep</span>, <span class="ruby-identifier">segment_sep</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-ivar">@const_value</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_constant?</span>
 
@@ -491,7 +504,7 @@ separator and segment separator as arguments</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File X12/Field.rb, line 52</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-ivar">@const_value</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_constant?</span>
 
@@ -549,7 +562,7 @@ separator and segment separator as arguments</p>
 
           
           <div class="method-source-code" id="set_empty-21-source">
-            <pre><span class="ruby-comment"># File X12/Field.rb, line 95</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_empty!</span>
   <span class="ruby-ivar">@content</span> = <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
@@ -580,7 +593,7 @@ segment separator as arguments</p>
 
           
           <div class="method-source-code" id="simple_regexp-source">
-            <pre><span class="ruby-comment"># File X12/Field.rb, line 100</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">simple_regexp</span>(<span class="ruby-identifier">field_sep</span>, <span class="ruby-identifier">segment_sep</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-ivar">@const_value</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_constant?</span>
   <span class="ruby-node">&quot;[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*&quot;</span>

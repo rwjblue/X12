@@ -39,6 +39,7 @@ end
 require 'rubygems'
 require 'jeweler'
 require 'rake/testtask'
+require 'rdoc/task'
 
 Jeweler::Tasks.new do |s|
   s.name        = 'X12'
@@ -50,25 +51,11 @@ Jeweler::Tasks.new do |s|
 end
 Jeweler::RubygemsDotOrgTasks.new
 
-task :rdoc do
-  sh "rm -rf #{File.dirname(__FILE__)}/doc"
-  sh "cd lib && rdoc -o ../doc "
-end
-
-#require 'rdoc/task'
-#require 'rake/packagetask'
-#require 'rubygems/package_task'
-#require 'rake/contrib/rubyforgepublisher'
-#require 'fileutils'
-#require 'pp'
-
 require File.join(File.dirname(__FILE__), 'lib', 'X12')
 
-PKG_VERSION     = X12::VERSION
-
-RAKE            = $0
-RUBY_DIR        = File.expand_path(File.dirname(RAKE)+'../..')
-RUBY            = "#{RUBY_DIR}/bin/ruby"
+#RAKE            = $0
+#RUBY_DIR        = File.expand_path(File.dirname(RAKE)+'../..')
+#RUBY            = "#{RUBY_DIR}/bin/ruby"
 
 desc "Default Task"
 task :default => [ :example, :test ]
@@ -100,17 +87,14 @@ task :test do |x|
   }
 end # :test
 
-#file 'doc/index.html' => ['misc/rdoc_template.rb' ]
-#task :rdoc => ['doc/index.html']
-
-## Generate the RDoc documentation
-#Rake::RDocTask.new { |rdoc|
-#  rdoc.rdoc_dir = 'doc'
-#  rdoc.title    = "X12 -- an X12 parsing library"
-#  rdoc.options << '--line-numbers' << '--inline-source' << '--main' << 'README' 
-#  rdoc.template = 'misc/rdoc_template.rb'
-#  rdoc.rdoc_files.include('README')
-#  rdoc.rdoc_files.include('CHANGELOG')
-#  rdoc.rdoc_files.include('TODO')
-#  rdoc.rdoc_files.include('lib/**/*.rb')
-#}
+# Generate the RDoc documentation
+Rake::RDocTask.new { |rdoc|
+  rdoc.rdoc_dir = 'doc'
+  rdoc.title    = "X12 -- an X12 parsing library"
+  rdoc.options << '--line-numbers' << '--inline-source' << '--main' << 'README' 
+  rdoc.template = 'misc/rdoc_template.rb'
+  rdoc.rdoc_files.include('README')
+  rdoc.rdoc_files.include('CHANGELOG')
+  rdoc.rdoc_files.include('TODO')
+  rdoc.rdoc_files.include('lib/**/*.rb')
+}

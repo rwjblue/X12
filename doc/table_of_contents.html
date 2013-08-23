@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>Table of Contents - RDoc Documentation</title>
+<title>Table of Contents - X12 -- an X12 parsing library</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -21,8 +21,61 @@
 
 
 <body class="indexpage">
-<h1>Table of Contents - RDoc Documentation</h1>
+<h1>Table of Contents - X12 -- an X12 parsing library</h1>
 
+<h2>Pages</h2>
+<ul>
+  <li class="file">
+    <a href="CHANGELOG.html">CHANGELOG</a>
+
+    <img class="toc-toggle" src="images/transparent.png" alt="" title="toggle headings">
+    <ul class="initially-hidden">
+      <li><a href="CHANGELOG.html#label-CHANGELOG">CHANGELOG</a>
+      <li><a href="CHANGELOG.html#label-5%2F15%2F09+-+Release+1.1.0">5/15/09 - Release 1.1.0</a>
+      <li><a href="CHANGELOG.html#label-3%2F19%2F09+-+Release+0.1.0">3/19/09 - Release 0.1.0</a>
+      <li><a href="CHANGELOG.html#label-11%2F15%2F08+-+Release+0.0.5%2C+first+public+one">11/15/08 - Release 0.0.5, first public one</a>
+      <li><a href="CHANGELOG.html#label-4%2F10%2F08+-+Release+0.0.1">4/10/08 - Release 0.0.1</a>
+    </ul>
+  </li>
+    <li class="file">
+    <a href="README.html">README</a>
+
+    <img class="toc-toggle" src="images/transparent.png" alt="" title="toggle headings">
+    <ul class="initially-hidden">
+      <li><a href="README.html#label-X12Parser+-+a+library+to+manipulate+X12+structures+using+native+Ruby+syntax">X12Parser - a library to manipulate X12 structures using native Ruby syntax</a>
+      <li><a href="README.html#label-The+goal">The goal</a>
+      <li><a href="README.html#label-The+problem">The problem</a>
+      <li><a href="README.html#label-The+solution">The solution</a>
+      <li><a href="README.html#label-Message+structure">Message structure</a>
+      <li><a href="README.html#label-X12+Structure+Definition+Language">X12 Structure Definition Language</a>
+      <li><a href="README.html#label-Parsing">Parsing</a>
+      <li><a href="README.html#label-Generating">Generating</a>
+      <li><a href="README.html#label-Download">Download</a>
+      <li><a href="README.html#label-Installation">Installation</a>
+      <li><a href="README.html#label-License">License</a>
+      <li><a href="README.html#label-Major+deficiencies">Major deficiencies</a>
+      <li><a href="README.html#label-Support">Support</a>
+      <li><a href="README.html#label-Acknowledgments">Acknowledgments</a>
+      <li><a href="README.html#label-Appendix+A.+Structure+definition+language">Appendix A. Structure definition language</a>
+      <li><a href="README.html#label-Definition">Definition</a>
+      <li><a href="README.html#label-Loop">Loop</a>
+      <li><a href="README.html#label-Segment">Segment</a>
+      <li><a href="README.html#label-Composite">Composite</a>
+      <li><a href="README.html#label-Table">Table</a>
+      <li><a href="README.html#label-Field">Field</a>
+      <li><a href="README.html#label-Appendix+B.+Microsoft%27s+device+file+names">Appendix B. Microsoft’s device file names</a>
+    </ul>
+  </li>
+    <li class="file">
+    <a href="TODO.html">TODO</a>
+
+    <img class="toc-toggle" src="images/transparent.png" alt="" title="toggle headings">
+    <ul class="initially-hidden">
+      <li><a href="TODO.html#label-TODO+list">TODO list</a>
+    </ul>
+  </li>
+  
+</ul>
 
 <h2 id="classes">Classes/Modules</h2>
 <ul>
@@ -65,21 +118,21 @@
 <h2 id="methods">Methods</h2>
 <ul>
   
+    <li class="method"><a href="X12/Base.html#method-c-new">::new &mdash; X12::Base</a>
+  
     <li class="method"><a href="X12/Table.html#method-c-new">::new &mdash; X12::Table</a>
   
     <li class="method"><a href="X12/Segment.html#method-c-new">::new &mdash; X12::Segment</a>
   
-    <li class="method"><a href="X12/XMLDefinitions.html#method-c-new">::new &mdash; X12::XMLDefinitions</a>
-  
     <li class="method"><a href="X12/Parser.html#method-c-new">::new &mdash; X12::Parser</a>
-  
-    <li class="method"><a href="X12/Base.html#method-c-new">::new &mdash; X12::Base</a>
   
     <li class="method"><a href="X12/Loop.html#method-c-new">::new &mdash; X12::Loop</a>
   
+    <li class="method"><a href="X12/Empty.html#method-c-new">::new &mdash; X12::Empty</a>
+  
     <li class="method"><a href="X12/Field.html#method-c-new">::new &mdash; X12::Field</a>
   
-    <li class="method"><a href="X12/Empty.html#method-c-new">::new &mdash; X12::Empty</a>
+    <li class="method"><a href="X12/XMLDefinitions.html#method-c-new">::new &mdash; X12::XMLDefinitions</a>
   
     <li class="method"><a href="X12/Base.html#method-i-5B-5D">#[] &mdash; X12::Base</a>
   
@@ -97,47 +150,47 @@
   
     <li class="method"><a href="X12/Segment.html#method-i-find_field">#find_field &mdash; X12::Segment</a>
   
+    <li class="method"><a href="X12/Field.html#method-i-has_content-3F">#has_content? &mdash; X12::Field</a>
+  
     <li class="method"><a href="X12/Base.html#method-i-has_content-3F">#has_content? &mdash; X12::Base</a>
   
-    <li class="method"><a href="X12/Field.html#method-i-has_content-3F">#has_content? &mdash; X12::Field</a>
+    <li class="method"><a href="X12/Composite.html#method-i-inspect">#inspect &mdash; X12::Composite</a>
   
     <li class="method"><a href="X12/Field.html#method-i-inspect">#inspect &mdash; X12::Field</a>
   
-    <li class="method"><a href="X12/Table.html#method-i-inspect">#inspect &mdash; X12::Table</a>
-  
     <li class="method"><a href="X12/Base.html#method-i-inspect">#inspect &mdash; X12::Base</a>
   
-    <li class="method"><a href="X12/Composite.html#method-i-inspect">#inspect &mdash; X12::Composite</a>
+    <li class="method"><a href="X12/Table.html#method-i-inspect">#inspect &mdash; X12::Table</a>
   
     <li class="method"><a href="X12/Field.html#method-i-is_constant-3F">#is_constant? &mdash; X12::Field</a>
   
     <li class="method"><a href="X12/Base.html#method-i-method_missing">#method_missing &mdash; X12::Base</a>
   
-    <li class="method"><a href="X12/Parser.html#method-i-parse">#parse &mdash; X12::Parser</a>
-  
     <li class="method"><a href="X12/Segment.html#method-i-parse">#parse &mdash; X12::Segment</a>
   
-    <li class="method"><a href="X12/Loop.html#method-i-parse">#parse &mdash; X12::Loop</a>
+    <li class="method"><a href="X12/Parser.html#method-i-parse">#parse &mdash; X12::Parser</a>
   
     <li class="method"><a href="X12/Field.html#method-i-parse">#parse &mdash; X12::Field</a>
+  
+    <li class="method"><a href="X12/Loop.html#method-i-parse">#parse &mdash; X12::Loop</a>
   
     <li class="method"><a href="X12/Field.html#method-i-proper_regexp">#proper_regexp &mdash; X12::Field</a>
   
     <li class="method"><a href="X12/Segment.html#method-i-regexp">#regexp &mdash; X12::Segment</a>
   
-    <li class="method"><a href="X12/Field.html#method-i-render">#render &mdash; X12::Field</a>
+    <li class="method"><a href="X12/Segment.html#method-i-render">#render &mdash; X12::Segment</a>
   
     <li class="method"><a href="X12/Empty.html#method-i-render">#render &mdash; X12::Empty</a>
   
-    <li class="method"><a href="X12/Segment.html#method-i-render">#render &mdash; X12::Segment</a>
-  
     <li class="method"><a href="X12/Loop.html#method-i-render">#render &mdash; X12::Loop</a>
+  
+    <li class="method"><a href="X12/Field.html#method-i-render">#render &mdash; X12::Field</a>
   
     <li class="method"><a href="X12/Base.html#method-i-repeat">#repeat &mdash; X12::Base</a>
   
-    <li class="method"><a href="X12/Field.html#method-i-set_empty-21">#set_empty! &mdash; X12::Field</a>
-  
     <li class="method"><a href="X12/Base.html#method-i-set_empty-21">#set_empty! &mdash; X12::Base</a>
+  
+    <li class="method"><a href="X12/Field.html#method-i-set_empty-21">#set_empty! &mdash; X12::Field</a>
   
     <li class="method"><a href="X12/Base.html#method-i-show">#show &mdash; X12::Base</a>
   

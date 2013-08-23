@@ -34,9 +34,6 @@ class FieldFormatting < Test::Unit::TestCase
     # Nothing
   end # teardown
 
-
-
-
   def test_parse
     # "Nn: Numeric data containing the numerals 0-9, and an implied decimal point. The 'N' indicates
     # that the element contains a numeric value and the 'n' indicates the number of decimal places to
