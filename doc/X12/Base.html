@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
 
-<title>class X12::Base - X12 -- an X12 parsing library</title>
+<title>class X12::Base - RDoc Documentation</title>
 
 <link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
 
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/X12/Base.rb
+    <li>X12/Base.rb
   </ul>
 </nav>
 
@@ -106,20 +106,7 @@
   </div>
 
   <div id="project-metadata">
-    <nav id="fileindex-section" class="section project-section">
-  <h3 class="section-header">Pages</h3>
-
-  <ul>
-  
-    <li class="file"><a href="../CHANGELOG.html">CHANGELOG</a>
-  
-    <li class="file"><a href="../README.html">README</a>
-  
-    <li class="file"><a href="../TODO.html">TODO</a>
-  
-  </ul>
-</nav>
-
+    
     <nav id="classindex-section" class="section project-section">
   <h3 class="section-header">Class and Module Index</h3>
 
@@ -316,7 +303,7 @@ array of repeats if any.</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 37</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 37</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">arr</span>, <span class="ruby-identifier">repeats</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@nodes</span> = <span class="ruby-identifier">arr</span>
   <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
@@ -363,7 +350,7 @@ elements</p>
 
           
           <div class="method-source-code" id="5B-5D-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 158</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 158</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(*<span class="ruby-identifier">args</span>)
   <span class="ruby-comment">#puts &quot;squares #{args.inspect}&quot;</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>[<span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]] <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY</span>
@@ -396,7 +383,7 @@ required.</p>
 
           
           <div class="method-source-code" id="do_repeats-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 78</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 78</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">s</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">repeats</span>.<span class="ruby-identifier">end</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
     <span class="ruby-identifier">possible_repeat</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dup</span>
@@ -434,7 +421,7 @@ required.</p>
 
           
           <div class="method-source-code" id="dup-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 98</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">dup</span>
   <span class="ruby-identifier">n</span> = <span class="ruby-identifier">clone</span>
   <span class="ruby-identifier">n</span>.<span class="ruby-identifier">set_empty!</span>
@@ -472,7 +459,7 @@ required.</p>
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 111</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 111</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">e</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-constant">EMPTY</span>
 <span class="ruby-keyword">end</span></pre>
@@ -502,7 +489,7 @@ required.</p>
 
           
           <div class="method-source-code" id="has_content-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 178</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 178</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_content?</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">has_content?</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -532,7 +519,7 @@ required.</p>
 
           
           <div class="method-source-code" id="inspect-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 52</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 52</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
   <span class="ruby-node">&quot;#{self.class.to_s.sub(/^.*::/, '')} (#{name}) #{repeats} #{super.inspect[1..-2]} =&lt;#{parsed_str}, #{next_repeat.inspect}&gt; &quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\*\&quot;/</span>, <span class="ruby-string">'&quot;'</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -562,7 +549,7 @@ required.</p>
 
           
           <div class="method-source-code" id="method_missing-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 132</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">str</span> = <span class="ruby-identifier">meth</span>.<span class="ruby-identifier">id2name</span>
   <span class="ruby-identifier">str</span> = <span class="ruby-identifier">str</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^_\d+$/</span> <span class="ruby-comment"># to avoid pure number names like 270, 997, etc.</span>
@@ -614,7 +601,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="repeat-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 183</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 183</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">repeat</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_content?</span> <span class="ruby-comment"># Do not repeat an empty segment</span>
           <span class="ruby-identifier">last_repeat</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>[<span class="ruby-value">-1</span>]
@@ -651,7 +638,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="set_empty-21-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 91</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">set_empty!</span>
   <span class="ruby-ivar">@next_repeat</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-keyword">nil</span>
@@ -683,7 +670,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 57</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>(<span class="ruby-identifier">ind</span> = <span class="ruby-string">''</span>)
   <span class="ruby-identifier">count</span> = <span class="ruby-value">0</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
@@ -728,7 +715,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="size-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 173</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 173</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">size</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">size</span>
 <span class="ruby-keyword">end</span></pre>
@@ -758,7 +745,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="to_a-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 116</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_a</span>
   <span class="ruby-identifier">res</span> = [<span class="ruby-keyword">self</span>]
   <span class="ruby-identifier">nr</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next_repeat</span>
@@ -794,7 +781,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="to_s-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 127</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 127</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
   <span class="ruby-ivar">@parsed_str</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">render</span>
 <span class="ruby-keyword">end</span></pre>
@@ -824,7 +811,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="with-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 164</span>
+            <pre><span class="ruby-comment"># File X12/Base.rb, line 164</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">with</span>(&amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
     <span class="ruby-keyword">yield</span> <span class="ruby-keyword">self</span> 
