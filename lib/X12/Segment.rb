@@ -55,23 +55,25 @@ module X12
 
     # Render all components of this segment as string suitable for EDI
     def render(root = self)
-      self.to_a.inject(''){ |repeat_str, i|
-        if i.repeats.begin < 1 and !i.has_content?
-          # Skip optional empty segments
-          repeat_str
-        else
-          if root.respond_to?(:segments_rendered) then
-            root.segments_rendered = 0 if initial_segment
-            root.segments_rendered += 1
-          end
+      res = ''
 
-          # Have to render no matter how empty
-          repeat_str += i.name + i.nodes.reverse.inject(''){ |nodes_str, j|
-            field = j.render(root)
-            (j.required or nodes_str != '' or field != '') ? root.field_separator + field + nodes_str : nodes_str
-          } + root.segment_separator
+      if (self.repeats.begin > 0) || self.has_content? then
+        # Either a mandatory segment, or has content. Proceed to render.
+        if root.respond_to?(:segments_rendered) then
+          root.segments_rendered = 0 if initial_segment
+          root.segments_rendered += 1 # Current segment needs to be included in the count, so we increase in advance.
         end
-      }
+
+        nodes_str = ''
+        nodes.reverse.each { |fld| # Building string in reverse in order to toss empty optional fields off the end.
+          field = fld.render(root)
+          nodes_str = root.field_separator + field + nodes_str if fld.required || nodes_str != '' || field != ''
+        }
+        res << (self.name + nodes_str + root.segment_separator)
+      end
+
+      res << next_repeat.render(root) if next_repeat # Recursively render the following segment
+      res
     end # render
 
     # Returns a regexp that matches this particular segment
