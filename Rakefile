@@ -35,7 +35,6 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 
-#require 'rake'
 require 'rubygems'
 require 'jeweler'
 require 'rake/testtask'
@@ -53,10 +52,6 @@ Jeweler::RubygemsDotOrgTasks.new
 
 require File.join(File.dirname(__FILE__), 'lib', 'X12')
 
-#RAKE            = $0
-#RUBY_DIR        = File.expand_path(File.dirname(RAKE)+'../..')
-#RUBY            = "#{RUBY_DIR}/bin/ruby"
-
 desc "Default Task"
 task :default => [ :example, :test ]
 
@@ -64,17 +59,7 @@ task :default => [ :example, :test ]
 task :example do |x|
   Dir['example/*.rb'].each {|f|
     puts "Running #{f}"
-    sh(RUBY, '-I', 'lib', f) do |ok, res|
-      fail "Command failed (status = #{res.exitstatus})" unless ok
-    end
-  }
-end
-
-# Run examples in scratch dir
-task :scratch do |x|
-  Dir['scratch/p270.rb'].each {|f|
-    puts "Running #{f}"
-    sh(RUBY, '-I', 'lib', f) do |ok, res|
+    sh('ruby', '-I', 'lib', f) do |ok, res|
       fail "Command failed (status = #{res.exitstatus})" unless ok
     end
   }
