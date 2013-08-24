@@ -25,6 +25,7 @@ require 'X12'
 require 'test/unit'
 
 class Test997Factory < Test::Unit::TestCase
+  TEST_REPEAT = 100
 
   @@p = nil
 tmp=<<-EOT
@@ -124,11 +125,11 @@ EOT
 
   def test_timing
     start = Time::now
-    X12::TEST_REPEAT.times do
+    TEST_REPEAT.times do
       test_all
     end
     finish = Time::now
-    puts sprintf("Factories per second, 997: %.2f, elapsed: %.1f", X12::TEST_REPEAT.to_f/(finish-start), finish-start)
+    puts sprintf("Factories per second, 997: %.2f, elapsed: %.1f", TEST_REPEAT.to_f/(finish-start), finish-start)
   end # test_timing
 
 end # TestList

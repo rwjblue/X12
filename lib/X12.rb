@@ -41,8 +41,5 @@ require 'X12/Parser'
 # Package implementing direct manipulation of X12 structures using Ruby syntax.
 
 module X12
-
-  VERSION = '1.1.0'
   EMPTY = Empty.new()
-  TEST_REPEAT = 100
 end

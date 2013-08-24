@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class X12::Loop - X12 -- an X12 parsing library</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/X12/Loop.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Base.html">X12::Base</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-find">#find</a>
+    
+    <li><a href="#method-i-parse">#parse</a>
+    
+    <li><a href="#method-i-render">#render</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../CHANGELOG.html">CHANGELOG</a>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+    <li class="file"><a href="../TODO.html">TODO</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../X12.html">X12</a>
+  
+    <li><a href="../X12/Base.html">X12::Base</a>
+  
+    <li><a href="../X12/Composite.html">X12::Composite</a>
+  
+    <li><a href="../X12/Empty.html">X12::Empty</a>
+  
+    <li><a href="../X12/Field.html">X12::Field</a>
+  
+    <li><a href="../X12/Loop.html">X12::Loop</a>
+  
+    <li><a href="../X12/Parser.html">X12::Parser</a>
+  
+    <li><a href="../X12/Segment.html">X12::Segment</a>
+  
+    <li><a href="../X12/Table.html">X12::Table</a>
+  
+    <li><a href="../X12/XMLDefinitions.html">X12::XMLDefinitions</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class X12::Loop</h1>
+
+  <div id="description" class="description">
+    
+<p>$Id: Loop.rb 59 2009-03-19 22:32:13Z ikk $</p>
+
+<p>Implements nested loops of segments</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-segments_rendered" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">segments_rendered</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-ivar">@segments_rendered</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">super</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-find" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find</span><span
+            class="method-args">(name)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recursively find a sub-element</p>
+          
+
+          
+          <div class="method-source-code" id="find-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 53</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
+  <span class="ruby-comment"># Breadth first</span>
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">name</span> }
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>
+  <span class="ruby-comment"># Depth now</span>
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">res</span> = <span class="ruby-identifier">i</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-constant">EMPTY</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">res</span> <span class="ruby-comment"># otherwise keep looping</span>
+  }
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">EMPTY</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find-method -->
+
+    
+      <div id="method-i-parse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse</span><span
+            class="method-args">(str)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Parse a string and fill out internal structures with the pieces of it.
+Returns  an unparsed portion of the string or the original string if
+nothing was parsed out.</p>
+          
+
+          
+          <div class="method-source-code" id="parse-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>)
+  <span class="ruby-comment">#puts &quot;Parsing loop #{name}: &quot; + str</span>
+  <span class="ruby-identifier">s</span> = <span class="ruby-identifier">str</span>
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">m</span> = <span class="ruby-identifier">i</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">s</span>)
+    <span class="ruby-identifier">s</span> = <span class="ruby-identifier">m</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">m</span>
+  } 
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parsed_str</span> = <span class="ruby-identifier">str</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-operator">-</span><span class="ruby-identifier">s</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+    <span class="ruby-identifier">s</span> = <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-comment">#puts 'Parsed loop ' + self.inspect</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse-method -->
+
+    
+      <div id="method-i-render" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">render</span><span
+            class="method-args">(root = self)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Render all components of this loop as string suitable for EDI</p>
+          
+
+          
+          <div class="method-source-code" id="render-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
+  <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_content?</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">res</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span>) } <span class="ruby-comment"># Render children of this Loop</span>
+    <span class="ruby-identifier">res</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_repeat</span> <span class="ruby-comment"># Recursively render the repeats of this loop</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- render-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- render-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

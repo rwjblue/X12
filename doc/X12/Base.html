@@ -1,0 +1,857 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class X12::Base - X12 -- an X12 parsing library</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/X12/Base.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="../Object.html">Object</a>
+  
+</nav>
+
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-c-new">::new</a>
+    
+    <li><a href="#method-i-5B-5D">#[]</a>
+    
+    <li><a href="#method-i-do_repeats">#do_repeats</a>
+    
+    <li><a href="#method-i-dup">#dup</a>
+    
+    <li><a href="#method-i-find">#find</a>
+    
+    <li><a href="#method-i-has_content-3F">#has_content?</a>
+    
+    <li><a href="#method-i-inspect">#inspect</a>
+    
+    <li><a href="#method-i-method_missing">#method_missing</a>
+    
+    <li><a href="#method-i-repeat">#repeat</a>
+    
+    <li><a href="#method-i-set_empty-21">#set_empty!</a>
+    
+    <li><a href="#method-i-show">#show</a>
+    
+    <li><a href="#method-i-size">#size</a>
+    
+    <li><a href="#method-i-to_a">#to_a</a>
+    
+    <li><a href="#method-i-to_s">#to_s</a>
+    
+    <li><a href="#method-i-with">#with</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../CHANGELOG.html">CHANGELOG</a>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+    <li class="file"><a href="../TODO.html">TODO</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../X12.html">X12</a>
+  
+    <li><a href="../X12/Base.html">X12::Base</a>
+  
+    <li><a href="../X12/Composite.html">X12::Composite</a>
+  
+    <li><a href="../X12/Empty.html">X12::Empty</a>
+  
+    <li><a href="../X12/Field.html">X12::Field</a>
+  
+    <li><a href="../X12/Loop.html">X12::Loop</a>
+  
+    <li><a href="../X12/Parser.html">X12::Parser</a>
+  
+    <li><a href="../X12/Segment.html">X12::Segment</a>
+  
+    <li><a href="../X12/Table.html">X12::Table</a>
+  
+    <li><a href="../X12/XMLDefinitions.html">X12::XMLDefinitions</a>
+  
+    <li><a href="../Object.html">Object</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class X12::Base</h1>
+
+  <div id="description" class="description">
+    
+<p>$Id: Base.rb 70 2009-03-26 19:25:39Z ikk $</p>
+
+<p><a href="Base.html">Base</a> class for <a href="Segment.html">Segment</a>,
+<a href="Composite.html">Composite</a>, and <a href="Loop.html">Loop</a>.
+Contains setable <a
+href="Base.html#attribute-i-segment_separator">#segment_separator</a>, <a
+href="Base.html#attribute-i-field_separator">#field_separator</a>, and <a
+href="Base.html#attribute-i-composite_separator">#composite_separator</a>
+fields.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-composite_separator" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">composite_separator</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-field_separator" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">field_separator</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">name</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-next_repeat" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">next_repeat</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-nodes" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">nodes</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-parsed_str" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">parsed_str</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-repeats" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">repeats</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-segment_separator" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">segment_separator</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(name, arr, repeats = nil)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new base element with a given name, array of sub-elements, and
+array of repeats if any.</p>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">arr</span>, <span class="ruby-identifier">repeats</span> = <span class="ruby-keyword">nil</span>)
+  <span class="ruby-ivar">@nodes</span> = <span class="ruby-identifier">arr</span>
+  <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
+  <span class="ruby-ivar">@repeats</span> = <span class="ruby-identifier">repeats</span>
+  <span class="ruby-ivar">@next_repeat</span> = <span class="ruby-keyword">nil</span>        <span class="ruby-comment"># Next repeat of the same element, if any</span>
+  <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-ivar">@segment_separator</span>   = <span class="ruby-string">'~'</span>
+  <span class="ruby-ivar">@field_separator</span>     = <span class="ruby-string">'*'</span>
+  <span class="ruby-ivar">@composite_separator</span> = <span class="ruby-string">':'</span>
+
+  <span class="ruby-comment">#puts &quot;Created #{name} #{object_id} #{self.class}  &quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-5B-5D" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">[]</span><span
+            class="method-args">(*args)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The main method implementing Ruby-like access methods for repeating
+elements</p>
+          
+
+          
+          <div class="method-source-code" id="5B-5D-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 158</span>
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-comment">#puts &quot;squares #{args.inspect}&quot;</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>[<span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]] <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- 5B-5D-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- 5B-5D-method -->
+
+    
+      <div id="method-i-do_repeats" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">do_repeats</span><span
+            class="method-args">(s)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Try to parse the current element one more time if required. Returns the
+rest of the string or the same string if no more repeats are found or
+required.</p>
+          
+
+          
+          <div class="method-source-code" id="do_repeats-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 78</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">s</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">repeats</span>.<span class="ruby-identifier">end</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+    <span class="ruby-identifier">possible_repeat</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">p_s</span> = <span class="ruby-identifier">possible_repeat</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">s</span>)
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">p_s</span>
+      <span class="ruby-identifier">s</span> = <span class="ruby-identifier">p_s</span>
+      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next_repeat</span> = <span class="ruby-identifier">possible_repeat</span>
+    <span class="ruby-keyword">end</span> <span class="ruby-comment"># if parsed</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment"># more repeats</span>
+  <span class="ruby-identifier">s</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- do_repeats-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- do_repeats-method -->
+
+    
+      <div id="method-i-dup" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">dup</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Make a deep copy of the element</p>
+          
+
+          
+          <div class="method-source-code" id="dup-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">n</span> = <span class="ruby-identifier">clone</span>
+  <span class="ruby-identifier">n</span>.<span class="ruby-identifier">set_empty!</span>
+  <span class="ruby-identifier">n</span>.<span class="ruby-identifier">nodes</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">dup</span>
+  <span class="ruby-identifier">n</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each_index</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">n</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">dup</span>
+    <span class="ruby-identifier">n</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">i</span>].<span class="ruby-identifier">set_empty!</span>
+  }
+  <span class="ruby-comment">#puts &quot;Duped #{self.class} #{self.name} #{self.object_id} #{super.object_id} -&gt; #{n.name} #{n.super.object_id} #{n.object_id} &quot;</span>
+  <span class="ruby-identifier">n</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- dup-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- dup-method -->
+
+    
+      <div id="method-i-find" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find</span><span
+            class="method-args">(e)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Method to be overloaded</p>
+          
+
+          
+          <div class="method-source-code" id="find-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">e</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">EMPTY</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find-method -->
+
+    
+      <div id="method-i-has_content-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_content?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Check if any of the fields has been set yet</p>
+          
+
+          
+          <div class="method-source-code" id="has_content-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 178</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_content?</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">has_content?</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_content-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- has_content-3F-method -->
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Formats a printable string containing the base element’s content</p>
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 52</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+  <span class="ruby-node">&quot;#{self.class.to_s.sub(/^.*::/, '')} (#{name}) #{repeats} #{super.inspect[1..-2]} =&lt;#{parsed_str}, #{next_repeat.inspect}&gt; &quot;</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp">/\*\&quot;/</span>, <span class="ruby-string">'&quot;'</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- inspect-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- inspect-method -->
+
+    
+      <div id="method-i-method_missing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_missing</span><span
+            class="method-args">(meth, *args) { |res| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>The main method implementing Ruby-like access methods for nested elements</p>
+          
+
+          
+          <div class="method-source-code" id="method_missing-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 132</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">str</span> = <span class="ruby-identifier">meth</span>.<span class="ruby-identifier">id2name</span>
+  <span class="ruby-identifier">str</span> = <span class="ruby-identifier">str</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^_\d+$/</span> <span class="ruby-comment"># to avoid pure number names like 270, 997, etc.</span>
+  <span class="ruby-comment">#puts &quot;Missing #{str}&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/=$/</span>
+    <span class="ruby-comment"># Assignment</span>
+    <span class="ruby-identifier">str</span>.<span class="ruby-identifier">chop!</span>
+    <span class="ruby-comment">#puts str</span>
+    <span class="ruby-keyword">case</span> <span class="ruby-keyword">self</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Segment</span>
+      <span class="ruby-identifier">res</span> = <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">str</span>)
+      <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;No field '#{str}' in segment '#{self.name}'&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-constant">EMPTY</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">res</span>
+      <span class="ruby-identifier">res</span>.<span class="ruby-identifier">content</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]
+      <span class="ruby-comment">#puts res.inspect</span>
+    <span class="ruby-keyword">else</span>
+      <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Illegal assignment to #{meth} of #{self.class}&quot;</span>)
+    <span class="ruby-keyword">end</span> <span class="ruby-comment"># case</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-comment"># Retrieval</span>
+    <span class="ruby-identifier">res</span> = <span class="ruby-identifier">find</span>(<span class="ruby-identifier">str</span>)
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-identifier">res</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment"># if assignment</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- method_missing-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- method_missing-method -->
+
+    
+      <div id="method-i-repeat" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">repeat</span><span
+            class="method-args">() { |res| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Adds a repeat to a segment or loop. Returns a new segment/loop or self if
+empty.</p>
+          
+
+          
+          <div class="method-source-code" id="repeat-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 183</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">repeat</span>
+  <span class="ruby-identifier">res</span> = <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_content?</span> <span class="ruby-comment"># Do not repeat an empty segment</span>
+          <span class="ruby-identifier">last_repeat</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>[<span class="ruby-value">-1</span>]
+          <span class="ruby-identifier">last_repeat</span>.<span class="ruby-identifier">next_repeat</span> = <span class="ruby-identifier">last_repeat</span>.<span class="ruby-identifier">dup</span>
+        <span class="ruby-keyword">else</span>
+          <span class="ruby-keyword">self</span>
+        <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">yield</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+  <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- repeat-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- repeat-method -->
+
+    
+      <div id="method-i-set_empty-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_empty!</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="Empty.html">Empty</a> out the current element</p>
+          
+
+          
+          <div class="method-source-code" id="set_empty-21-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_empty!</span>
+  <span class="ruby-ivar">@next_repeat</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">self</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_empty-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_empty-21-method -->
+
+    
+      <div id="method-i-show" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">show</span><span
+            class="method-args">(ind = '')</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Prints a tree-like representation of the element</p>
+          
+
+          
+          <div class="method-source-code" id="show-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>(<span class="ruby-identifier">ind</span> = <span class="ruby-string">''</span>)
+  <span class="ruby-identifier">count</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#puts &quot;#{ind}#{i.name} #{i.object_id} #{i.super.object_id} [#{count}]: #{i.parsed_str} #{i.super.class}&quot;</span>
+    <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{ind}#{i.name} [#{count}]: #{i.to_s.sub(/^(.{30})(.*?)(.{30})$/, '\1...\3')}&quot;</span>
+    <span class="ruby-comment"># Force parsing a segment</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Segment</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-value">0</span>]
+      <span class="ruby-identifier">i</span>.<span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">i</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">name</span>)
+    <span class="ruby-keyword">end</span>
+    <span class="ruby-identifier">i</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
+      <span class="ruby-keyword">case</span> 
+      <span class="ruby-keyword">when</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Base</span>)  <span class="ruby-keyword">then</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">show</span>(<span class="ruby-identifier">ind</span><span class="ruby-operator">+</span><span class="ruby-string">'  '</span>)
+      <span class="ruby-keyword">when</span> <span class="ruby-identifier">j</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Field</span>) <span class="ruby-keyword">then</span> <span class="ruby-identifier">puts</span> <span class="ruby-node">&quot;#{ind+'  '}#{j.name} -&gt; '#{j.to_s}'&quot;</span>
+      <span class="ruby-keyword">end</span>
+    } 
+    <span class="ruby-identifier">count</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- show-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- show-method -->
+
+    
+      <div id="method-i-size" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">size</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns number of repeats</p>
+          
+
+          
+          <div class="method-source-code" id="size-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 173</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">size</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">size</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- size-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- size-method -->
+
+    
+      <div id="method-i-to_a" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_a</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Present self and all repeats as an array with self being #0</p>
+          
+
+          
+          <div class="method-source-code" id="to_a-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 116</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_a</span>
+  <span class="ruby-identifier">res</span> = [<span class="ruby-keyword">self</span>]
+  <span class="ruby-identifier">nr</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">next_repeat</span>
+  <span class="ruby-keyword">while</span> <span class="ruby-identifier">nr</span> <span class="ruby-keyword">do</span>
+    <span class="ruby-identifier">res</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">nr</span>
+    <span class="ruby-identifier">nr</span> = <span class="ruby-identifier">nr</span>.<span class="ruby-identifier">next_repeat</span>
+  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_a-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_a-method -->
+
+    
+      <div id="method-i-to_s" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_s</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns a parsed string representation of the element</p>
+          
+
+          
+          <div class="method-source-code" id="to_s-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 127</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_s</span>
+  <span class="ruby-ivar">@parsed_str</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">render</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_s-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_s-method -->
+
+    
+      <div id="method-i-with" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">with</span><span
+            class="method-args">() { |self| ... }</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Yields to accompanying block passing self as a parameter.</p>
+          
+
+          
+          <div class="method-source-code" id="with-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 164</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">with</span>(&amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">block_given?</span>
+    <span class="ruby-keyword">yield</span> <span class="ruby-keyword">self</span> 
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-string">&quot;Method 'with' requires a block.&quot;</span>)
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- with-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- with-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+
