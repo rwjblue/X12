@@ -237,7 +237,7 @@
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 100</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 102</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">content</span>
@@ -268,16 +268,12 @@
 
           
           <div class="method-source-code" id="find_field-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 106</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 108</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">field_name</span>)
   <span class="ruby-comment">#puts &quot;Finding field [#{field_name}] in #{self.class} #{name}&quot;</span>
 
   <span class="ruby-comment"># If the segment hasn't been parsed yet, let's parse it</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-ivar">@parsed_str</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">then</span>
-    <span class="ruby-identifier">segment_data</span> = <span class="ruby-ivar">@parsed_str</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;#{Regexp.escape(segment_separator)}$&quot;</span>), <span class="ruby-string">''</span>)
-    <span class="ruby-ivar">@fields</span> = <span class="ruby-identifier">segment_data</span>.<span class="ruby-identifier">split</span>(<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">field_separator</span>)))
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each_with_index</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">node</span>, <span class="ruby-identifier">ind</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-ivar">@fields</span>[<span class="ruby-identifier">ind</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>]) }
-  <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">parse_fields</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@parsed_str</span>
 
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> } <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY</span>
 <span class="ruby-keyword">end</span></pre>
@@ -319,6 +315,8 @@ rest of the string - nil if cannot parse</p>
 
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parsed_str</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-identifier">parse_fields</span> <span class="ruby-comment"># Fill out the fields without waiting for them to be accessed</span>
+
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">s</span>)
 
   <span class="ruby-comment">#puts &quot;Parsed segment &quot;+self.inspect</span>
@@ -350,7 +348,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="regexp-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 80</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">regexp</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@regexp</span>
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">is_constant?</span> } <span class="ruby-keyword">then</span>
@@ -395,7 +393,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 57</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
 
