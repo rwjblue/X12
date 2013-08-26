@@ -47,6 +47,8 @@ module X12
 
       s = m.post_match
       self.parsed_str = m[0]
+      parse_fields # Fill out the fields without waiting for them to be accessed
+
       s = do_repeats(s)
 
       #puts "Parsed segment "+self.inspect
@@ -107,14 +109,17 @@ module X12
       #puts "Finding field [#{field_name}] in #{self.class} #{name}"
 
       # If the segment hasn't been parsed yet, let's parse it
-      if @parsed_str && @fields.nil? then
-        segment_data = @parsed_str.gsub(Regexp.new("#{Regexp.escape(segment_separator)}$"), '')
-        @fields = segment_data.split(Regexp.new(Regexp.escape(field_separator)))
-        self.nodes.each_with_index{ |node, ind| node.parse(@fields[ind + 1]) }
-      end
+      parse_fields if @fields.nil? && @parsed_str
 
       self.nodes.find { |node| node.name == field_name } || EMPTY
     end
+
+    def parse_fields
+      segment_data = @parsed_str.gsub(Regexp.new("#{Regexp.escape(segment_separator)}$"), '')
+      @fields = segment_data.split(Regexp.new(Regexp.escape(field_separator)))
+      self.nodes.each_with_index{ |node, ind| node.parse(@fields[ind + 1]) }
+    end
+    private :parse_fields
 
   end # Segment
 end # X12
