@@ -237,7 +237,7 @@
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 100</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">content</span>
@@ -268,7 +268,7 @@
 
           
           <div class="method-source-code" id="find_field-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 104</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">field_name</span>)
   <span class="ruby-comment">#puts &quot;Finding field [#{field_name}] in #{self.class} #{name}&quot;</span>
 
@@ -350,7 +350,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="regexp-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 78</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 80</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">regexp</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@regexp</span>
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">is_constant?</span> } <span class="ruby-keyword">then</span>
@@ -397,23 +397,25 @@ rest of the string - nil if cannot parse</p>
           <div class="method-source-code" id="render-source">
             <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 57</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-string">''</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">repeat_str</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">repeats</span>.<span class="ruby-identifier">begin</span> <span class="ruby-operator">&lt;</span> <span class="ruby-value">1</span> <span class="ruby-keyword">and</span> <span class="ruby-operator">!</span><span class="ruby-identifier">i</span>.<span class="ruby-identifier">has_content?</span>
-      <span class="ruby-comment"># Skip optional empty segments</span>
-      <span class="ruby-identifier">repeat_str</span>
-    <span class="ruby-keyword">else</span>
-      <span class="ruby-keyword">if</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:segments_rendered</span>) <span class="ruby-keyword">then</span>
-        <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">initial_segment</span>
-        <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
-      <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
 
-      <span class="ruby-comment"># Have to render no matter how empty</span>
-      <span class="ruby-identifier">repeat_str</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-string">''</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">nodes_str</span>, <span class="ruby-identifier">j</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">field</span> = <span class="ruby-identifier">j</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span>)
-        (<span class="ruby-identifier">j</span>.<span class="ruby-identifier">required</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">nodes_str</span> <span class="ruby-operator">!=</span> <span class="ruby-string">''</span> <span class="ruby-keyword">or</span> <span class="ruby-identifier">field</span> <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">field_separator</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">field</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">nodes_str</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">nodes_str</span>
-      } <span class="ruby-operator">+</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segment_separator</span>
+  <span class="ruby-keyword">if</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">repeats</span>.<span class="ruby-identifier">begin</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>) <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_content?</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-comment"># Either a mandatory segment, or has content. Proceed to render.</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:segments_rendered</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">initial_segment</span>
+      <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-comment"># Current segment needs to be included in the count, so we increase in advance.</span>
     <span class="ruby-keyword">end</span>
-  }
+
+    <span class="ruby-identifier">nodes_str</span> = <span class="ruby-string">''</span>
+    <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fld</span><span class="ruby-operator">|</span> <span class="ruby-comment"># Building string in reverse in order to toss empty optional fields off the end.</span>
+      <span class="ruby-identifier">field</span> = <span class="ruby-identifier">fld</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span>)
+      <span class="ruby-identifier">nodes_str</span> = <span class="ruby-identifier">root</span>.<span class="ruby-identifier">field_separator</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">field</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">nodes_str</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">fld</span>.<span class="ruby-identifier">required</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">nodes_str</span> <span class="ruby-operator">!=</span> <span class="ruby-string">''</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">field</span> <span class="ruby-operator">!=</span> <span class="ruby-string">''</span>
+    }
+    <span class="ruby-identifier">res</span> <span class="ruby-operator">&lt;&lt;</span> (<span class="ruby-keyword">self</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">nodes_str</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segment_separator</span>)
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">res</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_repeat</span> <span class="ruby-comment"># Recursively render the following segment</span>
+  <span class="ruby-identifier">res</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- render-source -->
           

@@ -199,6 +199,11 @@ factories.</p>
   <span class="ruby-keyword">end</span>
   <span class="ruby-comment">#puts &quot;Reading definition from #{file_name}&quot;</span>
 
+  <span class="ruby-comment"># If just the file name is given and it is not actually present, fall back to the library files</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-identifier">file_name</span>) <span class="ruby-operator">==</span> <span class="ruby-string">'.'</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-constant">File</span>.<span class="ruby-identifier">readable?</span>(<span class="ruby-identifier">file_name</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">file_name</span> = <span class="ruby-node">&quot;#{File.dirname(__FILE__)}/../../misc/#{File.basename(file_name)}&quot;</span>
+  <span class="ruby-keyword">end</span>
+
   <span class="ruby-comment"># Read and parse the definition</span>
   <span class="ruby-identifier">str</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_name</span>, <span class="ruby-string">'r'</span>).<span class="ruby-identifier">read</span>
   <span class="ruby-ivar">@dir_name</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">expand_path</span>(<span class="ruby-identifier">file_name</span>)) <span class="ruby-comment"># to look up other files if needed</span>
@@ -255,7 +260,7 @@ factories.</p>
 
           
           <div class="method-source-code" id="factory-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 101</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 106</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">factory</span>(<span class="ruby-identifier">loop_name</span>)
   <span class="ruby-identifier">loop</span> = <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>][<span class="ruby-identifier">loop_name</span>]
   <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Cannot find a definition for loop #{loop_name}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">loop</span>
@@ -289,7 +294,7 @@ loop name is not defined.</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 91</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 96</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">loop_name</span>, <span class="ruby-identifier">str</span>)
   <span class="ruby-identifier">loop</span> = <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>][<span class="ruby-identifier">loop_name</span>]
   <span class="ruby-comment">#puts &quot;Loops to parse #{@x12_definition[X12::Loop].keys}&quot;</span>
