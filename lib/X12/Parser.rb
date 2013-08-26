@@ -64,12 +64,11 @@ module X12
 
       # If just the file name is given and it is not actually present, fall back to the library files
       if File.dirname(file_name) == '.' && !File.readable?(file_name) then
-        file_name = "#{File.dirname(__FILE__)}/../../misc/#{File.basename(file_name)}"
+        file_name = File.join(File.dirname(__FILE__), '..', '..', 'misc', File.basename(file_name))
       end
 
       # Read and parse the definition
       str = File.open(file_name, 'r').read
-      @dir_name = File.dirname(File.expand_path(file_name)) # to look up other files if needed
       @x12_definition = X12::XMLDefinitions.new(str)
 
       # Populate fields in all segments found in all the loops
@@ -129,7 +128,7 @@ module X12
       #puts "Trying to process segment #{segment.inspect}"
       unless @x12_definition[X12::Segment] && @x12_definition[X12::Segment][segment.name]
         # Try to find it in a separate file if missing from the @x12_definition structure
-        initialize(File.join(@dir_name, segment.name + '.xml'))
+        initialize(segment.name + '.xml')
         segment_definition = @x12_definition[X12::Segment][segment.name]
         throw Exception.new("Cannot find a definition for segment #{segment.name}") unless segment_definition
       else
@@ -141,7 +140,7 @@ module X12
         table = segment.nodes[i].validation
         if table
           unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
-            initialize(File.join(@dir_name, table+'.xml'))
+            initialize(File.table + '.xml')
             throw Exception.new("Cannot find a definition for table #{table}") unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
           end
         end
