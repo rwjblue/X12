@@ -140,7 +140,7 @@ module X12
         table = segment.nodes[i].validation
         if table
           unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
-            initialize(File.table + '.xml')
+            initialize(table + '.xml')
             throw Exception.new("Cannot find a definition for table #{table}") unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
           end
         end
