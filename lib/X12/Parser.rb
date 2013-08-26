@@ -62,6 +62,11 @@ module X12
       end
       #puts "Reading definition from #{file_name}"
 
+      # If just the file name is given and it is not actually present, fall back to the library files
+      if File.dirname(file_name) == '.' && !File.readable?(file_name) then
+        file_name = "#{File.dirname(__FILE__)}/../../misc/#{File.basename(file_name)}"
+      end
+
       # Read and parse the definition
       str = File.open(file_name, 'r').read
       @dir_name = File.dirname(File.expand_path(file_name)) # to look up other files if needed
