@@ -52,32 +52,34 @@ module X12
     def render(root = self)
       return @const_value.to_s if is_constant?
 
-      if @var_name then
-        case @var_name
-        when 'segments_rendered' then root.segments_rendered.to_s if root.respond_to?(:segments_rendered)
-        end
-      else
-        case self.data_type
-        when 'DT'      then @content.strftime('%Y%m%d')[-(max_length)..-1]
-        when 'TM'      then 
-          res = @content.strftime("%H%M%S%L")[0..(max_length - 1)].sub(/0{0,#{max_length - min_length}}$/, '')
-          res += "0" if res.length == 5 # Special case to not allow minutes to lose the units digit if it's zero
-          res
-        # "Nn: Numeric data containing the numerals 0-9, and an implied decimal point. The 'N' indicates
-        # that the element contains a numeric value and the 'n' indicates the number of decimal places to
-        # the right of the implied decimal point. The actual decimal point is not transmitted. A leading + or -
-        # sign may be used. The minus sign must be used for negative values. Leading zeroes should be
-        # suppressed unless they are necessary to satisfy the minimum number of digits required by the
-        # data element specification. For a data element defined as N4 with a minimum length of 4, the
-        # value 0.0001 would be transmitted as '0001'. For an N4 data element with the minimum length of
-        # 1, the value 0.0001 would be transmitted '1'."
-        when /^N(\d)*/ then @content.nil? ? '' : ("%0#{min_length}d" % (@content * (10**($1.to_i))))
-        # "R: (Real) numeric data containing the numerals 0-9 and a decimal point in the proper position.
-        # The decimal point is optional for integer values but required for fractional values. A leading + or -
-        # sign may be used. The minus sign must be used for negative values."
-        when 'R'       then @content.to_s
-        else                @content.to_s
-        end
+      # So far, we only have one internal variable, but we may end up with more eventually.
+      case @var_name
+      when 'segments_rendered' then return (root.respond_to?(:segments_rendered) && root.segments_rendered).to_s
+      when 'control_number'    then return (root.respond_to?(:control_number)    && root.control_number).to_s
+      end
+
+      return '' if @content.nil?
+
+      case self.data_type
+      when 'DT'      then @content.strftime('%Y%m%d')[-(max_length)..-1]
+      when 'TM'      then 
+        res = @content.strftime("%H%M%S%L")[0..(max_length - 1)].sub(/0{0,#{max_length - min_length}}$/, '')
+        res += "0" if res.length == 5 # Special case to not allow minutes to lose the units digit if it's zero
+        res
+      # "Nn: Numeric data containing the numerals 0-9, and an implied decimal point. The 'N' indicates
+      # that the element contains a numeric value and the 'n' indicates the number of decimal places to
+      # the right of the implied decimal point. The actual decimal point is not transmitted. A leading + or -
+      # sign may be used. The minus sign must be used for negative values. Leading zeroes should be
+      # suppressed unless they are necessary to satisfy the minimum number of digits required by the
+      # data element specification. For a data element defined as N4 with a minimum length of 4, the
+      # value 0.0001 would be transmitted as '0001'. For an N4 data element with the minimum length of
+      # 1, the value 0.0001 would be transmitted '1'."
+      when /^N(\d)*/ then "%0#{min_length}d" % (@content * (10**($1.to_i)))
+      # "R: (Real) numeric data containing the numerals 0-9 and a decimal point in the proper position.
+      # The decimal point is optional for integer values but required for fractional values. A leading + or -
+      # sign may be used. The minus sign must be used for negative values."
+      when 'R'       then @content.to_s
+      else                @content.to_s
       end
     end # render
 

@@ -82,7 +82,7 @@ module X12
     def parse_int(s)
       return case s
              when nil             then 0
-             when /^\d+$/     then s.to_i
+             when /^\d+$/         then s.to_i
              when /^inf(inite)?$/ then 999999
              else
                nil
@@ -144,12 +144,11 @@ module X12
       nodes = []
 
       e.elements.to_a.each { |element|
-        nodes << case element.name
-                 when /loop/i    then parse_loop(element)
-                 when /segment/i then parse_segment(element)
-                 else
-                   throw Exception.new("Cannot recognize syntax for: #{element.inspect} in loop #{e.inspect}")
-                 end # case
+        case element.name
+        when /loop/i    then nodes << parse_loop(element)
+        when /segment/i then nodes << parse_segment(element)
+        else throw Exception.new("Cannot recognize syntax for: #{element.inspect} in loop #{e.inspect}")
+        end
       }
 
       Loop.new(name, nodes, Range.new(min, max))

@@ -30,9 +30,11 @@ module X12
 
   class Loop < Base
     attr_accessor :segments_rendered
+    attr_accessor :control_number
 
     def initialize(*args)
       @segments_rendered = 0
+      @control_number = 0
       super(*args)
     end
 
