@@ -53,23 +53,18 @@ module X12
 
     # Creates a parser out of a definition
     def initialize(file_name)
-      save_definition = @x12_definition
+      load_definitions(file_name)
+      #puts PP.pp(self, '')
+    end # initialize
 
-      # Deal with Microsoft devices
-      base_name = File.basename(file_name, '.xml')
-      if MS_DEVICES.include?(base_name) then
-        file_name = File.join(File.dirname, "#{base_name}_.xml")
-      end
+    def load_definitions(file_name)
+      file_name = cleanup_file_name(file_name)
       #puts "Reading definition from #{file_name}"
 
-      # If just the file name is given and it is not actually present, fall back to the library files
-      if File.dirname(file_name) == '.' && !File.readable?(file_name) then
-        file_name = File.join(File.dirname(__FILE__), '..', '..', 'misc', File.basename(file_name))
-      end
+      save_definition = @x12_definition
 
       # Read and parse the definition
-      str = File.open(file_name, 'r').read
-      @x12_definition = X12::XMLDefinitions.new(str)
+      @x12_definition = X12::XMLDefinitions.new(File.open(file_name, 'r').read)
 
       # Populate fields in all segments found in all the loops
       @x12_definition[X12::Loop].each_pair{|k, v|
@@ -87,9 +82,24 @@ module X12
           @x12_definition = save_definition
         }
       end
+    end
 
-      #puts PP.pp(self, '')
-    end # initialize
+
+    def cleanup_file_name(file_name)
+      # Deal with Microsoft devices
+      base_name = File.basename(file_name, '.xml')
+      if MS_DEVICES.include?(base_name) then
+        file_name = File.join(File.dirname, "#{base_name}_.xml")
+      end
+
+      # If just the file name is given and it is not actually present, fall back to the library files
+      if File.dirname(file_name) == '.' && !File.readable?(file_name) then
+        file_name = File.join(File.dirname(__FILE__), '..', '..', 'misc', File.basename(file_name))
+      end
+
+      file_name
+    end
+    private :cleanup_file_name
 
     # Parse a loop of a given name out of a string. Throws an exception if the loop name is not defined.
     def parse(loop_name, str)
@@ -128,7 +138,7 @@ module X12
       #puts "Trying to process segment #{segment.inspect}"
       unless @x12_definition[X12::Segment] && @x12_definition[X12::Segment][segment.name]
         # Try to find it in a separate file if missing from the @x12_definition structure
-        initialize(segment.name + '.xml')
+        load_definitions(segment.name + '.xml')
         segment_definition = @x12_definition[X12::Segment][segment.name]
         throw Exception.new("Cannot find a definition for segment #{segment.name}") unless segment_definition
       else
@@ -140,7 +150,7 @@ module X12
         table = segment.nodes[i].validation
         if table
           unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
-            initialize(table + '.xml')
+            load_definitions(table + '.xml')
             throw Exception.new("Cannot find a definition for table #{table}") unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
           end
         end

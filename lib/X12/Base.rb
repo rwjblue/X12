@@ -97,7 +97,7 @@ module X12
       n = clone
       n.set_empty!
       n.nodes = n.nodes.dup
-      n.nodes.each_index{|i|
+      n.nodes.each_index{ |i|
         n.nodes[i] = n.nodes[i].dup
         n.nodes[i].set_empty!
       }

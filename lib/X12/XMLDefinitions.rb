@@ -141,15 +141,18 @@ module X12
     def parse_loop(e)
       name, min, max, type, required, validation = parse_attributes(e)
 
-      components = e.elements.to_a.inject([]){|r, element|
-        r << case element.name
-             when /loop/i    then parse_loop(element)
-             when /segment/i then parse_segment(element)
-             else
-               throw Exception.new("Cannot recognize syntax for: #{element.inspect} in loop #{e.inspect}")
-             end # case
+      nodes = []
+
+      e.elements.to_a.each { |element|
+        nodes << case element.name
+                 when /loop/i    then parse_loop(element)
+                 when /segment/i then parse_segment(element)
+                 else
+                   throw Exception.new("Cannot recognize syntax for: #{element.inspect} in loop #{e.inspect}")
+                 end # case
       }
-      Loop.new(name, components, Range.new(min, max))
+
+      Loop.new(name, nodes, Range.new(min, max))
     end
 
   end # Parser

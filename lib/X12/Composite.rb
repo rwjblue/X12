@@ -31,7 +31,7 @@ module X12
 
     # Make a printable representation of the composite
     def inspect
-      "Composite "+super.inspect
+      "Composite " + super.inspect
     end
   end
 end
