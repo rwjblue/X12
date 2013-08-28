@@ -9,7 +9,7 @@ Gem::Specification.new do |s|
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["APP Design, Inc.", "Eligo Energy"]
-  s.date = "2013-08-26"
+  s.date = "2013-08-28"
   s.description = "Library to parse X12 messages and manipulate their loops, segments, fields, composites, and validation tables."
   s.email = "info@appdesign.com"
   s.extra_rdoc_files = [
