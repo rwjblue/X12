@@ -29,10 +29,11 @@ module X12
 
   class Field
     attr_reader :name, :data_type, :required, :min_length, :max_length, :validation
-    attr_accessor :content
+    attr_accessor :content, :parent
 
     # Create a new field with given parameters
     def initialize(name, data_type, required, min_length, max_length, validation, const_value = nil, var_name = nil)
+      @parent      = nil
       @name        = name       
       @data_type   = data_type       
       @required    = required
@@ -55,7 +56,13 @@ module X12
       # So far, we only have one internal variable, but we may end up with more eventually.
       case @var_name
       when 'segments_rendered' then return (root.respond_to?(:segments_rendered) && root.segments_rendered).to_s
-      when 'control_number'    then return (root.respond_to?(:control_number)    && root.control_number).to_s
+      when 'control_number'    then
+        obj = self.parent
+        begin
+          return obj.control_number if obj.respond_to?(:control_number) && obj.control_number
+          obj = obj.parent
+        end until obj.nil?
+        return ''
       end
 
       return '' if @content.nil?

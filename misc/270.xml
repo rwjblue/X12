@@ -27,7 +27,7 @@
 
   <Segment name="ST" required="y" max="1" initial_segment="y">
     <Field name="TransactionSetIdentifierCode" const="270" comment="Code uniquely identifying a Transaction Set"/>
-    <Field name="TransactionSetControlNumber" min="4" max="9" comment="Identifying control number that must be unique within the transaction set functional group assigned by the originator for a transaction set"/>
+    <Field name="TransactionSetControlNumber" min="4" max="9" var="control_number" comment="Identifying control number that must be unique within the transaction set functional group assigned by the originator for a transaction set"/>
   </Segment>
   <Segment name="BHT" required="y" max="1" comment="To define the business hierarchical structure of the transaction set and identify the business application purpose and reference data, i.e., number, date, and time">
     <Field name="HierarchicalStructureCode" required="y" const="0022"                       comment="Code indicating the hierarchical application structure of a transaction set that utilizes the HL segment to define the structure of the transaction set"/>

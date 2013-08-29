@@ -34,7 +34,7 @@ module X12
 
     def initialize(*args)
       @segments_rendered = 0
-      @control_number = 0
+      @control_number = nil
       super(*args)
     end
 

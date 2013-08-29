@@ -126,7 +126,7 @@ EOT
   def create_270(message, fg_num, mess_num)
     transactionSetControlNumber = "#{fg_num}00#{mess_num}"
 
-    message.ST.TransactionSetControlNumber  = transactionSetControlNumber
+    message.control_number = transactionSetControlNumber
 
     message.BHT {|bht|
       bht.HierarchicalStructureCode='0022'
@@ -204,10 +204,6 @@ EOT
           }
         }
       }
-    }
-
-    message.SE {|se|
-      se.TransactionSetControlNumber = transactionSetControlNumber
     }
 
   end # create_270

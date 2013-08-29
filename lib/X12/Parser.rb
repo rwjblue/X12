@@ -136,15 +136,18 @@ module X12
     # Instantiate segment's fields as previously defined
     def process_segment(segment)
       #puts "Trying to process segment #{segment.inspect}"
-      unless @x12_definition[X12::Segment] && @x12_definition[X12::Segment][segment.name]
-        # Try to find it in a separate file if missing from the @x12_definition structure
+
+      segment_definition = @x12_definition[X12::Segment] && @x12_definition[X12::Segment][segment.name]
+
+      if segment_definition.nil? then
+        # If it's not already loaded, attempt to load it from a library file
         load_definitions(segment.name + '.xml')
         segment_definition = @x12_definition[X12::Segment][segment.name]
-        throw Exception.new("Cannot find a definition for segment #{segment.name}") unless segment_definition
-      else
-        segment_definition = @x12_definition[X12::Segment][segment.name]
       end
-      segment_definition.nodes.each_index{|i|
+
+      throw Exception.new("Cannot find a definition for segment #{segment.name}") if segment_definition.nil?
+
+      segment_definition.nodes.each_index { |i|
         segment.nodes[i] = segment_definition.nodes[i] 
         # Make sure we have the validation table if any for this field. Try to read one in if missing.
         table = segment.nodes[i].validation

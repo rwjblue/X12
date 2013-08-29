@@ -31,15 +31,16 @@ module X12
   class Base
 
     attr_reader :name, :repeats
-    attr_accessor :segment_separator, :field_separator, :composite_separator, :next_repeat, :parsed_str, :nodes
+    attr_accessor :segment_separator, :field_separator, :composite_separator, :next_repeat, :parsed_str, :nodes, :parent
 
     # Creates a new base element with a given name, array of sub-elements, and array of repeats if any.
-    def initialize(name, arr, repeats = nil)
-      @nodes = arr
+    def initialize(name, nodelist, repeats = nil)
+      @nodes = nodelist.each { |n| n.parent = self }
       @name = name
       @repeats = repeats
       @next_repeat = nil        # Next repeat of the same element, if any
       @parsed_str = nil
+      @parent = nil
 
       @segment_separator   = '~'
       @field_separator     = '*'
@@ -100,6 +101,7 @@ module X12
       n.nodes.each_index{ |i|
         n.nodes[i] = n.nodes[i].dup
         n.nodes[i].set_empty!
+        n.nodes[i].parent = n
       }
       #puts "Duped #{self.class} #{self.name} #{self.object_id} #{super.object_id} -> #{n.name} #{n.super.object_id} #{n.object_id} "
       n

@@ -42,7 +42,7 @@ AK4*1**0~
 AK4*1**1~
 AK5*E****999~
 AK9****~
-SE*14*~
+SE*14*2878~
 EOT
 
   @@result = tmp.gsub!(/\n/,'')
@@ -62,7 +62,7 @@ EOT
     @r = @@p.factory('997')
 
     @r.ST.TransactionSetIdentifierCode = 997
-    @r.ST.TransactionSetControlNumber  = '2878'
+    @r.control_number = '2878'
 
     @r.AK1 { |ak1|
       ak1.FunctionalIdentifierCode = 'HS'

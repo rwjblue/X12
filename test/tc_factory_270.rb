@@ -58,7 +58,7 @@ EOT
   def test_all
     @r = @@p.factory('270')
 
-    @r.ST.TransactionSetControlNumber  = '1001'
+    @r.control_number = '1001'
 
     @r.BHT {|bht|
       bht.HierarchicalStructureCode='0022'
@@ -136,10 +136,6 @@ EOT
           }
         }
       }
-    }
-
-    @r.SE {|se|
-      se.TransactionSetControlNumber = '1001'
     }
 
     assert_equal(@@result, @r.render)
