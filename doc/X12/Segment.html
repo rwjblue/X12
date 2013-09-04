@@ -245,7 +245,7 @@ counter (usually that would be ST)</p>
           <div class="method-source-code" id="apply_overrides-source">
             <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 42</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_overrides</span>
-  <span class="ruby-identifier">overrides</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">override</span><span class="ruby-operator">|</span> 
+  <span class="ruby-ivar">@overrides</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">override</span><span class="ruby-operator">|</span> 
     <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">apply_overrides</span>(<span class="ruby-identifier">override</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">override</span>.<span class="ruby-identifier">name</span> } 
   }
 <span class="ruby-keyword">end</span></pre>

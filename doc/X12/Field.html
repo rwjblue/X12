@@ -384,14 +384,15 @@
 
         <div class="method-description">
           
-          <p>Check if it’s been set yet and it’s not a constant</p>
+          <p>Check if it’s been set yet and it’s not a constant. Variables always have
+some content.</p>
           
 
           
           <div class="method-source-code" id="has_content-3F-source">
             <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_content?</span>
-  <span class="ruby-operator">!</span><span class="ruby-ivar">@content</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-operator">!</span><span class="ruby-ivar">@content</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@var_name</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- has_content-3F-source -->
           
