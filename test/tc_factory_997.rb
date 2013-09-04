@@ -61,7 +61,6 @@ EOT
   def test_all
     @r = @@p.factory('997')
 
-    @r.ST.TransactionSetIdentifierCode = 997
     @r.control_number = '2878'
 
     @r.AK1 { |ak1|

@@ -95,9 +95,9 @@ module X12
       end
     end # render
 
-    # Check if it's been set yet and it's not a constant
+    # Check if it's been set yet and it's not a constant. Variables always have some content.
     def has_content?
-      !@content.nil?
+      !@content.nil? || !@var_name.nil?
     end
 
     # Constants are always pre-set, so if @content is nil, then it's definitely not a constant.

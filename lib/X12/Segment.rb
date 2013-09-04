@@ -40,7 +40,7 @@ module X12
     # Replaces fields loaded from definition skeleton for which overrides exist
     #   with their clones with overrides applied.
     def apply_overrides
-      overrides.each { |override| 
+      @overrides.each { |override| 
         nodes.each_with_index { |n, i| nodes[i] = n.apply_overrides(override) if n.name == override.name } 
       }
     end
