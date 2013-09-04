@@ -34,7 +34,7 @@ module X12
     attr_accessor :segment_separator, :field_separator, :composite_separator, :next_repeat, :parsed_str, :nodes, :parent
 
     # Creates a new base element with a given name, array of sub-elements, and array of repeats if any.
-    def initialize(name, nodelist, repeats = nil)
+    def initialize(name, nodelist, repeats = nil, ignore1 = nil, ignore2 = nil)
       @nodes = nodelist.each { |n| n.parent = self }
       @name = name
       @repeats = repeats

@@ -124,10 +124,10 @@ module X12
     # Recursively scan the loop and instantiate fields' definitions for all its
     # segments
     def process_loop(loop)
-      loop.nodes.each{|i|
-        case i
-          when X12::Loop    then process_loop(i)
-          when X12::Segment then process_segment(i) unless i.nodes.size > 0
+      loop.nodes.each{ |node|
+        case node
+          when X12::Loop    then process_loop(node)
+          when X12::Segment then process_segment(node) unless node.nodes.size > 0
           else return
         end
       }
@@ -148,7 +148,8 @@ module X12
       throw Exception.new("Cannot find a definition for segment #{segment.name}") if segment_definition.nil?
 
       segment_definition.nodes.each_index { |i|
-        segment.nodes[i] = segment_definition.nodes[i] 
+        segment.nodes[i] = segment_definition.nodes[i]
+
         # Make sure we have the validation table if any for this field. Try to read one in if missing.
         table = segment.nodes[i].validation
         if table
@@ -158,6 +159,8 @@ module X12
           end
         end
       }
+
+      segment.apply_overrides
     end
 
   end # Parser

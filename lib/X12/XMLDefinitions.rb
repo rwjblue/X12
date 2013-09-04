@@ -126,8 +126,9 @@ module X12
 
       fields = e.get_elements("Field").collect { |field| parse_field(field) }
 
-      s = Segment.new(name, fields, Range.new(min, max))
-      s.initial_segment = parse_boolean(e.attributes["initial_segment"])
+      initial_segment = parse_boolean(e.attributes["initial_segment"])
+      overrides = e.get_elements("Override").collect { |override| parse_field(override) }
+      s = Segment.new(name, fields, Range.new(min, max), initial_segment, overrides)
       s
     end
 

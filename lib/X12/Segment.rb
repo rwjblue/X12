@@ -28,11 +28,18 @@ module X12
   # Implements a segment containing fields or composites
     
   class Segment < Base
-    attr_accessor :initial_segment
+    attr_reader :initial_segment, :overrides
 
-    def initialize(*args)
-      @initial_segment = false
-      super(*args)
+    def initialize(name, nodelist, repeats = nil, initial_segment = false, overrides = [])
+      @initial_segment = initial_segment
+      @overrides = overrides
+      super
+    end
+
+    def apply_overrides
+      overrides.each { |override| 
+        nodes.each_with_index { |n, i| nodes[i] = n.apply_overrides(override) if n.name == override.name } 
+      }
     end
 
     # Parses this segment out of a string, puts the match into value, returns the rest of the string - nil
