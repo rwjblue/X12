@@ -72,6 +72,8 @@
     
     <li><a href="#method-c-new">::new</a>
     
+    <li><a href="#method-i-apply_overrides">#apply_overrides</a>
+    
     <li><a href="#method-i-find">#find</a>
     
     <li><a href="#method-i-find_field">#find_field</a>
@@ -165,12 +167,13 @@
       <div id="attribute-i-initial_segment" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">initial_segment</span><span
-            class="attribute-access-type">[RW]</span>
+            class="attribute-access-type">[R]</span>
         </div>
 
         <div class="method-description">
         
-        
+        <p>Flag denoting the segment from which should reset the rendered segment
+counter (usually that would be ST)</p>
         
         </div>
       </div>
@@ -188,7 +191,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(*args)</span>
+            class="method-args">(name, nodelist, repeats = nil, initial_segment = false, overrides = [])</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -200,10 +203,11 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 33</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">args</span>)
-  <span class="ruby-ivar">@initial_segment</span> = <span class="ruby-keyword">false</span>
-  <span class="ruby-keyword">super</span>(*<span class="ruby-identifier">args</span>)
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 34</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">nodelist</span>, <span class="ruby-identifier">repeats</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">initial_segment</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">overrides</span> = [])
+  <span class="ruby-ivar">@initial_segment</span> = <span class="ruby-identifier">initial_segment</span>
+  <span class="ruby-ivar">@overrides</span> = <span class="ruby-identifier">overrides</span>
+  <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -219,6 +223,40 @@
   
      <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
       <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-apply_overrides" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">apply_overrides</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Replaces fields loaded from definition skeleton for which overrides exist</p>
+
+<pre>with their clones with overrides applied.</pre>
+          
+
+          
+          <div class="method-source-code" id="apply_overrides-source">
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 42</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_overrides</span>
+  <span class="ruby-identifier">overrides</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">override</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">apply_overrides</span>(<span class="ruby-identifier">override</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">override</span>.<span class="ruby-identifier">name</span> } 
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- apply_overrides-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- apply_overrides-method -->
 
     
       <div id="method-i-find" class="method-detail ">
@@ -237,7 +275,7 @@
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 102</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 112</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">content</span>
@@ -268,7 +306,7 @@
 
           
           <div class="method-source-code" id="find_field-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 108</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">field_name</span>)
   <span class="ruby-comment">#puts &quot;Finding field [#{field_name}] in #{self.class} #{name}&quot;</span>
 
@@ -304,7 +342,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 40</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 50</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">str</span>
   <span class="ruby-comment">#puts &quot;Parsing segment #{name} from #{s} with regexp [#{regexp.source}]&quot;</span>
@@ -348,7 +386,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="regexp-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 82</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 92</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">regexp</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@regexp</span>
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">is_constant?</span> } <span class="ruby-keyword">then</span>
@@ -393,7 +431,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 59</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
 

@@ -316,7 +316,7 @@ fields.</p>
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(name, nodelist, repeats = nil)</span>
+            class="method-args">(name, nodelist, repeats = nil, ignore1 = nil, ignore2 = nil)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -330,7 +330,7 @@ array of repeats if any.</p>
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">nodelist</span>, <span class="ruby-identifier">repeats</span> = <span class="ruby-keyword">nil</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">nodelist</span>, <span class="ruby-identifier">repeats</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">ignore1</span> = <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">ignore2</span> = <span class="ruby-keyword">nil</span>)
   <span class="ruby-ivar">@nodes</span> = <span class="ruby-identifier">nodelist</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">parent</span> = <span class="ruby-keyword">self</span> }
   <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>
   <span class="ruby-ivar">@repeats</span> = <span class="ruby-identifier">repeats</span>

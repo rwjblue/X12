@@ -28,7 +28,8 @@ module X12
   # Implements a segment containing fields or composites
     
   class Segment < Base
-    attr_reader :initial_segment, :overrides
+    # Flag denoting the segment from which should reset the rendered segment counter (usually that would be ST)
+    attr_reader :initial_segment
 
     def initialize(name, nodelist, repeats = nil, initial_segment = false, overrides = [])
       @initial_segment = initial_segment
@@ -36,6 +37,8 @@ module X12
       super
     end
 
+    # Replaces fields loaded from definition skeleton for which overrides exist
+    #   with their clones with overrides applied.
     def apply_overrides
       overrides.each { |override| 
         nodes.each_with_index { |n, i| nodes[i] = n.apply_overrides(override) if n.name == override.name } 
