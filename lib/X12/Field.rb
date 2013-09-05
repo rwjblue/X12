@@ -55,21 +55,10 @@ module X12
       "<Field #{name}::#{data_type}#{ is_constant? ? " const(#{@const_value})" : '' } (#{required ? 'required' : 'optional'})|#{min_length}...#{max_length}|#{validation} \"#{@content}\">"
     end
 
+    # Returns string representation of the field's content formatted to X12 specs
     def render(root = self)
       return @const_value.to_s if is_constant?
-
-      # So far, we only have one internal variable, but we may end up with more eventually.
-      case @var_name
-      when 'segments_rendered' then return (root.respond_to?(:segments_rendered) && root.segments_rendered).to_s
-      when 'control_number'    then
-        obj = self.parent
-        begin
-          return obj.control_number if obj.respond_to?(:control_number) && obj.control_number
-          obj = obj.parent
-        end until obj.nil?
-        return ''
-      end
-
+      return var_value.to_s if is_variable?
       return '' if @content.nil?
 
       case self.data_type
@@ -95,14 +84,38 @@ module X12
       end
     end # render
 
-    # Check if it's been set yet and it's not a constant. Variables always have some content.
+    # Check if it's been set yet and it's not a constant.
     def has_content?
-      !@content.nil? || !@var_name.nil?
+      !@content.nil?
     end
 
     # Constants are always pre-set, so if @content is nil, then it's definitely not a constant.
     def is_constant?
       !@const_value.nil?
+    end
+
+    def is_variable?
+      !@var_name.nil?
+    end
+
+    def get_from_ancestor(meth)
+      ancestor = self.parent
+      begin
+        if ancestor.respond_to?(meth) then
+          val = ancestor.send(meth)
+          return val unless val.nil?
+        end
+        ancestor = ancestor.parent
+      end until ancestor.nil?
+      return nil
+    end
+
+    def var_value
+      case @var_name
+      when 'segments_rendered' then return get_from_ancestor(:segments_rendered)
+      when 'control_number'    then return get_from_ancestor(:control_number)
+      else nil
+      end
     end
 
     # Erase the content

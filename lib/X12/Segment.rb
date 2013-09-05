@@ -69,11 +69,12 @@ module X12
     def render(root = self)
       res = ''
 
-      if (self.repeats.begin > 0) || self.has_content? then
+      if (self.repeats.begin > 0) || self.has_content? || self.nodes.any? { |n| n.is_variable? } then
         # Either a mandatory segment, or has content. Proceed to render.
         if root.respond_to?(:segments_rendered) then
           root.segments_rendered = 0 if initial_segment
-          root.segments_rendered += 1 # Current segment needs to be included in the count, so we increase in advance.
+          # Current segment needs to be included in the count, so we increase in advance.
+          root.segments_rendered += 1 unless root.segments_rendered.nil? 
         end
 
         nodes_str = ''

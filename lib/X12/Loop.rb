@@ -33,7 +33,7 @@ module X12
     attr_accessor :control_number
 
     def initialize(*args)
-      @segments_rendered = 0
+      @segments_rendered = nil # Needs to start as nil and only initialize once ST is actually rendered
       @control_number = nil
       super(*args)
     end

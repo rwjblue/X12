@@ -31,7 +31,7 @@
 
 <Definition>
   <Loop name="997" comment="This X12 Transaction Set contains the format and establishes the data contents of the Functional Acknowledgment Transaction Set (997) for use within the context of an Electronic Data Interchange (EDI) environment. The transaction set can be used to define the control structures for a set of acknowledgments to indicate the results of the syntactical analysis of the electronically encoded documents. The encoded documents are the transaction sets, which are grouped in functional groups, used in defining transactions for business data interchange. This standard does not cover the semantic meaning of the information encoded in the transaction sets.">
-    <Segment name="ST"  max="1">
+    <Segment name="ST" initial_segment="y" max="1">
       <Override name="TransactionSetIdentifierCode" const="997"/>
     </Segment>
     <Segment name="AK1" max="1"/>
