@@ -128,4 +128,40 @@ class FieldFormatting < Test::Unit::TestCase
     assert_equal(f.content, f.parse(f.render))
   end # test_field_time
 
+  def test_field_variables
+    Object.const_set :Date2, Date.dup # Save the originl Date class
+    def Date.today ; Date.new(2010, 12, 31) ; end # Define dummy method for testing
+
+    f = X12::Field.new(name = 'test', data_type = 'DT', required = false, min = 8, max = 8, validation = nil, const_value = nil, var_name = 'today')
+    dt = Date.today
+    assert_equal('20101231', f.render)
+    assert_equal(dt, f.parse(f.render))
+
+    f = X12::Field.new(name = 'test', data_type = 'DT', required = false, min = 6, max = 6, validation = nil, const_value = nil, var_name = 'today')
+    dt = Date.today
+    assert_equal('101231', f.render)
+    assert_equal(dt, f.parse(f.render))
+
+    f.content = Date.new(2013, 01, 23)
+    assert_equal('130123', f.render)
+    assert_equal(f.content, f.parse(f.render))
+
+    f1 = X12::Field.new(name = 'test1', data_type = 'N', required = false, min = 4, max = 4, validation = nil, const_value = nil, var_name = 'segments_rendered')
+    f2 = X12::Field.new(name = 'test2', data_type = 'N', required = false, min = 4, max = 4, validation = nil, const_value = nil, var_name = 'control_number')
+    l = X12::Loop.new('test', [ f1, f2 ], 1..1 )
+
+    l.segments_rendered = rand(1000)
+    assert_equal("%04d" % l.segments_rendered, f1.render)
+    assert_equal(l.segments_rendered, f1.parse(f1.render))
+
+    l.control_number = rand(1000) + 2000
+    assert_equal("%04d" % l.control_number,    f2.render)
+    assert_equal(l.control_number,    f2.parse(f2.render))
+
+    tmp = $-w  
+    $-w = nil  # Temporarily suppress warnings
+    Object.const_set :Date, Date2 # Restore the originl Date class
+    $-w = tmp
+  end
+
 end # TestList

@@ -57,14 +57,17 @@ module X12
 
     # Returns string representation of the field's content formatted to X12 specs
     def render(root = self)
-      return @const_value.to_s if is_constant?
-      return var_value.to_s if is_variable?
-      return '' if @content.nil?
+      val = @content ||
+              if    is_constant? then @const_value
+              elsif is_variable? then var_value
+              end
+
+      return '' if val.nil?
 
       case self.data_type
-      when 'DT'      then @content.strftime('%Y%m%d')[-(max_length)..-1]
+      when 'DT'      then val.strftime('%Y%m%d')[-(max_length)..-1]
       when 'TM'      then 
-        res = @content.strftime("%H%M%S%L")[0..(max_length - 1)].sub(/0{0,#{max_length - min_length}}$/, '')
+        res = val.strftime("%H%M%S%L")[0..(max_length - 1)].sub(/0{0,#{max_length - min_length}}$/, '')
         res += "0" if res.length == 5 # Special case to not allow minutes to lose the units digit if it's zero
         res
       # "Nn: Numeric data containing the numerals 0-9, and an implied decimal point. The 'N' indicates
@@ -75,12 +78,12 @@ module X12
       # data element specification. For a data element defined as N4 with a minimum length of 4, the
       # value 0.0001 would be transmitted as '0001'. For an N4 data element with the minimum length of
       # 1, the value 0.0001 would be transmitted '1'."
-      when /^N(\d)*/ then "%0#{min_length}d" % (@content * (10**($1.to_i)))
+      when /^N(\d)*/ then "%0#{min_length}d" % (val * (10**($1.to_i)))
       # "R: (Real) numeric data containing the numerals 0-9 and a decimal point in the proper position.
       # The decimal point is optional for integer values but required for fractional values. A leading + or -
       # sign may be used. The minus sign must be used for negative values."
-      when 'R'       then @content.to_s
-      else                @content.to_s
+      when 'R'       then val.to_s
+      else                val.to_s
       end
     end # render
 
@@ -112,8 +115,9 @@ module X12
 
     def var_value
       case @var_name
-      when 'segments_rendered' then return get_from_ancestor(:segments_rendered)
-      when 'control_number'    then return get_from_ancestor(:control_number)
+      when 'segments_rendered' then get_from_ancestor(:segments_rendered)
+      when 'control_number'    then get_from_ancestor(:control_number)
+      when 'today'             then Date.today
       else nil
       end
     end
