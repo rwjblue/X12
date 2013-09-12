@@ -70,6 +70,13 @@ module X12
         res = val.strftime("%H%M%S%L")[0..(max_length - 1)].sub(/0{0,#{max_length - min_length}}$/, '')
         res += "0" if res.length == 5 # Special case to not allow minutes to lose the units digit if it's zero
         res
+      # "AN: Alphanumeric data elements containing the numerals 0-9, the characters A-Z and any
+      # special characters except asterisk (*), the greater than sign (>) and the characters with a
+      # hexadecimal value of '40' or less. These characters are control characters and should not be
+      # used for data. The significant characters shall be left justified. Leading spaces, when they occur,
+      # are presumed to be significant characters. Trailing spaces should be suppressed unless
+      # necessary to satisfy the minimum length requirement."
+      when 'AN'      then val.to_s.rstrip.ljust(min_length)
       # "Nn: Numeric data containing the numerals 0-9, and an implied decimal point. The 'N' indicates
       # that the element contains a numeric value and the 'n' indicates the number of decimal places to
       # the right of the implied decimal point. The actual decimal point is not transmitted. A leading + or -
@@ -162,6 +169,7 @@ module X12
         when 'TM'      then                              # HHMM[SS[D[D]]]
           str += '0000'
           Time.new(0, nil, nil, str[0..1].to_i, str[2..3].to_i, str[4..7].to_f / 100)
+        when 'AN'      then str && str.rstrip
         else         str
         end
     end

@@ -165,4 +165,30 @@ class FieldFormatting < Test::Unit::TestCase
     $-w = tmp
   end
 
+  # "AN: Alphanumeric data elements containing the numerals 0-9, the characters A-Z and any
+  # special characters except asterisk (*), the greater than sign (>) and the characters with a
+  # hexadecimal value of '40' or less. These characters are control characters and should not be
+  # used for data. The significant characters shall be left justified. Leading spaces, when they occur,
+  # are presumed to be significant characters. Trailing spaces should be suppressed unless
+  # necessary to satisfy the minimum length requirement."
+  def test_field_string
+    f = X12::Field.new(name = 'test', data_type = 'AN', required = false, min = 1, max = 8, validation = nil)
+    f.content = nil
+    assert_equal('', f.render)
+    assert_equal('', f.parse(f.render))
+
+    f = X12::Field.new(name = 'test', data_type = 'AN', required = false, min = 8, max = 10, validation = nil)
+    f.content = 'test'
+    assert_equal('test    ', f.render)
+    assert_equal(f.content, f.parse(f.render))
+
+    f = X12::Field.new(name = 'test', data_type = 'AN', required = false, min = 1, max = 10, validation = nil)
+    f.content = '    test'
+    assert_equal('    test', f.render)
+    assert_equal(f.content, f.parse(f.render))
+
+  end
+
+
+
 end # TestList

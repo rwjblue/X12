@@ -68,11 +68,10 @@ EOT
       bht.Time = Time.new(0, nil, nil, 17, 26)
     }
 
-    @r.L2000A {|l2000A|
-      l2000A.HL{|hl|
-        hl.HierarchicalIdNumber='1'
-        hl.HierarchicalParentIdNumber=''
-        hl.HierarchicalChildCode='1'
+    @r.L2000A { |l2000A|
+      l2000A.HL{ |hl|
+        hl.HierarchicalIdNumber = '1'
+        hl.HierarchicalChildCode = '1'
       }
 
       l2000A.L2100A {|l2100A|
@@ -97,7 +96,6 @@ EOT
         l2100B.NM1 {|nm1|
           nm1.EntityIdentifierCode1='1P'
           nm1.EntityTypeQualifier='1'
-          nm1.NameLastOrOrganizationName=''
           nm1.IdentificationCodeQualifier='SV'
           nm1.IdentificationCode='daw'
         }

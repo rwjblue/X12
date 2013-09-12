@@ -29,7 +29,7 @@ class Test270FactoryInterchange < Test::Unit::TestCase
 
   @@p = nil
 @@result=<<-EOT
-ISA*03*user      *01*password  *ZZ*0000000Eliginet*ZZ*CHICAGO BLUES*070724*1726*U*00401*230623206*0*T*:~
+ISA*03*user      *01*password  *ZZ*0000000Eliginet*ZZ*CHICAGO BLUES  *070724*1726*U*00401*230623206*0*T*:~
 GS*HS*0000000Eliginet*CHICAGO BLUES*20070724*1726*0*X*004010X092A1~
 ST*270*0000~
 BHT*0022*13*LNKJNFGRWDLR*20070724*1726~
@@ -137,7 +137,6 @@ EOT
     message.L2000A {|l2000A|
       l2000A.HL{|hl|
         hl.HierarchicalIdNumber='1'
-        hl.HierarchicalParentIdNumber=''
         hl.HierarchicalChildCode='1'
       }
 
@@ -163,7 +162,6 @@ EOT
         l2100B.NM1 {|nm1|
           nm1.EntityIdentifierCode1='1P'
           nm1.EntityTypeQualifier='1'
-          nm1.NameLastOrOrganizationName=''
           nm1.IdentificationCodeQualifier='SV'
           nm1.IdentificationCode='daw'
         }
@@ -237,9 +235,9 @@ EOT
       @r.control_number = 230623206
       @r.ISA {|isa|
         isa.AuthorizationInformationQualifier = '03'
-        isa.AuthorizationInformation = 'user      '
+        isa.AuthorizationInformation = 'user'
         isa.SecurityInformationQualifier = '01'
-        isa.SecurityInformation = 'password  '
+        isa.SecurityInformation = 'password'
         isa.InterchangeIdQualifier1 = 'ZZ'
         isa.InterchangeSenderId = '0000000Eliginet'
         isa.InterchangeIdQualifier2 = 'ZZ'
