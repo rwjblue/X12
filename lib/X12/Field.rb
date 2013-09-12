@@ -118,6 +118,7 @@ module X12
       when 'segments_rendered' then get_from_ancestor(:segments_rendered)
       when 'control_number'    then get_from_ancestor(:control_number)
       when 'today'             then Date.today
+      when 'now'               then Time.now
       else nil
       end
     end

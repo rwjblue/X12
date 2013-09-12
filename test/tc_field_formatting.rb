@@ -129,7 +129,7 @@ class FieldFormatting < Test::Unit::TestCase
   end # test_field_time
 
   def test_field_variables
-    Object.const_set :Date2, Date.dup # Save the originl Date class
+    Object.const_set :Date2, Date.dup # Save the original Date class
     def Date.today ; Date.new(2010, 12, 31) ; end # Define dummy method for testing
 
     f = X12::Field.new(name = 'test', data_type = 'DT', required = false, min = 8, max = 8, validation = nil, const_value = nil, var_name = 'today')
@@ -160,7 +160,8 @@ class FieldFormatting < Test::Unit::TestCase
 
     tmp = $-w  
     $-w = nil  # Temporarily suppress warnings
-    Object.const_set :Date, Date2 # Restore the originl Date class
+    Object.const_set :Date, Date2 # Restore the original Date class
+    Object.send(:remove_const, :Date2)
     $-w = tmp
   end
 

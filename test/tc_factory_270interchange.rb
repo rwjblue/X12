@@ -211,70 +211,83 @@ EOT
   def create_fg(message, fg_num, num_of_270)
     groupControlNumber = "00#{fg_num}"
 
-    message.GS {|gs|
-      gs.FunctionalIdentifierCode='HS'
-      gs.ApplicationSendersCode='0000000Eliginet'
-      gs.ApplicationReceiversCode='CHICAGO BLUES'
+    message.GS { |gs|
+      gs.FunctionalIdentifierCode = 'HS'
+      gs.ApplicationSendersCode = '0000000Eliginet'
+      gs.ApplicationReceiversCode = 'CHICAGO BLUES'
       gs.Date = Date.new(2007, 07, 24)
       gs.Time = Time.new(0, nil, nil, 17, 26)
-      gs.GroupControlNumber=groupControlNumber
-      gs.ResponsibleAgencyCode='X'
-      gs.VersionReleaseIndustryIdentifierCode='004010X092A1'
+      gs.GroupControlNumber = groupControlNumber
+      gs.ResponsibleAgencyCode = 'X'
+      gs.VersionReleaseIndustryIdentifierCode = '004010X092A1'
     }
 
-    (1..num_of_270).each{|count|
-      create_270(message._270.repeat, fg_num, count-1)
+    num_of_270.times { |count|
+      create_270(message._270.repeat, fg_num, count)
     }
 
-    message.GE {|ge|
-      ge.NumberOfTransactionSetsIncluded=num_of_270
+    message.GE { |ge|
+      ge.NumberOfTransactionSetsIncluded = num_of_270
       ge.GroupControlNumber=groupControlNumber
     }
   end # create_fg
   
   def test_all
-    @r = @@p.factory('270interchange')
-    @r.ISA {|isa|
-      isa.AuthorizationInformationQualifier = '03'
-      isa.AuthorizationInformation = 'user      '
-      isa.SecurityInformationQualifier = '01'
-      isa.SecurityInformation = 'password  '
-      isa.InterchangeIdQualifier1 = 'ZZ'
-      isa.InterchangeSenderId = '0000000Eliginet'
-      isa.InterchangeIdQualifier2 = 'ZZ'
-      isa.InterchangeReceiverId = 'CHICAGO BLUES'
-      isa.InterchangeDate = Date.new(2007, 07, 24)
-      isa.InterchangeTime = Time.new(0, nil, nil, 17, 26)
-      isa.InterchangeControlStandardsIdentifier = 'U'
-      isa.InterchangeControlVersionNumber = '00401'
-      isa.InterchangeControlNumber = '230623206'
-      isa.AcknowledgmentRuested = '0'
-      isa.UsageIndicator = 'T'
-      isa.ComponentElementSeparator = ':'
-    }
+    Object.const_set :Date2, Date.dup # Save the original Date & Time classes
+    Object.const_set :Time2, Time.dup
+    def Date.today ; Date.new(2007, 07, 24)        ; end # Define dummy method for testing
+    def Time.now   ; Time.new(0, nil, nil, 17, 26) ; end # Define dummy method for testing
 
-    fg_counter = 0
-    @r.FG.repeat {|fg|
-      create_fg(fg, fg_counter, 3)
-      fg_counter += 1
-    }
+    begin
+      @r = @@p.factory('270interchange')
+      @r.ISA {|isa|
+        isa.AuthorizationInformationQualifier = '03'
+        isa.AuthorizationInformation = 'user      '
+        isa.SecurityInformationQualifier = '01'
+        isa.SecurityInformation = 'password  '
+        isa.InterchangeIdQualifier1 = 'ZZ'
+        isa.InterchangeSenderId = '0000000Eliginet'
+        isa.InterchangeIdQualifier2 = 'ZZ'
+        isa.InterchangeReceiverId = 'CHICAGO BLUES'
+        isa.InterchangeControlStandardsIdentifier = 'U'
+        isa.InterchangeControlVersionNumber = '00401'
+        isa.InterchangeControlNumber = '230623206'
+        isa.AcknowledgmentRequested = '0'
+        isa.UsageIndicator = 'T'
+        isa.ComponentElementSeparator = ':'
+      }
 
-    @r.FG.repeat {|fg|
-      create_fg(fg, fg_counter, 2)
-      fg_counter += 1
-    }
+      fg_counter = 0
+      @r.FG.repeat {|fg|
+        create_fg(fg, fg_counter, 3)
+        fg_counter += 1
+      }
 
-    @r.FG.repeat {|fg|
-      create_fg(fg, fg_counter, 1)
-      fg_counter += 1
-    }
+      @r.FG.repeat {|fg|
+        create_fg(fg, fg_counter, 2)
+        fg_counter += 1
+      }
 
-    @r.IEA {|iea|
-      iea.NumberOfIncludedFunctionalGroups=fg_counter
-      iea.InterchangeControlNumber = '230623206'
-    }
+      @r.FG.repeat {|fg|
+        create_fg(fg, fg_counter, 1)
+        fg_counter += 1
+      }
 
-    assert_equal(@@result, @r.render)
+      @r.IEA {|iea|
+        iea.NumberOfIncludedFunctionalGroups=fg_counter
+        iea.InterchangeControlNumber = '230623206'
+      }
+
+      assert_equal(@@result, @r.render)
+    ensure 
+      tmp = $-w  
+      $-w = nil  # Temporarily suppress warnings
+      Object.const_set :Date, Date2 # Restore the original Date & Time classes
+      Object.send(:remove_const, :Date2)
+      Object.const_set :Time, Time2
+      Object.send(:remove_const, :Time2)
+      $-w = tmp
+    end
   end # test_all
 
   def test_timing
