@@ -58,7 +58,7 @@ EOT
   def test_all
     @r = @@p.factory('270')
 
-    @r.control_number = '1001'
+    @r.control_number = 1001
 
     @r.BHT {|bht|
       bht.HierarchicalStructureCode='0022'

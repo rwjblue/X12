@@ -124,9 +124,7 @@ EOT
   end # teardown
 
   def create_270(message, fg_num, mess_num)
-    transactionSetControlNumber = "#{fg_num}00#{mess_num}"
-
-    message.control_number = transactionSetControlNumber
+    message.control_number = "#{fg_num}00#{mess_num}"
 
     message.BHT {|bht|
       bht.HierarchicalStructureCode='0022'
@@ -209,7 +207,7 @@ EOT
   end # create_270
 
   def create_fg(message, fg_num, num_of_270)
-    groupControlNumber = "00#{fg_num}"
+    message.control_number = fg_num
 
     message.GS { |gs|
       gs.FunctionalIdentifierCode = 'HS'
@@ -217,7 +215,6 @@ EOT
       gs.ApplicationReceiversCode = 'CHICAGO BLUES'
       gs.Date = Date.new(2007, 07, 24)
       gs.Time = Time.new(0, nil, nil, 17, 26)
-      gs.GroupControlNumber = groupControlNumber
       gs.ResponsibleAgencyCode = 'X'
       gs.VersionReleaseIndustryIdentifierCode = '004010X092A1'
     }
@@ -228,7 +225,6 @@ EOT
 
     message.GE { |ge|
       ge.NumberOfTransactionSetsIncluded = num_of_270
-      ge.GroupControlNumber=groupControlNumber
     }
   end # create_fg
   
@@ -240,6 +236,7 @@ EOT
 
     begin
       @r = @@p.factory('270interchange')
+      @r.control_number = 230623206
       @r.ISA {|isa|
         isa.AuthorizationInformationQualifier = '03'
         isa.AuthorizationInformation = 'user      '
@@ -251,7 +248,6 @@ EOT
         isa.InterchangeReceiverId = 'CHICAGO BLUES'
         isa.InterchangeControlStandardsIdentifier = 'U'
         isa.InterchangeControlVersionNumber = '00401'
-        isa.InterchangeControlNumber = '230623206'
         isa.AcknowledgmentRequested = '0'
         isa.UsageIndicator = 'T'
         isa.ComponentElementSeparator = ':'
@@ -274,8 +270,7 @@ EOT
       }
 
       @r.IEA {|iea|
-        iea.NumberOfIncludedFunctionalGroups=fg_counter
-        iea.InterchangeControlNumber = '230623206'
+        iea.NumberOfIncludedFunctionalGroups = fg_counter
       }
 
       assert_equal(@@result, @r.render)
