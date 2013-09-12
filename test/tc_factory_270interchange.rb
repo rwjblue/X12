@@ -213,8 +213,6 @@ EOT
       gs.FunctionalIdentifierCode = 'HS'
       gs.ApplicationSendersCode = '0000000Eliginet'
       gs.ApplicationReceiversCode = 'CHICAGO BLUES'
-      gs.Date = Date.new(2007, 07, 24)
-      gs.Time = Time.new(0, nil, nil, 17, 26)
       gs.ResponsibleAgencyCode = 'X'
       gs.VersionReleaseIndustryIdentifierCode = '004010X092A1'
     }
