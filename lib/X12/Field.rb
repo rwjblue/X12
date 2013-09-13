@@ -57,10 +57,7 @@ module X12
 
     # Returns string representation of the field's content formatted to X12 specs
     def render(root = self)
-      val = @content ||
-              if    is_constant? then @const_value
-              elsif is_variable? then var_value
-              end
+      val = raw_value
 
       return '' if val.nil?
 
@@ -99,13 +96,16 @@ module X12
       !@content.nil?
     end
 
-    # Constants are always pre-set, so if @content is nil, then it's definitely not a constant.
     def is_constant?
       !@const_value.nil?
     end
 
     def is_variable?
       !@var_name.nil?
+    end
+
+    def raw_value
+      @content || @const_value || var_value
     end
 
     def get_from_ancestor(meth)

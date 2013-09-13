@@ -88,6 +88,8 @@
     
     <li><a href="#method-i-proper_regexp">#proper_regexp</a>
     
+    <li><a href="#method-i-raw_value">#raw_value</a>
+    
     <li><a href="#method-i-render">#render</a>
     
     <li><a href="#method-i-set_empty-21">#set_empty!</a>
@@ -433,7 +435,7 @@
 
           
           <div class="method-source-code" id="has_content-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 98</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 95</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_content?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@content</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -488,13 +490,12 @@
 
         <div class="method-description">
           
-          <p>Constants are always pre-set, so if @content is nil, then it’s definitely
-not a constant.</p>
+          
           
 
           
           <div class="method-source-code" id="is_constant-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 103</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">is_constant?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@const_value</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -524,7 +525,7 @@ not a constant.</p>
 
           
           <div class="method-source-code" id="is_variable-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 107</span>
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 103</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">is_variable?</span>
   <span class="ruby-operator">!</span><span class="ruby-ivar">@var_name</span>.<span class="ruby-identifier">nil?</span>
 <span class="ruby-keyword">end</span></pre>
@@ -623,6 +624,36 @@ separator and segment separator as arguments</p>
       </div><!-- proper_regexp-method -->
 
     
+      <div id="method-i-raw_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">raw_value</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="raw_value-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 107</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">raw_value</span>
+  <span class="ruby-ivar">@content</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@const_value</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">var_value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- raw_value-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- raw_value-method -->
+
+    
       <div id="method-i-render" class="method-detail ">
         
         <div class="method-heading">
@@ -642,10 +673,7 @@ href="../X12.html">X12</a> specs</p>
           <div class="method-source-code" id="render-source">
             <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 59</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
-  <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@content</span> <span class="ruby-operator">||</span>
-          <span class="ruby-keyword">if</span>    <span class="ruby-identifier">is_constant?</span> <span class="ruby-keyword">then</span> <span class="ruby-ivar">@const_value</span>
-          <span class="ruby-keyword">elsif</span> <span class="ruby-identifier">is_variable?</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">var_value</span>
-          <span class="ruby-keyword">end</span>
+  <span class="ruby-identifier">val</span> = <span class="ruby-identifier">raw_value</span>
 
   <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">nil?</span>
 

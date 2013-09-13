@@ -36,4 +36,5 @@
   <Entry name="10" value="Exclusion Condition Violated"/>
   <Entry name="12" value="Too Many Repetitions"/>
   <Entry name="13" value="Too Many Components"/>
+  <Entry name="16" value="Composite Data Structure Contains Excess Trailing Delimiters"/>
 </Table>

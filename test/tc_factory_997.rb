@@ -33,7 +33,7 @@ ST*997*2878~
 AK1*HS*293328532~
 AK2*270*~
 AK3*NM1**L1000D~
-AK4***55*Bad element~
+AK4***6*Bad element~
 AK5*A~
 AK3*DMG*0*L1010*22~
 AK4*0**0~
@@ -41,7 +41,7 @@ AK4*0**1~
 AK4*1**0~
 AK4*1**1~
 AK5*E****999~
-AK9****~
+AK9*E*1*1*0~
 SE*14*2878~
 EOT
 
@@ -68,7 +68,7 @@ EOT
       ak1.GroupControlNumber       = 293328532
     }
 
-    @r.L1000.L1010.AK4.DataElementSyntaxErrorCode=55
+    @r.L1000.L1010.AK4.DataElementSyntaxErrorCode = 6
     @r.L1000.AK2.TransactionSetIdentifierCode = 270
     @r.L1000.L1010 {|l|
       l.AK3 {|s|
@@ -119,6 +119,14 @@ EOT
       } # a
     } # l1000
 
+    @r.AK9{ |a|
+      a.FunctionalGroupAcknowledgeCode = 'E'
+      a.NumberOfTransactionSetsIncluded = 1
+      a.NumberOfReceivedTransactionSets = 1
+      a.NumberOfAcceptedTransactionSets = 0
+    } # a
+
+    assert_equal(true, @@p.validate(@r))
     assert_equal(@@result, @r.render)
   end # test_all
 

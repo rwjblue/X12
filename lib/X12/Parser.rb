@@ -53,6 +53,7 @@ module X12
 
     # Creates a parser out of a definition
     def initialize(file_name)
+      @error = nil
       load_definitions(file_name)
       #puts PP.pp(self, '')
     end # initialize
@@ -119,6 +120,55 @@ module X12
       return loop
     end # factory
 
+    # Validates the X12 document. Returns true if the document is valid, false otherwise;
+    # use 'error' method to access the error message.
+    def validate(doc)
+      @error = nil
+
+      doc.nodes.each { |node|
+        case node
+        when X12::Field then
+          if node.validation then
+            table = @x12_definition[X12::Table] && @x12_definition[X12::Table][node.validation]
+            if table.nil?
+              @error = "#{node.parent.name}/#{node.name}: No validation table defined for #{node.validation}"
+              return false
+            end
+
+            val = node.raw_value
+            if val.nil? then
+              if node.required then
+                @error = "#{node.parent.name}/#{node.name}: Field required but not present"
+                return false
+              end
+            else
+              val2 = node.render
+              unless table.has_key?(val2)
+                @error = "#{node.parent.name}/#{node.name}: Value [#{val}] not in validation table #{node.validation}" 
+                return false
+              end
+
+              if val2.length > node.max_length then
+                @error = "#{node.parent.name}/#{node.name}: Value [#{val2}] too long (max_length=#{node.max_length})"
+                return false
+              end
+            end
+          end
+        else 
+          if node.has_content? then
+            return false unless validate(node)
+          end
+        end
+      }
+
+      true
+    end
+
+    # Validates the X12 document and raises the Exception if invalid.
+    def validate!(doc)
+      raise Exception.new(@error) unless validate(doc)
+    end
+
     private
 
     # Recursively scan the loop and instantiate fields' definitions for all its
@@ -127,8 +177,7 @@ module X12
       loop.nodes.each{ |node|
         case node
           when X12::Loop    then process_loop(node)
-          when X12::Segment then process_segment(node) unless node.nodes.size > 0
-          else return
+          when X12::Segment then process_segment(node) 
         end
       }
     end
@@ -137,30 +186,35 @@ module X12
     def process_segment(segment)
       #puts "Trying to process segment #{segment.inspect}"
 
-      segment_definition = @x12_definition[X12::Segment] && @x12_definition[X12::Segment][segment.name]
+      # If segment is already populated, do not overload.
+      unless segment.nodes.size > 0
+        segment_definition = @x12_definition[X12::Segment] && @x12_definition[X12::Segment][segment.name]
 
-      if segment_definition.nil? then
-        # If it's not already loaded, attempt to load it from a library file
-        load_definitions(segment.name + '.xml')
-        segment_definition = @x12_definition[X12::Segment][segment.name]
+        if segment_definition.nil? then
+          # If it's not already loaded, attempt to load it from a library file
+          load_definitions(segment.name + '.xml')
+          segment_definition = @x12_definition[X12::Segment][segment.name]
+        end
+
+        throw Exception.new("Cannot find a definition for segment #{segment.name}") if segment_definition.nil?
+
+        segment_definition.nodes.each_index { |i|
+          segment.nodes[i] = segment_definition.nodes[i]
+        }
+
+        segment.apply_overrides
       end
 
-      throw Exception.new("Cannot find a definition for segment #{segment.name}") if segment_definition.nil?
-
-      segment_definition.nodes.each_index { |i|
-        segment.nodes[i] = segment_definition.nodes[i]
-
+      segment.nodes.each { |node|
         # Make sure we have the validation table if any for this field. Try to read one in if missing.
-        table = segment.nodes[i].validation
-        if table
+        table = node.validation
+        if table then
           unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
             load_definitions(table + '.xml')
             throw Exception.new("Cannot find a definition for table #{table}") unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
           end
         end
       }
-
-      segment.apply_overrides
     end
 
   end # Parser
