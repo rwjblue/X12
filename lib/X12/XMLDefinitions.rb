@@ -57,7 +57,7 @@ module X12
       return case s
              when nil then false
              when ""  then false
-             when /(^y(es)?$)|(^t(rue)?$)|(^1$)/i  then  true
+             when /(^y(es)?$)|(^t(rue)?$)|(^1$)/i  then true
              when /(^no?$)|(^f(alse)?$)|(^0$)/i    then false
              else
                nil
@@ -66,7 +66,7 @@ module X12
 
     def parse_type(s)
       return case s
-             when nil               then 'AN'
+             when nil               then nil
              when 'date'            then 'DT' # Date in [CC]YYMMDD format
              when 'time'            then 'TM' # Time in HHMM[SS[D[D]]] format
              when /^C.+$/           then s    # Composite value
@@ -74,39 +74,51 @@ module X12
              when /^l(ong)?$/i      then 'N0' # Long integer, same as N0
              when /^d(ouble)?$/i    then 'R'  # Real. But sometimes in misc/*.xml, it's also N1, N2, N4 -- need to fix!
              when /^s(tr(ing)?)?$/i then 'AN' # Implied. Not actually used anywhere in misc/*.xml
-             else
-               nil
+             else :unknown
              end # case
     end #parse_type
 
     def parse_int(s)
       return case s
-             when nil             then 0
+             when nil             then nil
              when /^\d+$/         then s.to_i
              when /^inf(inite)?$/ then 999999
-             else
-               nil
+             else :unknown
              end # case
     end #parse_int
 
-    def parse_attributes(e)
+    def parse_attributes(e, override = false)
       throw Exception.new("No name attribute found for : #{e.inspect}")          unless name = e.attributes["name"] 
-      throw Exception.new("Cannot parse attribute 'min' for: #{e.inspect}")      unless min = parse_int(e.attributes["min"])
-      throw Exception.new("Cannot parse attribute 'max' for: #{e.inspect}")      unless max = parse_int(e.attributes["max"])
-      throw Exception.new("Cannot parse attribute 'type' for: #{e.inspect}")     unless type = parse_type(e.attributes["type"])
-      throw Exception.new("Cannot parse attribute 'required' for: #{e.inspect}") if (required = parse_boolean(e.attributes["required"])).nil?
+
+      min = parse_int(e.attributes["min"])
+      max = parse_int(e.attributes["max"])
+      type = parse_type(e.attributes["type"])
+      required = parse_boolean(e.attributes["required"])
+
+      # It is OK for override fields to have their components to be nil; it simply means that
+      #   those components are not being overridden and must be carried over from the original field.
+      unless override
+        throw Exception.new("Cannot parse attribute 'min' for: #{e.inspect}")  if min == :unknown
+        throw Exception.new("Cannot parse attribute 'max' for: #{e.inspect}")  if max == :unknown
+        throw Exception.new("Cannot parse attribute 'type' for: #{e.inspect}") if type == :unknown
+
+        # Populate defaults
+        min  ||= 0
+        max  ||= 999999
+        type ||= 'AN'
+
+        min = 1 if required and min < 1
+      end
       
       validation = e.attributes["validation"]
       const_value = e.attributes["const"]
       var_name = e.attributes["var"]
-      min = 1 if required and min < 1
-      max = 999999 if max == 0
 
       return name, min, max, type, required, validation, const_value, var_name
     end # parse_attributes
 
-    def parse_field(e)
-      name, min, max, type, required, validation, const_value, var_name = parse_attributes(e)
+    def parse_field(e, override = false)
+      name, min, max, type, required, validation, const_value, var_name = parse_attributes(e, override)
 
       Field.new(name, type, required, min, max, validation, const_value, var_name)
     end # parse_field
@@ -114,10 +126,12 @@ module X12
     def parse_table(e)
       name, min, max, type, required, validation = parse_attributes(e)
 
-      content = e.get_elements("Entry").inject({}) {|t, entry|
-        t[entry.attributes["name"]] = entry.attributes["value"]
-        t
+      content = {}
+
+      e.get_elements("Entry").each { |entry|
+        content[entry.attributes["name"]] = entry.attributes["value"]
       }
+
       Table.new(name, content)
     end
 
@@ -127,7 +141,7 @@ module X12
       fields = e.get_elements("Field").collect { |field| parse_field(field) }
 
       initial_segment = parse_boolean(e.attributes["initial_segment"])
-      overrides = e.get_elements("Override").collect { |override| parse_field(override) }
+      overrides = e.get_elements("Override").collect { |override| parse_field(override, true) }
       s = Segment.new(name, fields, Range.new(min, max), initial_segment, overrides)
       s
     end

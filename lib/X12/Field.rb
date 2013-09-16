@@ -37,8 +37,8 @@ module X12
       @name        = name       
       @data_type   = data_type       
       @required    = required
-      @min_length  = min_length.to_i
-      @max_length  = max_length.to_i 
+      @min_length  = min_length
+      @max_length  = max_length
       @validation  = validation
       @content     = nil
       @const_value = const_value
@@ -46,7 +46,10 @@ module X12
     end
 
     def apply_overrides(override_field)
-      self.class.new(@name, @data_type, @required, @min_length, @max_length, @validation,
+      self.class.new(@name, @data_type, @required,
+                     override_field.min_length || @min_length,
+                     override_field.max_length || @max_length,
+                     @validation,
                      override_field.const_value || @const_value, @var_name)
     end
 
