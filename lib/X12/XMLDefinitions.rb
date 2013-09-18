@@ -88,7 +88,7 @@ module X12
     end #parse_int
 
     def parse_attributes(e, override = false)
-      throw Exception.new("No name attribute found for : #{e.inspect}")          unless name = e.attributes["name"] 
+      throw Exception.new("No name attribute found for : #{e.inspect}") unless name = e.attributes["name"] 
 
       min      = parse_int(e.attributes["min"])
       max      = parse_int(e.attributes["max"])
@@ -117,7 +117,8 @@ module X12
                :required    => required,
                :validation  => e.attributes["validation"],
                :const_value => e.attributes["const"],
-               :var_name    => e.attributes["var"] }
+               :var_name    => e.attributes["var"],
+               :alias       => e.attributes["alias"] }
     end # parse_attributes
 
     def parse_field(e, override = false)

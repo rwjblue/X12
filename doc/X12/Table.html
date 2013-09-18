@@ -180,7 +180,7 @@
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(name, name_values)</span>
+            class="method-args">(params, nodes)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -193,9 +193,9 @@
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/X12/Table.rb, line 34</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">name_values</span>)
-  <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">name</span>       
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">name_values</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span>, <span class="ruby-identifier">nodes</span>)
+  <span class="ruby-ivar">@name</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:name</span>]
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">merge!</span>(<span class="ruby-identifier">nodes</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           

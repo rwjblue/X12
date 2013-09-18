@@ -55,7 +55,7 @@ module X12
     def find(name)
       #puts "Finding [#{name}] in #{self.class} #{name}"
       # Breadth first
-      res = nodes.find{ |n| name == n.name }
+      res = nodes.find{ |n| name == n.name || name == n.alias }
       return res if res
       # Depth now
       nodes.each{|i| 

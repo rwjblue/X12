@@ -30,17 +30,18 @@ module X12
 
   class Base
 
-    attr_reader :name, :repeats
+    attr_reader :name, :alias, :repeats
     attr_accessor :segment_separator, :field_separator, :composite_separator, :next_repeat, :parsed_str, :nodes, :parent
 
     # Creates a new base element with a given name, array of sub-elements, and array of repeats if any.
     def initialize(params = {}, nodes = [])
-      @name = params[:name]
-      @nodes = nodes.each { |n| n.parent = self }
-      @repeats = Range.new(params[:min], params[:max])
+      @name        = params[:name]
+      @alias       = params[:alias]
+      @nodes       = nodes.each { |n| n.parent = self }
+      @repeats     = Range.new(params[:min], params[:max])
       @next_repeat = nil        # Next repeat of the same element, if any
-      @parsed_str = nil
-      @parent = nil
+      @parsed_str  = nil
+      @parent      = nil
       @segment_separator   = '~'
       @field_separator     = '*'
       @composite_separator = ':'
