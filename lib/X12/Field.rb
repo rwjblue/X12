@@ -32,25 +32,28 @@ module X12
     attr_accessor :content, :parent
 
     # Create a new field with given parameters
-    def initialize(name, data_type, required, min_length, max_length, validation, const_value = nil, var_name = nil)
-      @parent      = nil
-      @name        = name       
-      @data_type   = data_type       
-      @required    = required
-      @min_length  = min_length
-      @max_length  = max_length
-      @validation  = validation
+    def initialize(params = {})
       @content     = nil
-      @const_value = const_value
-      @var_name    = var_name
+      @parent      = nil
+      @name        = params[:name]
+      @data_type   = params[:data_type]
+      @required    = params[:required] || false
+      @min_length  = params[:min]
+      @max_length  = params[:max]
+      @validation  = params[:validation]
+      @const_value = params[:const_value]
+      @var_name    = params[:var_name]
     end
 
     def apply_overrides(override_field)
-      self.class.new(@name, @data_type, @required,
-                     override_field.min_length || @min_length,
-                     override_field.max_length || @max_length,
-                     @validation,
-                     override_field.const_value || @const_value, @var_name)
+      self.class.new({ :name        => @name,
+                       :data_type   => @data_type,
+                       :required    => @required,
+                       :min         => override_field.min_length || @min_length,
+                       :max         => override_field.max_length || @max_length,
+                       :validation  => @validation,
+                       :const_value => override_field.const_value || @const_value,
+                       :var_name    => @var_name })
     end
 
     # Returns printable string with field's content

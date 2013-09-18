@@ -43,27 +43,27 @@ class FieldFormatting < Test::Unit::TestCase
   # value 0.0001 would be transmitted as '0001'. For an N4 data element with the minimum length of
   # 1, the value 0.0001 would be transmitted '1'."
   def test_field_numeric
-    f = X12::Field.new(name = 'test', data_type = 'N4', required = false, min = 4, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'N4', :min => 4, :max => 8 })
     f.content = 0.0001
     assert_equal('0001', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'N4', required = false, min = 1, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'N4', :min => 1, :max => 8 })
     f.content = 0.0001
     assert_equal('1', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'N4', required = false, min = 1, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'N4', :min => 1, :max => 8 })
     f.content = 1234.5678
     assert_equal('12345678', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'N2', required = false, min = 1, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'N2', :min => 1, :max => 8 })
     f.content = -12.34
     assert_equal('-1234', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'N0', required = false, min = 8, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'N0', :min => 8, :max => 8 })
     f.content = 123
     assert_equal('00000123', f.render)
     assert_equal(f.content, f.parse(f.render))
@@ -73,7 +73,7 @@ class FieldFormatting < Test::Unit::TestCase
   # The decimal point is optional for integer values but required for fractional values. A leading + or -
   # sign may be used. The minus sign must be used for negative values."
   def test_field_real
-    f = X12::Field.new(name = 'test', data_type = 'R', required = false, min = 1, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'R', :min => 1, :max => 8 })
     f.content = 1234.56
     assert_equal('1234.56', f.render)
     assert_equal(f.content, f.parse(f.render))
@@ -81,12 +81,12 @@ class FieldFormatting < Test::Unit::TestCase
 
   # "DT: Numeric date in the form CCYYMMDD."
   def test_field_date
-    f = X12::Field.new(name = 'test', data_type = 'DT', required = false, min = 8, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'DT', :min => 8, :max => 8 })
     f.content = Date.new(2013, 01, 23)
     assert_equal('20130123', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'DT', required = false, min = 6, max = 6, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'DT', :min => 6, :max => 6 })
     f.content = Date.new(2013, 01, 23)
     assert_equal('130123', f.render)
     assert_equal(f.content, f.parse(f.render))
@@ -94,35 +94,35 @@ class FieldFormatting < Test::Unit::TestCase
 
   # "TM: Numeric time in the form HHMM. Time is represented in 24-hour clock format."
   def test_field_time
-    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 4, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'TM', :min => 4, :max => 4 })
     f.content = Time.new(0, nil, nil, 17, 26)
     assert_equal('1726', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'TM', :min => 4, :max => 8 })
     f.content = Time.new(0, nil, nil, 17, 26, 0)
     assert_equal('1726', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 6, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'TM', :min => 4, :max => 6 })
     f.content = Time.new(0, nil, nil, 17, 26, 30.25)
     assert_equal('172630', f.render)
 
-    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'TM', :min => 4, :max => 8 })
     f.content = Time.new(0, nil, nil, 17, 26, 30)
     assert_equal('172630', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 6, max = 7, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'TM', :min => 6, :max => 7 })
     f.content = Time.new(0, nil, nil, 17, 26, 30.25)
     assert_equal('1726302', f.render)
 
-    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 4, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'TM', :min => 4, :max => 8 })
     f.content = Time.new(0, nil, nil, 17, 26, 30.25)
     assert_equal('17263025', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'TM', required = false, min = 8, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'TM', :min => 8, :max => 8 })
     f.content = Time.new(0, nil, nil, 17, 26)
     assert_equal('17260000', f.render)
     assert_equal(f.content, f.parse(f.render))
@@ -132,12 +132,12 @@ class FieldFormatting < Test::Unit::TestCase
     Object.const_set :Date2, Date.dup # Save the original Date class
     def Date.today ; Date.new(2010, 12, 31) ; end # Define dummy method for testing
 
-    f = X12::Field.new(name = 'test', data_type = 'DT', required = false, min = 8, max = 8, validation = nil, const_value = nil, var_name = 'today')
+    f = X12::Field.new({ :name => 'test', :data_type => 'DT', :min => 8, :max => 8, :var_name => 'today' })
     dt = Date.today
     assert_equal('20101231', f.render)
     assert_equal(dt, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'DT', required = false, min = 6, max = 6, validation = nil, const_value = nil, var_name = 'today')
+    f = X12::Field.new({ :name => 'test', :data_type => 'DT', :min => 6, :max => 6, :var_name => 'today' })
     dt = Date.today
     assert_equal('101231', f.render)
     assert_equal(dt, f.parse(f.render))
@@ -146,9 +146,9 @@ class FieldFormatting < Test::Unit::TestCase
     assert_equal('130123', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f1 = X12::Field.new(name = 'test1', data_type = 'N', required = false, min = 4, max = 4, validation = nil, const_value = nil, var_name = 'segments_rendered')
-    f2 = X12::Field.new(name = 'test2', data_type = 'N', required = false, min = 4, max = 4, validation = nil, const_value = nil, var_name = 'control_number')
-    l = X12::Loop.new('test', [ f1, f2 ], 1..1 )
+    f1 = X12::Field.new({ :name => 'test1', :data_type => 'N', :min => 4, :max => 4, :var_name => 'segments_rendered' })
+    f2 = X12::Field.new({ :name => 'test2', :data_type => 'N', :min => 4, :max => 4, :var_name => 'control_number' })
+    l = X12::Loop.new({ :name => 'test', :min => 1, :max => 1 }, [ f1, f2 ] )
 
     l.segments_rendered = rand(1000)
     assert_equal("%04d" % l.segments_rendered, f1.render)
@@ -172,23 +172,20 @@ class FieldFormatting < Test::Unit::TestCase
   # are presumed to be significant characters. Trailing spaces should be suppressed unless
   # necessary to satisfy the minimum length requirement."
   def test_field_string
-    f = X12::Field.new(name = 'test', data_type = 'AN', required = false, min = 1, max = 8, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'AN', :min => 1, :max => 8 })
     f.content = nil
     assert_equal('', f.render)
     assert_equal('', f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'AN', required = false, min = 8, max = 10, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'AN', :min => 8, :max => 10 })
     f.content = 'test'
     assert_equal('test    ', f.render)
     assert_equal(f.content, f.parse(f.render))
 
-    f = X12::Field.new(name = 'test', data_type = 'AN', required = false, min = 1, max = 10, validation = nil)
+    f = X12::Field.new({ :name => 'test', :data_type => 'AN', :min => 1, :max => 10 })
     f.content = '    test'
     assert_equal('    test', f.render)
     assert_equal(f.content, f.parse(f.render))
-
   end
-
-
 
 end # TestList

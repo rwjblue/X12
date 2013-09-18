@@ -90,9 +90,9 @@ module X12
     def parse_attributes(e, override = false)
       throw Exception.new("No name attribute found for : #{e.inspect}")          unless name = e.attributes["name"] 
 
-      min = parse_int(e.attributes["min"])
-      max = parse_int(e.attributes["max"])
-      type = parse_type(e.attributes["type"])
+      min      = parse_int(e.attributes["min"])
+      max      = parse_int(e.attributes["max"])
+      type     = parse_type(e.attributes["type"])
       required = parse_boolean(e.attributes["required"])
 
       # It is OK for override fields to have their components to be nil; it simply means that
@@ -110,63 +110,52 @@ module X12
         min = 1 if required and min < 1
       end
       
-      validation = e.attributes["validation"]
-      const_value = e.attributes["const"]
-      var_name = e.attributes["var"]
-
-      return name, min, max, type, required, validation, const_value, var_name
+      return { :name        => name,
+               :min         => min,
+               :max         => max,
+               :data_type   => type,
+               :required    => required,
+               :validation  => e.attributes["validation"],
+               :const_value => e.attributes["const"],
+               :var_name    => e.attributes["var"] }
     end # parse_attributes
 
     def parse_field(e, override = false)
-      name, min, max, type, required, validation, const_value, var_name = parse_attributes(e, override)
-
-      Field.new(name, type, required, min, max, validation, const_value, var_name)
+      Field.new(parse_attributes(e, override))
     end # parse_field
 
     def parse_table(e)
-      name, min, max, type, required, validation = parse_attributes(e)
-
       content = {}
 
       e.get_elements("Entry").each { |entry|
         content[entry.attributes["name"]] = entry.attributes["value"]
       }
 
-      Table.new(name, content)
+      Table.new(parse_attributes(e), content)
     end
 
     def parse_segment(e)
-      name, min, max, type, required, validation = parse_attributes(e)
-
-      fields = e.get_elements("Field").collect { |field| parse_field(field) }
-
-      initial_segment = parse_boolean(e.attributes["initial_segment"])
-      overrides = e.get_elements("Override").collect { |override| parse_field(override, true) }
-      s = Segment.new(name, fields, Range.new(min, max), initial_segment, overrides)
+      params = parse_attributes(e)
+      params[:overrides] = e.get_elements("Override").collect { |override| parse_field(override, true) }
+      params[:initial_segment] = parse_boolean(e.attributes["initial_segment"])
+      s = Segment.new(params, e.get_elements("Field").collect { |field| parse_field(field) })
       s
     end
 
     def parse_composite(e)
-      name, min, max, type, required, validation = parse_attributes(e)
-
-      fields = e.get_elements("Field").collect { |field| parse_field(field) }
-      Composite.new(name, fields)
+      Composite.new(parse_attributes(e), e.get_elements("Field").collect { |field| parse_field(field) })
     end
 
     def parse_loop(e)
-      name, min, max, type, required, validation = parse_attributes(e)
-
-      nodes = []
-
-      e.elements.to_a.each { |element|
+      params = parse_attributes(e)
+      nodes = e.elements.collect { |element|
         case element.name
-        when /loop/i    then nodes << parse_loop(element)
-        when /segment/i then nodes << parse_segment(element)
+        when /loop/i    then parse_loop(element)
+        when /segment/i then parse_segment(element)
         else throw Exception.new("Cannot recognize syntax for: #{element.inspect} in loop #{e.inspect}")
         end
       }
-
-      Loop.new(name, nodes, Range.new(min, max))
+      Loop.new(params, nodes)
     end
 
   end # Parser

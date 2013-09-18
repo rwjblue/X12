@@ -31,9 +31,9 @@ module X12
     # Flag denoting the segment from which should reset the rendered segment counter (usually that would be ST)
     attr_reader :initial_segment
 
-    def initialize(name, nodelist, repeats = nil, initial_segment = false, overrides = [])
-      @initial_segment = initial_segment
-      @overrides = overrides
+    def initialize(params, nodes)
+      @initial_segment = params[:initial_segment] || false
+      @overrides = params[:overrides] || []
       super
     end
 

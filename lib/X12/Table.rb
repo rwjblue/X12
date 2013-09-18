@@ -31,9 +31,9 @@ module X12
     attr_reader :name
 
     # Create a new table with given name and hash content.
-    def initialize(name, name_values)
-      @name = name       
-      self.merge!(name_values)
+    def initialize(params, nodes)
+      @name = params[:name]
+      self.merge!(nodes)
     end
 
     # Return a printable string representing this table

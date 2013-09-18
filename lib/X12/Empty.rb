@@ -31,7 +31,7 @@ module X12
 
     # Create a new empty
     def initialize
-      super(nil, [])
+      super
     end
 
     def render
