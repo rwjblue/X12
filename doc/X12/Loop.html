@@ -376,7 +376,7 @@ their respective values.</p>
   <span class="ruby-identifier">hsh</span> = {}
 
   <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>] = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_hsh</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>] = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_hsh</span> } <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>.<span class="ruby-identifier">nil?</span>
   }
 
   <span class="ruby-identifier">hsh</span>
