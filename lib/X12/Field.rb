@@ -47,6 +47,7 @@ module X12
     end
 
     def apply_overrides(override_field)
+puts "--> #{override_field.alias}"
       self.class.new({ :name        => @name,
                        :data_type   => @data_type,
                        :required    => @required,
@@ -132,9 +133,12 @@ module X12
       case @var_name
       when 'segments_rendered' then get_from_ancestor(:segments_rendered)
       when 'control_number'    then get_from_ancestor(:control_number)
-      when 'fg_count'          then parent.parent.FG.size
       when 'today'             then Date.today
       when 'now'               then Time.now
+      when 'fg_count'          then 
+        loop = parent && parent.parent
+        groups = loop && loop.FG
+        groups && groups.size
       else nil
       end
     end

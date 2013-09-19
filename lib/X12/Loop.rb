@@ -101,7 +101,7 @@ module X12
       hsh = {}
 
       nodes.each { |node|
-        hsh[node.alias] = node.to_hsh unless node.alias.nil?
+        hsh[node.alias] = node.to_a.collect { |n| n.to_hsh } unless node.alias.nil?
       }
 
       hsh

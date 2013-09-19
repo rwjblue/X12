@@ -53,17 +53,17 @@
   </Segment>
 
   <Segment name="AK3" comment="To report errors in a data segment and identify the location of the data segment">
-    <Field name="SegmentIdCode" required="y" min="2" max="3" comment="Code defining the segment ID of the data segment in error (See Appendix A - Number 77)"/>
-    <Field name="SegmentPositionInTransactionSet" required="y" type="long" min="1" max="6" comment="The numerical count position of this data segment from the start of the transaction set: the transaction set header is count position 1"/>
+    <Field name="SegmentIdCode" alias="segment" required="y" min="2" max="3" comment="Code defining the segment ID of the data segment in error (See Appendix A - Number 77)"/>
+    <Field name="SegmentPositionInTransactionSet" alias="position" required="y" type="long" min="1" max="6" comment="The numerical count position of this data segment from the start of the transaction set: the transaction set header is count position 1"/>
     <Field name="LoopIdentifierCode" required="n" min="1" max="6" comment="The loop ID number given on the transaction set diagram is the value for this data element in segments LS and LE"/>
-    <Field name="SegmentSyntaxErrorCode" required="n" min="1" max="3" validation="T720" comment="Code indicating error found based on the syntax editing of a segment"/>
+    <Field name="SegmentSyntaxErrorCode" alias="error" required="n" min="1" max="3" validation="T720" comment="Code indicating error found based on the syntax editing of a segment"/>
   </Segment>
 
   <Segment name="AK4" comment="To report errors in a data element or composite data structure and identify the location of the data element">
-    <Field name="PositionInSegment"          type="C030" required="y" min="0" max="inf" comment="Code indicating the relative position of the simple data element or composite data structure in error within a segment, count beginning with 1 for the position immediately following the segment ID; additionally indicating the relative position of a repeating structure in error, count beginning with 1 for the position immediately following the preceding element separator; additionally indicating the relative position of a component of a composite data structure in error, count beginning with 1 for the position following the preceding element or repetition separator"/>
-    <Field name="DataElementReferenceNumber" type="long" required="n" min="1" max="4" comment="Reference number used to locate the data element in the Data Element Dictionary"/>
-    <Field name="DataElementSyntaxErrorCode"             required="y" min="1" max="3" validation="T723" comment="Code indicating the error found after syntax edits of a data element"/>
-    <Field name="CopyOfBadDataElement"                   required="n" min="1" max="99" comment="This is a copy of the data element in error"/>
+    <Field name="PositionInSegment"          type="C030" alias="position" required="y" min="0" max="inf" comment="Code indicating the relative position of the simple data element or composite data structure in error within a segment, count beginning with 1 for the position immediately following the segment ID; additionally indicating the relative position of a repeating structure in error, count beginning with 1 for the position immediately following the preceding element separator; additionally indicating the relative position of a component of a composite data structure in error, count beginning with 1 for the position following the preceding element or repetition separator"/>
+    <Field name="DataElementReferenceNumber" type="long" alias="bad_element" required="n" min="1" max="4" comment="Reference number used to locate the data element in the Data Element Dictionary"/>
+    <Field name="DataElementSyntaxErrorCode"             alias="error" required="y" min="1" max="3" validation="T723" comment="Code indicating the error found after syntax edits of a data element"/>
+    <Field name="CopyOfBadDataElement"                   alias="bad_value" required="n" min="1" max="99" comment="This is a copy of the data element in error"/>
   </Segment>
 
   <Segment name="AK5" comment="To acknowledge acceptance or rejection and report errors in a transaction set">
@@ -98,11 +98,11 @@
       <Field name="TransactionSetControlNumber" min="4" max="9" comment="Identifying control number that must be unique within the transaction set functional group assigned by the originator for a transaction set"/>
     </Segment>
     <Segment name="AK1" max="1"/>
-    <Loop name="L1000" max="999999" required="y">
+    <Loop name="L1000" alias="functional_group_response" max="999999" required="y">
       <Segment name="AK2" max="1" required="n"/>
-      <Loop name="L1010" max="999999" required="n">
-        <Segment name="AK3" max="1" required="n"/>
-        <Segment name="AK4" max="99" required="n"/>
+      <Loop name="L1010" alias="transactional_set_response" max="999999" required="n">
+        <Segment name="AK3" alias="data_segment_note" max="1" required="n"/>
+        <Segment name="AK4" alias="data_element_note" max="99" required="n"/>
       </Loop>
       <Segment name="AK5" max="1" required="y"/>
     </Loop>

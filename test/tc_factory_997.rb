@@ -49,7 +49,7 @@ EOT
 
   def setup
     unless @@p
-      # @@p = X12::Parser.new('misc/997single.xml')
+#      @@p = X12::Parser.new('misc/997single.xml')
       @@p = X12::Parser.new('misc/997.xml')
     end
   end # setup
@@ -91,18 +91,18 @@ EOT
     } # a
 
     # Should be two repeats in total
-    @r.L1000.repeat {|l1000|
-      (0..1).each {|loop_repeat| # Two repeats of the loop L1010
-        l1000.L1010.repeat {|l1010|
+    @r.L1000.repeat { |l1000|
+      (0..1).each { |loop_repeat| # Two repeats of the loop L1010
+        l1000.L1010.repeat { |l1010|
 
-          l1010.AK3 {|s|
+          l1010.AK3 { |s|
             s.SegmentIdCode                   = 'DMG'
             s.SegmentPositionInTransactionSet = 0
             s.LoopIdentifierCode              = 'L1010'
             s.SegmentSyntaxErrorCode          = 22
           } if loop_repeat == 0 # AK3 only in the first repeat of L1010
 
-          (0..1).each {|ak4_repeat| # Two repeats of the segment AK4
+          2.times { |ak4_repeat| # Two repeats of the segment AK4
             l1010.AK4.repeat {|s|
               s.PositionInSegment          = loop_repeat
               #s.DataElementReferenceNumber = 
