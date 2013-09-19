@@ -84,6 +84,8 @@
     
     <li><a href="#method-i-render">#render</a>
     
+    <li><a href="#method-i-to_hsh">#to_hsh</a>
+    
   </ul>
 </nav>
 
@@ -275,7 +277,7 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 113</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 127</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">content</span>
@@ -306,14 +308,14 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="find_field-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 119</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 133</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">field_name</span>)
   <span class="ruby-comment">#puts &quot;Finding field [#{field_name}] in #{self.class} #{name}&quot;</span>
 
   <span class="ruby-comment"># If the segment hasn't been parsed yet, let's parse it</span>
   <span class="ruby-identifier">parse_fields</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@parsed_str</span>
 
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> } <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY</span>
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> } <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- find_field-source -->
           
@@ -462,6 +464,46 @@ rest of the string - nil if cannot parse</p>
 
         
       </div><!-- render-method -->
+
+    
+      <div id="method-i-to_hsh" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_hsh</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the hash of fields that have an alias with their corresponding
+content values</p>
+          
+
+          
+          <div class="method-source-code" id="to_hsh-source">
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 113</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
+  <span class="ruby-identifier">hsh</span> = {}
+
+  <span class="ruby-comment"># If the segment hasn't been parsed yet, let's parse it</span>
+  <span class="ruby-identifier">parse_fields</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@parsed_str</span>
+
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>] = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">content</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>.<span class="ruby-identifier">nil?</span>
+  }
+
+  <span class="ruby-identifier">hsh</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_hsh-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_hsh-method -->
 
     
     </section><!-- public-instance-method-details -->

@@ -78,6 +78,8 @@
     
     <li><a href="#method-i-render">#render</a>
     
+    <li><a href="#method-i-to_hsh">#to_hsh</a>
+    
   </ul>
 </nav>
 
@@ -251,7 +253,7 @@
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-comment"># Breadth first</span>
-  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">name</span> }
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">alias</span> }
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>
   <span class="ruby-comment"># Depth now</span>
   <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> 
@@ -350,6 +352,43 @@ nothing was parsed out.</p>
 
         
       </div><!-- render-method -->
+
+    
+      <div id="method-i-to_hsh" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_hsh</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns recursive hash of nodes that have an alias defined, along with
+their respective values.</p>
+          
+
+          
+          <div class="method-source-code" id="to_hsh-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
+  <span class="ruby-identifier">hsh</span> = {}
+
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>] = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_hsh</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>.<span class="ruby-identifier">nil?</span>
+  }
+
+  <span class="ruby-identifier">hsh</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_hsh-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_hsh-method -->
 
     
     </section><!-- public-instance-method-details -->
