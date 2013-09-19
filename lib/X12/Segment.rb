@@ -109,6 +109,20 @@ module X12
       @regexp
     end
 
+    # Returns the hash of fields that have an alias with their corresponding content values
+    def to_hsh
+      hsh = {}
+
+      # If the segment hasn't been parsed yet, let's parse it
+      parse_fields if @fields.nil? && @parsed_str
+
+      nodes.each { |node|
+        hsh[node.alias] = node.content unless node.alias.nil?
+      }
+
+      hsh
+    end
+
     # Recursively find a sub-element
     def find(name)
       #puts "Finding [#{name}] in #{self.class} #{name}"
@@ -122,7 +136,7 @@ module X12
       # If the segment hasn't been parsed yet, let's parse it
       parse_fields if @fields.nil? && @parsed_str
 
-      self.nodes.find { |node| node.name == field_name } || EMPTY
+      nodes.find { |node| node.name == field_name || node.alias == field_name } || EMPTY
     end
 
     def parse_fields

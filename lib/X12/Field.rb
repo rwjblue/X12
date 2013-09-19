@@ -28,7 +28,7 @@ module X12
   # Class to represent a segment field. Please note, it's not a descendant of Base.
 
   class Field
-    attr_reader :name, :data_type, :required, :min_length, :max_length, :validation, :const_value
+    attr_reader :name, :alias, :data_type, :required, :min_length, :max_length, :validation, :const_value
     attr_accessor :content, :parent
 
     # Create a new field with given parameters
@@ -43,17 +43,19 @@ module X12
       @validation  = params[:validation]
       @const_value = params[:const_value]
       @var_name    = params[:var_name]
+      @alias       = params[:alias]
     end
 
     def apply_overrides(override_field)
       self.class.new({ :name        => @name,
                        :data_type   => @data_type,
                        :required    => @required,
-                       :min         => override_field.min_length || @min_length,
-                       :max         => override_field.max_length || @max_length,
+                       :min         => override_field.min_length  || @min_length,
+                       :max         => override_field.max_length  || @max_length,
                        :validation  => @validation,
                        :const_value => override_field.const_value || @const_value,
-                       :var_name    => @var_name })
+                       :var_name    => @var_name,
+                       :alias       => override_field.alias       || @alias })
     end
 
     # Returns printable string with field's content

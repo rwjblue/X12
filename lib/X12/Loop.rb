@@ -96,5 +96,16 @@ module X12
       res
     end # render
 
+    # Returns recursive hash of nodes that have an alias defined, along with their respective values.
+    def to_hsh
+      hsh = {}
+
+      nodes.each { |node|
+        hsh[node.alias] = node.to_hsh unless node.alias.nil?
+      }
+
+      hsh
+    end
+
   end # Loop
 end # X12
