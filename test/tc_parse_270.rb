@@ -82,6 +82,10 @@ EOT
     assert_nil(@r.L2000C.L2100C.N3.AddressInformation1)
   end # test_absent
 
+  def test_validity
+    assert_equal(true, @@parser.validate(@r))
+  end
+
   def test_timing
     start = Time::now
     TEST_REPEAT.times do

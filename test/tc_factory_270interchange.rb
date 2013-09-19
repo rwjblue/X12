@@ -126,79 +126,75 @@ EOT
   def create_270(message, fg_num, mess_num)
     message.control_number = "#{fg_num}00#{mess_num}"
 
-    message.BHT {|bht|
-      bht.HierarchicalStructureCode='0022'
-      bht.TransactionSetPurposeCode='13'
-      bht.ReferenceIdentification='LNKJNFGRWDLR'
+    message.BHT { |bht|
+      bht.HierarchicalStructureCode = '0022'
+      bht.TransactionSetPurposeCode = '13'
+      bht.ReferenceIdentification = 'LNKJNFGRWDLR'
       bht.Date = Date.new(2007, 07, 24)
       bht.Time = Time.new(0, nil, nil, 17, 26)
     }
 
-    message.L2000A {|l2000A|
-      l2000A.HL{|hl|
-        hl.HierarchicalIdNumber='1'
-        hl.HierarchicalChildCode='1'
+    message.L2000A { |l2000A|
+      l2000A.HL { |hl|
+        hl.HierarchicalIdNumber = 1
+        hl.HierarchicalChildCode = 1
       }
 
-      l2000A.L2100A {|l2100A|
-        l2100A.NM1 {|nm1|
+      l2000A.L2100A { |l2100A|
+        l2100A.NM1 { |nm1|
           nm1.EntityIdentifierCode1='PR'
-          nm1.EntityTypeQualifier='2'
-          nm1.NameLastOrOrganizationName='RED CROSS'
-          nm1.IdentificationCodeQualifier='PI'
-          nm1.IdentificationCode='CHICAGO BLUES'
+          nm1.EntityTypeQualifier = 2
+          nm1.NameLastOrOrganizationName = 'RED CROSS'
+          nm1.IdentificationCodeQualifier = 'PI'
+          nm1.IdentificationCode = 'CHICAGO BLUES'
         }
       }
     }
 
-    message.L2000B {|l2000B|
-      l2000B.HL{|hl|
-        hl.HierarchicalIdNumber='2'
-        hl.HierarchicalParentIdNumber='1'
-        hl.HierarchicalChildCode='1'
+    message.L2000B { |l2000B|
+      l2000B.HL{ |hl|
+        hl.HierarchicalIdNumber = 2
+        hl.HierarchicalParentIdNumber = 1
+        hl.HierarchicalChildCode = 1
       }
       
-      l2000B.L2100B {|l2100B|
-        l2100B.NM1 {|nm1|
-          nm1.EntityIdentifierCode1='1P'
-          nm1.EntityTypeQualifier='1'
-          nm1.IdentificationCodeQualifier='SV'
-          nm1.IdentificationCode='daw'
+      l2000B.L2100B { |l2100B|
+        l2100B.NM1 { |nm1|
+          nm1.EntityIdentifierCode1 = '1P'
+          nm1.EntityTypeQualifier = 1
+          nm1.IdentificationCodeQualifier = 'SV'
+          nm1.IdentificationCode = 'daw'
         }
       }
     }
 
-    message.L2000C {|l2000C|
-      l2000C.HL{|hl|
-        hl.HierarchicalIdNumber='3'
-        hl.HierarchicalParentIdNumber='2'
-        hl.HierarchicalChildCode='0'
+    message.L2000C { |l2000C|
+      l2000C.HL{ |hl|
+        hl.HierarchicalIdNumber = 3
+        hl.HierarchicalParentIdNumber = 2
+        hl.HierarchicalChildCode = 0
       }
 
-      l2000C.L2100C {|l2100C|
-        l2100C.NM1 {|nm1|
-          nm1.EntityIdentifierCode1='IL'
-          nm1.EntityTypeQualifier='1'
-          nm1.NameLastOrOrganizationName='LastName'
-          nm1.NameFirst='FirstName'
+      l2000C.L2100C { |l2100C|
+        l2100C.NM1 { |nm1|
+          nm1.EntityIdentifierCode1 = 'IL'
+          nm1.EntityTypeQualifier = '1'
+          nm1.NameLastOrOrganizationName = 'LastName'
+          nm1.NameFirst = 'FirstName'
         }
 
-        l2100C.DMG {|dmg|
-          dmg.DateTimePeriodFormatQualifier='D8'
-          dmg.DateTimePeriod='19700725'
+        l2100C.DMG { |dmg|
+          dmg.DateTimePeriodFormatQualifier = 'D8'
+          dmg.DateTimePeriod = '19700725'
         }
 
-        l2100C.DTP {|dtp|
-          dtp.DateTimeQualifier='307'
-          dtp.DateTimePeriodFormatQualifier='D8'
-          dtp.DateTimePeriod='20070724'
+        l2100C.DTP { |dtp|
+          dtp.DateTimeQualifier = '307'
+          dtp.DateTimePeriodFormatQualifier = 'D8'
+          dtp.DateTimePeriod = '20070724'
         }
 
-        l2100C.L2110C {|l2110C|
-          l2110C.EQ {|eq|
-            eq.ServiceTypeCode='60'
-          }
-        }
+        l2100C.L2110C.EQ.ServiceTypeCode = '60'
       }
     }
 
@@ -219,9 +215,8 @@ EOT
       create_270(message._270.repeat, fg_num, count)
     }
 
-    message.GE { |ge|
-      ge.NumberOfTransactionSetsIncluded = num_of_270
-    }
+    message.GE.NumberOfTransactionSetsIncluded = num_of_270
+
   end # create_fg
   
   def test_all
@@ -249,24 +244,10 @@ EOT
         isa.ComponentElementSeparator = ':'
       }
 
-      fg_counter = 0
-      @r.FG.repeat {|fg|
-        create_fg(fg, fg_counter, 3)
-        fg_counter += 1
-      }
-
-      @r.FG.repeat {|fg|
-        create_fg(fg, fg_counter, 2)
-        fg_counter += 1
-      }
-
-      @r.FG.repeat {|fg|
-        create_fg(fg, fg_counter, 1)
-        fg_counter += 1
-      }
-
-      @r.IEA {|iea|
-        iea.NumberOfIncludedFunctionalGroups = fg_counter
+      3.times { |fg_counter| 
+        @r.FG.repeat { |fg|
+          create_fg(fg, fg_counter, 3 - fg_counter)
+        }
       }
 
       assert_equal(@@result, @r.render)

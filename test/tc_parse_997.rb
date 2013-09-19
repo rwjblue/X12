@@ -129,6 +129,10 @@ EOT
     assert_equal('', @r.L1000.AK8.TransactionSetIdentifierCode.to_s)
   end # test_absent
 
+  def test_validity
+    assert_equal(true, @@parser.validate(@r))
+  end
+
   def test_timing
     start = Time::now
     TEST_REPEAT.times do

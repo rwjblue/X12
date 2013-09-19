@@ -131,7 +131,6 @@ EOT
      assert_equal('ISA*03*user      *01*password  *ZZ*0000000Eliginet*ZZ*CHICAGO BLUES*070724*1726*U*00401*230623206*0*T*:~', @r.ISA.to_s)
      assert_equal('0000000Eliginet', @r.ISA.InterchangeSenderId)
      assert_equal(3, @r.IEA.NumberOfIncludedFunctionalGroups)
-
    end # test_ST
 
   def test_FG

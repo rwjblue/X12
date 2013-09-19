@@ -132,6 +132,7 @@ module X12
       case @var_name
       when 'segments_rendered' then get_from_ancestor(:segments_rendered)
       when 'control_number'    then get_from_ancestor(:control_number)
+      when 'fg_count'          then parent.parent.FG.size
       when 'today'             then Date.today
       when 'now'               then Time.now
       else nil
