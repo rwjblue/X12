@@ -47,7 +47,6 @@ module X12
     end
 
     def apply_overrides(override_field)
-puts "--> #{override_field.alias}"
       self.class.new({ :name        => @name,
                        :data_type   => @data_type,
                        :required    => @required,
