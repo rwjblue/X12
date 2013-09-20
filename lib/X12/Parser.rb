@@ -54,6 +54,7 @@ module X12
 
     # Creates a parser out of a definition
     def initialize(file_name)
+      @x12_definition = {}
       @error = nil
       load_definition_file(file_name)
     end # initialize
@@ -131,27 +132,22 @@ module X12
       file_name = cleanup_file_name(file_name)
       #puts "Reading definition from #{file_name}"
 
-      save_definition = @x12_definition
-
       # Read and parse the definition
-      @x12_definition = X12::XMLDefinitions.new(File.open(file_name, 'r').read)
+      new_definition = X12::XMLDefinitions.new(File.open(file_name, 'r').read)
 
       # Populate fields in all segments found in all the loops
-      @x12_definition[X12::Loop].each_pair{|k, v|
+      new_definition[X12::Loop].each_pair{|k, v|
         #puts "Populating definitions for loop #{k}"
         process_loop(v)
-      } if @x12_definition[X12::Loop]
+      } if new_definition[X12::Loop]
 
       # Merge the newly parsed definition into a saved one, if any.
-      if save_definition
-        @x12_definition.keys.each { |t|
-          save_definition[t] ||= {}
-          @x12_definition[t].keys.each { |u|
-            save_definition[t][u] = @x12_definition[t][u] 
-          }
-          @x12_definition = save_definition
+      new_definition.keys.each { |t|
+        @x12_definition[t] ||= {}
+        new_definition[t].keys.each { |u|
+          @x12_definition[t][u] = new_definition[t][u] 
         }
-      end
+      }
     end
 
     def cleanup_file_name(file_name)

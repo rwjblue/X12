@@ -214,6 +214,7 @@ factories.</p>
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">file_name</span>)
+  <span class="ruby-ivar">@x12_definition</span> = {}
   <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-identifier">load_definition_file</span>(<span class="ruby-identifier">file_name</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -249,7 +250,7 @@ factories.</p>
 
           
           <div class="method-source-code" id="factory-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 72</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">factory</span>(<span class="ruby-identifier">loop_name</span>)
   <span class="ruby-identifier">loop</span> = <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>][<span class="ruby-identifier">loop_name</span>]
   <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Cannot find a definition for loop #{loop_name}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">loop</span>
@@ -283,7 +284,7 @@ loop name is not defined.</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 62</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 63</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">loop_name</span>, <span class="ruby-identifier">str</span>)
   <span class="ruby-identifier">loop</span> = <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>][<span class="ruby-identifier">loop_name</span>]
   <span class="ruby-comment">#puts &quot;Loops to parse #{@x12_definition[X12::Loop].keys}&quot;</span>
@@ -320,7 +321,7 @@ error message.</p>
 
           
           <div class="method-source-code" id="validate-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 81</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">validate</span>(<span class="ruby-identifier">doc</span>)
   <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
 
@@ -389,7 +390,7 @@ Exception if invalid.</p>
 
           
           <div class="method-source-code" id="validate-21-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 124</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 125</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">validate!</span>(<span class="ruby-identifier">doc</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@error</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">validate</span>(<span class="ruby-identifier">doc</span>)
 <span class="ruby-keyword">end</span></pre>
