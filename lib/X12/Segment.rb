@@ -41,7 +41,7 @@ module X12
     #   with their clones with overrides applied.
     def apply_overrides
       @overrides.each { |override| 
-        nodes.each_with_index { |n, i| nodes[i] = n.apply_overrides(override) if n.name == override.name } 
+        nodes.each_with_index { |n, i| nodes[i] = n.apply_overrides(override) if n.name == override.name }
       }
     end
 

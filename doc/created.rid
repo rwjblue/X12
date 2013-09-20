@@ -1,4 +1,4 @@
-Fri, 20 Sep 2013 14:35:58 -0500
+Fri, 20 Sep 2013 16:31:30 -0500
 README	Tue, 21 May 2013 17:08:17 -0500
 CHANGELOG	Tue, 21 May 2013 17:08:17 -0500
 TODO	Tue, 21 May 2013 17:08:17 -0500
@@ -8,7 +8,7 @@ lib/X12/Composite.rb	Tue, 27 Aug 2013 16:39:48 -0500
 lib/X12/Empty.rb	Wed, 18 Sep 2013 13:37:51 -0500
 lib/X12/Field.rb	Fri, 20 Sep 2013 14:35:29 -0500
 lib/X12/Loop.rb	Thu, 19 Sep 2013 15:49:49 -0500
-lib/X12/Parser.rb	Wed, 18 Sep 2013 13:38:24 -0500
-lib/X12/Segment.rb	Wed, 18 Sep 2013 19:44:08 -0500
+lib/X12/Parser.rb	Fri, 20 Sep 2013 15:54:10 -0500
+lib/X12/Segment.rb	Fri, 20 Sep 2013 15:11:49 -0500
 lib/X12/Table.rb	Wed, 18 Sep 2013 14:11:56 -0500
 lib/X12/XMLDefinitions.rb	Wed, 18 Sep 2013 14:22:16 -0500

@@ -74,8 +74,6 @@
     
     <li><a href="#method-i-factory">#factory</a>
     
-    <li><a href="#method-i-load_definitions">#load_definitions</a>
-    
     <li><a href="#method-i-parse">#parse</a>
     
     <li><a href="#method-i-validate">#validate</a>
@@ -171,6 +169,26 @@ factories.</p>
     
 
     
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-error" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">error</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
 
     <!-- Methods -->
     
@@ -194,11 +212,10 @@ factories.</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 55</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">file_name</span>)
   <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-identifier">load_definitions</span>(<span class="ruby-identifier">file_name</span>)
-  <span class="ruby-comment">#puts PP.pp(self, '')</span>
+  <span class="ruby-identifier">load_definition_file</span>(<span class="ruby-identifier">file_name</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -232,7 +249,7 @@ factories.</p>
 
           
           <div class="method-source-code" id="factory-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 116</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 72</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">factory</span>(<span class="ruby-identifier">loop_name</span>)
   <span class="ruby-identifier">loop</span> = <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>][<span class="ruby-identifier">loop_name</span>]
   <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Cannot find a definition for loop #{loop_name}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">loop</span>
@@ -247,59 +264,6 @@ factories.</p>
 
         
       </div><!-- factory-method -->
-
-    
-      <div id="method-i-load_definitions" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">load_definitions</span><span
-            class="method-args">(file_name)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="load_definitions-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 61</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">load_definitions</span>(<span class="ruby-identifier">file_name</span>)
-  <span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">cleanup_file_name</span>(<span class="ruby-identifier">file_name</span>)
-  <span class="ruby-comment">#puts &quot;Reading definition from #{file_name}&quot;</span>
-
-  <span class="ruby-identifier">save_definition</span> = <span class="ruby-ivar">@x12_definition</span>
-
-  <span class="ruby-comment"># Read and parse the definition</span>
-  <span class="ruby-ivar">@x12_definition</span> = <span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">XMLDefinitions</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_name</span>, <span class="ruby-string">'r'</span>).<span class="ruby-identifier">read</span>)
-
-  <span class="ruby-comment"># Populate fields in all segments found in all the loops</span>
-  <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>].<span class="ruby-identifier">each_pair</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
-    <span class="ruby-comment">#puts &quot;Populating definitions for loop #{k}&quot;</span>
-    <span class="ruby-identifier">process_loop</span>(<span class="ruby-identifier">v</span>)
-  } <span class="ruby-keyword">if</span> <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>]
-
-  <span class="ruby-comment"># Merge the newly parsed definition into a saved one, if any.</span>
-  <span class="ruby-keyword">if</span> <span class="ruby-identifier">save_definition</span>
-    <span class="ruby-ivar">@x12_definition</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">t</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">save_definition</span>[<span class="ruby-identifier">t</span>] <span class="ruby-operator">||=</span> {}
-      <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-identifier">t</span>].<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">u</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">save_definition</span>[<span class="ruby-identifier">t</span>][<span class="ruby-identifier">u</span>] = <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-identifier">t</span>][<span class="ruby-identifier">u</span>] 
-      }
-      <span class="ruby-ivar">@x12_definition</span> = <span class="ruby-identifier">save_definition</span>
-    }
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- load_definitions-source -->
-          
-        </div>
-
-        
-
-        
-      </div><!-- load_definitions-method -->
 
     
       <div id="method-i-parse" class="method-detail ">
@@ -319,7 +283,7 @@ loop name is not defined.</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 106</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 62</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">loop_name</span>, <span class="ruby-identifier">str</span>)
   <span class="ruby-identifier">loop</span> = <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>][<span class="ruby-identifier">loop_name</span>]
   <span class="ruby-comment">#puts &quot;Loops to parse #{@x12_definition[X12::Loop].keys}&quot;</span>
@@ -350,13 +314,13 @@ loop name is not defined.</p>
         <div class="method-description">
           
           <p>Validates the <a href="../X12.html">X12</a> document. Returns true if the
-document is valid, false otherwise; use ‘error’ method to access the error
-message.</p>
+document is valid, false otherwise; use ‘error’ attribute to access the
+error message.</p>
           
 
           
           <div class="method-source-code" id="validate-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 125</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 81</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">validate</span>(<span class="ruby-identifier">doc</span>)
   <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
 
@@ -425,7 +389,7 @@ Exception if invalid.</p>
 
           
           <div class="method-source-code" id="validate-21-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 168</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 124</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">validate!</span>(<span class="ruby-identifier">doc</span>)
   <span class="ruby-identifier">raise</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-ivar">@error</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">validate</span>(<span class="ruby-identifier">doc</span>)
 <span class="ruby-keyword">end</span></pre>
