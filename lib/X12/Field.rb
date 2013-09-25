@@ -116,6 +116,7 @@ module X12
       @content || @const_value || var_value
     end
 
+    # Obtain the value from the closest ancestor of this object that supports the specified method
     def get_from_ancestor(meth)
       ancestor = self.parent
       begin
@@ -127,17 +128,19 @@ module X12
       end until ancestor.nil?
       return nil
     end
+    private :get_from_ancestor
 
+    # Obtain the value corresponding to the internal variable 
     def var_value
       case @var_name
       when 'segments_rendered' then get_from_ancestor(:segments_rendered)
       when 'control_number'    then get_from_ancestor(:control_number)
       when 'today'             then Date.today
       when 'now'               then Time.now
-      when 'fg_count'          then 
-        loop = parent && parent.parent
-        groups = loop && loop.FG
-        groups && groups.size
+      when 'fg_count'          then     # Find the parent loop of this field's 
+        loop = parent && parent.parent  #   parent segment (which would be IEA)
+        fg_loop = loop && loop.nodes[1] # Second node of that loop should be the functional group loop
+        fg_loop && fg_loop.size         #   so return its count
       else nil
       end
     end
