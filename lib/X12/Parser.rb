@@ -79,46 +79,41 @@ module X12
 
     # Validates the X12 document. Returns true if the document is valid, false otherwise;
     # use 'error' attribute to access the error message.
-    def validate(doc)
+    def validate(node)
       @error = nil
 
-      doc.nodes.each { |node|
-        case node
-        when X12::Field then
-          if node.validation then
-            table = @x12_definition[X12::Table] && @x12_definition[X12::Table][node.validation]
-            if table.nil?
-              @error = "#{node.parent.name}/#{node.name}: No validation table defined for #{node.validation}"
+      case node
+      when X12::Field then
+        if node.validation then
+          table = @x12_definition[X12::Table] && @x12_definition[X12::Table][node.validation]
+          if table.nil?
+            @error = "#{node.parent.name}/#{node.name}: No validation table defined for #{node.validation}"
+            return false
+          end
+
+          val = node.raw_value
+          if val.nil? then
+            if node.required then
+              @error = "#{node.parent.name}/#{node.name}: Field required but not present"
+              return false
+            end
+          else
+            val2 = node.render
+            unless table.has_key?(val2)
+              @error = "#{node.parent.name}/#{node.name}: Value [#{val}] not in validation table #{node.validation}" 
               return false
             end
 
-            val = node.raw_value
-            if val.nil? then
-              if node.required then
-                @error = "#{node.parent.name}/#{node.name}: Field required but not present"
-                return false
-              end
-            else
-              val2 = node.render
-              unless table.has_key?(val2)
-                @error = "#{node.parent.name}/#{node.name}: Value [#{val}] not in validation table #{node.validation}" 
-                return false
-              end
-
-              if val2.length > node.max_length then
-                @error = "#{node.parent.name}/#{node.name}: Value [#{val2}] too long (max_length=#{node.max_length})"
-                return false
-              end
+            if val2.length > node.max_length then
+              @error = "#{node.parent.name}/#{node.name}: Value [#{val2}] too long (max_length=#{node.max_length})"
+              return false
             end
           end
-        else 
-          if node.has_content? then
-            return false unless validate(node)
-          end
         end
-      }
-
-      true
+      else
+        return node.nodes.all? { |node| validate(node) } if node.has_content?
+      end
+      return true
     end
 
     # Validates the X12 document and raises the Exception if invalid.
