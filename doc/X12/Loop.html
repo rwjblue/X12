@@ -211,7 +211,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">args</span>)
   <span class="ruby-ivar">@segments_rendered</span> = <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Needs to start as nil and only initialize once ST is actually rendered</span>
   <span class="ruby-ivar">@control_number</span> = <span class="ruby-keyword">nil</span>
@@ -249,7 +249,7 @@
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 55</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-comment"># Breadth first</span>
@@ -290,7 +290,7 @@ nothing was parsed out.</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 70</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-comment">#puts &quot;Parsing loop #{name}: &quot; + str</span>
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">str</span>
@@ -335,7 +335,7 @@ nothing was parsed out.</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 90</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 89</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_content?</span> <span class="ruby-keyword">then</span>
@@ -371,7 +371,7 @@ their respective values.</p>
 
           
           <div class="method-source-code" id="to_hsh-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 100</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
   <span class="ruby-identifier">hsh</span> = {}
 
