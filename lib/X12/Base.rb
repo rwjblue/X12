@@ -191,5 +191,9 @@ module X12
       res
     end
 
+    def empty?
+      false
+    end
+
   end # Base
 end

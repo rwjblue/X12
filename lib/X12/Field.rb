@@ -191,5 +191,9 @@ module X12
         end
     end
 
+    def empty?
+      false
+    end
+
   end
 end

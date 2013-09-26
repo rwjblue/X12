@@ -27,7 +27,6 @@ module X12
   #
   # Implements nested loops of segments
 
-
   class Loop < Base
     attr_accessor :segments_rendered
     attr_accessor :control_number

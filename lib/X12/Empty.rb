@@ -38,5 +38,9 @@ module X12
       ''
     end
 
+    def empty?
+      true
+    end
+
   end # Empty
 end # X12
