@@ -84,6 +84,8 @@
     
     <li><a href="#method-i-render">#render</a>
     
+    <li><a href="#method-i-segments_parsed">#segments_parsed</a>
+    
     <li><a href="#method-i-to_hsh">#to_hsh</a>
     
   </ul>
@@ -277,7 +279,7 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 127</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 131</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">content</span>
@@ -308,7 +310,7 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="find_field-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 133</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 137</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">field_name</span>)
   <span class="ruby-comment">#puts &quot;Finding field [#{field_name}] in #{self.class} #{name}&quot;</span>
 
@@ -388,14 +390,14 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="regexp-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 93</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">regexp</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@regexp</span>
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">is_constant?</span> } <span class="ruby-keyword">then</span>
       <span class="ruby-comment"># It's a very special regexp if there are constant fields</span>
       <span class="ruby-identifier">re_str</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-node">&quot;^#{name}#{Regexp.escape(field_separator)}&quot;</span>){<span class="ruby-operator">|</span><span class="ruby-identifier">s</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
         <span class="ruby-identifier">field_re</span> = <span class="ruby-identifier">i</span>.<span class="ruby-identifier">simple_regexp</span>(<span class="ruby-identifier">field_separator</span>, <span class="ruby-identifier">segment_separator</span>) <span class="ruby-operator">+</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">field_separator</span>) <span class="ruby-operator">+</span> <span class="ruby-string">'?'</span>
-        <span class="ruby-identifier">field_re</span> = <span class="ruby-node">&quot;(#{field_re})?&quot;</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">required</span>
+        <span class="ruby-identifier">field_re</span> = <span class="ruby-node">&quot;(#{field_re})?&quot;</span> <span class="ruby-keyword">unless</span> (<span class="ruby-identifier">i</span>.<span class="ruby-identifier">required</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">is_constant?</span>)
         <span class="ruby-identifier">s</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">field_re</span>
       } <span class="ruby-operator">+</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-identifier">segment_separator</span>)
       <span class="ruby-ivar">@regexp</span> = <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">re_str</span>)
@@ -433,7 +435,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 69</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 73</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
 
@@ -466,6 +468,36 @@ rest of the string - nil if cannot parse</p>
       </div><!-- render-method -->
 
     
+      <div id="method-i-segments_parsed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">segments_parsed</span><span
+            class="method-args">(include_repeats = false)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="segments_parsed-source">
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 68</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">segments_parsed</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
+  (<span class="ruby-identifier">parsed_str</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>) <span class="ruby-operator">+</span> ((<span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">segments_parsed</span>(<span class="ruby-keyword">true</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- segments_parsed-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- segments_parsed-method -->
+
+    
       <div id="method-i-to_hsh" class="method-detail ">
         
         <div class="method-heading">
@@ -483,7 +515,7 @@ content values</p>
 
           
           <div class="method-source-code" id="to_hsh-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 113</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 117</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
   <span class="ruby-identifier">hsh</span> = {}
 

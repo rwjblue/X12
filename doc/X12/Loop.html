@@ -78,6 +78,8 @@
     
     <li><a href="#method-i-render">#render</a>
     
+    <li><a href="#method-i-segments_parsed">#segments_parsed</a>
+    
     <li><a href="#method-i-to_hsh">#to_hsh</a>
     
   </ul>
@@ -335,7 +337,7 @@ nothing was parsed out.</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 89</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_content?</span> <span class="ruby-keyword">then</span>
@@ -352,6 +354,41 @@ nothing was parsed out.</p>
 
         
       </div><!-- render-method -->
+
+    
+      <div id="method-i-segments_parsed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">segments_parsed</span><span
+            class="method-args">(include_repeats = false)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p><a href="Segment.html">Segment</a> count should include all the segments
+inside this particular instance of the loop.</p>
+
+<pre>It means that all segments of all repeats of all the children of this loop
+need to be included in the count, but not the neigbours of this one.</pre>
+          
+
+          
+          <div class="method-source-code" id="segments_parsed-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 91</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">segments_parsed</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-value">0</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">sum</span>, <span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">sum</span> <span class="ruby-operator">+</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">segments_parsed</span>(<span class="ruby-keyword">true</span>) } <span class="ruby-operator">+</span>
+    ((<span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">segments_parsed</span>(<span class="ruby-keyword">true</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- segments_parsed-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- segments_parsed-method -->
 
     
       <div id="method-i-to_hsh" class="method-detail ">
@@ -371,7 +408,7 @@ their respective values.</p>
 
           
           <div class="method-source-code" id="to_hsh-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 99</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
   <span class="ruby-identifier">hsh</span> = {}
 
