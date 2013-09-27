@@ -31,9 +31,9 @@ class Test997Factory < Test::Unit::TestCase
 tmp=<<-EOT
 ST*997*2878~
 AK1*HS*293328532~
-AK2*270*~
-AK3*NM1**L1000D~
-AK4***6*Bad element~
+AK2*270*0000~
+AK3*NM1*1*L1000D~
+AK4*1**6*Bad element~
 AK5*A~
 AK3*DMG*0*L1010*22~
 AK4*0**0~
@@ -69,17 +69,20 @@ EOT
     }
 
     @r.L1000.L1010.AK4.DataElementSyntaxErrorCode = 6
-    @r.L1000.AK2.TransactionSetIdentifierCode = 270
+    @r.L1000.AK2 { |ak2| 
+      ak2.TransactionSetIdentifierCode = 270
+      ak2.TransactionSetControlNumber = '0000'
+      }
     @r.L1000.L1010 {|l|
       l.AK3 {|s|
         s.SegmentIdCode                   = 'NM1'
-        #SegmentPositionInTransactionSet
+        s.SegmentPositionInTransactionSet = 1
         s.LoopIdentifierCode              = 'L1000D'
         #SegmentSyntaxErrorCode
       }
 
       l.AK4 {|s|
-        #s.PositionInSegment =
+        s.PositionInSegment = 1
         #s.DataElementReferenceNumber =
         #s.DataElementSyntaxErrorCode = 
         s.CopyOfBadDataElement       = 'Bad element'

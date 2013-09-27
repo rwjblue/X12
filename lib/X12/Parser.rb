@@ -84,6 +84,15 @@ module X12
 
       case node
       when X12::Field then
+        val = node.raw_value
+
+        if val.nil? && node.required then
+          @error = "#{node.parent.name}/#{node.name}: Field required but not present"
+          return false
+        end
+
+        val2 = node.render
+
         if node.validation then
           table = @x12_definition[X12::Table] && @x12_definition[X12::Table][node.validation]
           if table.nil?
@@ -91,24 +100,24 @@ module X12
             return false
           end
 
-          val = node.raw_value
           if val.nil? then
             if node.required then
               @error = "#{node.parent.name}/#{node.name}: Field required but not present"
               return false
             end
           else
-            val2 = node.render
             unless table.has_key?(val2)
               @error = "#{node.parent.name}/#{node.name}: Value [#{val}] not in validation table #{node.validation}" 
               return false
             end
 
-            if val2.length > node.max_length then
-              @error = "#{node.parent.name}/#{node.name}: Value [#{val2}] too long (max_length=#{node.max_length})"
-              return false
-            end
           end
+
+        end
+
+        if val2.length > node.max_length then
+          @error = "#{node.parent.name}/#{node.name}: Value [#{val2}] too long (max_length=#{node.max_length})"
+          return false
         end
       else
         return node.nodes.all? { |node| validate(node) } if node.has_content?
@@ -119,6 +128,7 @@ module X12
     # Validates the X12 document and raises the Exception if invalid.
     def validate!(doc)
       raise Exception.new(@error) unless validate(doc)
+      true
     end
 
     private

@@ -37,14 +37,14 @@ class Test997Parse < Test::Unit::TestCase
 ST*997*2878~
 AK1*HS*293328532~
 AK2*270*307272179~
-AK3*NM1*8*L1010_0*8~
+AK3*NM1*8*L10100*8~
 AK4*0:0*66*1~
 AK4*0:1*66*1~
 AK4*0:2*66*1~
-AK3*NM1*8*L1010_1*8~
+AK3*NM1*8*L10101*8~
 AK4*1:0*66*1~
 AK4*1:1*66*1~
-AK3*NM1*8*L1010_2*8~
+AK3*NM1*8*L10102*8~
 AK4*2:0*66*1~
 AK5*R*5~
 AK9*R*1*1*0~
@@ -98,11 +98,11 @@ EOT
   end # test_AK2
 
   def test_L1010
-    assert_match(/L1010_0/, @r.L1000.L1010.to_s)
+    assert_match(/L10100/, @r.L1000.L1010.to_s)
     assert_equal(3, @r.L1000.L1010.to_a.size)
     assert_equal(3, @r.L1000.L1010.size)
-    assert_match(/L1010_2/, @r.L1000.L1010.to_a[2].to_s)
-    assert_match(/L1010_2/, @r.L1000.L1010[2].to_s)
+    assert_match(/L10102/, @r.L1000.L1010.to_a[2].to_s)
+    assert_match(/L10102/, @r.L1000.L1010[2].to_s)
   end # test_L1010
 
   def test_AK4
