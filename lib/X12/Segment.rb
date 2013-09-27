@@ -65,6 +65,10 @@ module X12
       return s
     end # parse
 
+    def segments_parsed(include_repeats = false)
+      (parsed_str.nil? ? 0 : 1) + ((include_repeats && next_repeat) ? next_repeat.segments_parsed(true) : 0)
+    end
+
     # Render all components of this segment as string suitable for EDI
     def render(root = self)
       res = ''

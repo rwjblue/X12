@@ -86,6 +86,13 @@ EOT
     assert_equal(true, @@parser.validate(@r))
   end
 
+  def test_segment_counter
+    assert_equal(12, @r.segments_parsed)
+    assert_equal(4, @r.L2000C.L2100C.segments_parsed)
+    assert_equal(1, @r.L2000C.L2100C.L2110C.segments_parsed)
+    assert_equal(0, @r.L2000C.L2100C.L2110C.AMT.segments_parsed)
+  end
+
   def test_timing
     start = Time::now
     TEST_REPEAT.times do

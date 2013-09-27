@@ -85,6 +85,14 @@ module X12
       return s
     end # parse
 
+    # Segment count should include all the segments inside this particular instance of the loop.
+    #   It means that all segments of all repeats of all the children of this loop
+    #   need to be included in the count, but not the neigbours of this one.
+    def segments_parsed(include_repeats = false)
+      nodes.inject(0) { |sum, node| sum + node.segments_parsed(true) } +
+        ((include_repeats && next_repeat) ? next_repeat.segments_parsed(true) : 0)
+    end
+
     # Render all components of this loop as string suitable for EDI
     def render(root = self)
       res = ''

@@ -48,7 +48,7 @@ AK3*NM1*8*L10102*8~
 AK4*2:0*66*1~
 AK5*R*5~
 AK9*R*1*1*0~
-SE*8*2878~
+SE*15*2878~
 EOT
 
 # This should parse into 
@@ -131,6 +131,13 @@ EOT
 
   def test_validity
     assert_equal(true, @@parser.validate(@r))
+  end
+
+  def test_segment_counter
+    assert_equal(15, @r.segments_parsed)
+    assert_equal(11, @r.L1000.segments_parsed)
+    assert_equal(4, @r.L1000.L1010.segments_parsed)
+    assert_equal(9, @r.L1000.L1010.segments_parsed(:include_repeats))
   end
 
   def test_timing
