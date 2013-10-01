@@ -194,7 +194,9 @@ module X12
       false
     end
 
-    # Validate the field data - whether incoming or outgoing.
+    # Validate the field data - whether incoming or outgoing. Fields that have validation attribute set
+    #   are checked against the passed-in validation_table hash. use_ext_charset controls whether 
+    #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
     def valid?(validation_table = nil, use_ext_charset = true)
       val = @parsed_str || self.raw_value
 
