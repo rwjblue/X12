@@ -28,13 +28,14 @@ module X12
   # Class to represent a segment field. Please note, it's not a descendant of Base.
 
   class Field
-    attr_reader :name, :alias, :data_type, :required, :min_length, :max_length, :validation, :const_value
+    attr_reader :name, :alias, :data_type, :required, :min_length, :max_length, :validation, :const_value, :error
     attr_accessor :content, :parent
 
     # Create a new field with given parameters
     def initialize(params = {})
       @content     = nil
       @parent      = nil
+      @error       = nil
       @name        = params[:name]
       @data_type   = params[:data_type]
       @required    = params[:required] || false
@@ -160,21 +161,19 @@ module X12
     def proper_regexp(field_sep, segment_sep)
       return Regexp.escape(@const_value) if is_constant?
 
-      # Need to bring data types to X12 standards
       case self.data_type
-      when 'DT', 'TM'
-                     then "\\d{#{@min_length},#{@max_length}}"
-      when /^N\d*/   then "[0-9+-]{#{@min_length},#{@max_length}}"  # Numeric with implied decimal point; may contain sign
-      when 'R'       then "[0-9+-.]{#{@min_length},#{@max_length}}" # Real; may contain leading sign and a decimal point
-      when 'AN'      then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
-      when /C.*/     then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
-      else                "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
+      when 'DT', 'TM' then "\\d{#{@min_length},#{@max_length}}"
+      when /^N\d*/    then "[0-9+-]{#{@min_length},#{@max_length}}"  # Numeric with implied decimal point; may contain sign
+      when 'R'        then "[0-9+-.]{#{@min_length},#{@max_length}}" # Real; may contain leading sign and a decimal point
+      when 'AN'       then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
+      when /C.*/      then "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}"
+      else                 "[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*"
       end # case
     end # str_regexp
 
     def parse(str)
       @parsed_str = str
-      @content = 
+      @content =
         case self.data_type
         when /^N(\d)*/ then str.to_i / (10.0**($1.to_i)) # Numeric with implied decimal point
         when 'R'       then str.to_f                     # Real
@@ -193,6 +192,67 @@ module X12
 
     def empty?
       false
+    end
+
+    # Validate the field data - whether incoming or outgoing.
+    def valid?(validation_table = nil, use_ext_charset = true)
+      val = @parsed_str || self.raw_value
+
+      if val.nil? || val == '' then
+        if required then
+          @error = "Field required but not present"
+          return false
+        end
+      else
+        val2 = @parsed_str || self.render
+
+        if validation then
+          if validation_table.nil?
+            @error = "No validation table provided for #{validation}"
+            return false
+          end
+
+          unless validation_table.has_key?(val2)
+            @error = "Value [#{val}] not in validation table #{validation}" 
+            return false
+          end
+        end
+
+        if val2.length > max_length then
+          @error = "Value [#{val2}] too long (max_length=#{max_length})"
+          return false
+        end
+
+        if val2.length < min_length then
+          @error = "Value [#{val2}] too short (min_length=#{min_length})"
+          return false
+        end
+
+        # Note that regexps MUST be written as to ALWAYS succeed, even if zero characters are captured (see below).
+        re = case self.data_type
+             when 'DT', 'TM'  then /^\d*/
+             when /^N\d*/     then /^[+-]?\d*/       # Numeric with implied decimal point; may contain sign
+             when 'R'         then /^[+-]?\d*\.?\d*/ # Real; may contain leading sign and a decimal point
+             # http://www.x12.org/rfis/Basic%20Character%20Set%20X222A1.pdf
+             when 'AN', /C.*/ then 
+               if use_ext_charset then 
+                 /^[A-Za-z0-9!"&'()*+,-.\/:;?= %@\[\]_{}\\|<>~#\$]*/
+               else
+                 /^[A-Z0-9!"&'()*+,-.\/:;?= ]*/      #'
+               end
+             else             nil
+             end
+
+        # If regexp left something behind ($' stands for match_data.post_match), the first uncosumed character
+        #   will be the one that failed the match.
+        if re && re.match(val2) && $' != '' then
+          @error = "Illegal character '#{$'[0]}' in field value [#{val2}]"
+          return false
+        end
+
+      end
+
+      true
     end
 
   end
