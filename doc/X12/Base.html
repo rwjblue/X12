@@ -84,11 +84,15 @@
     
     <li><a href="#method-i-has_content-3F">#has_content?</a>
     
+    <li><a href="#method-i-has_displayable_content-3F">#has_displayable_content?</a>
+    
     <li><a href="#method-i-inspect">#inspect</a>
     
     <li><a href="#method-i-method_missing">#method_missing</a>
     
     <li><a href="#method-i-repeat">#repeat</a>
+    
+    <li><a href="#method-i-required-3F">#required?</a>
     
     <li><a href="#method-i-set_empty-21">#set_empty!</a>
     
@@ -502,7 +506,7 @@ required.</p>
 
           
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 194</span>
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 198</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>
   <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
@@ -574,6 +578,36 @@ required.</p>
 
         
       </div><!-- has_content-3F-method -->
+
+    
+      <div id="method-i-has_displayable_content-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_displayable_content?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="has_displayable_content-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 182</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_displayable_content?</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">has_displayable_content?</span> }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_displayable_content-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- has_displayable_content-3F-method -->
 
     
       <div id="method-i-inspect" class="method-detail ">
@@ -674,7 +708,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="repeat-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 183</span>
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 187</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">repeat</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_content?</span> <span class="ruby-comment"># Do not repeat an empty segment</span>
           <span class="ruby-identifier">last_repeat</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>[<span class="ruby-value">-1</span>]
@@ -693,6 +727,36 @@ empty.</p>
 
         
       </div><!-- repeat-method -->
+
+    
+      <div id="method-i-required-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">required?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="required-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 202</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">required?</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">repeats</span>.<span class="ruby-identifier">begin</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- required-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- required-3F-method -->
 
     
       <div id="method-i-set_empty-21" class="method-detail ">
