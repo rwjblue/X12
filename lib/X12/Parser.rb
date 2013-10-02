@@ -87,12 +87,22 @@ module X12
         table = node.validation && @x12_definition[X12::Table] && @x12_definition[X12::Table][node.validation]
 
         unless node.valid?(table)
-          @error = "#{node.parent.name}/#{node.name}: #{node.error}"
+          @error = "#{node.parent.name}/#{node.name}: #{node.error.last}"
           return false
         end
 
       else
-        return node.nodes.all? { |node| validate(node) } if node.has_content?
+        if node.has_displayable_content? then
+          # See if all children of this node are correct
+          return false unless node.nodes.all? { |node| validate(node) }
+          # Recursively check if all the repeats of this node are correct.
+          return false if node.next_repeat && !validate(node.next_repeat)
+        else
+          if node.required? then
+            @error = "#{node.name}: required #{node.class.to_s.downcase} missing"
+            return false 
+          end
+        end
       end
       return true
     end

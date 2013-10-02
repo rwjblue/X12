@@ -100,9 +100,14 @@ module X12
       end
     end # render
 
-    # Check if it's been set yet and it's not a constant.
+    # Specifies if the field has user-provided data (as opposed to static data)
     def has_content?
       !@content.nil?
+    end
+
+    # Specifies if the field has anything to render at all
+    def has_displayable_content?
+      has_content? || (is_variable? && !var_value.nil?)
     end
 
     def is_constant?
@@ -201,8 +206,8 @@ module X12
       val = @parsed_str || self.raw_value
 
       if val.nil? || val == '' then
-        if required then
-          @error = "Field required but not present"
+        if required && !is_variable? then
+          @error = [ 1, 'Mandatory data element missing' + parent.render ]
           return false
         end
       else
@@ -210,23 +215,23 @@ module X12
 
         if validation then
           if validation_table.nil?
-            @error = "No validation table provided for #{validation}"
+            @error = [ nil, "No validation table provided for #{validation}" ]
             return false
           end
 
           unless validation_table.has_key?(val2)
-            @error = "Value [#{val}] not in validation table #{validation}" 
+            @error = [ 7, "Invalid code value ([#{val}] not in validation table #{validation})" ]
             return false
           end
         end
 
         if val2.length > max_length then
-          @error = "Value [#{val2}] too long (max_length=#{max_length})"
+          @error = [ 5, "Data element too long (data=[#{val2}], max_length=#{max_length})" ]
           return false
         end
 
         if val2.length < min_length then
-          @error = "Value [#{val2}] too short (min_length=#{min_length})"
+          @error = [ 4, "Data element too short (data=[#{val2}], (min_length=#{min_length})" ]
           return false
         end
 
@@ -248,7 +253,7 @@ module X12
         # If regexp left something behind ($' stands for match_data.post_match), the first uncosumed character
         #   will be the one that failed the match.
         if re && re.match(val2) && $' != '' then
-          @error = "Illegal character '#{$'[0]}' in field value [#{val2}]"
+          @error = [ 6, "Invalid character in data element (data=[#{val2}], char='#{$'[0]}')" ]
           return false
         end
 

@@ -35,12 +35,12 @@ AK2*270*0000~
 AK3*NM1*1*L1000D~
 AK4*1**6*Bad element~
 AK5*A~
-AK3*DMG*0*L1010*22~
-AK4*0**0~
+AK3*DMG*0*L1010*8~
 AK4*0**1~
-AK4*1**0~
+AK4*0**2~
 AK4*1**1~
-AK5*E****999~
+AK4*1**2~
+AK5*E****5~
 AK9*E*1*1*0~
 SE*14*2878~
 EOT
@@ -102,14 +102,14 @@ EOT
             s.SegmentIdCode                   = 'DMG'
             s.SegmentPositionInTransactionSet = 0
             s.LoopIdentifierCode              = 'L1010'
-            s.SegmentSyntaxErrorCode          = 22
+            s.SegmentSyntaxErrorCode          = 8
           } if loop_repeat == 0 # AK3 only in the first repeat of L1010
 
           2.times { |ak4_repeat| # Two repeats of the segment AK4
             l1010.AK4.repeat {|s|
               s.PositionInSegment          = loop_repeat
               #s.DataElementReferenceNumber = 
-              s.DataElementSyntaxErrorCode = ak4_repeat
+              s.DataElementSyntaxErrorCode = ak4_repeat + 1
               #s.CopyOfBadDataElement       =
             } # s
           } # ak4_repeat
@@ -118,7 +118,7 @@ EOT
 
       l1000.AK5{|a|
         a.TransactionSetAcknowledgmentCode = 'E'
-        a.TransactionSetSyntaxErrorCode4 = 999
+        a.TransactionSetSyntaxErrorCode4 = 5
       } # a
     } # l1000
 
@@ -129,7 +129,7 @@ EOT
       a.NumberOfAcceptedTransactionSets = 0
     } # a
 
-    assert_equal(true, @@p.validate(@r))
+    assert_equal(true, @@p.validate!(@r))
     assert_equal(@@result, @r.render)
   end # test_all
 

@@ -179,6 +179,10 @@ module X12
       self.nodes.any? { |i| i.has_content? }
     end
 
+    def has_displayable_content?
+      self.nodes.any? { |i| i.has_displayable_content? }
+    end
+
     # Adds a repeat to a segment or loop. Returns a new segment/loop or self if empty.
     def repeat
       res = if self.has_content? # Do not repeat an empty segment
@@ -193,6 +197,10 @@ module X12
 
     def empty?
       false
+    end
+
+    def required?
+      self.repeats.begin > 0
     end
 
   end # Base
