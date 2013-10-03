@@ -207,7 +207,7 @@ module X12
 
       if val.nil? || val == '' then
         if required && !is_variable? then
-          @error = [ 1, 'Mandatory data element missing' + parent.render ]
+          @error = [ 1, 'Mandatory data element missing' ]
           return false
         end
       else
