@@ -26,5 +26,5 @@
 <Segment name="ASI" comment="To indicate the action to be taken with the information provided or the status of the entity described">
   <Field name="ActionCode" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="MaintenanceTypeCode" min="3" max="3" validation="T875" comment="Code identifying the specific type of item maintenance"/>
-  <Field name="StatusReasonCode" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
+  <Field name="StatusReasonCode" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
 </Segment>
