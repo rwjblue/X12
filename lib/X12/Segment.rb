@@ -140,7 +140,32 @@ module X12
       # If the segment hasn't been parsed yet, let's parse it
       parse_fields if @fields.nil? && @parsed_str
 
-      nodes.find { |node| node.name == field_name || node.alias == field_name } || EMPTY
+      if field_name =~ /^(?:#{self.name})?(\d\d)$/ then
+        nodes[$1.to_i - 1]
+      else
+        nodes.find { |node| node.name == field_name || node.alias == field_name } || EMPTY
+      end
+    end
+
+    # Validate the segment - whether incoming or outgoing. use_ext_charset controls whether 
+    #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
+    def valid?(use_ext_charset = true)
+      if has_displayable_content? then
+        return false if nodes.find { |node| @error = node.error unless node.valid?(use_ext_charset) }
+
+        # Recursively check if all the repeats of this node are correct.
+        if next_repeat && !next_repeat.valid?(use_ext_charset) then
+          @error = next_repeat.error
+          return false 
+        end
+      else
+        if required? then
+          @error = "#{node.name}: required segment missing"
+          return false 
+        end
+      end
+
+      return true
     end
 
     def parse_fields

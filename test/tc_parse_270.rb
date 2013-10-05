@@ -83,7 +83,7 @@ EOT
   end # test_absent
 
   def test_validity
-    assert_equal(true, @@parser.validate(@r))
+    assert_equal(true, @r.valid?)
   end
 
   def test_segment_counter

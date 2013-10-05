@@ -130,7 +130,7 @@ EOT
   end # test_absent
 
   def test_validity
-    assert_equal(true, @@parser.validate(@r))
+    assert_equal(true, @r.valid?)
   end
 
   def test_segment_counter
@@ -138,6 +138,13 @@ EOT
     assert_equal(11, @r.L1000.segments_parsed)
     assert_equal(4, @r.L1000.L1010.segments_parsed)
     assert_equal(9, @r.L1000.L1010.segments_parsed(:include_repeats))
+  end
+
+  def test_field_accessor
+    assert_equal('997', @r.ST.find_field('TransactionSetIdentifierCode').content)
+    assert_equal('997', @r.ST.find_field('01').content)
+    assert_equal('997', @r.ST.find_field('ST01').content)
+    assert_equal(true, @r.ST.find_field('should not find').empty?)
   end
 
   def test_timing

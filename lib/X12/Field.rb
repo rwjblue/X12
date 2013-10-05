@@ -29,7 +29,7 @@ module X12
 
   class Field
     attr_reader :name, :alias, :data_type, :required, :min_length, :max_length, :validation, :const_value, :error
-    attr_accessor :content, :parent
+    attr_accessor :content, :parent, :validation_table
 
     # Create a new field with given parameters
     def initialize(params = {})
@@ -199,10 +199,9 @@ module X12
       false
     end
 
-    # Validate the field data - whether incoming or outgoing. Fields that have validation attribute set
-    #   are checked against the passed-in validation_table hash. use_ext_charset controls whether 
+    # Validate the field data - whether incoming or outgoing. use_ext_charset controls whether 
     #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
-    def valid?(validation_table = nil, use_ext_charset = true)
+    def valid?(use_ext_charset = true)
       val = @parsed_str || self.raw_value
 
       if val.nil? || val == '' then
@@ -215,7 +214,7 @@ module X12
 
         if validation then
           if validation_table.nil?
-            @error = [ nil, "No validation table provided for #{validation}" ]
+            @error = [ nil, "Validation table #{validation} not provided" ]
             return false
           end
 

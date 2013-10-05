@@ -129,7 +129,7 @@ EOT
       a.NumberOfAcceptedTransactionSets = 0
     } # a
 
-    assert_equal(true, @@p.validate!(@r))
+    assert_equal(true, @r.valid?)
     assert_equal(@@result, @r.render)
   end # test_all
 

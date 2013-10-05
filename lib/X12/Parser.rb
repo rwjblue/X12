@@ -77,42 +77,6 @@ module X12
       return loop
     end # factory
 
-    # Validates the X12 document. Returns true if the document is valid, false otherwise;
-    # use 'error' attribute to access the error message.
-    def validate(node)
-      @error = nil
-
-      case node
-      when X12::Field then
-        table = node.validation && @x12_definition[X12::Table] && @x12_definition[X12::Table][node.validation]
-
-        unless node.valid?(table)
-          @error = "#{node.parent.name}/#{node.name}: #{node.error.last}"
-          return false
-        end
-
-      else
-        if node.has_displayable_content? then
-          # See if all children of this node are correct
-          return false unless node.nodes.all? { |node| validate(node) }
-          # Recursively check if all the repeats of this node are correct.
-          return false if node.next_repeat && !validate(node.next_repeat)
-        else
-          if node.required? then
-            @error = "#{node.name}: required #{node.class.to_s.downcase} missing"
-            return false 
-          end
-        end
-      end
-      return true
-    end
-
-    # Validates the X12 document and raises the Exception if invalid.
-    def validate!(doc)
-      raise Exception.new(@error) unless validate(doc)
-      true
-    end
-
     private
 
     def load_definition_file(file_name)
@@ -187,7 +151,7 @@ module X12
 
           node.nodes.each { |n|
             # Make sure we have the validation table if any for this field. Try to read one in if missing.
-            get_definition(X12::Table, n.validation) if n.validation
+            n.validation_table = get_definition(X12::Table, n.validation) if n.validation
           }
         end
       }
