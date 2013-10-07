@@ -88,6 +88,8 @@
     
     <li><a href="#method-i-to_hsh">#to_hsh</a>
     
+    <li><a href="#method-i-valid-3F">#valid?</a>
+    
   </ul>
 </nav>
 
@@ -210,7 +212,8 @@ counter (usually that would be ST)</p>
             <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 34</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span>, <span class="ruby-identifier">nodes</span>)
   <span class="ruby-ivar">@initial_segment</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:initial_segment</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
-  <span class="ruby-ivar">@overrides</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:overrides</span>] <span class="ruby-operator">||</span> []
+  <span class="ruby-ivar">@overrides</span>       = <span class="ruby-identifier">params</span>[<span class="ruby-value">:overrides</span>] <span class="ruby-operator">||</span> []
+  <span class="ruby-ivar">@syntax_notes</span>    = <span class="ruby-identifier">params</span>[<span class="ruby-value">:syntax_notes</span>]
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
@@ -247,7 +250,7 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="apply_overrides-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 42</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 43</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_overrides</span>
   <span class="ruby-ivar">@overrides</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">override</span><span class="ruby-operator">|</span> 
     <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">apply_overrides</span>(<span class="ruby-identifier">override</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">override</span>.<span class="ruby-identifier">name</span> }
@@ -279,7 +282,7 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 132</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">content</span>
@@ -310,14 +313,18 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="find_field-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 137</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">field_name</span>)
   <span class="ruby-comment">#puts &quot;Finding field [#{field_name}] in #{self.class} #{name}&quot;</span>
 
   <span class="ruby-comment"># If the segment hasn't been parsed yet, let's parse it</span>
   <span class="ruby-identifier">parse_fields</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@parsed_str</span>
 
-  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> } <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">field_name</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/^(?:#{self.name})?(\d\d)$/</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">nodes</span>[<span class="ruby-node">$1</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> } <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY</span>
+  <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- find_field-source -->
           
@@ -346,7 +353,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 50</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 51</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">str</span>
   <span class="ruby-comment">#puts &quot;Parsing segment #{name} from #{s} with regexp [#{regexp.source}]&quot;</span>
@@ -390,7 +397,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="regexp-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 97</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 98</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">regexp</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@regexp</span>
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">is_constant?</span> } <span class="ruby-keyword">then</span>
@@ -435,7 +442,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 73</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
 
@@ -484,7 +491,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="segments_parsed-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 68</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">segments_parsed</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
   (<span class="ruby-identifier">parsed_str</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-value">0</span> <span class="ruby-operator">:</span> <span class="ruby-value">1</span>) <span class="ruby-operator">+</span> ((<span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">segments_parsed</span>(<span class="ruby-keyword">true</span>) <span class="ruby-operator">:</span> <span class="ruby-value">0</span>)
 <span class="ruby-keyword">end</span></pre>
@@ -515,7 +522,7 @@ content values</p>
 
           
           <div class="method-source-code" id="to_hsh-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 117</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 118</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
   <span class="ruby-identifier">hsh</span> = {}
 
@@ -536,6 +543,91 @@ content values</p>
 
         
       </div><!-- to_hsh-method -->
+
+    
+      <div id="method-i-valid-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">valid?</span><span
+            class="method-args">(use_ext_charset = true)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Validate the segment - whether incoming or outgoing. use_ext_charset
+controls whether</p>
+
+<pre>the X12's Basic or Advanced Character Set is expected for alphanumeric values.</pre>
+          
+
+          
+          <div class="method-source-code" id="valid-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 153</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">use_ext_charset</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-ivar">@error_code</span> = <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">has_displayable_content?</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">8</span>, <span class="ruby-identifier">node</span>.<span class="ruby-identifier">error</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">use_ext_charset</span>) }
+
+    <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@syntax_notes</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@syntax_notes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">note</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">deps</span> = <span class="ruby-identifier">note</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">'a1a2a2a2a2a2a2a2a2'</span>).<span class="ruby-identifier">reject</span>(&amp;<span class="ruby-value">:empty?</span>) <span class="ruby-comment"># Never seen more than 5, but just in case...</span>
+        <span class="ruby-identifier">mode</span> = <span class="ruby-identifier">deps</span>.<span class="ruby-identifier">shift</span>
+
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">mode</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">'C'</span> <span class="ruby-keyword">then</span> <span class="ruby-comment"># Conditional. If the first element is present, then the others must be present</span>
+          <span class="ruby-identifier">f</span> = <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">deps</span>.<span class="ruby-identifier">shift</span>)
+          <span class="ruby-identifier">mode</span> = <span class="ruby-string">'P'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">has_displayable_content?</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">'L'</span> <span class="ruby-keyword">then</span> <span class="ruby-comment"># List Conditional. If the first element is present, then at least one of the others must be present</span>
+          <span class="ruby-identifier">f</span> = <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">deps</span>.<span class="ruby-identifier">shift</span>)
+          <span class="ruby-identifier">mode</span> = <span class="ruby-string">'R'</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">f</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">f</span>.<span class="ruby-identifier">has_displayable_content?</span>
+        <span class="ruby-keyword">end</span>
+
+        <span class="ruby-keyword">case</span> <span class="ruby-identifier">mode</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">'P'</span> <span class="ruby-keyword">then</span> <span class="ruby-comment"># Paired or multiple. If any are used, all must be used</span>
+          <span class="ruby-identifier">c</span> = <span class="ruby-identifier">deps</span>.<span class="ruby-identifier">count</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">has_displayable_content?</span> }
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-value">0</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">c</span> <span class="ruby-operator">!=</span> <span class="ruby-identifier">deps</span>.<span class="ruby-identifier">size</span> <span class="ruby-keyword">then</span>
+            <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">10</span>, <span class="ruby-node">&quot;#{self.name}: exclusion condition violated&quot;</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> 
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">'R'</span> <span class="ruby-keyword">then</span> <span class="ruby-comment"># Required. At least one of those noted must be used</span>
+          <span class="ruby-keyword">unless</span> <span class="ruby-identifier">deps</span>.<span class="ruby-identifier">any?</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">has_displayable_content?</span> } <span class="ruby-keyword">then</span>
+            <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">2</span>, <span class="ruby-node">&quot;#{self.name}: conditional required data element missing&quot;</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> 
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">when</span> <span class="ruby-string">'E'</span> <span class="ruby-keyword">then</span> <span class="ruby-comment"># Exclusion. No more than one may be used</span>
+          <span class="ruby-keyword">if</span> <span class="ruby-identifier">deps</span>.<span class="ruby-identifier">count</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">i</span>).<span class="ruby-identifier">has_displayable_content?</span> } <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span> <span class="ruby-keyword">then</span>
+            <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">10</span>, <span class="ruby-node">&quot;#{self.name}: exclusion condition violated&quot;</span>
+            <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> 
+          <span class="ruby-keyword">end</span>
+        <span class="ruby-keyword">end</span>
+      }
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Recursively check if all the repeats of this segment are correct.</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">next_repeat</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">use_ext_charset</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">error_code</span>, <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">error</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> 
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">required?</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">3</span>, <span class="ruby-node">&quot;#{self.name}: mandatory segment missing&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> 
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- valid-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- valid-3F-method -->
 
     
     </section><!-- public-instance-method-details -->
