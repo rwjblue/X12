@@ -137,14 +137,16 @@ module X12
 
     def parse_segment(e)
       params = parse_attributes(e)
-      params[:overrides] = e.get_elements("Override").collect { |override| parse_field(override, true) }
-      params[:initial_segment] = parse_boolean(e.attributes["initial_segment"])
-      s = Segment.new(params, e.get_elements("Field").collect { |field| parse_field(field) })
+      params[:overrides] = e.get_elements('Override').collect { |override| parse_field(override, true) }
+      params[:initial_segment] = parse_boolean(e.attributes['initial_segment'])
+      params[:syntax_notes] = e.get_elements('SyntaxNote').collect { |note| note.attributes['name'] }
+
+      s = Segment.new(params, e.get_elements('Field').collect { |field| parse_field(field) })
       s
     end
 
     def parse_composite(e)
-      Composite.new(parse_attributes(e), e.get_elements("Field").collect { |field| parse_field(field) })
+      Composite.new(parse_attributes(e), e.get_elements('Field').collect { |field| parse_field(field) })
     end
 
     def parse_loop(e)

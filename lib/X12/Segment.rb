@@ -33,7 +33,8 @@ module X12
 
     def initialize(params, nodes)
       @initial_segment = params[:initial_segment] || false
-      @overrides = params[:overrides] || []
+      @overrides       = params[:overrides] || []
+      @syntax_notes    = params[:syntax_notes]
       super
     end
 
@@ -150,17 +151,54 @@ module X12
     # Validate the segment - whether incoming or outgoing. use_ext_charset controls whether 
     #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
     def valid?(use_ext_charset = true)
-      if has_displayable_content? then
-        return false if nodes.find { |node| @error = node.error unless node.valid?(use_ext_charset) }
+      @error_code = @error = nil
 
-        # Recursively check if all the repeats of this node are correct.
+      if has_displayable_content? then
+        return false if nodes.find { |node| @error_code, @error = 8, node.error unless node.valid?(use_ext_charset) }
+
+        if !@syntax_notes.empty? then
+          @syntax_notes.each { |note|
+            deps = note.unpack('a1a2a2a2a2a2a2a2a2').reject(&:empty?) # Never seen more than 5, but just in case...
+            mode = deps.shift
+
+            case mode
+            when 'C' then # Conditional. If the first element is present, then the others must be present
+              f = find_field(deps.shift)
+              mode = 'P' if f && f.has_displayable_content?
+            when 'L' then # List Conditional. If the first element is present, then at least one of the others must be present
+              f = find_field(deps.shift)
+              mode = 'R' if f && f.has_displayable_content?
+            end
+
+            case mode
+            when 'P' then # Paired or multiple. If any are used, all must be used
+              c = deps.count{ |i| find_field(i).has_displayable_content? }
+              if c != 0 && c != deps.size then
+                @error_code, @error = 10, "#{self.name}: exclusion condition violated"
+                return false 
+              end
+            when 'R' then # Required. At least one of those noted must be used
+              unless deps.any?{ |i| find_field(i).has_displayable_content? } then
+                @error_code, @error = 2, "#{self.name}: conditional required data element missing"
+                return false 
+              end
+            when 'E' then # Exclusion. No more than one may be used
+              if deps.count{ |i| find_field(i).has_displayable_content? } > 1 then
+                @error_code, @error = 10, "#{self.name}: exclusion condition violated"
+                return false 
+              end
+            end
+          }
+        end
+
+        # Recursively check if all the repeats of this segment are correct.
         if next_repeat && !next_repeat.valid?(use_ext_charset) then
-          @error = next_repeat.error
+          @error_code, @error = next_repeat.error_code, next_repeat.error
           return false 
         end
       else
         if required? then
-          @error = "#{node.name}: required segment missing"
+          @error_code, @error = 3, "#{self.name}: mandatory segment missing"
           return false 
         end
       end

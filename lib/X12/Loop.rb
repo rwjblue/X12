@@ -117,17 +117,19 @@ module X12
     # Validate the loop - whether incoming or outgoing. use_ext_charset controls whether 
     #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
     def valid?(use_ext_charset = true)
-      if has_displayable_content? then
-        return false if nodes.find { |node| @error = node.error unless node.valid?(use_ext_charset) }
+      @error_code = @error = nil
 
-        # Recursively check if all the repeats of this node are correct.
+      if has_displayable_content? then
+        return false if nodes.find { |node| @error_code, @error = node.error_code, node.error unless node.valid?(use_ext_charset) }
+
+        # Recursively check if all the repeats of this loop are correct.
         if next_repeat && !next_repeat.valid?(use_ext_charset) then
-          @error = next_repeat.error
+          @error_code, @error = next_repeat.error_code, next_repeat.error
           return false 
         end
       else
         if required? then
-          @error = "#{node.name}: required loop missing"
+          @error_code, @error = 3, "#{self.name}: mandatory loop missing"
           return false 
         end
       end

@@ -90,6 +90,9 @@
         <Field name="IdentificationCode"          required="n" min="2" max="80"                    comment="Code identifying a party or other code"/>
         <Field name="EntityRelationshipCode"      required="n" min="2" max="2"  validation="T706"  comment="Code describing entity relationship"/>
         <Field name="EntityIdentifierCode"        required="n" min="2" max="3"  validation="T98"   comment="Code identifying an organizational entity, a physical location, property or an individual"/>
+        <SyntaxNote name="P0809" comment="If either NM108 or NM109 is present, then the other is required."/>
+        <SyntaxNote name="C1110" comment="If NM111 is present, then NM110 is required."/>
+        <SyntaxNote name="C1203" comment="If NM112 is present, then NM103 is required."/>
       </Segment>
       <Segment name="REF" required="n" max="9"/>
       <Segment name="N3"  required="n" max="1"/>
@@ -131,6 +134,9 @@
         <Field name="IdentificationCode"          required="n" min="2" max="80"                    comment="Code identifying a party or other code"/>
         <Field name="EntityRelationshipCode"      required="n" min="2" max="2"  validation="T706"  comment="Code describing entity relationship"/>
         <Field name="EntityIdentifierCode"        required="n" min="2" max="3"  validation="T98"   comment="Code identifying an organizational entity, a physical location, property or an individual"/>
+        <SyntaxNote name="P0809" comment="If either NM108 or NM109 is present, then the other is required."/>
+        <SyntaxNote name="C1110" comment="If NM111 is present, then NM110 is required."/>
+        <SyntaxNote name="C1203" comment="If NM112 is present, then NM103 is required."/>
       </Segment>
       <Segment name="REF" required="n" max="9"/>
       <Segment name="N3"  required="n" max="1"/>

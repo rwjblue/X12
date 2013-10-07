@@ -30,4 +30,7 @@
   <Field name="TimeCode" min="2" max="2" validation="T623" comment="Code identifying the time. In accordance with International Standards Organization standard 8601, time can be specified by a + or - and an indication in hours in relation to Universal Time Coordinate (UTC) time; since + is a restricted character, + and - are substituted by P and M in the codes that follow"/>
   <Field name="DateTimePeriodFormatQualifier" min="2" max="3" validation="T1250" comment="Code indicating the date format, time format, or date and time format"/>
   <Field name="DateTimePeriod" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
+  <SyntaxNote name="R020305" comment="At least one of DTM02, DTM03 or DTM05 is required."/>
+  <SyntaxNote name="C0403" comment="If DTM04 is present, then DTM03 is required."/>
+  <SyntaxNote name="P0506" comment="If either DTM05 or DTM06 is present, then the other is required."/>
 </Segment>

@@ -188,4 +188,42 @@ class FieldFormatting < Test::Unit::TestCase
     assert_equal(f.content, f.parse(f.render))
   end
 
+  def test_field_validations
+    f = X12::Field.new({ :name => 'test', :data_type => 'R', :min => 2, :max => 2 })
+    f.content = 999
+    assert_equal(false, f.valid?)
+    assert_equal(5,     f.error_code)
+
+    f = X12::Field.new({ :name => 'test', :data_type => 'R', :min => 4, :max => 4 })
+    f.content = 0
+    assert_equal(false, f.valid?)
+    assert_equal(4,     f.error_code)
+
+    t = X12::Table.new({:name => 'T123'}, { 'XY' => 'Valid Value' })
+    f = X12::Field.new({ :name => 'test', :data_type => 'AN', :min => 2, :max => 2, :validation => 'T123'})
+    f.validation_table = t
+
+    f.content = 'XZ'
+    assert_equal(false, f.valid?)
+    assert_equal(7,     f.error_code)
+
+    f.content = 'XY'
+    assert_equal(true,  f.valid?)
+    assert_equal(nil,   f.error_code)
+
+    f = X12::Field.new({ :name => 'test', :data_type => 'AN', :min => 2, :max => 2, :required => true})
+    f.content = nil
+    assert_equal(false, f.valid?)
+    assert_equal(1,     f.error_code)
+
+    f.content = 'XY'
+    assert_equal(true,  f.valid?)
+    assert_equal(nil,   f.error_code)
+
+    f.content = 'A#'
+    assert_equal(false, f.valid?(false))
+    assert_equal(6,     f.error_code)
+
+  end
+
 end # TestList

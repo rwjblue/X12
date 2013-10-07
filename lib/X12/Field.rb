@@ -28,7 +28,8 @@ module X12
   # Class to represent a segment field. Please note, it's not a descendant of Base.
 
   class Field
-    attr_reader :name, :alias, :data_type, :required, :min_length, :max_length, :validation, :const_value, :error
+    attr_reader :name, :alias, :data_type, :required, :min_length, :max_length, :validation, :const_value,
+                :error, :error_code
     attr_accessor :content, :parent, :validation_table
 
     # Create a new field with given parameters
@@ -36,6 +37,7 @@ module X12
       @content     = nil
       @parent      = nil
       @error       = nil
+      @error_code  = nil
       @name        = params[:name]
       @data_type   = params[:data_type]
       @required    = params[:required] || false
@@ -202,11 +204,12 @@ module X12
     # Validate the field data - whether incoming or outgoing. use_ext_charset controls whether 
     #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
     def valid?(use_ext_charset = true)
+      @error_code = @error = nil
       val = @parsed_str || self.raw_value
 
       if val.nil? || val == '' then
         if required && !is_variable? then
-          @error = [ 1, 'Mandatory data element missing' ]
+          @error_code, @error = 1, 'Mandatory data element missing'
           return false
         end
       else
@@ -214,23 +217,23 @@ module X12
 
         if validation then
           if validation_table.nil?
-            @error = [ nil, "Validation table #{validation} not provided" ]
+            @error = "Validation table #{validation} not provided"
             return false
           end
 
           unless validation_table.has_key?(val2)
-            @error = [ 7, "Invalid code value ([#{val}] not in validation table #{validation})" ]
+            @error_code, @error = 7, "Invalid code value ([#{val}] not in validation table #{validation})"
             return false
           end
         end
 
         if val2.length > max_length then
-          @error = [ 5, "Data element too long (data=[#{val2}], max_length=#{max_length})" ]
+            @error_code, @error = 5, "Data element too long (data=[#{val2}], max_length=#{max_length})"
           return false
         end
 
         if val2.length < min_length then
-          @error = [ 4, "Data element too short (data=[#{val2}], (min_length=#{min_length})" ]
+            @error_code, @error = 4, "Data element too short (data=[#{val2}], (min_length=#{min_length})"
           return false
         end
 
@@ -252,7 +255,7 @@ module X12
         # If regexp left something behind ($' stands for match_data.post_match), the first uncosumed character
         #   will be the one that failed the match.
         if re && re.match(val2) && $' != '' then
-          @error = [ 6, "Invalid character in data element (data=[#{val2}], char='#{$'[0]}')" ]
+          @error_code, @error = 6, "Invalid character in data element (data=[#{val2}], char='#{$'[0]}')"
           return false
         end
 
