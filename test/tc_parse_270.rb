@@ -93,6 +93,22 @@ EOT
     assert_equal(0, @r.L2000C.L2100C.L2110C.AMT.segments_parsed)
   end
 
+  def test_segment_enumerator
+    @r.enumerate_segments
+    assert_equal(1, @r.ST.segment_position)
+    assert_equal(2, @r.BHT.segment_position)
+    assert_equal(3, @r.L2000A.HL.segment_position)
+    assert_equal(4, @r.L2000A.L2100A.NM1.segment_position)
+    assert_equal(5, @r.L2000B.HL.segment_position)
+    assert_equal(6, @r.L2000B.L2100B.NM1.segment_position)
+    assert_equal(7, @r.L2000C.HL.segment_position)
+    assert_equal(8, @r.L2000C.L2100C.NM1.segment_position)
+    assert_equal(9, @r.L2000C.L2100C.DMG.segment_position)
+    assert_equal(10, @r.L2000C.L2100C.DTP.segment_position)
+    assert_equal(11, @r.L2000C.L2100C.EQ.segment_position)
+    assert_equal(12, @r.SE.segment_position)
+  end
+
   def test_timing
     start = Time::now
     TEST_REPEAT.times do

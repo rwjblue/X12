@@ -177,6 +177,16 @@ EOT
     assert_equal(12, @r.FG[1]._270[1].segments_parsed)
   end
 
+  def test_segment_enumerator
+    @r.enumerate_segments
+    assert_equal(1, @r.FG[0].ST.segment_position)
+    assert_equal(12, @r.FG[0].SE.segment_position)
+    assert_equal(1, @r.FG[1].ST.segment_position)
+    assert_equal(12, @r.FG[1].SE.segment_position)
+    assert_equal(1, @r.FG[2].ST.segment_position)
+    assert_equal(12, @r.FG[2].SE.segment_position)
+  end
+
   def test_timing
     start = Time::now
     TEST_REPEAT.times do

@@ -147,6 +147,25 @@ EOT
     assert_equal(true, @r.ST.find_field('should not find').empty?)
   end
 
+  def test_segment_enumerator
+    @r.enumerate_segments
+    assert_equal(1, @r.ST.segment_position)
+    assert_equal(2, @r.AK1.segment_position)
+    assert_equal(3, @r.L1000.AK2.segment_position)
+    assert_equal(4, @r.L1000.L1010.AK3.segment_position)
+    assert_equal(5, @r.L1000.L1010.AK4[0].segment_position)
+    assert_equal(6, @r.L1000.L1010.AK4[1].segment_position)
+    assert_equal(7, @r.L1000.L1010.AK4[2].segment_position)
+    assert_equal(8, @r.L1000.L1010[1].AK3.segment_position)
+    assert_equal(9, @r.L1000.L1010[1].AK4[0].segment_position)
+    assert_equal(10, @r.L1000.L1010[1].AK4[1].segment_position)
+    assert_equal(11, @r.L1000.L1010[2].AK3.segment_position)
+    assert_equal(12, @r.L1000.L1010[2].AK4.segment_position)
+    assert_equal(13, @r.L1000.AK5.segment_position)
+    assert_equal(14, @r.AK9.segment_position)
+    assert_equal(15, @r.SE.segment_position)
+  end
+
   def test_timing
     start = Time::now
     TEST_REPEAT.times do

@@ -93,6 +93,14 @@ module X12
         ((include_repeats && next_repeat) ? next_repeat.segments_parsed(true) : 0)
     end
 
+    # We will be enumerating all the segments inside this particular instance of the loop,
+    #   so all repeats of all the children of this loop need to be included, but not its neigbours.
+    def enumerate_segments(start = 0, include_repeats = false)
+      nodes.each { |n| start = n.enumerate_segments(start, true) }
+      start = next_repeat.enumerate_segments(start, true) if include_repeats && next_repeat
+      start
+    end    
+
     # Render all components of this loop as string suitable for EDI
     def render(root = self)
       res = ''

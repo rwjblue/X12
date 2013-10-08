@@ -29,12 +29,13 @@ module X12
     
   class Segment < Base
     # Flag denoting the segment from which should reset the rendered segment counter (usually that would be ST)
-    attr_reader :initial_segment
+    attr_reader :initial_segment, :segment_position
 
     def initialize(params, nodes)
-      @initial_segment = params[:initial_segment] || false
-      @overrides       = params[:overrides] || []
-      @syntax_notes    = params[:syntax_notes]
+      @initial_segment  = params[:initial_segment] || false
+      @overrides        = params[:overrides] || []
+      @syntax_notes     = params[:syntax_notes]
+      @segment_position = nil
       super
     end
 
@@ -68,6 +69,13 @@ module X12
 
     def segments_parsed(include_repeats = false)
       (parsed_str.nil? ? 0 : 1) + ((include_repeats && next_repeat) ? next_repeat.segments_parsed(true) : 0)
+    end
+
+    def enumerate_segments(start = 0, include_repeats = false)
+      start = 0 if @initial_segment
+      start += 1 unless parsed_str.nil?
+      @segment_position = start
+      ((include_repeats && next_repeat) ? next_repeat.enumerate_segments(start, true) : start)
     end
 
     # Render all components of this segment as string suitable for EDI

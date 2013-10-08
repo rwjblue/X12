@@ -72,6 +72,8 @@
     
     <li><a href="#method-c-new">::new</a>
     
+    <li><a href="#method-i-enumerate_segments">#enumerate_segments</a>
+    
     <li><a href="#method-i-find">#find</a>
     
     <li><a href="#method-i-parse">#parse</a>
@@ -237,6 +239,41 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
+      <div id="method-i-enumerate_segments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">enumerate_segments</span><span
+            class="method-args">(start = 0, include_repeats = false)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>We will be enumerating all the segments inside this particular instance of
+the loop,</p>
+
+<pre>so all repeats of all the children of this loop need to be included, but not its neigbours.</pre>
+          
+
+          
+          <div class="method-source-code" id="enumerate_segments-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">enumerate_segments</span>(<span class="ruby-identifier">start</span> = <span class="ruby-value">0</span>, <span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">start</span> = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">enumerate_segments</span>(<span class="ruby-identifier">start</span>, <span class="ruby-keyword">true</span>) }
+  <span class="ruby-identifier">start</span> = <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">enumerate_segments</span>(<span class="ruby-identifier">start</span>, <span class="ruby-keyword">true</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span>
+  <span class="ruby-identifier">start</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- enumerate_segments-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- enumerate_segments-method -->
+
+    
       <div id="method-i-find" class="method-detail ">
         
         <div class="method-heading">
@@ -339,7 +376,7 @@ nothing was parsed out.</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 97</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 105</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
   <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_content?</span> <span class="ruby-keyword">then</span>
@@ -410,7 +447,7 @@ their respective values.</p>
 
           
           <div class="method-source-code" id="to_hsh-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 107</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 115</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
   <span class="ruby-identifier">hsh</span> = {}
 
@@ -449,7 +486,7 @@ whether</p>
 
           
           <div class="method-source-code" id="valid-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 119</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 127</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">use_ext_charset</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-ivar">@error_code</span> = <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
 
