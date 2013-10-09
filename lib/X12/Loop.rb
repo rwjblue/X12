@@ -99,9 +99,9 @@ module X12
       }
     end
 
-    def each_segment(include_repeats = false, &block)
-      nodes.each { |node| node.each_segment(true, &block) }
-      next_repeat.each_segment(:include_repeats, &block) if include_repeats && next_repeat
+    def each_segment(include_repeats = false)
+      nodes.each { |node| node.each_segment(true) { |x| yield(x) } }
+      next_repeat.each_segment(:include_repeats) { |x| yield(x) } if include_repeats && next_repeat
     end
 
     def render
