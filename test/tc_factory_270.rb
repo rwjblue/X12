@@ -136,9 +136,13 @@ EOT
       }
     }
 
-    assert_equal(true, @r.valid?)
     assert_equal(@@result, @r.render)
   end # test_all
+
+  def test_validity
+    test_all
+    assert_equal(true, @r.valid?)
+  end
 
   def test_timing
     start = Time::now

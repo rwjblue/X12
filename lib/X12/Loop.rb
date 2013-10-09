@@ -85,24 +85,58 @@ module X12
       return s
     end # parse
 
+    def segments_parsed(include_repeats = false)
+      res = 0  
+      self.each_segment(include_repeats) { |s| res += 1 unless s.parsed_str.nil? }
+      res
+    end
+
+    def enumerate_segments
+      n = 0
+      self.each_segment(:include_repeats) { |s|
+        n = 0 if s.initial_segment 
+        s.segment_position = (n += 1) unless s.parsed_str.nil?
+      }
+    end
+
+    def each_segment(include_repeats = false, &block)
+      nodes.each { |node| node.each_segment(true, &block) }
+      next_repeat.each_segment(:include_repeats, &block) if include_repeats && next_repeat
+    end
+
+    def render
+      self.segments_rendered = 0
+      res = ''
+      self.each_segment(:include_repeats) { |s|
+        self.segments_rendered = 0 if s.initial_segment 
+        if s.has_displayable_content? then
+          # Current segment needs to be included in the count, so we increase in advance.
+          self.segments_rendered += 1
+          res << s.render(self)
+        end
+      }
+      res
+    end
+
+=begin
     # Segment count should include all the segments inside this particular instance of the loop.
     #   It means that all segments of all repeats of all the children of this loop
     #   need to be included in the count, but not the neigbours of this one.
-    def segments_parsed(include_repeats = false)
+    def segments_parsed_old(include_repeats = false)
       nodes.inject(0) { |sum, node| sum + node.segments_parsed(true) } +
         ((include_repeats && next_repeat) ? next_repeat.segments_parsed(true) : 0)
     end
 
     # We will be enumerating all the segments inside this particular instance of the loop,
     #   so all repeats of all the children of this loop need to be included, but not its neigbours.
-    def enumerate_segments(start = 0, include_repeats = false)
-      nodes.each { |n| start = n.enumerate_segments(start, true) }
-      start = next_repeat.enumerate_segments(start, true) if include_repeats && next_repeat
+    def enumerate_segments_old(start = 0, include_repeats = false)
+      nodes.each { |n| start = n.enumerate_segments_old(start, true) }
+      start = next_repeat.enumerate_segments_old(start, true) if include_repeats && next_repeat
       start
     end    
 
     # Render all components of this loop as string suitable for EDI
-    def render(root = self)
+    def render_old(root = self)
       res = ''
       if self.has_content? then
         nodes.each { |n| res << n.render(root) } # Render children of this Loop
@@ -110,6 +144,7 @@ module X12
       end
       res
     end # render
+=end
 
     # Returns recursive hash of nodes that have an alias defined, along with their respective values.
     def to_hsh

@@ -29,7 +29,8 @@ module X12
     
   class Segment < Base
     # Flag denoting the segment from which should reset the rendered segment counter (usually that would be ST)
-    attr_reader :initial_segment, :segment_position
+    attr_reader   :initial_segment
+    attr_accessor :segment_position
 
     def initialize(params, nodes)
       @initial_segment  = params[:initial_segment] || false
@@ -67,19 +68,28 @@ module X12
       return s
     end # parse
 
+    def each_segment(include_repeats = false, &block)
+      segment = self
+      while segment
+        block.call(segment)
+        segment = include_repeats && segment.next_repeat
+      end
+    end
+
+=begin
     def segments_parsed(include_repeats = false)
       (parsed_str.nil? ? 0 : 1) + ((include_repeats && next_repeat) ? next_repeat.segments_parsed(true) : 0)
     end
 
-    def enumerate_segments(start = 0, include_repeats = false)
+    def enumerate_segments_old(start = 0, include_repeats = false)
       start = 0 if @initial_segment
       start += 1 unless parsed_str.nil?
       @segment_position = start
-      ((include_repeats && next_repeat) ? next_repeat.enumerate_segments(start, true) : start)
+      ((include_repeats && next_repeat) ? next_repeat.enumerate_segments_old(start, true) : start)
     end
 
-    # Render all components of this segment as string suitable for EDI
-    def render(root = self)
+    # Render all components of this segment and all its repears as string suitable for EDI
+    def render_old(root = self)
       res = ''
 
       if (self.repeats.begin > 0) || self.has_displayable_content? then
@@ -100,6 +110,20 @@ module X12
 
       res << next_repeat.render(root) if next_repeat # Recursively render the following segment
       res
+    end # render
+=end
+
+    # Render all components of this particular segment as string suitable for EDI
+    def render(root = self)
+      return '' unless required? || self.has_displayable_content?
+
+      nodes_str = ''
+      nodes.reverse.each { |fld| # Building string in reverse in order to toss empty optional fields off the end.
+        field = fld.render(root)
+        nodes_str = root.field_separator + field + nodes_str if fld.required || nodes_str != '' || field != ''
+      }
+
+      self.name + nodes_str + root.segment_separator
     end # render
 
     # Returns a regexp that matches this particular segment
