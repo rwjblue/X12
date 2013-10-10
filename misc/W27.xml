@@ -34,4 +34,5 @@
   <Field name="ShipmentOrderStatusCode" required="y" min="2" max="2" validation="T368" comment="Code indicating the status of an order or shipment or the disposition of any difference between the quantity ordered and the quantity shipped for a line item or transaction"/>
   <Field name="SpecialHandlingCode" required="y" min="2" max="3" validation="T152" comment="Code specifying special transportation handling instructions"/>
   <Field name="CarrierRouteChangeReasonCode" required="y" min="2" max="2" validation="T890" comment="Code reflecting reason a requested carrier or route was changed"/>
+  <SyntaxNote name="R0203" comment="At least one of W2702 or W2703 is required."/>
 </Segment>

@@ -36,4 +36,6 @@
   <Field name="AddressInformation" required="y" min="1" max="55" comment="Address information"/>
   <Field name="IdentificationCode" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="IdentificationCodeQualifier" required="y" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>
+  <SyntaxNote name="P0506" comment="If either RT05 or RT06 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either RT11 or RT12 is present, then the other is required."/>
 </Segment>

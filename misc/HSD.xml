@@ -32,4 +32,6 @@
   <Field name="NumberOfPeriods" type="long" required="y" min="1" max="3" comment="Total number of periods"/>
   <Field name="ShipDeliveryOrCalendarPatternCode" required="y" min="1" max="2" validation="T678" comment="Code which specifies the routine shipments, deliveries, or calendar pattern"/>
   <Field name="ShipDeliveryPatternTimeCode" required="y" min="1" max="1" validation="T679" comment="Code which specifies the time for routine shipments or deliveries"/>
+  <SyntaxNote name="P0102" comment="If either HSD01 or HSD02 is present, then the other is required."/>
+  <SyntaxNote name="C0605" comment="If HSD06 is present, then HSD05 is required."/>
 </Segment>

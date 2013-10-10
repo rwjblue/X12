@@ -40,4 +40,5 @@
   <Field name="QuantityQualifier" required="y" min="2" max="2" validation="T673" comment="Code specifying the type of quantity"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="FreeFormDescription" required="y" min="1" max="45" comment="Free-form descriptive text"/>
+  <SyntaxNote name="P1415" comment="If either CAL14 or CAL15 is present, then the other is required."/>
 </Segment>

@@ -39,4 +39,17 @@
   <Field name="PercentQualifier" required="y" min="1" max="2" validation="T1004" comment="Code to qualify percent"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P010203" comment="If either PAM01, PAM02 or PAM03 are present, then the others are required."/>
+  <SyntaxNote name="R020514" comment="At least one of PAM02, PAM05 or PAM14 is required."/>
+  <SyntaxNote name="P0405" comment="If either PAM04 or PAM05 is present, then the other is required."/>
+  <SyntaxNote name="L070809" comment="If PAM07 is present, then at least one of PAM08 or PAM09 is required."/>
+  <SyntaxNote name="C0706" comment="If PAM07 is present, then PAM06 is required."/>
+  <SyntaxNote name="C0807" comment="If PAM08 is present, then PAM07 is required."/>
+  <SyntaxNote name="C0907" comment="If PAM09 is present, then PAM07 is required."/>
+  <SyntaxNote name="L101112" comment="If PAM10 is present, then at least one of PAM11 or PAM12 is required."/>
+  <SyntaxNote name="C1007" comment="If PAM10 is present, then PAM07 is required."/>
+  <SyntaxNote name="C1110" comment="If PAM11 is present, then PAM10 is required."/>
+  <SyntaxNote name="C1210" comment="If PAM12 is present, then PAM10 is required."/>
+  <SyntaxNote name="P1314" comment="If either PAM13 or PAM14 is present, then the other is required."/>
+  <SyntaxNote name="C1505" comment="If PAM15 is present, then PAM05 is required."/>
 </Segment>

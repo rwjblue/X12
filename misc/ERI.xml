@@ -33,4 +33,5 @@
   <Field name="EntityRelationshipCode3" required="y" min="2" max="2" validation="T706" comment="Code describing entity relationship"/>
   <Field name="EntityRelationshipCode4" required="y" min="2" max="2" validation="T706" comment="Code describing entity relationship"/>
   <Field name="HierarchyCode" required="y" min="2" max="2" comment="Code identifying the level an entity holds in the hierarchy of a corporate family"/>
+  <SyntaxNote name="P040506" comment="If either ERI04, ERI05 or ERI06 are present, then the others are required."/>
 </Segment>

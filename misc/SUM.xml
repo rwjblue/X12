@@ -42,4 +42,9 @@
   <Field name="Quantity5" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity6" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="AcademicSummarySource" required="y" min="1" max="1" validation="T1558" comment="Code used to indicate the source of the summary data"/>
+  <SyntaxNote name="C0401" comment="If SUM04 is present, then SUM01 is required."/>
+  <SyntaxNote name="C0501" comment="If SUM05 is present, then SUM01 is required."/>
+  <SyntaxNote name="C0601" comment="If SUM06 is present, then SUM01 is required."/>
+  <SyntaxNote name="P0708" comment="If either SUM07 or SUM08 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either SUM13 or SUM14 is present, then the other is required."/>
 </Segment>

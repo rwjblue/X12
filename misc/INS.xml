@@ -41,4 +41,5 @@
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
+  <SyntaxNote name="P1112" comment="If either INS11 or INS12 is present, then the other is required."/>
 </Segment>

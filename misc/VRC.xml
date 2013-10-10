@@ -29,4 +29,5 @@
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="RecoveryConditionCode" required="y" min="1" max="2" validation="T1426" comment="Code identifying the condition or state of the recovered item"/>
   <Field name="RecoveryClassificationCode" required="y" min="1" max="2" validation="T1425" comment="Code specifying an item's recovery classification"/>
+  <SyntaxNote name="P0102" comment="If either VRC01 or VRC02 is present, then the other is required."/>
 </Segment>

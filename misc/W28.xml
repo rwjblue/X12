@@ -32,4 +32,6 @@
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="LocationQualifier" required="y" min="1" max="2" validation="T309" comment="Code identifying type of location"/>
   <Field name="BillOfLadingWaybillNumber" required="y" min="1" max="25" comment="Identification number assigned to the shipment by the carrier or consolidator"/>
+  <SyntaxNote name="P020304" comment="If either W2802, W2803 or W2804 are present, then the others are required."/>
+  <SyntaxNote name="P0607" comment="If either W2806 or W2807 is present, then the other is required."/>
 </Segment>

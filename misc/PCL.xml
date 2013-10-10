@@ -31,4 +31,8 @@
   <Field name="AcademicDegreeCode" required="y" min="3" max="3" comment="Code indicating the level of postsecondary academic award earned"/>
   <Field name="DateTimePeriod2" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0102" comment="If either PCL01 or PCL02 is present, then the other is required."/>
+  <SyntaxNote name="R0107" comment="At least one of PCL01 or PCL07 is required."/>
+  <SyntaxNote name="P0304" comment="If either PCL03 or PCL04 is present, then the other is required."/>
+  <SyntaxNote name="C0605" comment="If PCL06 is present, then PCL05 is required."/>
 </Segment>

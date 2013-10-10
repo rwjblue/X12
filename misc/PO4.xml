@@ -42,4 +42,14 @@
   <Field name="AssignedIdentification1" required="y" min="1" max="20" comment="Alphanumeric characters assigned for differentiation within a transaction set"/>
   <Field name="AssignedIdentification2" required="y" min="1" max="20" comment="Alphanumeric characters assigned for differentiation within a transaction set"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
+  <SyntaxNote name="P0203" comment="If either PO402 or PO403 is present, then the other is required."/>
+  <SyntaxNote name="C0506" comment="If PO405 is present, then PO406 is required."/>
+  <SyntaxNote name="P0607" comment="If either PO406 or PO407 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either PO408 or PO409 is present, then the other is required."/>
+  <SyntaxNote name="C1013" comment="If PO410 is present, then PO413 is required."/>
+  <SyntaxNote name="C1113" comment="If PO411 is present, then PO413 is required."/>
+  <SyntaxNote name="C1213" comment="If PO412 is present, then PO413 is required."/>
+  <SyntaxNote name="L13101112" comment="If PO413 is present, then at least one of PO410, PO411 or PO412 is required."/>
+  <SyntaxNote name="C1716" comment="If PO417 is present, then PO416 is required."/>
+  <SyntaxNote name="C1804" comment="If PO418 is present, then PO404 is required."/>
 </Segment>

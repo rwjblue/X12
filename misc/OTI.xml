@@ -41,4 +41,5 @@
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="TransactionHandlingCode" required="y" min="1" max="2" validation="T305" comment="Code designating the action to be taken by all parties"/>
   <Field name="StatusReasonCode" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
+  <SyntaxNote name="C0908" comment="If OTI09 is present, then OTI08 is required."/>
 </Segment>

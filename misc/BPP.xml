@@ -38,4 +38,5 @@
   <Field name="ReferenceIdentification3" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="SecurityLevelCode" required="y" min="2" max="2" validation="T786" comment="Code indicating the level of confidentiality assigned by the sender to the information following"/>
   <Field name="VersionIdentifier" required="y" min="1" max="30" comment="Revision level of a particular format, program, technique or algorithm"/>
+  <SyntaxNote name="R040506" comment="At least one of BPP04, BPP05 or BPP06 is required."/>
 </Segment>

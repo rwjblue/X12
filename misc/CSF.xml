@@ -27,4 +27,5 @@
   <Field name="CompositeUnitOfMeasure" type="C001" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="SampleSelectionModulus" type="double" required="y" min="1" max="6" comment="To specify the sampling frequency in terms of a modulus of the Unit of Measure, e.g., every fifth bag, every 1.5 minutes"/>
   <Field name="SampleFrequencyValuePerUnitOfMeasurementCode" type="long" required="y" min="1" max="9" comment="The number of samples collected"/>
+  <SyntaxNote name="E0203" comment="Only one of CSF02 or CSF03 may be present."/>
 </Segment>

@@ -29,4 +29,5 @@
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Amount1" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Amount2" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <SyntaxNote name="P0203" comment="If either PAI02 or PAI03 is present, then the other is required."/>
 </Segment>

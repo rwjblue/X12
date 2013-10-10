@@ -27,4 +27,7 @@
   <Field name="ClassOfTradeCode" required="y" min="2" max="2" validation="T687" comment="Code indicating class of trade"/>
   <Field name="CodeListQualifierCode" required="y" min="1" max="3" validation="T1270" comment="Code identifying a specific industry code list"/>
   <Field name="IndustryCode" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
+  <SyntaxNote name="R0102" comment="At least one of BSF01 or BSF02 is required."/>
+  <SyntaxNote name="E0102" comment="Only one of BSF01 or BSF02 may be present."/>
+  <SyntaxNote name="P0203" comment="If either BSF02 or BSF03 is present, then the other is required."/>
 </Segment>

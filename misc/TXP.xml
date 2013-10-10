@@ -34,4 +34,6 @@
   <Field name="TaxInformationIdentificationNumber3" required="y" min="1" max="30" comment="Identifying number for Tax Information Field"/>
   <Field name="TaxAmount3" type="N2" required="y" min="1" max="10" comment="Amount of tax"/>
   <Field name="TaxpayerVerification" required="y" min="1" max="6" comment="The taxpayer verification field may be used by the receiver to verify the taxpayer's identity"/>
+  <SyntaxNote name="P0607" comment="If either TXP06 or TXP07 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either TXP08 or TXP09 is present, then the other is required."/>
 </Segment>

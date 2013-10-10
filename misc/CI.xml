@@ -38,4 +38,9 @@
   <Field name="Name2" required="y" min="1" max="60" comment="Free-form name"/>
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0304" comment="If either CI03 or CI04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either CI05 or CI06 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either CI08 or CI09 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either CI10 or CI11 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either CI13 or CI14 is present, then the other is required."/>
 </Segment>

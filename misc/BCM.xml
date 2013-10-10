@@ -36,4 +36,5 @@
   <Field name="ContractTypeCode" required="y" min="2" max="2" validation="T1166" comment="Code identifying a contract type"/>
   <Field name="SecurityLevelCode" required="y" min="2" max="2" validation="T786" comment="Code indicating the level of confidentiality assigned by the sender to the information following"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
+  <SyntaxNote name="R0405" comment="At least one of BCM04 or BCM05 is required."/>
 </Segment>

@@ -32,4 +32,12 @@
   <Field name="DirectionIdentifierCode1" required="y" min="1" max="1" validation="T1280" comment="Code identifying geographic direction"/>
   <Field name="DirectionIdentifierCode2" required="y" min="1" max="1" validation="T1280" comment="Code identifying geographic direction"/>
   <Field name="PostalCode" required="y" min="3" max="15" comment="Code defining international postal zone code excluding punctuation and blanks (zip code for United States)"/>
+  <SyntaxNote name="L010203" comment="If MS101 is present, then at least one of MS102 or MS103 is required."/>
+  <SyntaxNote name="E0104" comment="Only one of MS101 or MS104 may be present."/>
+  <SyntaxNote name="C0201" comment="If MS102 is present, then MS101 is required."/>
+  <SyntaxNote name="C0301" comment="If MS103 is present, then MS101 is required."/>
+  <SyntaxNote name="P0405" comment="If either MS104 or MS105 is present, then the other is required."/>
+  <SyntaxNote name="C0604" comment="If MS106 is present, then MS104 is required."/>
+  <SyntaxNote name="C0705" comment="If MS107 is present, then MS105 is required."/>
+  <SyntaxNote name="C0801" comment="If MS108 is present, then MS101 is required."/>
 </Segment>

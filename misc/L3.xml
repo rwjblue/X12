@@ -39,4 +39,9 @@
   <Field name="TariffNumber" required="y" min="1" max="7" comment="Standard tariff number for the tariff which governs the rates applied to the commodity item(s)"/>
   <Field name="DeclaredValue" type="N2" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
   <Field name="RateValueQualifier2" required="y" min="2" max="2" validation="T122" comment="Code qualifying how to extend charges or interpret value"/>
+  <SyntaxNote name="P0102" comment="If either L301 or L302 is present, then the other is required."/>
+  <SyntaxNote name="P0304" comment="If either L303 or L304 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either L309 or L310 is present, then the other is required."/>
+  <SyntaxNote name="C1201" comment="If L312 is present, then L301 is required."/>
+  <SyntaxNote name="P1415" comment="If either L314 or L315 is present, then the other is required."/>
 </Segment>

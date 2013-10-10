@@ -36,4 +36,6 @@
   <Field name="FinancialTransactionStatusCode" required="y" min="1" max="2" validation="T1197" comment="Code indicating the status of the transaction"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
   <Field name="MonetaryAmount2" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
+  <SyntaxNote name="C0605" comment="If FIR06 is present, then FIR05 is required."/>
+  <SyntaxNote name="C1211" comment="If FIR12 is present, then FIR11 is required."/>
 </Segment>

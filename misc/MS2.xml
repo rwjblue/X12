@@ -28,4 +28,6 @@
   <Field name="EquipmentNumber" required="y" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
   <Field name="EquipmentDescriptionCode" required="y" min="2" max="2" validation="T40" comment="Code identifying type of equipment used for shipment"/>
   <Field name="EquipmentNumberCheckDigit" type="long" required="y" min="1" max="1" comment="Number which designates the check digit applied to a piece of equipment"/>
+  <SyntaxNote name="P0102" comment="If either MS201 or MS202 is present, then the other is required."/>
+  <SyntaxNote name="C0402" comment="If MS204 is present, then MS202 is required."/>
 </Segment>

@@ -37,4 +37,12 @@
   <Field name="ProductServiceIdQualifier2" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId2" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
+  <SyntaxNote name="R0405" comment="At least one of G8304 or G8305 is required."/>
+  <SyntaxNote name="E0406" comment="Only one of G8304 or G8306 may be present."/>
+  <SyntaxNote name="P0506" comment="If either G8305 or G8306 is present, then the other is required."/>
+  <SyntaxNote name="C0709" comment="If G8307 is present, then G8309 is required."/>
+  <SyntaxNote name="E0712" comment="Only one of G8307 or G8312 may be present."/>
+  <SyntaxNote name="P1112" comment="If either G8311 or G8312 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either G8314 or G8315 is present, then the other is required."/>
+  <SyntaxNote name="P1617" comment="If either G8316 or G8317 is present, then the other is required."/>
 </Segment>

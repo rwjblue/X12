@@ -31,4 +31,5 @@
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="ProductDescriptionCode" required="y" min="1" max="12" comment="A code from an industry code list which provides specific data about a product characteristic"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="R0102" comment="At least one of NCD01 or NCD02 is required."/>
 </Segment>

@@ -35,4 +35,6 @@
   <Field name="LoanPurposeCode" required="y" min="2" max="2" validation="T1081" comment="Code identifying the reason the loan is needed"/>
   <Field name="LoanPaymentTypeCode" required="y" min="2" max="2" validation="T1085" comment="Code identifying the nature of loan payment"/>
   <Field name="LoanRateTypeCode" required="y" min="1" max="1" validation="T1086" comment="Code indicating the characteristics of the loan rate"/>
+  <SyntaxNote name="P0304" comment="If either LN03 or LN04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either LN05 or LN06 is present, then the other is required."/>
 </Segment>

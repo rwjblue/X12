@@ -33,4 +33,6 @@
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="AppropriationCode" required="y" min="2" max="2" validation="T1199" comment="Code indicating the funds appropriation"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0405" comment="If either CFT04 or CFT05 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either CFT06 or CFT07 is present, then the other is required."/>
 </Segment>

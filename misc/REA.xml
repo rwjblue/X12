@@ -38,4 +38,6 @@
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="TypeOfResidenceCode" required="y" min="1" max="1" validation="T1070" comment="Code identifying type of residence"/>
   <Field name="ConditionIndicator" required="y" min="2" max="3" validation="T1321" comment="Code indicating a condition"/>
+  <SyntaxNote name="P0708" comment="If either REA07 or REA08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either REA09 or REA10 is present, then the other is required."/>
 </Segment>

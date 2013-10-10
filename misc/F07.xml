@@ -46,4 +46,7 @@
   <Field name="DamageSeverityCode2" required="y" min="1" max="1" comment="Code indicating the severity of the damage"/>
   <Field name="DeclineAmendReasonCode" required="y" min="3" max="3" validation="T548" comment="Code indicating the reason for declination or amendment"/>
   <Field name="ChargeAllowanceQualifier" required="y" min="2" max="2" validation="T538" comment="Code indicating reason for charge or allowance"/>
+  <SyntaxNote name="C02030405" comment="If F0702 is present, then F0703, F0704 and F0705 are required."/>
+  <SyntaxNote name="L111213" comment="If F0711 is present, then at least one of F0712 or F0713 is required."/>
+  <SyntaxNote name="L131112" comment="If F0713 is present, then at least one of F0711 or F0712 is required."/>
 </Segment>

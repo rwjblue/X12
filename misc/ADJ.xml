@@ -41,4 +41,19 @@
   <Field name="Quantity3" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0809" comment="If either ADJ08 or ADJ09 is present, then the other is required."/>
+  <SyntaxNote name="L101112" comment="If ADJ10 is present, then at least one of ADJ11 or ADJ12 is required."/>
+  <SyntaxNote name="C1009" comment="If ADJ10 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L111012" comment="If ADJ11 is present, then at least one of ADJ10 or ADJ12 is required."/>
+  <SyntaxNote name="C1109" comment="If ADJ11 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L121011" comment="If ADJ12 is present, then at least one of ADJ10 or ADJ11 is required."/>
+  <SyntaxNote name="C1209" comment="If ADJ12 is present, then ADJ09 is required."/>
+  <SyntaxNote name="C1309" comment="If ADJ13 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L131415" comment="If ADJ13 is present, then at least one of ADJ14 or ADJ15 is required."/>
+  <SyntaxNote name="C1409" comment="If ADJ14 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L141315" comment="If ADJ14 is present, then at least one of ADJ13 or ADJ15 is required."/>
+  <SyntaxNote name="C1509" comment="If ADJ15 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L151314" comment="If ADJ15 is present, then at least one of ADJ13 or ADJ14 is required."/>
+  <SyntaxNote name="P1617" comment="If either ADJ16 or ADJ17 is present, then the other is required."/>
+  <SyntaxNote name="C1709" comment="If ADJ17 is present, then ADJ09 is required."/>
 </Segment>

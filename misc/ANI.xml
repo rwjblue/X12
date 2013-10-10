@@ -33,4 +33,5 @@
   <Field name="ReferenceIdentification3" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="Date3" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ReferenceIdentification4" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0405" comment="If either ANI04 or ANI05 is present, then the other is required."/>
 </Segment>

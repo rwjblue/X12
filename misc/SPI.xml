@@ -39,4 +39,5 @@
   <Field name="CertificationTypeCode" required="y" min="1" max="1" validation="T1322" comment="Code indicating the type of certification"/>
   <Field name="ProposalDataDetailIdentifierCode" required="y" min="1" max="3" validation="T1401" comment="Code identifying the basis of a cited value in a proposal"/>
   <Field name="HierarchicalStructureCode" required="y" min="4" max="4" validation="T1005" comment="Code indicating the hierarchical application structure of a transaction set that utilizes the HL segment to define the structure of the transaction set"/>
+  <SyntaxNote name="P0203" comment="If either SPI02 or SPI03 is present, then the other is required."/>
 </Segment>

@@ -33,4 +33,7 @@
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="TypeOfAccountCode" required="y" min="2" max="2" validation="T1187" comment="Code defining the type of ownership"/>
+  <SyntaxNote name="P0405" comment="If either RO04 or RO05 is present, then the other is required."/>
+  <SyntaxNote name="C0506" comment="If RO05 is present, then RO06 is required."/>
+  <SyntaxNote name="P0708" comment="If either RO07 or RO08 is present, then the other is required."/>
 </Segment>

@@ -41,4 +41,8 @@
   <Field name="StandardCarrierAlphaCode4" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="StandardCarrierAlphaCode5" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="StandardCarrierAlphaCode6" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
+  <SyntaxNote name="R0205" comment="At least one of BL02 or BL05 is required."/>
+  <SyntaxNote name="R0309" comment="At least one of BL03 or BL09 is required."/>
+  <SyntaxNote name="C0605" comment="If BL06 is present, then BL05 is required."/>
+  <SyntaxNote name="C1009" comment="If BL10 is present, then BL09 is required."/>
 </Segment>

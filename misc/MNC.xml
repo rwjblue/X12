@@ -41,4 +41,7 @@
   <Field name="ProductDescriptionCode" required="y" min="1" max="12" comment="A code from an industry code list which provides specific data about a product characteristic"/>
   <Field name="TypeOfRealEstateAssetCode" required="y" min="2" max="2" validation="T1074" comment="Code identifying the nature of a real estate"/>
   <Field name="RealEstateLoanSecurityInstrumentCode" required="y" min="1" max="1" validation="T1076" comment="Code indicating type of security instrument"/>
+  <SyntaxNote name="P0809" comment="If either MNC08 or MNC09 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either MNC12 or MNC13 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either MNC14 or MNC15 is present, then the other is required."/>
 </Segment>

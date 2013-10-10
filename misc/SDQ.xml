@@ -47,4 +47,13 @@
   <Field name="IdentificationCode10" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="Quantity10" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
+  <SyntaxNote name="P0506" comment="If either SDQ05 or SDQ06 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either SDQ07 or SDQ08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either SDQ09 or SDQ10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either SDQ11 or SDQ12 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either SDQ13 or SDQ14 is present, then the other is required."/>
+  <SyntaxNote name="P1516" comment="If either SDQ15 or SDQ16 is present, then the other is required."/>
+  <SyntaxNote name="P1718" comment="If either SDQ17 or SDQ18 is present, then the other is required."/>
+  <SyntaxNote name="P1920" comment="If either SDQ19 or SDQ20 is present, then the other is required."/>
+  <SyntaxNote name="P2122" comment="If either SDQ21 or SDQ22 is present, then the other is required."/>
 </Segment>

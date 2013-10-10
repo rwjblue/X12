@@ -29,4 +29,5 @@
   <Field name="MonetaryAmount" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="ProposalDataDetailIdentifierCode" required="y" min="1" max="3" validation="T1401" comment="Code identifying the basis of a cited value in a proposal"/>
+  <SyntaxNote name="R020304" comment="At least one of PDD02, PDD03 or PDD04 is required."/>
 </Segment>

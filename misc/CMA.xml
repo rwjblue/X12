@@ -35,4 +35,5 @@
   <Field name="MarketProfile" required="y" min="1" max="8" comment="Indicates a specific market group"/>
   <Field name="ContractNumber" required="y" min="1" max="30" comment="Contract number"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
+  <SyntaxNote name="P0607" comment="If either CMA06 or CMA07 is present, then the other is required."/>
 </Segment>

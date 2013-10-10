@@ -53,4 +53,18 @@
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="SourceSubqualifier" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
   <Field name="IndustryCode" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
+  <SyntaxNote name="P0203" comment="If either ACK02 or ACK03 is present, then the other is required."/>
+  <SyntaxNote name="C0405" comment="If ACK04 is present, then ACK05 is required."/>
+  <SyntaxNote name="P0708" comment="If either ACK07 or ACK08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either ACK09 or ACK10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either ACK11 or ACK12 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either ACK13 or ACK14 is present, then the other is required."/>
+  <SyntaxNote name="P1516" comment="If either ACK15 or ACK16 is present, then the other is required."/>
+  <SyntaxNote name="P1718" comment="If either ACK17 or ACK18 is present, then the other is required."/>
+  <SyntaxNote name="P1920" comment="If either ACK19 or ACK20 is present, then the other is required."/>
+  <SyntaxNote name="P2122" comment="If either ACK21 or ACK22 is present, then the other is required."/>
+  <SyntaxNote name="P2324" comment="If either ACK23 or ACK24 is present, then the other is required."/>
+  <SyntaxNote name="P2526" comment="If either ACK25 or ACK26 is present, then the other is required."/>
+  <SyntaxNote name="P2728" comment="If either ACK27 or ACK28 is present, then the other is required."/>
+  <SyntaxNote name="C282729" comment="If ACK28 is present, then ACK27 and ACK29 are required."/>
 </Segment>

@@ -53,4 +53,18 @@
   <Field name="WagesPaidCode13" required="y" min="1" max="1" validation="T590" comment="Code identifying whether wages were paid"/>
   <Field name="PayrollStatusCode14" required="y" min="2" max="2" validation="T585" comment="Code identifying work status according to payroll records"/>
   <Field name="WagesPaidCode14" required="y" min="1" max="1" validation="T590" comment="Code identifying whether wages were paid"/>
+  <SyntaxNote name="P0203" comment="If either RU302 or RU303 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either RU304 or RU305 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either RU306 or RU307 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either RU308 or RU309 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either RU310 or RU311 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either RU312 or RU313 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either RU314 or RU315 is present, then the other is required."/>
+  <SyntaxNote name="P1617" comment="If either RU316 or RU317 is present, then the other is required."/>
+  <SyntaxNote name="P1819" comment="If either RU318 or RU319 is present, then the other is required."/>
+  <SyntaxNote name="P2021" comment="If either RU320 or RU321 is present, then the other is required."/>
+  <SyntaxNote name="P2223" comment="If either RU322 or RU323 is present, then the other is required."/>
+  <SyntaxNote name="P2425" comment="If either RU324 or RU325 is present, then the other is required."/>
+  <SyntaxNote name="P2627" comment="If either RU326 or RU327 is present, then the other is required."/>
+  <SyntaxNote name="P2829" comment="If either RU328 or RU329 is present, then the other is required."/>
 </Segment>

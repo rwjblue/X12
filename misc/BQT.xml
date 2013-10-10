@@ -35,4 +35,5 @@
   <Field name="SecurityLevelCode" required="y" min="2" max="2" validation="T786" comment="Code indicating the level of confidentiality assigned by the sender to the information following"/>
   <Field name="PurchaseCategory" required="y" min="2" max="2" validation="T1232" comment="Code identifying the broad category of products or services being acquired"/>
   <Field name="ChangeOrderSequenceNumber" required="y" min="1" max="8" comment="Number assigned by the orderer identifying a specific change or revision to a previously transmitted transaction set"/>
+  <SyntaxNote name="P0405" comment="If either BQT04 or BQT05 is present, then the other is required."/>
 </Segment>

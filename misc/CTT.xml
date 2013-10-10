@@ -31,4 +31,6 @@
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="UnitOrBasisForMeasurementCode2" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0304" comment="If either CTT03 or CTT04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either CTT05 or CTT06 is present, then the other is required."/>
 </Segment>

@@ -34,4 +34,6 @@
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="NursingHomeResidentialStatusCode" required="y" min="1" max="1" validation="T1345" comment="Code specifying the status of a nursing home resident at the time of service"/>
   <Field name="LevelOfCareCode" required="y" min="1" max="1" validation="T1337" comment="Code specifying the level of care provided by a nursing home facility"/>
+  <SyntaxNote name="R0102" comment="At least one of SV201 or SV202 is required."/>
+  <SyntaxNote name="P0405" comment="If either SV204 or SV205 is present, then the other is required."/>
 </Segment>

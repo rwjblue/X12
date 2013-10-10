@@ -34,4 +34,6 @@
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="InterchangeTrainIdentification" required="y" min="1" max="10" comment="Train identification (free-form)"/>
   <Field name="BlockIdentification" required="y" min="1" max="12" comment="Identifier for a block of cars"/>
+  <SyntaxNote name="P0405" comment="If either ISC04 or ISC05 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either ISC11 or ISC12 is present, then the other is required."/>
 </Segment>

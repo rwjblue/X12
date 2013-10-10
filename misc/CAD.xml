@@ -33,4 +33,6 @@
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="ServiceLevelCode" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
+  <SyntaxNote name="R0504" comment="At least one of CAD05 or CAD04 is required."/>
+  <SyntaxNote name="C0708" comment="If CAD07 is present, then CAD08 is required."/>
 </Segment>

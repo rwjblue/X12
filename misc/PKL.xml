@@ -37,4 +37,10 @@
   <Field name="GrossVolumePerPack" type="double" required="y" min="1" max="9" comment="Numeric value of gross volume per pack"/>
   <Field name="UnitOrBasisForMeasurementCode4" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="C0508" comment="If PKL05 is present, then PKL08 is required."/>
+  <SyntaxNote name="C0608" comment="If PKL06 is present, then PKL08 is required."/>
+  <SyntaxNote name="C0708" comment="If PKL07 is present, then PKL08 is required."/>
+  <SyntaxNote name="L08050607" comment="If PKL08 is present, then at least one of PKL05, PKL06 or PKL07 is required."/>
+  <SyntaxNote name="P0910" comment="If either PKL09 or PKL10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either PKL11 or PKL12 is present, then the other is required."/>
 </Segment>

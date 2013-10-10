@@ -28,4 +28,5 @@
   <Field name="EquipmentDescriptionCode" required="y" min="2" max="2" validation="T40" comment="Code identifying type of equipment used for shipment"/>
   <Field name="ShapeCode" required="y" min="1" max="2" validation="T1585" comment="Code indicating the shape of an object"/>
   <Field name="CarTypeCode" required="y" min="1" max="4" comment="Code specifying type of rail car or intermodal equipment type and its general characteristics"/>
+  <SyntaxNote name="R0204" comment="At least one of LET02 or LET04 is required."/>
 </Segment>

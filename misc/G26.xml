@@ -30,4 +30,6 @@
   <Field name="QuantityBasis" required="y" min="3" max="3" validation="T292" comment="Identifies the total product allocation condition"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="P0203" comment="If either G2602 or G2603 is present, then the other is required."/>
+  <SyntaxNote name="P040506" comment="If either G2604, G2605 or G2606 are present, then the others are required."/>
 </Segment>

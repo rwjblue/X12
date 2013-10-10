@@ -36,4 +36,8 @@
   <Field name="FreightRate2" type="double" required="y" min="1" max="9" comment="Rate that applies to the specific commodity"/>
   <Field name="RateValueQualifier" required="y" min="2" max="2" validation="T122" comment="Code qualifying how to extend charges or interpret value"/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0102" comment="If either LC101 or LC102 is present, then the other is required."/>
+  <SyntaxNote name="C0911" comment="If LC109 is present, then LC111 is required."/>
+  <SyntaxNote name="C1011" comment="If LC110 is present, then LC111 is required."/>
+  <SyntaxNote name="L110910" comment="If LC111 is present, then at least one of LC109 or LC110 is required."/>
 </Segment>

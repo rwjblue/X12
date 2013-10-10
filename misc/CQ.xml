@@ -34,4 +34,5 @@
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="ConditionIndicator" required="y" min="2" max="3" validation="T1321" comment="Code indicating a condition"/>
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
+  <SyntaxNote name="P0304" comment="If either CQ03 or CQ04 is present, then the other is required."/>
 </Segment>

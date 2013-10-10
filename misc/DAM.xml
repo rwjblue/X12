@@ -40,4 +40,9 @@
   <Field name="DamageStatusCode5" required="y" min="2" max="2" validation="T1422" comment="Code indicating the condition of the damage at the time of the report"/>
   <Field name="DamageAreaCode5" required="y" min="2" max="2" comment="Code representing the location on the vehicle where the damage was repaired"/>
   <Field name="Amount5" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <SyntaxNote name="R0102" comment="At least one of DAM01 or DAM02 is required."/>
+  <SyntaxNote name="L070506" comment="If DAM07 is present, then at least one of DAM05 or DAM06 is required."/>
+  <SyntaxNote name="L100809" comment="If DAM10 is present, then at least one of DAM08 or DAM09 is required."/>
+  <SyntaxNote name="L131112" comment="If DAM13 is present, then at least one of DAM11 or DAM12 is required."/>
+  <SyntaxNote name="L161415" comment="If DAM16 is present, then at least one of DAM14 or DAM15 is required."/>
 </Segment>

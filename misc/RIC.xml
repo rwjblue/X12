@@ -42,4 +42,10 @@
   <Field name="DFIIdNumberQualifier3" required="y" min="2" max="2" validation="T506" comment="Code identifying the type of identification number of Depository Financial Institution (DFI)"/>
   <Field name="DFIIdentificationNumber3" required="y" min="3" max="12" comment="Depository Financial Institution (DFI) identification number"/>
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="C0706" comment="If RIC07 is present, then RIC06 is required."/>
+  <SyntaxNote name="P0809" comment="If either RIC08 or RIC09 is present, then the other is required."/>
+  <SyntaxNote name="C1110" comment="If RIC11 is present, then RIC10 is required."/>
+  <SyntaxNote name="P1213" comment="If either RIC12 or RIC13 is present, then the other is required."/>
+  <SyntaxNote name="C1514" comment="If RIC15 is present, then RIC14 is required."/>
+  <SyntaxNote name="P1617" comment="If either RIC16 or RIC17 is present, then the other is required."/>
 </Segment>

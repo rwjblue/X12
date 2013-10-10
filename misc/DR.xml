@@ -30,4 +30,6 @@
   <Field name="DocketIdentification1" min="1" max="11" comment="A sequence number which, when combined with elements 140 and 697, provides a unique identity to a parcel of ratemaking activity"/>
   <Field name="RevisionNumber" type="long" required="y" min="1" max="4" comment="A number which indicates the chronological sequence of revisions and updates to a ratemaking docket"/>
   <Field name="DocketIdentification2" required="y" min="1" max="11" comment="A sequence number which, when combined with elements 140 and 697, provides a unique identity to a parcel of ratemaking activity"/>
+  <SyntaxNote name="R0605" comment="At least one of DR06 or DR05 is required."/>
+  <SyntaxNote name="E0605" comment="Only one of DR06 or DR05 may be present."/>
 </Segment>

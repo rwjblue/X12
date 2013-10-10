@@ -33,4 +33,5 @@
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="TariffServiceCode" required="y" min="2" max="2" validation="T375" comment="Code specifying the types of services for rating purposes"/>
   <Field name="DateTimeQualifier" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
+  <SyntaxNote name="P0209" comment="If either Y102 or Y109 is present, then the other is required."/>
 </Segment>

@@ -34,4 +34,5 @@
   <Field name="LocationQualifier" required="y" min="1" max="2" validation="T309" comment="Code identifying type of location"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="TypeOfServiceCode" required="y" min="2" max="2" validation="T56" comment="Code specifying extent of transportation service requested"/>
+  <SyntaxNote name="P0809" comment="If either Y408 or Y409 is present, then the other is required."/>
 </Segment>

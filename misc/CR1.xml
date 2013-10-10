@@ -34,4 +34,6 @@
   <Field name="AddressInformation2" required="y" min="1" max="55" comment="Address information"/>
   <Field name="Description1" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="Description2" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0102" comment="If either CR101 or CR102 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either CR105 or CR106 is present, then the other is required."/>
 </Segment>

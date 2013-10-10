@@ -36,4 +36,7 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="PriceIdentifierCode" required="y" min="3" max="3" validation="T236" comment="Code identifying pricing specification"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
+  <SyntaxNote name="E030506" comment="Only one of G4603, G4605 or G4606 may be present."/>
+  <SyntaxNote name="P0304" comment="If either G4603 or G4604 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either G4606 or G4607 is present, then the other is required."/>
 </Segment>

@@ -30,4 +30,6 @@
   <Field name="MarksAndNumbersQualifier2" required="y" min="1" max="2" validation="T88" comment="Code specifying the application or source of Marks and Numbers (87)"/>
   <Field name="MarksAndNumbers3" required="y" min="1" max="48" comment="Marks and numbers used to identify a shipment or parts of a shipment"/>
   <Field name="MarksAndNumbers4" required="y" min="1" max="48" comment="Marks and numbers used to identify a shipment or parts of a shipment"/>
+  <SyntaxNote name="P0405" comment="If either MAN04 or MAN05 is present, then the other is required."/>
+  <SyntaxNote name="C0605" comment="If MAN06 is present, then MAN05 is required."/>
 </Segment>

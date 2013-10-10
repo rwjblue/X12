@@ -39,4 +39,7 @@
   <Field name="RejectReasonCode" required="y" min="2" max="2" validation="T901" comment="Code assigned by issuer to identify reason for rejection"/>
   <Field name="PolicyComplianceCode" required="y" min="1" max="2" validation="T1526" comment="Code specifying policy compliance"/>
   <Field name="ExceptionCode" required="y" min="1" max="2" validation="T1527" comment="Code specifying the exception reason for consideration of out-of-network health care services"/>
+  <SyntaxNote name="R0113" comment="At least one of HCP01 or HCP13 is required."/>
+  <SyntaxNote name="P0910" comment="If either HCP09 or HCP10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either HCP11 or HCP12 is present, then the other is required."/>
 </Segment>

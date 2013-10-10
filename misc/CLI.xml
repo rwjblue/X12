@@ -30,4 +30,5 @@
   <Field name="FreeFormDescription" required="y" min="1" max="45" comment="Free-form descriptive text"/>
   <Field name="RateOrValueTypeCode" required="y" min="1" max="2" validation="T562" comment="Code identifying method used to determine the type of rate, value, or percent details"/>
   <Field name="ContractTypeCode" required="y" min="2" max="2" validation="T1166" comment="Code identifying a contract type"/>
+  <SyntaxNote name="R010203" comment="At least one of CLI01, CLI02 or CLI03 is required."/>
 </Segment>

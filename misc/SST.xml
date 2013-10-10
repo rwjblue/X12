@@ -33,4 +33,6 @@
   <Field name="StatusReasonCode3" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
   <Field name="LevelOfIndividualTestOrCourseCode" required="y" min="2" max="2" validation="T1131" comment="Code identifying level of course, test, or individual"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0203" comment="If either SST02 or SST03 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either SST05 or SST06 is present, then the other is required."/>
 </Segment>

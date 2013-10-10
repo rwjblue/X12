@@ -28,4 +28,6 @@
   <Field name="IndustryCode" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
   <Field name="Length" type="double" required="y" min="1" max="8" comment="Largest horizontal dimension of an object measured when the object is in the upright position"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="E0102" comment="Only one of G1801 or G1802 may be present."/>
+  <SyntaxNote name="P0304" comment="If either G1803 or G1804 is present, then the other is required."/>
 </Segment>

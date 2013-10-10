@@ -34,4 +34,8 @@
   <Field name="SealStatusCode" required="y" min="2" max="2" validation="T407" comment="Code indicating condition of door seal upon arrival"/>
   <Field name="SealNumber" required="y" min="2" max="15" comment="Unique number on seal used to close a shipment"/>
   <Field name="EquipmentType" required="y" min="4" max="4" comment="Code identifying equipment type"/>
+  <SyntaxNote name="E0110" comment="Only one of TD301 or TD310 may be present."/>
+  <SyntaxNote name="C0203" comment="If TD302 is present, then TD303 is required."/>
+  <SyntaxNote name="C0405" comment="If TD304 is present, then TD305 is required."/>
+  <SyntaxNote name="P0506" comment="If either TD305 or TD306 is present, then the other is required."/>
 </Segment>

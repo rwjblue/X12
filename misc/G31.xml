@@ -35,4 +35,7 @@
   <Field name="PaymentMethodCode" required="y" min="1" max="2" validation="T107" comment="Code identifying type of payment procedures"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Weight2" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
+  <SyntaxNote name="P0304" comment="If either G3103 or G3104 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either G3105 or G3106 is present, then the other is required."/>
+  <SyntaxNote name="C0704" comment="If G3107 is present, then G3104 is required."/>
 </Segment>

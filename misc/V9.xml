@@ -44,4 +44,8 @@
   <Field name="TotalEquipment3" type="long" required="y" min="1" max="3" comment="Total pieces of equipment"/>
   <Field name="Weight" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
   <Field name="Length" type="double" required="y" min="1" max="8" comment="Largest horizontal dimension of an object measured when the object is in the upright position"/>
+  <SyntaxNote name="C0605" comment="If V906 is present, then V905 is required."/>
+  <SyntaxNote name="P1011" comment="If either V910 or V911 is present, then the other is required."/>
+  <SyntaxNote name="C1304" comment="If V913 is present, then V904 is required."/>
+  <SyntaxNote name="C1509" comment="If V915 is present, then V909 is required."/>
 </Segment>

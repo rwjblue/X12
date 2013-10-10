@@ -34,4 +34,7 @@
   <Field name="WeightUnitCode" required="y" min="1" max="1" validation="T188" comment="Code specifying the weight unit"/>
   <Field name="Weight" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
+  <SyntaxNote name="C0709" comment="If CF207 is present, then CF209 is required."/>
+  <SyntaxNote name="C0809" comment="If CF208 is present, then CF209 is required."/>
+  <SyntaxNote name="L090708" comment="If CF209 is present, then at least one of CF207 or CF208 is required."/>
 </Segment>

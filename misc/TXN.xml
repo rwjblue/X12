@@ -34,4 +34,6 @@
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Time" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="StandardsInformation" type="C053" required="y" min="0" max="inf" comment="To identify the EDI standard, version, release and any applicable industry guideline"/>
+  <SyntaxNote name="P020304" comment="If either TXN02, TXN03 or TXN04 are present, then the others are required."/>
+  <SyntaxNote name="E0410" comment="Only one of TXN04 or TXN10 may be present."/>
 </Segment>

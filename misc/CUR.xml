@@ -45,4 +45,18 @@
   <Field name="DateTimeQualifier5" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
   <Field name="Date5" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Time5" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <SyntaxNote name="C0807" comment="If CUR08 is present, then CUR07 is required."/>
+  <SyntaxNote name="C0907" comment="If CUR09 is present, then CUR07 is required."/>
+  <SyntaxNote name="L101112" comment="If CUR10 is present, then at least one of CUR11 or CUR12 is required."/>
+  <SyntaxNote name="C1110" comment="If CUR11 is present, then CUR10 is required."/>
+  <SyntaxNote name="C1210" comment="If CUR12 is present, then CUR10 is required."/>
+  <SyntaxNote name="L131415" comment="If CUR13 is present, then at least one of CUR14 or CUR15 is required."/>
+  <SyntaxNote name="C1413" comment="If CUR14 is present, then CUR13 is required."/>
+  <SyntaxNote name="C1513" comment="If CUR15 is present, then CUR13 is required."/>
+  <SyntaxNote name="L161718" comment="If CUR16 is present, then at least one of CUR17 or CUR18 is required."/>
+  <SyntaxNote name="C1716" comment="If CUR17 is present, then CUR16 is required."/>
+  <SyntaxNote name="C1816" comment="If CUR18 is present, then CUR16 is required."/>
+  <SyntaxNote name="L192021" comment="If CUR19 is present, then at least one of CUR20 or CUR21 is required."/>
+  <SyntaxNote name="C2019" comment="If CUR20 is present, then CUR19 is required."/>
+  <SyntaxNote name="C2119" comment="If CUR21 is present, then CUR19 is required."/>
 </Segment>

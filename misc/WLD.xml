@@ -34,4 +34,5 @@
   <Field name="Name" required="y" min="1" max="60" comment="Free-form name"/>
   <Field name="InstructionalSettingCode" required="y" min="1" max="2" validation="T1132" comment="Code indicating type of instructional setting where an education program is provided"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
+  <SyntaxNote name="P0102" comment="If either WLD01 or WLD02 is present, then the other is required."/>
 </Segment>

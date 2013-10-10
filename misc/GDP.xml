@@ -31,4 +31,6 @@
   <Field name="UnitOfTimePeriodOrInterval1" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
   <Field name="TestPeriodOrIntervalValue2" type="long" required="y" min="1" max="6" comment="Numeric value of period or interval signifying when a test event occurs"/>
   <Field name="UnitOfTimePeriodOrInterval2" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
+  <SyntaxNote name="P0405" comment="If either GDP04 or GDP05 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either GDP06 or GDP07 is present, then the other is required."/>
 </Segment>

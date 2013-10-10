@@ -45,4 +45,5 @@
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="Description5" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="CodeCategory" required="y" min="2" max="2" validation="T1136" comment="Specifies the situation or category to which the code applies"/>
+  <SyntaxNote name="P0304" comment="If either LRQ03 or LRQ04 is present, then the other is required."/>
 </Segment>

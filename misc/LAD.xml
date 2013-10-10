@@ -38,4 +38,10 @@
   <Field name="ProductServiceId3" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="LadingDescription" required="y" min="1" max="50" comment="Description of an item as required for rating and billing purposes"/>
   <Field name="LadingValue" type="double" required="y" min="2" max="9" comment="Value of shipment for export, expressed in the standard monetary denomination for the currency specified"/>
+  <SyntaxNote name="P0102" comment="If either LAD01 or LAD02 is present, then the other is required."/>
+  <SyntaxNote name="P0304" comment="If either LAD03 or LAD04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either LAD05 or LAD06 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either LAD07 or LAD08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either LAD09 or LAD10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either LAD11 or LAD12 is present, then the other is required."/>
 </Segment>

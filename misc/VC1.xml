@@ -39,4 +39,6 @@
   <Field name="VolumeUnitQualifier" required="y" min="1" max="1" validation="T184" comment="Code identifying the volume unit"/>
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
+  <SyntaxNote name="C0605" comment="If VC106 is present, then VC105 is required."/>
+  <SyntaxNote name="P1314" comment="If either VC113 or VC114 is present, then the other is required."/>
 </Segment>

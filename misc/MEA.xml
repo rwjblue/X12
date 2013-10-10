@@ -36,4 +36,11 @@
   <Field name="MeasurementMethodOrDevice" required="y" min="2" max="4" validation="T1373" comment="The method or device used to record the measurement"/>
   <Field name="CodeListQualifierCode" required="y" min="1" max="3" validation="T1270" comment="Code identifying a specific industry code list"/>
   <Field name="IndustryCode" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
+  <SyntaxNote name="R03050608" comment="At least one of MEA03, MEA05, MEA06 or MEA08 is required."/>
+  <SyntaxNote name="E0412" comment="Only one of MEA04 or MEA12 may be present."/>
+  <SyntaxNote name="L050412" comment="If MEA05 is present, then at least one of MEA04 or MEA12 is required."/>
+  <SyntaxNote name="L060412" comment="If MEA06 is present, then at least one of MEA04 or MEA12 is required."/>
+  <SyntaxNote name="L07030506" comment="If MEA07 is present, then at least one of MEA03, MEA05 or MEA06 is required."/>
+  <SyntaxNote name="E0803" comment="Only one of MEA08 or MEA03 may be present."/>
+  <SyntaxNote name="P1112" comment="If either MEA11 or MEA12 is present, then the other is required."/>
 </Segment>

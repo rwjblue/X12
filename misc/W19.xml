@@ -42,4 +42,10 @@
   <Field name="InventoryTransactionTypeCode" required="y" min="1" max="2" validation="T529" comment="Code defining inventory activity"/>
   <Field name="ProductServiceIdQualifier3" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId3" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="R0405" comment="At least one of W1904 or W1905 is required."/>
+  <SyntaxNote name="P0506" comment="If either W1905 or W1906 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either W1907 or W1908 is present, then the other is required."/>
+  <SyntaxNote name="C101112" comment="If W1910 is present, then W1911 and W1912 are required."/>
+  <SyntaxNote name="C131415" comment="If W1913 is present, then W1914 and W1915 are required."/>
+  <SyntaxNote name="P1718" comment="If either W1917 or W1918 is present, then the other is required."/>
 </Segment>

@@ -36,4 +36,8 @@
   <Field name="Time2" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="RequestReferenceNumber" required="y" min="1" max="45" comment="Reference number or RFQ number to use to identify a particular transaction set and query (additional reference number or description which can be used with contract number)"/>
   <Field name="AssignedIdentification" required="y" min="1" max="20" comment="Alphanumeric characters assigned for differentiation within a transaction set"/>
+  <SyntaxNote name="C0304" comment="If SCH03 is present, then SCH04 is required."/>
+  <SyntaxNote name="L080910" comment="If SCH08 is present, then at least one of SCH09 or SCH10 is required."/>
+  <SyntaxNote name="C0908" comment="If SCH09 is present, then SCH08 is required."/>
+  <SyntaxNote name="C1008" comment="If SCH10 is present, then SCH08 is required."/>
 </Segment>

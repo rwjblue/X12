@@ -29,4 +29,6 @@
   <Field name="WeightUnitCode" required="y" min="1" max="1" validation="T188" comment="Code specifying the weight unit"/>
   <Field name="Weight" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
   <Field name="CommodityCharacteristicCodes" required="y" min="2" max="2" validation="T1703" comment="Code identifying a commodity characteristic"/>
+  <SyntaxNote name="R0102" comment="At least one of TEM01 or TEM02 is required."/>
+  <SyntaxNote name="P0304" comment="If either TEM03 or TEM04 is present, then the other is required."/>
 </Segment>

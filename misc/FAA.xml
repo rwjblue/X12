@@ -39,4 +39,8 @@
   <Field name="ReferenceIdentification1" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="MaintenanceTypeCode" required="y" min="3" max="3" validation="T875" comment="Code identifying the specific type of item maintenance"/>
+  <SyntaxNote name="P0708" comment="If either FAA07 or FAA08 is present, then the other is required."/>
+  <SyntaxNote name="C0911" comment="If FAA09 is present, then FAA11 is required."/>
+  <SyntaxNote name="P1011" comment="If either FAA10 or FAA11 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either FAA12 or FAA13 is present, then the other is required."/>
 </Segment>

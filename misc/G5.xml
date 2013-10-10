@@ -41,4 +41,9 @@
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="P0304" comment="If either G503 or G504 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either G507 or G508 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either G509 or G510 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either G511 or G512 is present, then the other is required."/>
+  <SyntaxNote name="P1516" comment="If either G515 or G516 is present, then the other is required."/>
 </Segment>

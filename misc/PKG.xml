@@ -30,4 +30,7 @@
   <Field name="PackagingDescriptionCode" required="y" min="1" max="7" comment="A code from an industry code list which provides specific data about the marking, packaging or loading and unloading of a product"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="UnitLoadOptionCode" required="y" min="2" max="2" validation="T400" comment="Code identifying loading or unloading a shipment"/>
+  <SyntaxNote name="R040506" comment="At least one of PKG04, PKG05 or PKG06 is required."/>
+  <SyntaxNote name="C0403" comment="If PKG04 is present, then PKG03 is required."/>
+  <SyntaxNote name="C0501" comment="If PKG05 is present, then PKG01 is required."/>
 </Segment>

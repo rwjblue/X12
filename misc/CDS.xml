@@ -35,4 +35,8 @@
   <Field name="IdentificationCode2" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="IdentificationCodeQualifier3" required="y" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>
   <Field name="IdentificationCode3" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
+  <SyntaxNote name="C0304" comment="If CDS03 is present, then CDS04 is required."/>
+  <SyntaxNote name="P0607" comment="If either CDS06 or CDS07 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either CDS08 or CDS09 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either CDS10 or CDS11 is present, then the other is required."/>
 </Segment>

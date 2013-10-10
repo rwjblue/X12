@@ -26,4 +26,5 @@
 <Segment name="RST" comment="To transmit the carrier's service restrictions">
   <Field name="CarrierRestrictionCode" required="y" min="1" max="10" comment="Carrier's internal code indicating carrier's restricted services"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="E0102" comment="Only one of RST01 or RST02 may be present."/>
 </Segment>

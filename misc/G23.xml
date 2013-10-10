@@ -40,4 +40,5 @@
   <Field name="PercentOfInvoicePayable" type="double" required="y" min="1" max="5" comment="Amount of invoice payable expressed in percent"/>
   <Field name="FreeFormMessage" required="y" min="1" max="60" comment="Free-form text"/>
   <Field name="InstallmentGroupIndicator" type="long" required="y" min="2" max="2" comment="The installment group indicator is a 2-digit serial number beginning with 01 (i.e., 01, 02, 03 or 04); it is used to group &quot;elective&quot; terms types in an installment payment situation; the same indicator must be used for all segments in the same installment"/>
+  <SyntaxNote name="R0809" comment="At least one of G2308 or G2309 is required."/>
 </Segment>

@@ -46,4 +46,7 @@
   <Field name="DateTimePeriodFormatQualifier4" required="y" min="2" max="3" validation="T1250" comment="Code indicating the date format, time format, or date and time format"/>
   <Field name="DateTimePeriod4" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
   <Field name="PaymentMethodCode" required="y" min="1" max="2" validation="T107" comment="Code identifying type of payment procedures"/>
+  <SyntaxNote name="P1011" comment="If either SLI10 or SLI11 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either SLI12 or SLI13 is present, then the other is required."/>
+  <SyntaxNote name="P2021" comment="If either SLI20 or SLI21 is present, then the other is required."/>
 </Segment>

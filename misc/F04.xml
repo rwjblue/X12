@@ -34,4 +34,10 @@
   <Field name="VolumeUnitQualifier1" required="y" min="1" max="1" validation="T184" comment="Code identifying the volume unit"/>
   <Field name="Volume2" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="VolumeUnitQualifier2" required="y" min="1" max="1" validation="T184" comment="Code identifying the volume unit"/>
+  <SyntaxNote name="P010203" comment="If either F0401, F0402 or F0403 are present, then the others are required."/>
+  <SyntaxNote name="C0104" comment="If F0401 is present, then F0404 is required."/>
+  <SyntaxNote name="P040506" comment="If either F0404, F0405 or F0406 are present, then the others are required."/>
+  <SyntaxNote name="P0708" comment="If either F0407 or F0408 is present, then the other is required."/>
+  <SyntaxNote name="C0709" comment="If F0407 is present, then F0409 is required."/>
+  <SyntaxNote name="P0910" comment="If either F0409 or F0410 is present, then the other is required."/>
 </Segment>

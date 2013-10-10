@@ -29,4 +29,6 @@
   <Field name="ShipmentOrderStatusCode" required="y" min="2" max="2" validation="T368" comment="Code indicating the status of an order or shipment or the disposition of any difference between the quantity ordered and the quantity shipped for a line item or transaction"/>
   <Field name="QuantityDifference" type="double" required="y" min="1" max="9" comment="Numeric value of variance between ordered and shipped quantities"/>
   <Field name="ChangeReasonCode" required="y" min="2" max="2" validation="T371" comment="Code specifying the reason for price or quantity change"/>
+  <SyntaxNote name="P0102" comment="If either IT301 or IT302 is present, then the other is required."/>
+  <SyntaxNote name="R01030405" comment="At least one of IT301, IT303, IT304 or IT305 is required."/>
 </Segment>

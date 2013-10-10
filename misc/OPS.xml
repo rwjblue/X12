@@ -30,4 +30,6 @@
   <Field name="InstructionalSettingCode" required="y" min="1" max="2" validation="T1132" comment="Code indicating type of instructional setting where an education program is provided"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="P0102" comment="If either OPS01 or OPS02 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either OPS05 or OPS06 is present, then the other is required."/>
 </Segment>

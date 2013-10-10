@@ -41,4 +41,9 @@
   <Field name="SourceSubqualifier" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
   <Field name="RelationshipCode" required="y" min="1" max="1" validation="T662" comment="Code indicating the relationship between entities"/>
   <Field name="UnitOrBasisForMeasurementCode2" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="L02031314" comment="If ITA02 is present, then at least one of ITA03, ITA13 or ITA14 is required."/>
+  <SyntaxNote name="C0809" comment="If ITA08 is present, then ITA09 is required."/>
+  <SyntaxNote name="P1011" comment="If either ITA10 or ITA11 is present, then the other is required."/>
+  <SyntaxNote name="C1502" comment="If ITA15 is present, then ITA02 is required."/>
+  <SyntaxNote name="C1712" comment="If ITA17 is present, then ITA12 is required."/>
 </Segment>

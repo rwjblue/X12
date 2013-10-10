@@ -30,4 +30,5 @@
   <Field name="EntityIdentifierCode" required="y" min="2" max="3" validation="T98" comment="Code identifying an organizational entity, a physical location, property or an individual"/>
   <Field name="Name" required="y" min="1" max="60" comment="Free-form name"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0405" comment="If either M7A04 or M7A05 is present, then the other is required."/>
 </Segment>

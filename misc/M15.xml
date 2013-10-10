@@ -40,4 +40,9 @@
   <Field name="ReferenceIdentification3" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="VesselName" required="y" min="2" max="28" comment="Name of ship as documented in &quot;Lloyd's Register of Ships&quot;"/>
   <Field name="TransportationMethodTypeCode" required="y" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>
+  <SyntaxNote name="R0410" comment="At least one of M1504 or M1510 is required."/>
+  <SyntaxNote name="C1110" comment="If M1511 is present, then M1510 is required."/>
+  <SyntaxNote name="P1314" comment="If either M1513 or M1514 is present, then the other is required."/>
+  <SyntaxNote name="C1516" comment="If M1515 is present, then M1516 is required."/>
+  <SyntaxNote name="P1819" comment="If either M1518 or M1519 is present, then the other is required."/>
 </Segment>

@@ -29,4 +29,7 @@
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="R0203" comment="At least one of ATH02 or ATH03 is required."/>
+  <SyntaxNote name="C0305" comment="If ATH03 is present, then ATH05 is required."/>
+  <SyntaxNote name="C0405" comment="If ATH04 is present, then ATH05 is required."/>
 </Segment>

@@ -32,4 +32,5 @@
   <Field name="EntityIdentifierCode" required="y" min="2" max="3" validation="T98" comment="Code identifying an organizational entity, a physical location, property or an individual"/>
   <Field name="TaxExemptCode" required="y" min="1" max="1" validation="T441" comment="Code identifying exemption status from sales and use tax"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
+  <SyntaxNote name="P0203" comment="If either PEX02 or PEX03 is present, then the other is required."/>
 </Segment>

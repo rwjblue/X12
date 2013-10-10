@@ -46,4 +46,8 @@
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
   <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="LadingValue" type="double" required="y" min="2" max="9" comment="Value of shipment for export, expressed in the standard monetary denomination for the currency specified"/>
+  <SyntaxNote name="P0203" comment="If either L102 or L103 is present, then the other is required."/>
+  <SyntaxNote name="R040506" comment="At least one of L104, L105 or L106 is required."/>
+  <SyntaxNote name="P1415" comment="If either L114 or L115 is present, then the other is required."/>
+  <SyntaxNote name="P1718" comment="If either L117 or L118 is present, then the other is required."/>
 </Segment>

@@ -33,4 +33,6 @@
   <Field name="VesselTypeCode" required="y" min="2" max="2" validation="T854" comment="Code to determine type of vessel"/>
   <Field name="VesselCodeQualifier" required="y" min="1" max="1" validation="T897" comment="Code specifying vessel code source"/>
   <Field name="TransportationMethodTypeCode" required="y" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>
+  <SyntaxNote name="R0102" comment="At least one of V101 or V102 is required."/>
+  <SyntaxNote name="C0801" comment="If V108 is present, then V101 is required."/>
 </Segment>

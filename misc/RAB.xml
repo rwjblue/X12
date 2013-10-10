@@ -34,4 +34,5 @@
   <Field name="Percent" type="long" required="y" min="1" max="3" comment="Percent expressed as 0 to 100"/>
   <Field name="UnitConversionFactor" type="N4" required="y" min="1" max="9" comment="Identifies the weight in pounds of units specified by data element 122 Applicable to Rates"/>
   <Field name="AssignedNumber2" type="long" required="y" min="1" max="6" comment="Number assigned for differentiation within a transaction set"/>
+  <SyntaxNote name="L050408" comment="If RAB05 is present, then at least one of RAB04 or RAB08 is required."/>
 </Segment>

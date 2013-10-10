@@ -29,4 +29,6 @@
   <Field name="MeasurementValue" type="double" required="y" min="1" max="20" comment="The value of the measurement"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="StatusReasonCode" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
+  <SyntaxNote name="R0203" comment="At least one of GR502 or GR503 is required."/>
+  <SyntaxNote name="P0304" comment="If either GR503 or GR504 is present, then the other is required."/>
 </Segment>

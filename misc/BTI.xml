@@ -38,4 +38,7 @@
   <Field name="IdentificationCode4" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
+  <SyntaxNote name="P0708" comment="If either BTI07 or BTI08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either BTI09 or BTI10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either BTI11 or BTI12 is present, then the other is required."/>
 </Segment>

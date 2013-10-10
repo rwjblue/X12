@@ -35,4 +35,6 @@
   <Field name="PaymentMethodCode" required="y" min="1" max="2" validation="T107" comment="Code identifying type of payment procedures"/>
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="R0304" comment="At least one of SER03 or SER04 is required."/>
+  <SyntaxNote name="P1011" comment="If either SER10 or SER11 is present, then the other is required."/>
 </Segment>

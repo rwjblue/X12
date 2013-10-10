@@ -29,4 +29,5 @@
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="Rule260JunctionCode2" required="y" min="1" max="5" comment="Code indicating railroad interchange locations"/>
   <Field name="AssignedNumber" type="long" required="y" min="1" max="6" comment="Number assigned for differentiation within a transaction set"/>
+  <SyntaxNote name="C0403" comment="If RDD04 is present, then RDD03 is required."/>
 </Segment>

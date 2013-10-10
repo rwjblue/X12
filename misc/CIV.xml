@@ -42,4 +42,7 @@
   <Field name="DateTimePeriod2" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0708" comment="If either CIV07 or CIV08 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either CIV12 or CIV13 is present, then the other is required."/>
+  <SyntaxNote name="P1516" comment="If either CIV15 or CIV16 is present, then the other is required."/>
 </Segment>

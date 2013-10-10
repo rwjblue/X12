@@ -33,4 +33,5 @@
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="LoanTypeCode" required="y" min="1" max="2" validation="T1262" comment="This code identifies the loan program or type"/>
   <Field name="MaintenanceTypeCode" required="y" min="3" max="3" validation="T875" comment="Code identifying the specific type of item maintenance"/>
+  <SyntaxNote name="R0204" comment="At least one of PEN02 or PEN04 is required."/>
 </Segment>

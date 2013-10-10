@@ -31,4 +31,6 @@
   <Field name="PromotionConditionCode" required="y" min="2" max="2" validation="T422" comment="Code describing a performance or advertising condition"/>
   <Field name="PositionCode1" required="y" min="2" max="2" validation="T945" comment="Code specifying the position of an item such as the location, within a specimen, from which the sample was taken; the position of a coupon within an advertisement; etc"/>
   <Field name="PositionCode2" required="y" min="2" max="2" validation="T945" comment="Code specifying the position of an item such as the location, within a specimen, from which the sample was taken; the position of a coupon within an advertisement; etc"/>
+  <SyntaxNote name="P010203" comment="If either G1201, G1202 or G1203 are present, then the others are required."/>
+  <SyntaxNote name="C0706" comment="If G1207 is present, then G1206 is required."/>
 </Segment>

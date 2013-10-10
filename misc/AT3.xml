@@ -31,4 +31,9 @@
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="BillOfLadingChargeCode" required="y" min="3" max="3" validation="T1602" comment="Code identifying the type of Bill of Lading charge"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
+  <SyntaxNote name="P0203" comment="If either AT302 or AT303 is present, then the other is required."/>
+  <SyntaxNote name="E020607" comment="Only one of AT302, AT306 or AT307 may be present."/>
+  <SyntaxNote name="R020607" comment="At least one of AT302, AT306 or AT307 is required."/>
+  <SyntaxNote name="P0405" comment="If either AT304 or AT305 is present, then the other is required."/>
+  <SyntaxNote name="C0402" comment="If AT304 is present, then AT302 is required."/>
 </Segment>

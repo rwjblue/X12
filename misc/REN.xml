@@ -31,4 +31,5 @@
   <Field name="RateRequestResponseCode2" required="y" min="1" max="1" validation="T635" comment="Code indicating rate request or response purpose"/>
   <Field name="StandardCarrierAlphaCode3" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0203" comment="If either REN02 or REN03 is present, then the other is required."/>
 </Segment>

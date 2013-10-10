@@ -35,4 +35,8 @@
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="StandardCarrierAlphaCode" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="FreightStationAccountingCode" required="y" min="1" max="5" comment="Code (Freight Station Accounting) (AAR Managed Code for Locations)"/>
+  <SyntaxNote name="P030405" comment="If either N803, N804 or N805 are present, then the others are required."/>
+  <SyntaxNote name="P0607" comment="If either N806 or N807 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either N808 or N809 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either N810 or N811 is present, then the other is required."/>
 </Segment>

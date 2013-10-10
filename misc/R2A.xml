@@ -34,4 +34,5 @@
   <Field name="RouteCode" required="y" min="1" max="13" comment="Mutually defined route code"/>
   <Field name="RouteDescription" required="y" min="1" max="35" comment="Point to point routing description"/>
   <Field name="EntityIdentifierCode" required="y" min="2" max="3" validation="T98" comment="Code identifying an organizational entity, a physical location, property or an individual"/>
+  <SyntaxNote name="C0506" comment="If R2A05 is present, then R2A06 is required."/>
 </Segment>

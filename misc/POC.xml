@@ -51,4 +51,17 @@
   <Field name="ProductServiceId9" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="ProductServiceIdQualifier10" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId10" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="C0305" comment="If POC03 is present, then POC05 is required."/>
+  <SyntaxNote name="C0405" comment="If POC04 is present, then POC05 is required."/>
+  <SyntaxNote name="C0706" comment="If POC07 is present, then POC06 is required."/>
+  <SyntaxNote name="P0809" comment="If either POC08 or POC09 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either POC10 or POC11 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either POC12 or POC13 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either POC14 or POC15 is present, then the other is required."/>
+  <SyntaxNote name="P1617" comment="If either POC16 or POC17 is present, then the other is required."/>
+  <SyntaxNote name="P1819" comment="If either POC18 or POC19 is present, then the other is required."/>
+  <SyntaxNote name="P2021" comment="If either POC20 or POC21 is present, then the other is required."/>
+  <SyntaxNote name="P2223" comment="If either POC22 or POC23 is present, then the other is required."/>
+  <SyntaxNote name="P2425" comment="If either POC24 or POC25 is present, then the other is required."/>
+  <SyntaxNote name="P2627" comment="If either POC26 or POC27 is present, then the other is required."/>
 </Segment>

@@ -36,4 +36,9 @@
   <Field name="AccountNumber" required="y" min="1" max="35" comment="Account number assigned"/>
   <Field name="DateTimePeriodFormatQualifier" required="y" min="2" max="3" validation="T1250" comment="Code indicating the date format, time format, or date and time format"/>
   <Field name="DateTimePeriod" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
+  <SyntaxNote name="P0203" comment="If either PDL02 or PDL03 is present, then the other is required."/>
+  <SyntaxNote name="E0304" comment="Only one of PDL03 or PDL04 may be present."/>
+  <SyntaxNote name="P0708" comment="If either PDL07 or PDL08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either PDL09 or PDL10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either PDL11 or PDL12 is present, then the other is required."/>
 </Segment>

@@ -41,4 +41,5 @@
   <Field name="Time3" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="CityName" required="y" min="2" max="30" comment="Free-form text for city name"/>
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
+  <SyntaxNote name="C1716" comment="If IS217 is present, then IS216 is required."/>
 </Segment>

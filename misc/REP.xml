@@ -44,4 +44,16 @@
   <Field name="SourceSubqualifier3" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="AuthorizationIdentification" required="y" min="1" max="4" comment="Identifier representing authorization of an unusual repair or some attendant condition"/>
+  <SyntaxNote name="P0203" comment="If either REP02 or REP03 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either REP04 or REP05 is present, then the other is required."/>
+  <SyntaxNote name="C0503" comment="If REP05 is present, then REP03 is required."/>
+  <SyntaxNote name="C0608" comment="If REP06 is present, then REP08 is required."/>
+  <SyntaxNote name="C0706" comment="If REP07 is present, then REP06 is required."/>
+  <SyntaxNote name="C1012" comment="If REP10 is present, then REP12 is required."/>
+  <SyntaxNote name="C1110" comment="If REP11 is present, then REP10 is required."/>
+  <SyntaxNote name="P1314" comment="If either REP13 or REP14 is present, then the other is required."/>
+  <SyntaxNote name="L141516" comment="If REP14 is present, then at least one of REP15 or REP16 is required."/>
+  <SyntaxNote name="P1514" comment="If either REP15 or REP14 is present, then the other is required."/>
+  <SyntaxNote name="C1719" comment="If REP17 is present, then REP19 is required."/>
+  <SyntaxNote name="C1817" comment="If REP18 is present, then REP17 is required."/>
 </Segment>

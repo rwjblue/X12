@@ -35,4 +35,5 @@
   <Field name="TransportationMethodTypeCode" required="y" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>
   <Field name="TariffServiceCode" required="y" min="2" max="2" validation="T375" comment="Code specifying the types of services for rating purposes"/>
   <Field name="TimeCode" required="y" min="2" max="2" validation="T623" comment="Code identifying the time. In accordance with International Standards Organization standard 8601, time can be specified by a + or - and an indication in hours in relation to Universal Time Coordinate (UTC) time; since + is a restricted character, + and - are substituted by P and M in the codes that follow"/>
+  <SyntaxNote name="C0908" comment="If Y309 is present, then Y308 is required."/>
 </Segment>

@@ -35,4 +35,10 @@
   <Field name="DocketIdentification" required="y" min="1" max="11" comment="A sequence number which, when combined with elements 140 and 697, provides a unique identity to a parcel of ratemaking activity"/>
   <Field name="GroupTitle" required="y" min="2" max="30" comment="The descriptive title of a data group"/>
   <Field name="EntityRelationshipCode" required="y" min="2" max="2" validation="T706" comment="Code describing entity relationship"/>
+  <SyntaxNote name="P0405" comment="If either PT04 or PT05 is present, then the other is required."/>
+  <SyntaxNote name="C0502" comment="If PT05 is present, then PT02 is required."/>
+  <SyntaxNote name="P070809" comment="If either PT07, PT08 or PT09 are present, then the others are required."/>
+  <SyntaxNote name="E0702" comment="Only one of PT07 or PT02 may be present."/>
+  <SyntaxNote name="C10070809" comment="If PT10 is present, then PT07, PT08 and PT09 are required."/>
+  <SyntaxNote name="C1102" comment="If PT11 is present, then PT02 is required."/>
 </Segment>

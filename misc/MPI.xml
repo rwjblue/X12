@@ -31,4 +31,5 @@
   <Field name="MilitaryServiceRankCode" required="y" min="2" max="2" validation="T1596" comment="Code specifying the military service rank"/>
   <Field name="DateTimePeriodFormatQualifier" required="y" min="2" max="3" validation="T1250" comment="Code indicating the date format, time format, or date and time format"/>
   <Field name="DateTimePeriod" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
+  <SyntaxNote name="P0607" comment="If either MPI06 or MPI07 is present, then the other is required."/>
 </Segment>

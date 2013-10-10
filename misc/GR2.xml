@@ -36,4 +36,7 @@
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="StandardCarrierAlphaCode3" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="InterchangeTrainIdentification2" required="y" min="1" max="10" comment="Train identification (free-form)"/>
+  <SyntaxNote name="P0203" comment="If either GR202 or GR203 is present, then the other is required."/>
+  <SyntaxNote name="R0304" comment="At least one of GR203 or GR204 is required."/>
+  <SyntaxNote name="P0405" comment="If either GR204 or GR205 is present, then the other is required."/>
 </Segment>

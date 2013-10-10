@@ -39,4 +39,11 @@
   <Field name="ServiceLevelCode2" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
   <Field name="ServiceLevelCode3" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
+  <SyntaxNote name="R0204050612" comment="At least one of TD502, TD504, TD505, TD506 or TD512 is required."/>
+  <SyntaxNote name="C0203" comment="If TD502 is present, then TD503 is required."/>
+  <SyntaxNote name="C0708" comment="If TD507 is present, then TD508 is required."/>
+  <SyntaxNote name="C1011" comment="If TD510 is present, then TD511 is required."/>
+  <SyntaxNote name="C1312" comment="If TD513 is present, then TD512 is required."/>
+  <SyntaxNote name="C1413" comment="If TD514 is present, then TD513 is required."/>
+  <SyntaxNote name="C1512" comment="If TD515 is present, then TD512 is required."/>
 </Segment>

@@ -34,4 +34,5 @@
   <Field name="Color" required="y" min="1" max="10" comment="Free-form description of color"/>
   <Field name="PalletBlockAndTiers" type="long" required="y" min="6" max="6" comment="Code indicating pallet and load structure; first three digits indicate the number of cases per layer, last three digits indicate the number of layers per pallet"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
+  <SyntaxNote name="P0203" comment="If either G7002 or G7003 is present, then the other is required."/>
 </Segment>

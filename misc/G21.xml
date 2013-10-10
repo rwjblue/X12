@@ -34,4 +34,5 @@
   <Field name="ProductServiceId" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
   <Field name="ItemDistributionCode" required="y" min="2" max="2" validation="T1727" comment="Code indicating the distribution of the item"/>
+  <SyntaxNote name="P0708" comment="If either G2107 or G2108 is present, then the other is required."/>
 </Segment>

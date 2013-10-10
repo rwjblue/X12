@@ -36,4 +36,12 @@
   <Field name="CompositeUnitOfMeasure2" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="RangeMinimum" type="double" required="y" min="1" max="20" comment="The value specifying the minimum of the measurement range"/>
   <Field name="RangeMaximum" type="double" required="y" min="1" max="20" comment="The value specifying the maximum of the measurement range"/>
+  <SyntaxNote name="E0304" comment="Only one of USD03 or USD04 may be present."/>
+  <SyntaxNote name="L03060708" comment="If USD03 is present, then at least one of USD06, USD07 or USD08 is required."/>
+  <SyntaxNote name="L040809" comment="If USD04 is present, then at least one of USD08 or USD09 is required."/>
+  <SyntaxNote name="P0506" comment="If either USD05 or USD06 is present, then the other is required."/>
+  <SyntaxNote name="C070506" comment="If USD07 is present, then USD05 and USD06 are required."/>
+  <SyntaxNote name="L101112" comment="If USD10 is present, then at least one of USD11 or USD12 is required."/>
+  <SyntaxNote name="C1110" comment="If USD11 is present, then USD10 is required."/>
+  <SyntaxNote name="C1210" comment="If USD12 is present, then USD10 is required."/>
 </Segment>

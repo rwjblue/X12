@@ -33,4 +33,5 @@
   <Field name="CreditDebitFlagCode" required="y" min="1" max="1" validation="T478" comment="Code indicating whether amount is a credit or debit"/>
   <Field name="IndustryCode" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
   <Field name="AllowanceOrChargeIndicator" required="y" min="1" max="1" validation="T248" comment="Code which indicates an allowance or charge for the service specified"/>
+  <SyntaxNote name="P0102" comment="If either CHB01 or CHB02 is present, then the other is required."/>
 </Segment>

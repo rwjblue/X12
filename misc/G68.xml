@@ -39,4 +39,8 @@
   <Field name="PriceListIssueNumber" required="y" min="1" max="16" comment="Number assigned to revised or new issues of a price list"/>
   <Field name="PrePriceQuantityDesignator" type="N6" required="y" min="1" max="9" comment="Number of units for which retail value is quoted"/>
   <Field name="RetailPrePrice" type="double" required="y" min="1" max="9" comment="Retail value to be placed/printed for an item appearing on the transmitted purchase order"/>
+  <SyntaxNote name="R0405" comment="At least one of G6804 or G6805 is required."/>
+  <SyntaxNote name="P0506" comment="If either G6805 or G6806 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either G6807 or G6808 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either G6810 or G6811 is present, then the other is required."/>
 </Segment>

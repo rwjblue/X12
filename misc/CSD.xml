@@ -37,4 +37,8 @@
   <Field name="TimeCode1" min="2" max="2" validation="T623" comment="Code identifying the time. In accordance with International Standards Organization standard 8601, time can be specified by a + or - and an indication in hours in relation to Universal Time Coordinate (UTC) time; since + is a restricted character, + and - are substituted by P and M in the codes that follow"/>
   <Field name="Time2" type="time" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="TimeCode2" min="2" max="2" validation="T623" comment="Code identifying the time. In accordance with International Standards Organization standard 8601, time can be specified by a + or - and an indication in hours in relation to Universal Time Coordinate (UTC) time; since + is a restricted character, + and - are substituted by P and M in the codes that follow"/>
+  <SyntaxNote name="C1005" comment="If CSD10 is present, then CSD05 is required."/>
+  <SyntaxNote name="P1011" comment="If either CSD10 or CSD11 is present, then the other is required."/>
+  <SyntaxNote name="C1206" comment="If CSD12 is present, then CSD06 is required."/>
+  <SyntaxNote name="P1213" comment="If either CSD12 or CSD13 is present, then the other is required."/>
 </Segment>

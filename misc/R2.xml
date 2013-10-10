@@ -37,4 +37,5 @@
   <Field name="FreeFormDescription" required="y" min="1" max="45" comment="Free-form descriptive text"/>
   <Field name="TypeOfServiceCode" required="y" min="2" max="2" validation="T56" comment="Code specifying extent of transportation service requested"/>
   <Field name="RouteDescription" required="y" min="1" max="35" comment="Point to point routing description"/>
+  <SyntaxNote name="C0807" comment="If R208 is present, then R207 is required."/>
 </Segment>

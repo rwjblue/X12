@@ -33,4 +33,7 @@
   <Field name="MeasurementValue2" type="double" required="y" min="1" max="20" comment="The value of the measurement"/>
   <Field name="InformationStatusCode" required="y" min="1" max="1" validation="T1201" comment="A code to indicate the status of information"/>
   <Field name="UnitOfTimePeriodOrInterval" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
+  <SyntaxNote name="R02030507" comment="At least one of SPR02, SPR03, SPR05 or SPR07 is required."/>
+  <SyntaxNote name="C0701" comment="If SPR07 is present, then SPR01 is required."/>
+  <SyntaxNote name="C0901" comment="If SPR09 is present, then SPR01 is required."/>
 </Segment>

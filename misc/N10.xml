@@ -37,4 +37,7 @@
   <Field name="CountryCode1" required="y" min="2" max="3" comment="Code identifying the country"/>
   <Field name="CountryCode2" required="y" min="2" max="3" comment="Code identifying the country"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
+  <SyntaxNote name="P0405" comment="If either N1004 or N1005 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either N1007 or N1008 is present, then the other is required."/>
+  <SyntaxNote name="C1306" comment="If N1013 is present, then N1006 is required."/>
 </Segment>

@@ -31,4 +31,8 @@
   <Field name="Time1" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Time2" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <SyntaxNote name="C0102" comment="If SHP01 is present, then SHP02 is required."/>
+  <SyntaxNote name="L030405" comment="If SHP03 is present, then at least one of SHP04 or SHP05 is required."/>
+  <SyntaxNote name="C0403" comment="If SHP04 is present, then SHP03 is required."/>
+  <SyntaxNote name="C0503" comment="If SHP05 is present, then SHP03 is required."/>
 </Segment>

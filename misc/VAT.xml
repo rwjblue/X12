@@ -36,4 +36,8 @@
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="SurfaceLayerPositionCode" required="y" min="2" max="2" validation="T752" comment="Code indicating the product surface, layer or position that is being described"/>
+  <SyntaxNote name="P0203" comment="If either VAT02 or VAT03 is present, then the other is required."/>
+  <SyntaxNote name="P060708" comment="If either VAT06, VAT07 or VAT08 are present, then the others are required."/>
+  <SyntaxNote name="C0805" comment="If VAT08 is present, then VAT05 is required."/>
+  <SyntaxNote name="C1110" comment="If VAT11 is present, then VAT10 is required."/>
 </Segment>

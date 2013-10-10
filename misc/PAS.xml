@@ -34,4 +34,5 @@
   <Field name="ConditionIndicator" required="y" min="2" max="3" validation="T1321" comment="Code indicating a condition"/>
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0405" comment="If either PAS04 or PAS05 is present, then the other is required."/>
 </Segment>

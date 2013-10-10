@@ -31,4 +31,6 @@
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
   <Field name="ConstructionType" required="y" min="1" max="2" validation="T1429" comment="Contains the primary construction material"/>
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="C0201" comment="If EM02 is present, then EM01 is required."/>
+  <SyntaxNote name="C0403" comment="If EM04 is present, then EM03 is required."/>
 </Segment>

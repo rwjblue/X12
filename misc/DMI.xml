@@ -36,4 +36,5 @@
   <Field name="CommunicationNumberQualifier" required="y" min="2" max="2" validation="T365" comment="Code identifying the type of communication number"/>
   <Field name="CommunicationNumber" required="y" min="1" max="256" comment="Complete communications number including country or area code when applicable"/>
   <Field name="NoteIdentificationNumber" type="long" required="y" min="1" max="6" comment="A number providing a reference to a segment or file which contains notes or comments related to X12 standards documentation"/>
+  <SyntaxNote name="P1011" comment="If either DMI10 or DMI11 is present, then the other is required."/>
 </Segment>

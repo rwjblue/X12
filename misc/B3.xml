@@ -38,4 +38,5 @@
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TariffServiceCode" required="y" min="2" max="2" validation="T375" comment="Code specifying the types of services for rating purposes"/>
   <Field name="TransportationTermsCode" required="y" min="3" max="3" validation="T335" comment="Code identifying the trade terms which apply to the shipment transportation responsibility"/>
+  <SyntaxNote name="P0910" comment="If either B309 or B310 is present, then the other is required."/>
 </Segment>

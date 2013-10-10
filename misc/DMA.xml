@@ -33,4 +33,10 @@
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
   <Field name="LanguageCode" required="y" min="2" max="3" comment="Code designating the language used in text, from a standard code list maintained by the International Standards Organization (ISO 639)"/>
   <Field name="StatusCode" required="y" min="2" max="2" validation="T546" comment="Code identifying the status of a business transaction, such as a claim, policy, real estate, or securities transaction"/>
+  <SyntaxNote name="P0304" comment="If either DMA03 or DMA04 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either DMA06 or DMA07 is present, then the other is required."/>
+  <SyntaxNote name="C0807" comment="If DMA08 is present, then DMA07 is required."/>
+  <SyntaxNote name="C0903" comment="If DMA09 is present, then DMA03 is required."/>
+  <SyntaxNote name="P1314" comment="If either DMA13 or DMA14 is present, then the other is required."/>
+  <SyntaxNote name="P1516" comment="If either DMA15 or DMA16 is present, then the other is required."/>
 </Segment>

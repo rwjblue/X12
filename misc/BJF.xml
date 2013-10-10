@@ -31,4 +31,7 @@
   <Field name="CityName" required="y" min="2" max="30" comment="Free-form text for city name"/>
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
+  <SyntaxNote name="C040506" comment="If BJF04 is present, then BJF05 and BJF06 are required."/>
+  <SyntaxNote name="P0506" comment="If either BJF05 or BJF06 is present, then the other is required."/>
+  <SyntaxNote name="C070506" comment="If BJF07 is present, then BJF05 and BJF06 are required."/>
 </Segment>

@@ -39,4 +39,6 @@
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
+  <SyntaxNote name="R071014" comment="At least one of BCD07, BCD10 or BCD14 is required."/>
+  <SyntaxNote name="P1314" comment="If either BCD13 or BCD14 is present, then the other is required."/>
 </Segment>

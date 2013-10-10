@@ -29,4 +29,5 @@
   <Field name="StatusCode" required="y" min="2" max="2" validation="T546" comment="Code identifying the status of a business transaction, such as a claim, policy, real estate, or securities transaction"/>
   <Field name="TypeOfRatingCode1" required="y" min="2" max="2" validation="T1592" comment="Code specifying the level of participation"/>
   <Field name="TypeOfRatingCode2" required="y" min="2" max="2" validation="T1592" comment="Code specifying the level of participation"/>
+  <SyntaxNote name="P0203" comment="If either TOA02 or TOA03 is present, then the other is required."/>
 </Segment>

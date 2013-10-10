@@ -31,4 +31,9 @@
   <Field name="TimePeriodQualifier" required="y" min="1" max="2" validation="T615" comment="Code defining periods"/>
   <Field name="RatingRemarksCode" required="y" min="2" max="2" validation="T650" comment="Code identifying the remarks related to a particular rating"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
+  <SyntaxNote name="R0106" comment="At least one of PYM01 or PYM06 is required."/>
+  <SyntaxNote name="P0203" comment="If either PYM02 or PYM03 is present, then the other is required."/>
+  <SyntaxNote name="C0301" comment="If PYM03 is present, then PYM01 is required."/>
+  <SyntaxNote name="C0403" comment="If PYM04 is present, then PYM03 is required."/>
+  <SyntaxNote name="C0503" comment="If PYM05 is present, then PYM03 is required."/>
 </Segment>

@@ -34,4 +34,9 @@
   <Field name="ItemListCost" type="double" required="y" min="1" max="9" comment="Gross unit cost within the appropriate price bracket for a line item"/>
   <Field name="Pack" type="long" required="y" min="1" max="6" comment="The number of inner containers, or number of eaches if there are no inner containers, per outer container"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
+  <SyntaxNote name="E0406" comment="Only one of G8904 or G8906 may be present."/>
+  <SyntaxNote name="P0506" comment="If either G8905 or G8906 is present, then the other is required."/>
+  <SyntaxNote name="E0712" comment="Only one of G8907 or G8912 may be present."/>
+  <SyntaxNote name="P1112" comment="If either G8911 or G8912 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either G8914 or G8915 is present, then the other is required."/>
 </Segment>

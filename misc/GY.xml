@@ -39,4 +39,12 @@
   <Field name="StateOrProvinceCode2" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CityName" required="y" min="2" max="30" comment="Free-form text for city name"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="E0309" comment="Only one of GY03 or GY09 may be present."/>
+  <SyntaxNote name="C0503" comment="If GY05 is present, then GY03 is required."/>
+  <SyntaxNote name="C0605" comment="If GY06 is present, then GY05 is required."/>
+  <SyntaxNote name="P091011" comment="If either GY09, GY10 or GY11 are present, then the others are required."/>
+  <SyntaxNote name="E0913" comment="Only one of GY09 or GY13 may be present."/>
+  <SyntaxNote name="E0915" comment="Only one of GY09 or GY15 may be present."/>
+  <SyntaxNote name="C12091011" comment="If GY12 is present, then GY09, GY10 and GY11 are required."/>
+  <SyntaxNote name="P1314" comment="If either GY13 or GY14 is present, then the other is required."/>
 </Segment>

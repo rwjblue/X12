@@ -35,4 +35,9 @@
   <Field name="DateTimeQualifier" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="R0204060810" comment="At least one of GRI02, GRI04, GRI06, GRI08 or GRI10 is required."/>
+  <SyntaxNote name="C0304" comment="If GRI03 is present, then GRI04 is required."/>
+  <SyntaxNote name="C0506" comment="If GRI05 is present, then GRI06 is required."/>
+  <SyntaxNote name="C0708" comment="If GRI07 is present, then GRI08 is required."/>
+  <SyntaxNote name="C0910" comment="If GRI09 is present, then GRI10 is required."/>
 </Segment>

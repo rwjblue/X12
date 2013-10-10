@@ -29,4 +29,5 @@
   <Field name="CityName" required="y" min="2" max="30" comment="Free-form text for city name"/>
   <Field name="TransportationMethodTypeCode" required="y" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
+  <SyntaxNote name="C0503" comment="If MS305 is present, then MS303 is required."/>
 </Segment>

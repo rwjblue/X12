@@ -37,4 +37,7 @@
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="FreightStationAccountingCode2" required="y" min="1" max="5" comment="Code (Freight Station Accounting) (AAR Managed Code for Locations)"/>
+  <SyntaxNote name="P0611" comment="If either SMS06 or SMS11 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either SMS07 or SMS08 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either SMS12 or SMS13 is present, then the other is required."/>
 </Segment>

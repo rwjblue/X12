@@ -30,4 +30,6 @@
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="FreeFormMessageText2" required="y" min="1" max="264" comment="Free-form message text"/>
+  <SyntaxNote name="R020304" comment="At least one of TER02, TER03 or TER04 is required."/>
+  <SyntaxNote name="E020304" comment="Only one of TER02, TER03 or TER04 may be present."/>
 </Segment>

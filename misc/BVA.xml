@@ -49,4 +49,7 @@
   <Field name="FlightVoyageNumber" required="y" min="2" max="10" comment="Identifying designator for the particular flight or voyage on which the cargo travels"/>
   <Field name="VehicleStatus" required="y" min="1" max="2" comment="In-transit status of a motor vehicle"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
+  <SyntaxNote name="P0708" comment="If either BVA07 or BVA08 is present, then the other is required."/>
+  <SyntaxNote name="R0809" comment="At least one of BVA08 or BVA09 is required."/>
+  <SyntaxNote name="P1011" comment="If either BVA10 or BVA11 is present, then the other is required."/>
 </Segment>

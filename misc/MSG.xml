@@ -27,4 +27,5 @@
   <Field name="FreeFormMessageText" min="1" max="264" comment="Free-form message text"/>
   <Field name="PrinterCarriageControlCode" required="y" min="2" max="2" validation="T934" comment="A field to be used for the control of the line feed of the receiving printer"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
+  <SyntaxNote name="C0302" comment="If MSG03 is present, then MSG02 is required."/>
 </Segment>

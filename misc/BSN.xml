@@ -31,4 +31,5 @@
   <Field name="HierarchicalStructureCode" required="y" min="4" max="4" validation="T1005" comment="Code indicating the hierarchical application structure of a transaction set that utilizes the HL segment to define the structure of the transaction set"/>
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
   <Field name="StatusReasonCode" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
+  <SyntaxNote name="C0706" comment="If BSN07 is present, then BSN06 is required."/>
 </Segment>

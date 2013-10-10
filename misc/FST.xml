@@ -37,4 +37,7 @@
   <Field name="QuantityQualifier" required="y" min="2" max="2" validation="T673" comment="Code specifying the type of quantity"/>
   <Field name="AdjustmentReasonCode" required="y" min="2" max="2" validation="T426" comment="Code indicating reason for debit or credit memo or adjustment to invoice, debit or credit memo, or payment"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0607" comment="If either FST06 or FST07 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either FST08 or FST09 is present, then the other is required."/>
+  <SyntaxNote name="C1312" comment="If FST13 is present, then FST12 is required."/>
 </Segment>

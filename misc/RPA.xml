@@ -29,4 +29,5 @@
   <Field name="Rate" type="double" required="y" min="1" max="9" comment="Rate expressed in the standard monetary denomination for the currency specified"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
+  <SyntaxNote name="R020305" comment="At least one of RPA02, RPA03 or RPA05 is required."/>
 </Segment>

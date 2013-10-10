@@ -38,4 +38,10 @@
   <Field name="ServiceLevelCode3" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
   <Field name="PaymentMethodCode" required="y" min="3" max="3" validation="T591" comment="Code identifying the method for the movement of payment instructions"/>
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
+  <SyntaxNote name="P0102" comment="If either CD301 or CD302 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either CD307 or CD308 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either CD309 or CD310 is present, then the other is required."/>
+  <SyntaxNote name="C1105" comment="If CD311 is present, then CD305 is required."/>
+  <SyntaxNote name="C1211" comment="If CD312 is present, then CD311 is required."/>
+  <SyntaxNote name="C1405" comment="If CD314 is present, then CD305 is required."/>
 </Segment>

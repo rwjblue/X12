@@ -38,4 +38,9 @@
   <Field name="PriceIdentifierCode2" required="y" min="3" max="3" validation="T236" comment="Code identifying pricing specification"/>
   <Field name="UnitPrice2" type="double" required="y" min="1" max="17" comment="Price per unit of product, service, commodity, etc."/>
   <Field name="FreeFormMessageText" required="y" min="1" max="264" comment="Free-form message text"/>
+  <SyntaxNote name="R0407" comment="At least one of CDD04 or CDD07 is required."/>
+  <SyntaxNote name="C0711" comment="If CDD07 is present, then CDD11 is required."/>
+  <SyntaxNote name="P0708" comment="If either CDD07 or CDD08 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either CDD10 or CDD11 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either CDD12 or CDD13 is present, then the other is required."/>
 </Segment>

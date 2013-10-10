@@ -48,4 +48,7 @@
   <Field name="EquipmentType" required="y" min="4" max="4" comment="Code identifying equipment type"/>
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="CarTypeCode" required="y" min="1" max="4" comment="Code specifying type of rail car or intermodal equipment type and its general characteristics"/>
+  <SyntaxNote name="P0304" comment="If either N703 or N704 is present, then the other is required."/>
+  <SyntaxNote name="P0516" comment="If either N705 or N716 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either N708 or N709 is present, then the other is required."/>
 </Segment>

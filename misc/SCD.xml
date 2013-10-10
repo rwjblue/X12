@@ -31,4 +31,6 @@
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="IndustryCode" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
   <Field name="GenderCode" required="y" min="1" max="1" validation="T1068" comment="Code indicating the sex of the individual"/>
+  <SyntaxNote name="C0403" comment="If SCD04 is present, then SCD03 is required."/>
+  <SyntaxNote name="P0506" comment="If either SCD05 or SCD06 is present, then the other is required."/>
 </Segment>

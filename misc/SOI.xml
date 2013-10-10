@@ -29,4 +29,5 @@
   <Field name="DateTimePeriod" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0203" comment="If either SOI02 or SOI03 is present, then the other is required."/>
 </Segment>

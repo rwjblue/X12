@@ -33,4 +33,6 @@
   <Field name="SealNumber2" required="y" min="2" max="15" comment="Unique number on seal used to close a shipment"/>
   <Field name="SealStatusCode" required="y" min="2" max="2" validation="T407" comment="Code indicating condition of door seal upon arrival"/>
   <Field name="UnitLoadOptionCode" required="y" min="2" max="2" validation="T400" comment="Code identifying loading or unloading a shipment"/>
+  <SyntaxNote name="R0204" comment="At least one of W0802 or W0804 is required."/>
+  <SyntaxNote name="P0405" comment="If either W0804 or W0805 is present, then the other is required."/>
 </Segment>

@@ -34,4 +34,5 @@
   <Field name="Year2" type="long" required="y" min="4" max="4" comment="Four position designation of the year expressed as CCYY"/>
   <Field name="MonthOfTheYearCode2" required="y" min="2" max="2" validation="T1108" comment="Code identifying the month of the year"/>
   <Field name="AccountDescriptionCode" required="y" min="1" max="2" validation="T1006" comment="Code identifying car hire payment as current, reclaim or miscellaneous items"/>
+  <SyntaxNote name="P0809" comment="If either CTC08 or CTC09 is present, then the other is required."/>
 </Segment>

@@ -29,4 +29,6 @@
   <Field name="FreightRate" type="double" required="y" min="1" max="9" comment="Rate that applies to the specific commodity"/>
   <Field name="DeclaredValue2" type="N2" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
+  <SyntaxNote name="P0203" comment="If either MS502 or MS503 is present, then the other is required."/>
+  <SyntaxNote name="L050104" comment="If MS505 is present, then at least one of MS501 or MS504 is required."/>
 </Segment>

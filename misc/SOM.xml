@@ -37,4 +37,7 @@
   <Field name="LoanStatusCode3" required="y" min="1" max="2" validation="T1307" comment="Code indicating the loan status"/>
   <Field name="DateTimePeriodFormatQualifier3" required="y" min="2" max="3" validation="T1250" comment="Code indicating the date format, time format, or date and time format"/>
   <Field name="DateTimePeriod3" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
+  <SyntaxNote name="P0506" comment="If either SOM05 or SOM06 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either SOM09 or SOM10 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either SOM12 or SOM13 is present, then the other is required."/>
 </Segment>

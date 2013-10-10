@@ -34,4 +34,7 @@
   <Field name="ProductServiceSubstitutionCode" required="y" min="1" max="2" validation="T566" comment="Code indicating product or service substitution conditions"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="PercentQualifier" required="y" min="1" max="2" validation="T1004" comment="Code to qualify percent"/>
+  <SyntaxNote name="C0203" comment="If CSH02 is present, then CSH03 is required."/>
+  <SyntaxNote name="P0607" comment="If either CSH06 or CSH07 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either CSH09 or CSH10 is present, then the other is required."/>
 </Segment>

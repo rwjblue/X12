@@ -32,4 +32,5 @@
   <Field name="StopReasonCode" min="2" max="2" validation="T163" comment="Code specifying the reason for the stop"/>
   <Field name="LocationQualifier" required="y" min="1" max="2" validation="T309" comment="Code identifying type of location"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
+  <SyntaxNote name="P0708" comment="If either S907 or S908 is present, then the other is required."/>
 </Segment>

@@ -41,4 +41,11 @@
   <Field name="PalletExchangeCode" required="y" min="1" max="1" validation="T399" comment="Code specifying pallet exchange instructions"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
   <Field name="PalletStructureCode" required="y" min="1" max="1" validation="T1699" comment="Code identifying the pallet structure"/>
+  <SyntaxNote name="P0506" comment="If either PAL05 or PAL06 is present, then the other is required."/>
+  <SyntaxNote name="C0710" comment="If PAL07 is present, then PAL10 is required."/>
+  <SyntaxNote name="C0810" comment="If PAL08 is present, then PAL10 is required."/>
+  <SyntaxNote name="C0910" comment="If PAL09 is present, then PAL10 is required."/>
+  <SyntaxNote name="L10070809" comment="If PAL10 is present, then at least one of PAL07, PAL08 or PAL09 is required."/>
+  <SyntaxNote name="P1112" comment="If either PAL11 or PAL12 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either PAL13 or PAL14 is present, then the other is required."/>
 </Segment>

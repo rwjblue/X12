@@ -32,4 +32,6 @@
   <Field name="FrequencyCode" required="y" min="1" max="1" validation="T594" comment="Code indicating frequency or type of activities or actions being reported"/>
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Date3" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="P0304" comment="If either RU203 or RU204 is present, then the other is required."/>
+  <SyntaxNote name="C05060708" comment="If RU205 is present, then RU206, RU207 and RU208 are required."/>
 </Segment>

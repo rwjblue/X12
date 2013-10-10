@@ -32,4 +32,5 @@
   <Field name="Quantity" type="double" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="L040305" comment="If PO304 is present, then at least one of PO303 or PO305 is required."/>
 </Segment>

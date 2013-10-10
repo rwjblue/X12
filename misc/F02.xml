@@ -33,4 +33,6 @@
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="VesselCode" required="y" min="1" max="8" comment="Code identifying vessel"/>
   <Field name="VesselName" required="y" min="2" max="28" comment="Name of ship as documented in &quot;Lloyd's Register of Ships&quot;"/>
+  <SyntaxNote name="P0405" comment="If either F0204 or F0205 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either F0206 or F0207 is present, then the other is required."/>
 </Segment>

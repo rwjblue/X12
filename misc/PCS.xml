@@ -35,4 +35,9 @@
   <Field name="DispositionCode" required="y" min="3" max="3" validation="T1225" comment="Code specifying the disposition of removed part, subassembly, or assembly"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="AuthorizationIdentification" required="y" min="1" max="4" comment="Identifier representing authorization of an unusual repair or some attendant condition"/>
+  <SyntaxNote name="R0104" comment="At least one of PCS01 or PCS04 is required."/>
+  <SyntaxNote name="C0204" comment="If PCS02 is present, then PCS04 is required."/>
+  <SyntaxNote name="C0302" comment="If PCS03 is present, then PCS02 is required."/>
+  <SyntaxNote name="C0709" comment="If PCS07 is present, then PCS09 is required."/>
+  <SyntaxNote name="C0807" comment="If PCS08 is present, then PCS07 is required."/>
 </Segment>

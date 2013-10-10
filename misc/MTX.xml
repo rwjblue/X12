@@ -30,4 +30,7 @@
   <Field name="PrinterCarriageControlCode" required="y" min="2" max="2" validation="T934" comment="A field to be used for the control of the line feed of the receiving printer"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="LanguageCode" required="y" min="2" max="3" comment="Code designating the language used in text, from a standard code list maintained by the International Standards Organization (ISO 639)"/>
+  <SyntaxNote name="C0102" comment="If MTX01 is present, then MTX02 is required."/>
+  <SyntaxNote name="C0302" comment="If MTX03 is present, then MTX02 is required."/>
+  <SyntaxNote name="C0504" comment="If MTX05 is present, then MTX04 is required."/>
 </Segment>

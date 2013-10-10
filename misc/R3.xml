@@ -36,4 +36,6 @@
   <Field name="ServiceLevelCode1" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
   <Field name="ServiceLevelCode2" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
   <Field name="ServiceLevelCode3" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
+  <SyntaxNote name="C1110" comment="If R311 is present, then R310 is required."/>
+  <SyntaxNote name="C1211" comment="If R312 is present, then R311 is required."/>
 </Segment>

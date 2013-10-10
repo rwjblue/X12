@@ -38,4 +38,9 @@
   <Field name="MonetaryAmount5" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="AdjustmentIdentifier6" type="C042" required="y" min="0" max="inf" comment="To provide the category and identifying reference information for an adjustment"/>
   <Field name="MonetaryAmount6" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
+  <SyntaxNote name="P0506" comment="If either PLB05 or PLB06 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either PLB07 or PLB08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either PLB09 or PLB10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either PLB11 or PLB12 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either PLB13 or PLB14 is present, then the other is required."/>
 </Segment>

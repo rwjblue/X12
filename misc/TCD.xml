@@ -40,4 +40,6 @@
   <Field name="MonetaryAmount3" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="MonetaryAmount4" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="RelationshipCode" required="y" min="1" max="1" validation="T662" comment="Code indicating the relationship between entities"/>
+  <SyntaxNote name="P0405" comment="If either TCD04 or TCD05 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either TCD07 or TCD08 is present, then the other is required."/>
 </Segment>

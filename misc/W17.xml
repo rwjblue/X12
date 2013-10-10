@@ -33,4 +33,6 @@
   <Field name="Time" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="MasterReference" required="y" min="1" max="22" comment="Reference number assigned by the sender to relate a transaction set to a master transaction (When associating a group of purchase orders, invoices or other transaction sets, use the master reference (link) number to identify the group and the link sequence number to identify individual transaction sets within the group)"/>
   <Field name="LinkSequenceNumber" type="long" required="y" min="6" max="6" comment="A two-part number in the form &quot;SSSTTT&quot; where &quot;SSS&quot; is a sequentially assigned number and &quot;TTT&quot; equals the highest sequential number being used within the associated (linked) group (Leading zeros are required for both &quot;SSS&quot; and &quot;TTT&quot;)"/>
+  <SyntaxNote name="P0607" comment="If either W1706 or W1707 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either W1708 or W1709 is present, then the other is required."/>
 </Segment>

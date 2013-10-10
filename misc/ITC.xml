@@ -36,4 +36,13 @@
   <Field name="UnitOfTimePeriodOrInterval" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="SourceOfDisclosureCode" required="y" min="1" max="1" validation="T261" comment="Code identifying the source of the disclosure information"/>
+  <SyntaxNote name="C0302" comment="If ITC03 is present, then ITC02 is required."/>
+  <SyntaxNote name="C0402" comment="If ITC04 is present, then ITC02 is required."/>
+  <SyntaxNote name="E0509" comment="Only one of ITC05 or ITC09 may be present."/>
+  <SyntaxNote name="C0605" comment="If ITC06 is present, then ITC05 is required."/>
+  <SyntaxNote name="C0705" comment="If ITC07 is present, then ITC05 is required."/>
+  <SyntaxNote name="C0805" comment="If ITC08 is present, then ITC05 is required."/>
+  <SyntaxNote name="E1011" comment="Only one of ITC10 or ITC11 may be present."/>
+  <SyntaxNote name="L100509" comment="If ITC10 is present, then at least one of ITC05 or ITC09 is required."/>
+  <SyntaxNote name="L110509" comment="If ITC11 is present, then at least one of ITC05 or ITC09 is required."/>
 </Segment>

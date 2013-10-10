@@ -32,4 +32,8 @@
   <Field name="UnitOrBasisForMeasurementCode3" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Weight2" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
+  <SyntaxNote name="R010305" comment="At least one of ISS01, ISS03 or ISS05 is required."/>
+  <SyntaxNote name="P0102" comment="If either ISS01 or ISS02 is present, then the other is required."/>
+  <SyntaxNote name="P0304" comment="If either ISS03 or ISS04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either ISS05 or ISS06 is present, then the other is required."/>
 </Segment>

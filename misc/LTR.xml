@@ -36,4 +36,9 @@
   <Field name="GenderCode" required="y" min="1" max="1" validation="T1068" comment="Code indicating the sex of the individual"/>
   <Field name="RangeMinimum2" type="double" required="y" min="1" max="20" comment="The value specifying the minimum of the measurement range"/>
   <Field name="RangeMaximum2" type="double" required="y" min="1" max="20" comment="The value specifying the maximum of the measurement range"/>
+  <SyntaxNote name="L0403" comment="If LTR04 is present, then LTR03 is required."/>
+  <SyntaxNote name="L0506" comment="If LTR05 is present, then LTR06 is required."/>
+  <SyntaxNote name="L100809" comment="If LTR10 is present, then at least one of LTR08 or LTR09 is required."/>
+  <SyntaxNote name="L110809" comment="If LTR11 is present, then at least one of LTR08 or LTR09 is required."/>
+  <SyntaxNote name="L120809" comment="If LTR12 is present, then at least one of LTR08 or LTR09 is required."/>
 </Segment>

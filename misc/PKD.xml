@@ -29,4 +29,6 @@
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="PackagingDescriptionCode" required="y" min="1" max="7" comment="A code from an industry code list which provides specific data about the marking, packaging or loading and unloading of a product"/>
   <Field name="OwnershipCode" required="y" min="1" max="1" validation="T102" comment="Code indicating the relationship of equipment to carrier or ownership of equipment"/>
+  <SyntaxNote name="C0201" comment="If PKD02 is present, then PKD01 is required."/>
+  <SyntaxNote name="C0302" comment="If PKD03 is present, then PKD02 is required."/>
 </Segment>

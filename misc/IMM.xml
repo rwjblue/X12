@@ -30,4 +30,6 @@
   <Field name="ImmunizationStatusCode" required="y" min="1" max="2" validation="T1254" comment="Code indicating the status of an immunization conducted on a person"/>
   <Field name="ReportTypeCode" required="y" min="2" max="2" validation="T755" comment="Code indicating the title or contents of a document, report or supporting item"/>
   <Field name="CodeListQualifierCode" min="1" max="3" validation="T1270" comment="Code identifying a specific industry code list"/>
+  <SyntaxNote name="P0203" comment="If either IMM02 or IMM03 is present, then the other is required."/>
+  <SyntaxNote name="C0304" comment="If IMM03 is present, then IMM04 is required."/>
 </Segment>

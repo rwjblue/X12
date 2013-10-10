@@ -29,4 +29,6 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="R0103" comment="At least one of L1101 or L1103 is required."/>
+  <SyntaxNote name="P0102" comment="If either L1101 or L1102 is present, then the other is required."/>
 </Segment>

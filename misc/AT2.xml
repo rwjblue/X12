@@ -36,4 +36,7 @@
   <Field name="FreightClassCode" required="y" min="2" max="5" comment="Code indicating generalized classification that applies to one or more items in the shipment, i.e., class 70, 77.5, etc."/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="LadingValue" type="double" required="y" min="2" max="9" comment="Value of shipment for export, expressed in the standard monetary denomination for the currency specified"/>
+  <SyntaxNote name="P0102" comment="If either AT201 or AT202 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either AT206 or AT207 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either AT213 or AT214 is present, then the other is required."/>
 </Segment>

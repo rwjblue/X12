@@ -34,4 +34,7 @@
   <Field name="DateTimePeriod" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
   <Field name="AdjustmentReasonCodeCharacteristic" required="y" min="1" max="2" validation="T1129" comment="Specifies an additional characteristic of the adjustment reason"/>
   <Field name="LateReasonCode" required="y" min="2" max="2" validation="T9" comment="Identifies the reason for tardiness"/>
+  <SyntaxNote name="P010708" comment="If either CRI01, CRI07 or CRI08 are present, then the others are required."/>
+  <SyntaxNote name="C0901" comment="If CRI09 is present, then CRI01 is required."/>
+  <SyntaxNote name="C1001" comment="If CRI10 is present, then CRI01 is required."/>
 </Segment>

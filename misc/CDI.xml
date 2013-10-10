@@ -35,4 +35,6 @@
   <Field name="IndexIdentityCode" required="y" min="2" max="2" validation="T1089" comment="Code identifying the index value used for adjustable rate mortgage rate changes"/>
   <Field name="PrimarySourceOfIndexCode" required="y" min="2" max="2" validation="T1681" comment="Code identifying the source of the index value used for adjustable rate mortgage changes"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0506" comment="If either CDI05 or CDI06 is present, then the other is required."/>
+  <SyntaxNote name="C0807" comment="If CDI08 is present, then CDI07 is required."/>
 </Segment>

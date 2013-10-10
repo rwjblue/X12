@@ -31,4 +31,6 @@
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="CodeListQualifierCode1" min="1" max="3" validation="T1270" comment="Code identifying a specific industry code list"/>
   <Field name="CodeListQualifierCode2" required="y" min="1" max="3" validation="T1270" comment="Code identifying a specific industry code list"/>
+  <SyntaxNote name="P0207" comment="If either HC02 or HC07 is present, then the other is required."/>
+  <SyntaxNote name="P0304" comment="If either HC03 or HC04 is present, then the other is required."/>
 </Segment>

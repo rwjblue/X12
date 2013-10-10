@@ -35,4 +35,9 @@
   <Field name="Percent" type="double" required="y" min="1" max="6" comment="Percent expressed as a percent"/>
   <Field name="DollarBasisForPercent" type="double" required="y" min="1" max="9" comment="Dollar basis to be used in the percent calculation of the allowance, charge or tax"/>
   <Field name="OptionNumber" required="y" min="1" max="20" comment="A unique number identifying available promotion or allowance options when more than one is offered"/>
+  <SyntaxNote name="R03050809" comment="At least one of G7203, G7205, G7208 or G7209 is required."/>
+  <SyntaxNote name="E050809" comment="Only one of G7205, G7208 or G7209 may be present."/>
+  <SyntaxNote name="P0607" comment="If either G7206 or G7207 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either G7209 or G7210 is present, then the other is required."/>
+  <SyntaxNote name="C1103" comment="If G7211 is present, then G7203 is required."/>
 </Segment>

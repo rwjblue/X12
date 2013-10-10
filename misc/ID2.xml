@@ -32,4 +32,6 @@
   <Field name="Name2" required="y" min="1" max="60" comment="Free-form name"/>
   <Field name="SpaceManagementReferenceCode2" required="y" min="2" max="2" comment="The identification code of the name of the space management system that the symbol code represents"/>
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0304" comment="If either ID203 or ID204 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either ID207 or ID208 is present, then the other is required."/>
 </Segment>

@@ -36,4 +36,7 @@
   <Field name="Percent1" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="PercentQualifier2" required="y" min="1" max="2" validation="T1004" comment="Code to qualify percent"/>
   <Field name="Percent2" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
+  <SyntaxNote name="P0708" comment="If either M107 or M108 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either M109 or M110 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either M111 or M112 is present, then the other is required."/>
 </Segment>

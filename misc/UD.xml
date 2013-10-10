@@ -41,4 +41,5 @@
   <Field name="CountryCode1" required="y" min="2" max="3" comment="Code identifying the country"/>
   <Field name="StateOrProvinceCode2" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CountryCode2" required="y" min="2" max="3" comment="Code identifying the country"/>
+  <SyntaxNote name="L101112" comment="If UD10 is present, then at least one of UD11 or UD12 is required."/>
 </Segment>

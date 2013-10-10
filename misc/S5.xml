@@ -35,4 +35,7 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="StandardPointLocationCode" required="y" min="6" max="9" comment="Code (Standard Point Location) defined by National Motor Freight Tariff Association (NMFTA) or the Canadian Transportation Agency (CTA) point development group as the official code assigned to a city or point (for ratemaking purposes) within a city"/>
   <Field name="AccomplishCode" required="y" min="1" max="1" validation="T190" comment="Code indicating the status of a specified stop"/>
+  <SyntaxNote name="P0304" comment="If either S503 or S504 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either S505 or S506 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either S507 or S508 is present, then the other is required."/>
 </Segment>

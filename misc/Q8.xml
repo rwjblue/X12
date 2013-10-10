@@ -34,4 +34,6 @@
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0203" comment="If either Q802 or Q803 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either Q804 or Q805 is present, then the other is required."/>
 </Segment>

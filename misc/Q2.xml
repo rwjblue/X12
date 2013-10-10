@@ -40,4 +40,7 @@
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="VolumeUnitQualifier" required="y" min="1" max="1" validation="T184" comment="Code identifying the volume unit"/>
   <Field name="WeightUnitCode" required="y" min="1" max="1" validation="T188" comment="Code specifying the weight unit"/>
+  <SyntaxNote name="P070816" comment="If either Q207, Q208 or Q216 are present, then the others are required."/>
+  <SyntaxNote name="C1011" comment="If Q210 is present, then Q211 is required."/>
+  <SyntaxNote name="P1415" comment="If either Q214 or Q215 is present, then the other is required."/>
 </Segment>

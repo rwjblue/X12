@@ -31,4 +31,6 @@
   <Field name="UnitOfTimePeriodOrInterval" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
   <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="C0203" comment="If SAL02 is present, then SAL03 is required."/>
+  <SyntaxNote name="P030405" comment="If either SAL03, SAL04 or SAL05 are present, then the others are required."/>
 </Segment>

@@ -33,4 +33,6 @@
   <Field name="StandardPointLocationCode" required="y" min="6" max="9" comment="Code (Standard Point Location) defined by National Motor Freight Tariff Association (NMFTA) or the Canadian Transportation Agency (CTA) point development group as the official code assigned to a city or point (for ratemaking purposes) within a city"/>
   <Field name="TransitRegistrationNumber" required="y" min="1" max="6" comment="Freight bill or bureau number used to identify a transit shipment"/>
   <Field name="TransitLevelCode" required="y" min="1" max="3" validation="T461" comment="Code indicating level of inbound transit references"/>
+  <SyntaxNote name="P0506" comment="If either T105 or T106 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either T110 or T111 is present, then the other is required."/>
 </Segment>

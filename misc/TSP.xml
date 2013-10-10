@@ -28,4 +28,5 @@
   <Field name="AssignedIdentification" required="y" min="1" max="20" comment="Alphanumeric characters assigned for differentiation within a transaction set"/>
   <Field name="TestPeriodOrIntervalValue" type="long" required="y" min="1" max="6" comment="Numeric value of period or interval signifying when a test event occurs"/>
   <Field name="UnitOfTimePeriodOrInterval" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
+  <SyntaxNote name="P0304" comment="If either TSP03 or TSP04 is present, then the other is required."/>
 </Segment>

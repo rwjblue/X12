@@ -27,4 +27,5 @@
   <Field name="AddressComponentQualifier" min="2" max="2" validation="T1106" comment="Code qualifying the type of address component"/>
   <Field name="AddressInformation" min="1" max="55" comment="Address information"/>
   <Field name="CountyDesignator" required="y" min="5" max="5" comment="Code identifying the county within a state"/>
+  <SyntaxNote name="P0405" comment="If either NX204 or NX205 is present, then the other is required."/>
 </Segment>

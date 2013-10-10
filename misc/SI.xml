@@ -45,4 +45,13 @@
   <Field name="ProductServiceId9" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="ServiceCharacteristicsQualifier10" required="y" min="2" max="3" comment="Code from an industry code list qualifying the type of service characteristics"/>
   <Field name="ProductServiceId10" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="P0405" comment="If either SI04 or SI05 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either SI06 or SI07 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either SI08 or SI09 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either SI10 or SI11 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either SI12 or SI13 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either SI14 or SI15 is present, then the other is required."/>
+  <SyntaxNote name="P1617" comment="If either SI16 or SI17 is present, then the other is required."/>
+  <SyntaxNote name="P1819" comment="If either SI18 or SI19 is present, then the other is required."/>
+  <SyntaxNote name="P2021" comment="If either SI20 or SI21 is present, then the other is required."/>
 </Segment>

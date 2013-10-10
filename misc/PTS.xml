@@ -35,4 +35,7 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="TypeOfTaxingAuthorityCode" required="y" min="2" max="2" validation="T1721" comment="Code identifying type of real estate taxing authority or other taxing authority"/>
   <Field name="StatusCode3" required="y" min="2" max="2" validation="T546" comment="Code identifying the status of a business transaction, such as a claim, policy, real estate, or securities transaction"/>
+  <SyntaxNote name="P0405" comment="If either PTS04 or PTS05 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either PTS07 or PTS08 is present, then the other is required."/>
+  <SyntaxNote name="R0809" comment="At least one of PTS08 or PTS09 is required."/>
 </Segment>

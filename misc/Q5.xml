@@ -42,4 +42,10 @@
   <Field name="DirectionIdentifierCode2" required="y" min="1" max="1" validation="T1280" comment="Code identifying geographic direction"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="PickUpOrDeliveryCode" required="y" min="1" max="2" validation="T108" comment="Specifies the location or type of pickup or delivery"/>
+  <SyntaxNote name="P0304" comment="If either Q503 or Q504 is present, then the other is required."/>
+  <SyntaxNote name="C0706" comment="If Q507 is present, then Q506 is required."/>
+  <SyntaxNote name="P1112" comment="If either Q511 or Q512 is present, then the other is required."/>
+  <SyntaxNote name="C1312" comment="If Q513 is present, then Q512 is required."/>
+  <SyntaxNote name="P1415" comment="If either Q514 or Q515 is present, then the other is required."/>
+  <SyntaxNote name="C1615" comment="If Q516 is present, then Q515 is required."/>
 </Segment>

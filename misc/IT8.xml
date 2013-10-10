@@ -51,4 +51,15 @@
   <Field name="ProductServiceId9" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="ProductServiceIdQualifier10" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId10" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="R0102030507" comment="At least one of IT801, IT802, IT803, IT805 or IT807 is required."/>
+  <SyntaxNote name="P0809" comment="If either IT808 or IT809 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either IT810 or IT811 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either IT812 or IT813 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either IT814 or IT815 is present, then the other is required."/>
+  <SyntaxNote name="P1617" comment="If either IT816 or IT817 is present, then the other is required."/>
+  <SyntaxNote name="P1819" comment="If either IT818 or IT819 is present, then the other is required."/>
+  <SyntaxNote name="P2021" comment="If either IT820 or IT821 is present, then the other is required."/>
+  <SyntaxNote name="P2223" comment="If either IT822 or IT823 is present, then the other is required."/>
+  <SyntaxNote name="P2425" comment="If either IT824 or IT825 is present, then the other is required."/>
+  <SyntaxNote name="P2627" comment="If either IT826 or IT827 is present, then the other is required."/>
 </Segment>

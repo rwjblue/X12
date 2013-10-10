@@ -34,4 +34,6 @@
   <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Time2" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="PaymentMethodCode" required="y" min="3" max="3" validation="T591" comment="Code identifying the method for the movement of payment instructions"/>
+  <SyntaxNote name="C0807" comment="If BTP08 is present, then BTP07 is required."/>
+  <SyntaxNote name="C0908" comment="If BTP09 is present, then BTP08 is required."/>
 </Segment>

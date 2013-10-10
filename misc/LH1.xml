@@ -35,4 +35,5 @@
   <Field name="ResidueIndicatorCode" required="y" min="1" max="1" validation="T665" comment="Code indicating that the material being described is that which remains in a packaging (including a tank car) after it has been unloaded"/>
   <Field name="PackingGroupCode" required="y" min="1" max="3" comment="Code indicating degree of danger in terms of Roman number I, II or III"/>
   <Field name="InterimHazardousMaterialRegulatoryNumber" required="y" min="1" max="5" comment="Identifies the current regulatory version number used for hazardous materials shipments"/>
+  <SyntaxNote name="P0607" comment="If either LH106 or LH107 is present, then the other is required."/>
 </Segment>

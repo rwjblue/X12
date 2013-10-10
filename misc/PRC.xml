@@ -36,4 +36,7 @@
   <Field name="QuantityQualifier" required="y" min="2" max="2" validation="T673" comment="Code specifying the type of quantity"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
+  <SyntaxNote name="R04050608" comment="At least one of PRC04, PRC05, PRC06 or PRC08 is required."/>
+  <SyntaxNote name="P0708" comment="If either PRC07 or PRC08 is present, then the other is required."/>
+  <SyntaxNote name="P101112" comment="If either PRC10, PRC11 or PRC12 are present, then the others are required."/>
 </Segment>

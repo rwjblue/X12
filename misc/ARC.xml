@@ -27,4 +27,6 @@
   <Field name="Count" type="long" min="1" max="9" comment="Occurrence counter"/>
   <Field name="TestTypeCode" required="y" min="2" max="2" validation="T1607" comment="Code identifying the type of test performed for which measured results will be reported"/>
   <Field name="ObservationTypeCode" required="y" min="2" max="2" validation="T1611" comment="Code identifying the type of observation made for which results will be reported"/>
+  <SyntaxNote name="E0203" comment="Only one of ARC02 or ARC03 may be present."/>
+  <SyntaxNote name="R0203" comment="At least one of ARC02 or ARC03 is required."/>
 </Segment>

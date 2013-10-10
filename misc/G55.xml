@@ -57,4 +57,13 @@
   <Field name="FreeFormDescription" required="y" min="1" max="45" comment="Free-form descriptive text"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
   <Field name="PackagingCode" required="y" min="3" max="5" validation="T103.2" comment="Code identifying the type of packaging; Part 1: Packaging Form, Part 2: Packaging Material; if the Data Element is used, then Part 1 is always required"/>
+  <SyntaxNote name="P0304" comment="If either G5503 or G5504 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either G5505 or G5506 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either G5507 or G5508 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either G5509 or G5510 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either G5511 or G5512 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either G5514 or G5515 is present, then the other is required."/>
+  <SyntaxNote name="P232425" comment="If either G5523, G5524 or G5525 are present, then the others are required."/>
+  <SyntaxNote name="P262728" comment="If either G5526, G5527 or G5528 are present, then the others are required."/>
+  <SyntaxNote name="P2930" comment="If either G5529 or G5530 is present, then the other is required."/>
 </Segment>

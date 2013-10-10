@@ -53,4 +53,14 @@
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
   <Field name="PackagingCode" required="y" min="3" max="5" validation="T103.2" comment="Code identifying the type of packaging; Part 1: Packaging Form, Part 2: Packaging Material; if the Data Element is used, then Part 1 is always required"/>
   <Field name="CashRegisterItemDescription" required="y" min="1" max="20" comment="The cash register description of an item"/>
+  <SyntaxNote name="R0102" comment="At least one of G3901 or G3902 is required."/>
+  <SyntaxNote name="P0203" comment="If either G3902 or G3903 is present, then the other is required."/>
+  <SyntaxNote name="P050607" comment="If either G3905, G3906 or G3907 are present, then the others are required."/>
+  <SyntaxNote name="P0809" comment="If either G3908 or G3909 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either G3910 or G3911 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either G3912 or G3913 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either G3914 or G3915 is present, then the other is required."/>
+  <SyntaxNote name="P1819" comment="If either G3918 or G3919 is present, then the other is required."/>
+  <SyntaxNote name="P2324" comment="If either G3923 or G3924 is present, then the other is required."/>
+  <SyntaxNote name="P2526" comment="If either G3925 or G3926 is present, then the other is required."/>
 </Segment>

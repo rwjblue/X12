@@ -33,4 +33,6 @@
   <Field name="SurfaceLayerPositionCode1" required="y" min="2" max="2" validation="T752" comment="Code indicating the product surface, layer or position that is being described"/>
   <Field name="SurfaceLayerPositionCode2" required="y" min="2" max="2" validation="T752" comment="Code indicating the product surface, layer or position that is being described"/>
   <Field name="SurfaceLayerPositionCode3" required="y" min="2" max="2" validation="T752" comment="Code indicating the product surface, layer or position that is being described"/>
+  <SyntaxNote name="P0102" comment="If either III01 or III02 is present, then the other is required."/>
+  <SyntaxNote name="L030405" comment="If III03 is present, then at least one of III04 or III05 is required."/>
 </Segment>

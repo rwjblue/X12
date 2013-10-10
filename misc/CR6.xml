@@ -45,4 +45,7 @@
   <Field name="Date8" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Date9" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Date10" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="P0304" comment="If either CR603 or CR604 is present, then the other is required."/>
+  <SyntaxNote name="P091011" comment="If either CR609, CR610 or CR611 are present, then the others are required."/>
+  <SyntaxNote name="P151617" comment="If either CR615, CR616 or CR617 are present, then the others are required."/>
 </Segment>

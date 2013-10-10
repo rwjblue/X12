@@ -52,4 +52,17 @@
   <Field name="ProductServiceId9" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="ProductServiceIdQualifier10" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId10" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="P0405" comment="If either SLN04 or SLN05 is present, then the other is required."/>
+  <SyntaxNote name="C0706" comment="If SLN07 is present, then SLN06 is required."/>
+  <SyntaxNote name="C0806" comment="If SLN08 is present, then SLN06 is required."/>
+  <SyntaxNote name="P0910" comment="If either SLN09 or SLN10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either SLN11 or SLN12 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either SLN13 or SLN14 is present, then the other is required."/>
+  <SyntaxNote name="P1516" comment="If either SLN15 or SLN16 is present, then the other is required."/>
+  <SyntaxNote name="P1718" comment="If either SLN17 or SLN18 is present, then the other is required."/>
+  <SyntaxNote name="P1920" comment="If either SLN19 or SLN20 is present, then the other is required."/>
+  <SyntaxNote name="P2122" comment="If either SLN21 or SLN22 is present, then the other is required."/>
+  <SyntaxNote name="P2324" comment="If either SLN23 or SLN24 is present, then the other is required."/>
+  <SyntaxNote name="P2526" comment="If either SLN25 or SLN26 is present, then the other is required."/>
+  <SyntaxNote name="P2728" comment="If either SLN27 or SLN28 is present, then the other is required."/>
 </Segment>

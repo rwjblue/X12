@@ -33,4 +33,6 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="ActionsIndicated" type="C002" required="y" min="0" max="inf" comment="Actions to be performed on the piece of paperwork identified"/>
   <Field name="RequestCategoryCode" required="y" min="1" max="2" validation="T1525" comment="Code indicating a type of request"/>
+  <SyntaxNote name="P0506" comment="If either PWK05 or PWK06 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either PWK10 or PWK11 is present, then the other is required."/>
 </Segment>

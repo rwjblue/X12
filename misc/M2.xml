@@ -32,4 +32,5 @@
   <Field name="DeliveryDate" type="date" required="y" min="8" max="8" comment="Date for delivery of cargo to final consignee or to next mode expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="LocationQualifier" required="y" min="1" max="2" validation="T309" comment="Code identifying type of location"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
+  <SyntaxNote name="P0708" comment="If either M207 or M208 is present, then the other is required."/>
 </Segment>

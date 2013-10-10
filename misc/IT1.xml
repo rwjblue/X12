@@ -49,4 +49,15 @@
   <Field name="ProductServiceId9" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="ProductServiceIdQualifier10" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId10" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="P020304" comment="If either IT102, IT103 or IT104 are present, then the others are required."/>
+  <SyntaxNote name="P0607" comment="If either IT106 or IT107 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either IT108 or IT109 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either IT110 or IT111 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either IT112 or IT113 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either IT114 or IT115 is present, then the other is required."/>
+  <SyntaxNote name="P1617" comment="If either IT116 or IT117 is present, then the other is required."/>
+  <SyntaxNote name="P1819" comment="If either IT118 or IT119 is present, then the other is required."/>
+  <SyntaxNote name="P2021" comment="If either IT120 or IT121 is present, then the other is required."/>
+  <SyntaxNote name="P2223" comment="If either IT122 or IT123 is present, then the other is required."/>
+  <SyntaxNote name="P2425" comment="If either IT124 or IT125 is present, then the other is required."/>
 </Segment>

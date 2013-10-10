@@ -33,4 +33,5 @@
   <Field name="TransactionTypeCode" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
   <Field name="ActionCode" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="SecurityLevelCode" min="2" max="2" validation="T786" comment="Code indicating the level of confidentiality assigned by the sender to the information following"/>
+  <SyntaxNote name="C0504" comment="If BGN05 is present, then BGN04 is required."/>
 </Segment>

@@ -38,4 +38,6 @@
   <Field name="TimeCode" required="y" min="2" max="2" validation="T623" comment="Code identifying the time. In accordance with International Standards Organization standard 8601, time can be specified by a + or - and an indication in hours in relation to Universal Time Coordinate (UTC) time; since + is a restricted character, + and - are substituted by P and M in the codes that follow"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
   <Field name="ServiceLevelCode" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
+  <SyntaxNote name="C1110" comment="If BAX11 is present, then BAX10 is required."/>
+  <SyntaxNote name="C1211" comment="If BAX12 is present, then BAX11 is required."/>
 </Segment>

@@ -35,4 +35,10 @@
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="ApplicationErrorConditionCode" required="y" min="1" max="3" validation="T647" comment="Code indicating application error condition"/>
   <Field name="ReferenceIdentification3" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="R0102" comment="At least one of OID01 or OID02 is required."/>
+  <SyntaxNote name="C0302" comment="If OID03 is present, then OID02 is required."/>
+  <SyntaxNote name="P0405" comment="If either OID04 or OID05 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either OID06 or OID07 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either OID08 or OID09 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either OID12 or OID13 is present, then the other is required."/>
 </Segment>

@@ -27,4 +27,5 @@
   <Field name="PromotionConditionCode" required="y" min="2" max="2" validation="T422" comment="Code describing a performance or advertising condition"/>
   <Field name="CouponTypeCode" required="y" min="1" max="2" validation="T1522" comment="Code indicating the type of coupon"/>
   <Field name="MonetaryAmount" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
+  <SyntaxNote name="L030102" comment="If G3503 is present, then at least one of G3501 or G3502 is required."/>
 </Segment>

@@ -33,4 +33,7 @@
   <Field name="CommunicationNumberQualifier3" required="y" min="2" max="2" validation="T365" comment="Code identifying the type of communication number"/>
   <Field name="CommunicationNumber3" required="y" min="1" max="256" comment="Complete communications number including country or area code when applicable"/>
   <Field name="ContactInquiryReference" required="y" min="1" max="20" comment="Additional reference number or description to clarify a contact number"/>
+  <SyntaxNote name="P0304" comment="If either PER03 or PER04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either PER05 or PER06 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either PER07 or PER08 is present, then the other is required."/>
 </Segment>

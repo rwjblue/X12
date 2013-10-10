@@ -39,4 +39,6 @@
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="InterchangeTrainIdentification2" required="y" min="1" max="10" comment="Train identification (free-form)"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
+  <SyntaxNote name="P0203" comment="If either BTS02 or BTS03 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either BTS04 or BTS05 is present, then the other is required."/>
 </Segment>

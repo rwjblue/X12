@@ -53,4 +53,9 @@
   <Field name="Percent3" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="Quantity11" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Description3" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0304" comment="If either CR403 or CR404 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either CR405 or CR406 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either CR408 or CR409 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either CR410 or CR411 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either CR412 or CR413 is present, then the other is required."/>
 </Segment>

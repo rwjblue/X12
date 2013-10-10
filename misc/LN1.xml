@@ -47,4 +47,11 @@
   <Field name="DateTimePeriod5" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
   <Field name="MonetaryAmount4" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="MonetaryAmount5" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
+  <SyntaxNote name="P0708" comment="If either LN107 or LN108 is present, then the other is required."/>
+  <SyntaxNote name="L161718192021" comment="If LN116 is present, then at least one of LN117, LN118, LN119, LN120 or LN121 is required."/>
+  <SyntaxNote name="C1716" comment="If LN117 is present, then LN116 is required."/>
+  <SyntaxNote name="C1816" comment="If LN118 is present, then LN116 is required."/>
+  <SyntaxNote name="C1916" comment="If LN119 is present, then LN116 is required."/>
+  <SyntaxNote name="C2016" comment="If LN120 is present, then LN116 is required."/>
+  <SyntaxNote name="C2116" comment="If LN121 is present, then LN116 is required."/>
 </Segment>

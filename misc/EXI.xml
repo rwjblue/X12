@@ -32,4 +32,6 @@
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
+  <SyntaxNote name="P0506" comment="If either EXI05 or EXI06 is present, then the other is required."/>
+  <SyntaxNote name="R0607" comment="At least one of EXI06 or EXI07 is required."/>
 </Segment>

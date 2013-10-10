@@ -30,4 +30,9 @@
   <Field name="ThoroughfareTypeQualifier" required="y" min="1" max="1" validation="T1630" comment="Code specifying thoroughfare"/>
   <Field name="ThoroughfareTypeCode" required="y" min="1" max="1" validation="T1631" comment="Code identifying type of thoroughfare"/>
   <Field name="FreeFormMessage2" required="y" min="1" max="30" comment="Free-form information"/>
+  <SyntaxNote name="R01030506" comment="At least one of LOD01, LOD03, LOD05 or LOD06 is required."/>
+  <SyntaxNote name="E0103" comment="Only one of LOD01 or LOD03 may be present."/>
+  <SyntaxNote name="C0201" comment="If LOD02 is present, then LOD01 is required."/>
+  <SyntaxNote name="C0405" comment="If LOD04 is present, then LOD05 is required."/>
+  <SyntaxNote name="E0506" comment="Only one of LOD05 or LOD06 may be present."/>
 </Segment>

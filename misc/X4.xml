@@ -43,4 +43,10 @@
   <Field name="TimeCode" required="y" min="2" max="2" validation="T623" comment="Code identifying the time. In accordance with International Standards Organization standard 8601, time can be specified by a + or - and an indication in hours in relation to Universal Time Coordinate (UTC) time; since + is a restricted character, + and - are substituted by P and M in the codes that follow"/>
   <Field name="LocationIdentifier3" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="LocationIdentifier4" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
+  <SyntaxNote name="P0304" comment="If either X403 or X404 is present, then the other is required."/>
+  <SyntaxNote name="P0810" comment="If either X408 or X410 is present, then the other is required."/>
+  <SyntaxNote name="P1516" comment="If either X415 or X416 is present, then the other is required."/>
+  <SyntaxNote name="C1706" comment="If X417 is present, then X406 is required."/>
+  <SyntaxNote name="C1803" comment="If X418 is present, then X403 is required."/>
+  <SyntaxNote name="C1903" comment="If X419 is present, then X403 is required."/>
 </Segment>

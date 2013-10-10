@@ -32,4 +32,7 @@
   <Field name="WeightQualifier" required="y" min="1" max="2" validation="T187" comment="Code defining the type of weight"/>
   <Field name="Weight" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="C0403" comment="If AXL04 is present, then AXL03 is required."/>
+  <SyntaxNote name="C0503" comment="If AXL05 is present, then AXL03 is required."/>
+  <SyntaxNote name="P0607" comment="If either AXL06 or AXL07 is present, then the other is required."/>
 </Segment>

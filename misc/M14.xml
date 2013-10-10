@@ -35,4 +35,5 @@
   <Field name="Quantity" type="double" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
+  <SyntaxNote name="P0608" comment="If either M1406 or M1408 is present, then the other is required."/>
 </Segment>

@@ -41,4 +41,10 @@
   <Field name="ProductServiceId2" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="ProductServiceIdQualifier3" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId3" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="R010205" comment="At least one of G4501, G4502 or G4505 is required."/>
+  <SyntaxNote name="P0506" comment="If either G4505 or G4506 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either G4508 or G4509 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either G4510 or G4511 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either G4514 or G4515 is present, then the other is required."/>
+  <SyntaxNote name="P1617" comment="If either G4516 or G4517 is present, then the other is required."/>
 </Segment>

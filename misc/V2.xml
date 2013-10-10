@@ -41,4 +41,9 @@
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="P0304" comment="If either V203 or V204 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either V205 or V206 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either V207 or V208 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either V209 or V210 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either V211 or V212 is present, then the other is required."/>
 </Segment>

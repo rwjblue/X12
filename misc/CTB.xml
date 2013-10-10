@@ -31,4 +31,8 @@
   <Field name="AmountQualifierCode" required="y" min="1" max="3" validation="T522" comment="Code to qualify amount"/>
   <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
+  <SyntaxNote name="R020406" comment="At least one of CTB02, CTB04 or CTB06 is required."/>
+  <SyntaxNote name="P0304" comment="If either CTB03 or CTB04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either CTB05 or CTB06 is present, then the other is required."/>
+  <SyntaxNote name="C0704" comment="If CTB07 is present, then CTB04 is required."/>
 </Segment>

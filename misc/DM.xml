@@ -45,4 +45,6 @@
   <Field name="Rate4" type="double" required="y" min="1" max="9" comment="Rate expressed in the standard monetary denomination for the currency specified"/>
   <Field name="NumberOfPeriods7" type="long" required="y" min="1" max="3" comment="Total number of periods"/>
   <Field name="Rate5" type="double" required="y" min="1" max="9" comment="Rate expressed in the standard monetary denomination for the currency specified"/>
+  <SyntaxNote name="P0304" comment="If either DM03 or DM04 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either DM09 or DM10 is present, then the other is required."/>
 </Segment>

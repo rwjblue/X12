@@ -29,4 +29,5 @@
   <Field name="Quantity1" type="double" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity2" type="double" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="MonetaryAmount" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
+  <SyntaxNote name="P0506" comment="If either INC05 or INC06 is present, then the other is required."/>
 </Segment>

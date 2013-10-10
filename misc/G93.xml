@@ -32,4 +32,5 @@
   <Field name="PriceIdentifierCode" required="y" min="3" max="3" validation="T236" comment="Code identifying pricing specification"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0203" comment="If either G9302 or G9303 is present, then the other is required."/>
 </Segment>

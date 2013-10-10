@@ -39,4 +39,7 @@
   <Field name="DayOfMonth" type="long" required="y" min="1" max="2" comment="The numeric value of the day of the month between 1 and the maximum day of the month being referenced"/>
   <Field name="PaymentMethodCode" required="y" min="1" max="2" validation="T107" comment="Code identifying type of payment procedures"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
+  <SyntaxNote name="L03040513" comment="If ITD03 is present, then at least one of ITD04, ITD05 or ITD13 is required."/>
+  <SyntaxNote name="L08040513" comment="If ITD08 is present, then at least one of ITD04, ITD05 or ITD13 is required."/>
+  <SyntaxNote name="L091011" comment="If ITD09 is present, then at least one of ITD10 or ITD11 is required."/>
 </Segment>

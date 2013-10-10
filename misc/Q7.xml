@@ -27,4 +27,5 @@
   <Field name="LadingExceptionCode" min="1" max="1" validation="T33" comment="Code indicating the condition of the shipment"/>
   <Field name="PackagingFormCode" required="y" min="3" max="3" validation="T211" comment="Code for packaging form of the lading quantity"/>
   <Field name="LadingQuantity" type="long" required="y" min="1" max="7" comment="Number of units (pieces) of the lading commodity"/>
+  <SyntaxNote name="C0203" comment="If Q702 is present, then Q703 is required."/>
 </Segment>

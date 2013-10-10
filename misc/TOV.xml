@@ -30,4 +30,6 @@
   <Field name="DateTimePeriod" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
   <Field name="QuantityQualifier" required="y" min="2" max="2" validation="T673" comment="Code specifying the type of quantity"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="P020304" comment="If either TOV02, TOV03 or TOV04 are present, then the others are required."/>
+  <SyntaxNote name="P0506" comment="If either TOV05 or TOV06 is present, then the other is required."/>
 </Segment>

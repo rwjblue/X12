@@ -31,4 +31,8 @@
   <Field name="LocationQualifier" min="1" max="2" validation="T309" comment="Code identifying type of location"/>
   <Field name="LocationIdentifier" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="CountrySubdivisionCode" min="1" max="3" comment="Code identifying the country subdivision"/>
+  <SyntaxNote name="E0207" comment="Only one of N402 or N407 may be present."/>
+  <SyntaxNote name="E0308" comment="Only one of N403 or N408 may be present."/>
+  <SyntaxNote name="C0605" comment="If N406 is present, then N405 is required."/>
+  <SyntaxNote name="C0704" comment="If N407 is present, then N404 is required."/>
 </Segment>

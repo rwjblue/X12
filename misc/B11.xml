@@ -35,4 +35,7 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="ServiceLevelCode" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
   <Field name="ReportTransmissionCode" required="y" min="1" max="2" validation="T756" comment="Code defining timing, transmission method or format by which reports are to be sent"/>
+  <SyntaxNote name="P0405" comment="If either B1104 or B1105 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either B1106 or B1107 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either B1108 or B1109 is present, then the other is required."/>
 </Segment>

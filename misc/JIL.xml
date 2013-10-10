@@ -31,4 +31,6 @@
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="AmountQualifierCode" required="y" min="1" max="3" validation="T522" comment="Code to qualify amount"/>
+  <SyntaxNote name="P0405" comment="If either JIL04 or JIL05 is present, then the other is required."/>
+  <SyntaxNote name="C0703" comment="If JIL07 is present, then JIL03 is required."/>
 </Segment>

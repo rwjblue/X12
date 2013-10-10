@@ -41,4 +41,5 @@
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="CorrectionIndicator" required="y" min="2" max="2" validation="T202" comment="Code used to indicate that the transaction set contains information which corrects previous information"/>
   <Field name="TransportationMethodTypeCode" required="y" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>
+  <SyntaxNote name="C0402" comment="If CM04 is present, then CM02 is required."/>
 </Segment>

@@ -29,4 +29,6 @@
   <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TestPeriodOrIntervalValue" type="long" required="y" min="1" max="6" comment="Numeric value of period or interval signifying when a test event occurs"/>
   <Field name="UnitOfTimePeriodOrInterval" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
+  <SyntaxNote name="R0304" comment="At least one of AOC03 or AOC04 is required."/>
+  <SyntaxNote name="P0405" comment="If either AOC04 or AOC05 is present, then the other is required."/>
 </Segment>
