@@ -114,6 +114,7 @@ module X12
 =end
 
     # Render all components of this particular segment as string suitable for EDI
+    # * +root+ - root loop of the hierarchy holding the separator information
     def render(root = self)
       return '' unless required? || self.has_displayable_content?
 
@@ -160,13 +161,16 @@ module X12
       hsh
     end
 
-    # Recursively find a sub-element
+    # Finds a field in the segment and return its +content+.
     def find(name)
       #puts "Finding [#{name}] in #{self.class} #{name}"
       find_field(name).content
     end
 
-    # Finds a field in the segment. Returns EMPTY if not found.
+    # Finds a field in the segment and returns the respective X12::Field object, or X12::Empty if not found.
+    # * +name+ can be either a field name as defined for the respective segment by X12 standard,
+    # a user-defined alias, or a string with the field numeric code
+    # ("01" or "SN01", SN being the current segment name)
     def find_field(field_name)
       #puts "Finding field [#{field_name}] in #{self.class} #{name}"
 
@@ -180,13 +184,16 @@ module X12
       end
     end
 
-    # Validate the segment - whether incoming or outgoing. use_ext_charset controls whether 
-    #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
-    def valid?(use_ext_charset = true)
+    # Validate the segment - whether incoming or outgoing.
+    # * +include_repeats+ - whether the repeats of this segment should be also validated
+    # * +use_ext_charset+ - whether to validate alphanumeric values against X12's Basic or Advanced Character Set
+    def valid?(include_repeats = false, use_ext_charset = true)
       @error_code = @error = nil
 
       if has_displayable_content? then
-        return false if nodes.find { |node| @error_code, @error = 8, node.error unless node.valid?(use_ext_charset) }
+        return false if nodes.any? { |node|
+          @error_code, @error = 8, "#{self.name}: segment has data element errors" unless node.valid?(use_ext_charset)
+          }
 
         if !@syntax_notes.empty? then
           @syntax_notes.each { |note|
@@ -224,7 +231,7 @@ module X12
         end
 
         # Recursively check if all the repeats of this segment are correct.
-        if next_repeat && !next_repeat.valid?(use_ext_charset) then
+        if include_repeats && next_repeat && !next_repeat.valid?(true, use_ext_charset) then
           @error_code, @error = next_repeat.error_code, next_repeat.error
           return false 
         end
@@ -238,6 +245,8 @@ module X12
       return true
     end
 
+    # Take the X12 string that was determined as corresponding to this segment, and populate
+    # this segment's individual fields with their respective content from that string.
     def parse_fields
       segment_data = @parsed_str.gsub(Regexp.new("#{Regexp.escape(segment_separator)}$"), '')
       @fields = segment_data.split(Regexp.new(Regexp.escape(field_separator)))

@@ -157,16 +157,19 @@ module X12
       hsh
     end
 
-    # Validate the loop - whether incoming or outgoing. use_ext_charset controls whether 
-    #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
-    def valid?(use_ext_charset = true)
+    # Validate the loop - whether incoming or outgoing. 
+    # * +include_repeats+ - whether the repeats of this loop should be also validated
+    # * +use_ext_charset+ - whether to validate alphanumeric values against X12's Basic or Advanced Character Set
+    def valid?(include_repeats = false, use_ext_charset = true)
       @error_code = @error = nil
 
       if has_displayable_content? then
-        return false if nodes.find { |node| @error_code, @error = node.error_code, node.error unless node.valid?(use_ext_charset) }
+        return false if nodes.any? { |node|
+          @error_code, @error = 5, '#{self.name}: one or more segments in error' unless node.valid?(true, use_ext_charset)
+        }
 
         # Recursively check if all the repeats of this loop are correct.
-        if next_repeat && !next_repeat.valid?(use_ext_charset) then
+        if include_repeats && next_repeat && !next_repeat.valid?(true, use_ext_charset) then
           @error_code, @error = next_repeat.error_code, next_repeat.error
           return false 
         end
