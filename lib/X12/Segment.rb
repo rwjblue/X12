@@ -59,7 +59,7 @@ module X12
       return nil unless m
 
       s = m.post_match
-      self.parsed_str = m[0]
+      @parsed_str = m[0]
       parse_fields # Fill out the fields without waiting for them to be accessed
 
       s = do_repeats(s)

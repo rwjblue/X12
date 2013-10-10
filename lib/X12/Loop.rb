@@ -77,7 +77,7 @@ module X12
       if str == s
         return nil
       else
-        self.parsed_str = str[0..-s.length-1]
+        @parsed_str = str[0..-s.length-1]
         s = do_repeats(s)
       end
 

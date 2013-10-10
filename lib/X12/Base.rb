@@ -30,8 +30,8 @@ module X12
 
   class Base
 
-    attr_reader :name, :alias, :repeats, :error_code, :error
-    attr_accessor :segment_separator, :field_separator, :composite_separator, :next_repeat, :parsed_str, :nodes, :parent
+    attr_reader :name, :alias, :repeats, :parsed_str, :error_code, :error
+    attr_accessor :segment_separator, :field_separator, :composite_separator, :next_repeat, :nodes, :parent
 
     # Creates a new base element with a given name, array of sub-elements, and array of repeats if any.
     def initialize(params = {}, nodes = [])

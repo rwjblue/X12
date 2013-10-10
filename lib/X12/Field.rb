@@ -28,8 +28,8 @@ module X12
   # Class to represent a segment field. Please note, it's not a descendant of Base.
 
   class Field
-    attr_reader :name, :alias, :data_type, :required, :min_length, :max_length, :validation, :const_value,
-                :error, :error_code
+    attr_reader :name, :alias, :parsed_str, :data_type, :required, :min_length, :max_length, :validation,
+                :const_value, :error, :error_code
     attr_accessor :content, :parent, :validation_table
 
     # Create a new field with given parameters
