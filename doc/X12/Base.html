@@ -200,8 +200,9 @@ fields.</p>
 
         <div class="method-description">
         
-        <p>Alias can be used to access the node instead of name; also, nodes with
-aliases are collected in to_hsh call</p>
+        <p><code>alias</code> can be used to access the node instead of
+<code>name</code>; also, nodes with aliases are collected in
+<code>to_hsh</code> call</p>
         
         </div>
       </div>
@@ -227,7 +228,8 @@ aliases are collected in to_hsh call</p>
 
         <div class="method-description">
         
-        <p>Human readable error message as determined by valid() method call</p>
+        <p>Human readable error message as determined by <code>valid</code> method
+call</p>
         
         </div>
       </div>
@@ -241,7 +243,7 @@ aliases are collected in to_hsh call</p>
         <div class="method-description">
         
         <p>Error code as per <a href="../X12.html">X12</a> specifications as
-determined by valid() method call</p>
+determined by <code>valid</code> method</p>
         
         </div>
       </div>
@@ -536,7 +538,7 @@ required.</p>
 
           
           <div class="method-source-code" id="empty-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 223</span>
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 226</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">empty?</span>
   <span class="ruby-keyword">false</span>
 <span class="ruby-keyword">end</span></pre>
@@ -591,12 +593,13 @@ required.</p>
 
         <div class="method-description">
           
-          <p>Check if any of the fields has been set yet</p>
+          <p>True if any of the nodes below have user-provided content. That does not
+include variables or constants.</p>
           
 
           
           <div class="method-source-code" id="has_content-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 203</span>
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 204</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_content?</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">has_content?</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -621,12 +624,13 @@ required.</p>
 
         <div class="method-description">
           
-          
+          <p>True if any of the nodes below have content that needs to be displayed -
+that includes both user-provided content and variables.</p>
           
 
           
           <div class="method-source-code" id="has_displayable_content-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 207</span>
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 210</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">has_displayable_content?</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">has_displayable_content?</span> }
 <span class="ruby-keyword">end</span></pre>
@@ -738,10 +742,10 @@ empty.</p>
 
           
           <div class="method-source-code" id="repeat-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 212</span>
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 215</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">repeat</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_content?</span> <span class="ruby-comment"># Do not repeat an empty segment</span>
-          <span class="ruby-identifier">last_repeat</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>[<span class="ruby-value">-1</span>]
+          <span class="ruby-identifier">last_repeat</span> = <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">last</span>
           <span class="ruby-identifier">last_repeat</span>.<span class="ruby-identifier">next_repeat</span> = <span class="ruby-identifier">last_repeat</span>.<span class="ruby-identifier">dup</span>
         <span class="ruby-keyword">else</span>
           <span class="ruby-keyword">self</span>
@@ -775,7 +779,7 @@ empty.</p>
 
           
           <div class="method-source-code" id="required-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 227</span>
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 230</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">required?</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">repeats</span>.<span class="ruby-identifier">begin</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>

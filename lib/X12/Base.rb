@@ -32,16 +32,16 @@ module X12
 
     # Name of the node
     attr_reader :name
-    # Alias can be used to access the node instead of name; also, nodes with aliases
-    # are collected in to_hsh call
+    # +alias+ can be used to access the node instead of +name+; also, nodes with aliases
+    # are collected in +to_hsh+ call
     attr_reader :alias
     # Range determining max and min repeats of the node
     attr_reader :repeats
     # String from which the particular node was generated during parsing
     attr_reader :parsed_str
-    # Error code as per X12 specifications as determined by valid() method call
+    # Error code as per X12 specifications as determined by +valid+ method
     attr_reader :error_code
-    # Human readable error message as determined by valid() method call
+    # Human readable error message as determined by +valid+ method call
     attr_reader :error
     # Separator of segments in a file
     attr_accessor :segment_separator
@@ -199,11 +199,14 @@ module X12
       return self.to_a.size
     end
 
-    # Check if any of the fields has been set yet
+    # True if any of the nodes below have user-provided content. That does not include
+    # variables or constants.
     def has_content?
       self.nodes.any? { |i| i.has_content? }
     end
 
+    # True if any of the nodes below have content that needs to be displayed - that includes
+    # both user-provided content and variables.
     def has_displayable_content?
       self.nodes.any? { |i| i.has_displayable_content? }
     end
@@ -211,7 +214,7 @@ module X12
     # Adds a repeat to a segment or loop. Returns a new segment/loop or self if empty.
     def repeat
       res = if self.has_content? # Do not repeat an empty segment
-              last_repeat = self.to_a[-1]
+              last_repeat = self.to_a.last
               last_repeat.next_repeat = last_repeat.dup
             else
               self
