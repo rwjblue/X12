@@ -245,7 +245,7 @@
         
         <div class="method-heading">
           <span class="method-name">each_segment</span><span
-            class="method-args">(include_repeats = false, &block)</span>
+            class="method-args">(include_repeats = false) { |x| ... }</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
@@ -258,9 +258,9 @@
           
           <div class="method-source-code" id="each_segment-source">
             <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 102</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_segment</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>, &amp;<span class="ruby-identifier">block</span>)
-  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-keyword">true</span>, &amp;<span class="ruby-identifier">block</span>) }
-  <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-value">:include_repeats</span>, &amp;<span class="ruby-identifier">block</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_segment</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-keyword">true</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">x</span>) } }
+  <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-value">:include_repeats</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">x</span>) } <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- each_segment-source -->
           
@@ -375,7 +375,7 @@ nothing was parsed out.</p>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">s</span>
     <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parsed_str</span> = <span class="ruby-identifier">str</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-operator">-</span><span class="ruby-identifier">s</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
+    <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-identifier">str</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-operator">-</span><span class="ruby-identifier">s</span>.<span class="ruby-identifier">length</span><span class="ruby-operator">-</span><span class="ruby-value">1</span>]
     <span class="ruby-identifier">s</span> = <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">s</span>)
   <span class="ruby-keyword">end</span>
 

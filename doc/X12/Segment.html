@@ -411,7 +411,7 @@ rest of the string - nil if cannot parse</p>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">m</span>
 
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">m</span>.<span class="ruby-identifier">post_match</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">parsed_str</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-identifier">m</span>[<span class="ruby-value">0</span>]
   <span class="ruby-identifier">parse_fields</span> <span class="ruby-comment"># Fill out the fields without waiting for them to be accessed</span>
 
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">s</span>)
