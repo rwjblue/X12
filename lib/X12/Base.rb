@@ -30,8 +30,31 @@ module X12
 
   class Base
 
-    attr_reader :name, :alias, :repeats, :parsed_str, :error_code, :error
-    attr_accessor :segment_separator, :field_separator, :composite_separator, :next_repeat, :nodes, :parent
+    # Name of the node
+    attr_reader :name
+    # Alias can be used to access the node instead of name; also, nodes with aliases
+    # are collected in to_hsh call
+    attr_reader :alias
+    # Range determining max and min repeats of the node
+    attr_reader :repeats
+    # String from which the particular node was generated during parsing
+    attr_reader :parsed_str
+    # Error code as per X12 specifications as determined by valid() method call
+    attr_reader :error_code
+    # Human readable error message as determined by valid() method call
+    attr_reader :error
+    # Separator of segments in a file
+    attr_accessor :segment_separator
+    # Separator of fields in a segment
+    attr_accessor :field_separator
+    # Separator of composite value parts in a field
+    attr_accessor :composite_separator
+    # Pointer to the next repeat of this node, or nil if none
+    attr_accessor :next_repeat
+    # Collection of child nodes
+    attr_accessor :nodes
+    # Parent node of this one
+    attr_accessor :parent
 
     # Creates a new base element with a given name, array of sub-elements, and array of repeats if any.
     def initialize(params = {}, nodes = [])
