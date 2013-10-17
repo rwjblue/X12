@@ -61,6 +61,10 @@ module X12
                        :alias       => override_field.alias       || @alias })
     end
 
+    def initialize_copy(original_object)
+      set_empty!
+    end
+
     # Returns printable string with field's content
     def inspect
       "<Field #{name}::#{data_type}#{ is_constant? ? " const(#{@const_value})" : '' } (#{required ? 'required' : 'optional'})|#{min_length}...#{max_length}|#{validation} \"#{@content}\">"

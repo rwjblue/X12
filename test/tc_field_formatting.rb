@@ -148,7 +148,8 @@ class FieldFormatting < Test::Unit::TestCase
 
     f1 = X12::Field.new({ :name => 'test1', :data_type => 'N', :min => 4, :max => 4, :var_name => 'segments_rendered' })
     f2 = X12::Field.new({ :name => 'test2', :data_type => 'N', :min => 4, :max => 4, :var_name => 'control_number' })
-    l = X12::Loop.new({ :name => 'test', :min => 1, :max => 1 }, [ f1, f2 ] )
+    s = X12::Segment.new({ :name => 'test_segment', :min => 1, :max => 999 }, [ f1, f2 ] )
+    l = X12::Loop.new({ :name => 'test_loop', :min => 1, :max => 1 }, [ s ] )
 
     l.segments_rendered = rand(1000)
     assert_equal("%04d" % l.segments_rendered, f1.render)

@@ -79,7 +79,6 @@ module X12
       "#{self.class.to_s.sub(/^.*::/, '')} (#{name}) #{repeats} #{super.inspect[1..-2]} =<#{parsed_str}, #{next_repeat.inspect}> ".gsub(/\\*\"/, '"')
     end
 
-
     # Prints a tree-like representation of the element
     def show(ind = '')
       count = 0
@@ -118,32 +117,42 @@ module X12
       self
     end
 
-    # Make a deep copy of the element
-    def dup
-      n = clone
-      n.set_empty!
-      n.nodes = n.nodes.dup
-      n.nodes.each_index{ |i|
-        n.nodes[i] = n.nodes[i].dup
-        n.nodes[i].set_empty!
-        n.nodes[i].parent = n
+    # Initialize the fresh copy of the object made by +dup+
+    def initialize_copy(original_object)
+      set_empty!
+
+      self.nodes = original_object.nodes.collect { |child|
+        child_copy = child.dup
+        child_copy.parent = self
+        child_copy
       }
-      #puts "Duped #{self.class} #{self.name} #{self.object_id} #{super.object_id} -> #{n.name} #{n.super.object_id} #{n.object_id} "
-      n
-    end # dup
+
+      #puts "Duped #{original_object.class} #{original_object.name} #{original_object.object_id} #{original_object.super.object_id} -> #{self.name} #{self.super.object_id} #{self.object_id} "
+    end
 
     # Method to be overloaded
     def find(e)
       return EMPTY
     end
 
+    # Returns number of repeats
+    def size
+      s = 0
+      repeat = self
+      until repeat.nil? do
+        s += 1
+        repeat = repeat.next_repeat
+      end
+      s
+    end
+
     # Present self and all repeats as an array with self being #0
     def to_a
-      res = [self]
-      nr = self.next_repeat
-      while nr do
-        res << nr
-        nr = nr.next_repeat
+      res = []
+      repeat = self
+      until repeat.nil? do
+        res << repeat
+        repeat = repeat.next_repeat
       end
       res
     end
@@ -187,18 +196,9 @@ module X12
 
     # Yields to accompanying block passing self as a parameter.
     def with(&block)
-      if block_given?
-        yield self 
-      else
-        throw Exception.new("Method 'with' requires a block.")
-      end
+      yield(self)
     end
     
-    # Returns number of repeats
-    def size
-      return self.to_a.size
-    end
-
     # True if any of the nodes below have user-provided content. That does not include
     # variables or constants.
     def has_content?
@@ -213,14 +213,15 @@ module X12
 
     # Adds a repeat to a segment or loop. Returns a new segment/loop or self if empty.
     def repeat
-      res = if self.has_content? # Do not repeat an empty segment
-              last_repeat = self.to_a.last
-              last_repeat.next_repeat = last_repeat.dup
-            else
-              self
-            end
-      yield res if block_given?
-      res
+      new_repeat = if self.has_content? # Do not repeat an empty segment
+                     last_repeat = self
+                     last_repeat = last_repeat.next_repeat until last_repeat.next_repeat.nil?
+                     last_repeat.next_repeat = last_repeat.dup
+                   else
+                     self
+                   end
+      yield new_repeat if block_given?
+      new_repeat
     end
 
     def empty?
