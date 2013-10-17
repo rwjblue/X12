@@ -66,44 +66,51 @@ module X12
 
     # Parse a string and fill out internal structures with the pieces of it. Returns 
     # an unparsed portion of the string or the original string if nothing was parsed out.
-    def parse(str)
+    def parse(source_string)
       #puts "Parsing loop #{name}: " + str
-      s = str
-      nodes.each{|i|
-        m = i.parse(s)
-        s = m if m
-      } 
 
-      if str == s
-        return nil
-      else
-        @parsed_str = str[0..-s.length-1]
-        s = do_repeats(s)
-      end
+      # Ask each node to attempt to grab its matching piece of string. +parse+ will return unconsumed
+      # portion of the string or nil if unable to match. If nothing got consumed
+      unconsumed_string = nodes.inject(source_string){ |remainder, node| node.parse(remainder) || remainder }
+
+      return nil if source_string == unconsumed_string
+
+      @parsed_str = source_string[0..-(unconsumed_string.length - 1)]
+
+      str = do_repeats(unconsumed_string)
 
       #puts 'Parsed loop ' + self.inspect
-      return s
+
+      return str
     end # parse
 
+    # Return the total count of segments that got successfilly parsed within this loop, 
+    # (and its repeats if +include_repeats+ is +true+).
     def segments_parsed(include_repeats = false)
       res = 0  
       self.each_segment(include_repeats) { |s| res += 1 unless s.parsed_str.nil? }
       res
     end
 
+    # Iterate through all the segments within this loop (and its repeats if +include_repeats+ is +true+),
+    # enumerating them according to X12 requirements.
     def enumerate_segments
       n = 0
       self.each_segment(:include_repeats) { |s|
+        next if s.parsed_str.nil?
         n = 0 if s.initial_segment 
-        s.segment_position = (n += 1) unless s.parsed_str.nil?
+        s.segment_position = (n += 1) 
       }
     end
 
+    # Iterate through all the segments within this loop (and its repeats if +include_repeats+ is +true+),
+    # invoking the given block on each one.
     def each_segment(include_repeats = false)
       nodes.each { |node| node.each_segment(true) { |x| yield(x) } }
       next_repeat.each_segment(:include_repeats) { |x| yield(x) } if include_repeats && next_repeat
     end
 
+    # Convert all the segments within this loop and its successive repeats into X12-compliant string.
     def render
       self.segments_rendered = 0
       res = ''
@@ -112,7 +119,7 @@ module X12
         if s.has_displayable_content? then
           # Current segment needs to be included in the count, so we increase in advance.
           self.segments_rendered += 1
-          res << s.render(self)
+          res += s.render(self)
         end
       }
       res

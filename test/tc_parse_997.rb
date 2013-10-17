@@ -178,7 +178,7 @@ EOT
       test_absent
     end
     finish = Time::now
-    puts sprintf("Parses per second, 997: %.2f, elapsed: %.1f", TEST_REPEAT.to_f/(finish-start), finish-start)
+    puts sprintf("Parses per second, 997: %.2f, elapsed: %.1f", TEST_REPEAT.to_f/(finish - start), finish - start)
   end # test_timing
 
 end # TestList

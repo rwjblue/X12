@@ -35,38 +35,38 @@ module X12
     # +alias+ can be used to access the node instead of +name+; also, nodes with aliases
     # are collected in +to_hsh+ call
     attr_reader :alias
-    # Range determining max and min repeats of the node
+    # +Range+ determining max and min repeats of the node
     attr_reader :repeats
     # String from which the particular node was generated during parsing
     attr_reader :parsed_str
-    # Error code as per X12 specifications as determined by +valid+ method
+    # Error code as per X12 specifications as determined by +valid?+ method
     attr_reader :error_code
-    # Human readable error message as determined by +valid+ method call
+    # Human readable error message as determined by +valid?+ method
     attr_reader :error
-    # Separator of segments in a file
+    # Character that separates segments in the document (usually '~')
     attr_accessor :segment_separator
-    # Separator of fields in a segment
+    # Character that separates fields in the segment (usually '*')
     attr_accessor :field_separator
-    # Separator of composite value parts in a field
+    # Character that separates value parts fields in the composite field (usually ':')
     attr_accessor :composite_separator
-    # Pointer to the next repeat of this node, or nil if none
+    # Pointer to the next repeat of this node, or +nil+ if none
     attr_accessor :next_repeat
     # Collection of child nodes
     attr_accessor :nodes
     # Parent node of this one
     attr_accessor :parent
 
-    # Creates a new base element with a given name, array of sub-elements, and array of repeats if any.
+    # Creates a new base element with given parameters and array of sub-elements
     def initialize(params = {}, nodes = [])
-      @error       = nil
-      @error_code  = nil
-      @name        = params[:name]
-      @alias       = params[:alias]
-      @nodes       = nodes.each { |n| n.parent = self }
-      @repeats     = Range.new(params[:min], params[:max])
-      @next_repeat = nil        # Next repeat of the same element, if any
-      @parsed_str  = nil
-      @parent      = nil
+      @error               = nil
+      @error_code          = nil
+      @name                = params[:name]
+      @alias               = params[:alias]
+      @nodes               = nodes.each { |n| n.parent = self }
+      @repeats             = Range.new(params[:min], params[:max])
+      @next_repeat         = nil
+      @parsed_str          = nil
+      @parent              = nil
       @segment_separator   = '~'
       @field_separator     = '*'
       @composite_separator = ':'
@@ -74,10 +74,11 @@ module X12
       #puts "Created #{name} #{object_id} #{self.class}  "
     end
 
-    # Formats a printable string containing the base element's content
+    # Formats a printable string containing the element's content
     def inspect
       "#{self.class.to_s.sub(/^.*::/, '')} (#{name}) #{repeats} #{super.inspect[1..-2]} =<#{parsed_str}, #{next_repeat.inspect}> ".gsub(/\\*\"/, '"')
     end
+
 
     # Prints a tree-like representation of the element
     def show(ind = '')
@@ -97,13 +98,12 @@ module X12
       }
     end
 
-    # Try to parse the current element one more time if required. Returns the rest of the string
-    # or the same string if no more repeats are found or required.
+    # Try to parse the current element one more time if allowed. Returns the unconsumed part of the string.
     def do_repeats(s)
-      if self.repeats.end > 1
+      if self.repeats.end > 1 then
         possible_repeat = self.dup
         p_s = possible_repeat.parse(s)
-        if p_s
+        if p_s then
           s = p_s
           self.next_repeat = possible_repeat
         end # if parsed
