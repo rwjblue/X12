@@ -29,11 +29,6 @@ module X12
 
   class Empty < Base
 
-    # Create a new empty
-    def initialize
-      super
-    end
-
     def render
       ''
     end

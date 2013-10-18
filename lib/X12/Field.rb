@@ -49,6 +49,7 @@ module X12
       @alias       = params[:alias]
     end
 
+    # Paste overrides from the local definition of the field over the library definition.
     def apply_overrides(override_field)
       self.class.new({ :name        => @name,
                        :data_type   => @data_type,
@@ -61,6 +62,7 @@ module X12
                        :alias       => override_field.alias       || @alias })
     end
 
+    # Initialize the fresh copy of the object made by +dup+ by cleaning up user data.
     def initialize_copy(original_object)
       set_empty!
     end
@@ -116,14 +118,17 @@ module X12
       has_content? || (is_variable? && !var_value.nil?)
     end
 
+    # True if this is a constant field
     def is_constant?
       !@const_value.nil?
     end
 
+    # True if this is an engine variable field
     def is_variable?
       !@var_name.nil?
     end
 
+    # Obtain the pre-processed value of the field (which can be user-provided, constant or variable).
     def raw_value
       @content || @const_value || var_value
     end
@@ -142,7 +147,7 @@ module X12
     end
     private :get_from_ancestor
 
-    # Obtain the value corresponding to the internal variable 
+    # Obtain the value corresponding to the engine variable 
     def var_value
       case @var_name
       when 'segments_rendered' then get_from_ancestor(:segments_rendered)
@@ -157,7 +162,7 @@ module X12
       end
     end
 
-    # Erase the content
+    # Erase the user-provided content.
     def set_empty!
       @content = nil
     end
@@ -182,6 +187,7 @@ module X12
       end # case
     end # str_regexp
 
+    # Convert +str+ into an object of the respective class as defined in the field definition and assign it to this field.
     def parse(str)
       @parsed_str = str
       @content =
@@ -201,8 +207,8 @@ module X12
         end
     end
 
-    # Validate the field data - whether incoming or outgoing. use_ext_charset controls whether 
-    #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
+    # Validate the field data - whether incoming or outgoing. +use_ext_charset+ controls whether 
+    # the X12's Basic or Advanced Character Set is expected for alphanumeric values.
     def valid?(use_ext_charset = true)
       @error_code = @error = nil
       val = @parsed_str || self.raw_value

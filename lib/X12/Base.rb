@@ -119,7 +119,7 @@ module X12
     end
 
     # Initialize the fresh copy of the object made by +dup+ by cleaning up user data
-    # and cloneing all of the original's nodes.
+    # and cloning all of the original's nodes.
     def initialize_copy(original_object)
       set_empty!
 
