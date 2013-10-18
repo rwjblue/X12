@@ -28,9 +28,30 @@ module X12
   # Class to represent a segment field. Please note, it's not a descendant of Base.
 
   class Field
-    attr_reader :name, :alias, :parsed_str, :data_type, :required, :min_length, :max_length, :validation,
-                :const_value, :error, :error_code
-    attr_accessor :content, :parent, :validation_table
+    attr_reader :required, :validation
+    attr_accessor :content, :validation_table
+
+    # Name of the node
+    attr_reader :name
+    # +alias+ can be used to access the node instead of +name+; also, nodes with aliases
+    # are collected in +to_hsh+ call
+    attr_reader :alias
+    # String from which the particular node was generated during parsing
+    attr_reader :parsed_str
+    # Error code as per X12 specifications as determined by +valid?+ method
+    attr_reader :error_code
+    # Human readable error message as determined by +valid?+ method
+    attr_reader :error
+    # Data type this field contatins as per X12 specifications
+    attr_reader :data_type
+    # Minimal length of this field textual representation as per X12 specifications
+    attr_reader :min_length
+    # Maximal length of this field textual representation as per X12 specifications
+    attr_reader :max_length
+    # Constant value in case this field is a constant field
+    attr_reader :const_value
+    # Parent node of this one
+    attr_accessor :parent
 
     # Create a new field with given parameters
     def initialize(params = {})

@@ -34,8 +34,6 @@ module X12
   # Main class for creating X12 parsers and factories.
 
   class Parser
-    attr_reader :error
-
     # These constitute prohibited file names under Microsoft
     MS_DEVICES = [   
                   'CON',
@@ -55,7 +53,6 @@ module X12
     # Creates a parser out of a definition
     def initialize(file_name)
       @x12_definition = {}
-      @error = nil
       load_definition_file(file_name)
     end # initialize
 
