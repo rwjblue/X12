@@ -194,7 +194,8 @@ counter (usually that would be ST)</p>
 
         <div class="method-description">
         
-        
+        <p>Position of the segment in the enumerated loop (once filled out by +<a
+href="Loop.html#method-i-enumerate_segments">X12::Loop#enumerate_segments</a>+)</p>
         
         </div>
       </div>
@@ -224,7 +225,7 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 35</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span>, <span class="ruby-identifier">nodes</span>)
   <span class="ruby-ivar">@initial_segment</span>  = <span class="ruby-identifier">params</span>[<span class="ruby-value">:initial_segment</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@overrides</span>        = <span class="ruby-identifier">params</span>[<span class="ruby-value">:overrides</span>] <span class="ruby-operator">||</span> []
@@ -266,7 +267,7 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="apply_overrides-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 45</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_overrides</span>
   <span class="ruby-ivar">@overrides</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">override</span><span class="ruby-operator">|</span> 
     <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each_with_index</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span>, <span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">nodes</span>[<span class="ruby-identifier">i</span>] = <span class="ruby-identifier">n</span>.<span class="ruby-identifier">apply_overrides</span>(<span class="ruby-identifier">override</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">override</span>.<span class="ruby-identifier">name</span> }
@@ -286,23 +287,25 @@ counter (usually that would be ST)</p>
         
         <div class="method-heading">
           <span class="method-name">each_segment</span><span
-            class="method-args">(include_repeats = false, &block)</span>
+            class="method-args">(include_repeats = false) { |segment| ... }</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          
+          <p>Iterate through <code>self</code> plus all the repeats of this segments (if
+<code>include_repeats</code> is <code>true</code>), invoking the given
+block on each one.</p>
           
 
           
           <div class="method-source-code" id="each_segment-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 71</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 74</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">each_segment</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">segment</span> = <span class="ruby-keyword">self</span>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">segment</span>
-    <span class="ruby-identifier">block</span>.<span class="ruby-identifier">call</span>(<span class="ruby-identifier">segment</span>)
+    <span class="ruby-keyword">yield</span> <span class="ruby-identifier">segment</span>
     <span class="ruby-identifier">segment</span> = <span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">segment</span>.<span class="ruby-identifier">next_repeat</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -332,7 +335,7 @@ counter (usually that would be ST)</p>
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 165</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 128</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">content</span>
@@ -359,20 +362,18 @@ counter (usually that would be ST)</p>
         <div class="method-description">
           
           <p>Finds a field in the segment and returns the respective <a
-href="Field.html">X12::Field</a> object, or <a
-href="Empty.html">X12::Empty</a> if not found.</p>
+href="Field.html">X12::Field</a> object, or <code>nil</code> if not found.</p>
 <ul><li>
 <p><code>field_name</code> can be either a field name as defined for the
-respective segment by <a href="../X12.html">X12</a> standard,</p>
+respective segment by <a href="../X12.html">X12</a> standard, a
+user-defined alias, or a string with the field numeric code (for example,
+"01" or "SN01", SN being the current segment name)</p>
 </li></ul>
-
-<p>a user-defined alias, or a string with the field numeric code (for example,
-“01” or “SN01”, SN being the current segment name)</p>
           
 
           
           <div class="method-source-code" id="find_field-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 174</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 135</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">field_name</span>)
   <span class="ruby-comment">#puts &quot;Finding field [#{field_name}] in #{self.class} #{name}&quot;</span>
 
@@ -411,7 +412,7 @@ respective segment by <a href="../X12.html">X12</a> standard,</p>
 
           
           <div class="method-source-code" id="method_missing-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 188</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 149</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">str</span> = <span class="ruby-identifier">meth</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-comment">#puts &quot;Missing #{str}&quot;</span>
@@ -447,12 +448,12 @@ respective segment by <a href="../X12.html">X12</a> standard,</p>
         <div class="method-description">
           
           <p>Parses this segment out of a string, puts the match into value, returns the
-rest of the string - nil if cannot parse</p>
+rest of the string or <code>nil</code> if unable to parse</p>
           
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 53</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">str</span>
   <span class="ruby-comment">#puts &quot;Parsing segment #{name} from #{s} with regexp [#{regexp.source}]&quot;</span>
@@ -468,7 +469,7 @@ rest of the string - nil if cannot parse</p>
   <span class="ruby-identifier">s</span> = <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">s</span>)
 
   <span class="ruby-comment">#puts &quot;Parsed segment &quot;+self.inspect</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">s</span>
+  <span class="ruby-identifier">s</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- parse-source -->
           
@@ -496,7 +497,7 @@ rest of the string - nil if cannot parse</p>
 
           
           <div class="method-source-code" id="regexp-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 131</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 97</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">regexp</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@regexp</span>
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">is_constant?</span> } <span class="ruby-keyword">then</span>
@@ -545,7 +546,7 @@ information</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 118</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 84</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">required?</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_displayable_content?</span>
 
@@ -578,18 +579,15 @@ information</p>
 
         <div class="method-description">
           
-          <p>Returns the hash of fields that have an alias with their corresponding
-content values</p>
+          <p>Collect the fields that have an alias defined, with their corresponding
+<code>content</code> values, into a hash.</p>
           
 
           
           <div class="method-source-code" id="to_hsh-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 151</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 117</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
   <span class="ruby-identifier">hsh</span> = {}
-
-  <span class="ruby-comment"># If the segment hasn't been parsed yet, let's parse it</span>
-  <span class="ruby-identifier">parse_fields</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@fields</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-ivar">@parsed_str</span>
 
   <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>] = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">content</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>.<span class="ruby-identifier">nil?</span>
@@ -630,7 +628,7 @@ against X12's Basic or Advanced Character Set</p>
 
           
           <div class="method-source-code" id="valid-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 205</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 166</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">use_ext_charset</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-ivar">@error_code</span> = <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
 

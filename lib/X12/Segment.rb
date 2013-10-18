@@ -30,6 +30,7 @@ module X12
   class Segment < Base
     # Flag denoting the segment from which should reset the rendered segment counter (usually that would be ST)
     attr_reader   :initial_segment
+    # Position of the segment in the enumerated loop (once filled out by +X12::Loop#enumerate_segments+)
     attr_accessor :segment_position
 
     def initialize(params, nodes)
@@ -48,8 +49,8 @@ module X12
       }
     end
 
-    # Parses this segment out of a string, puts the match into value, returns the rest of the string - nil
-    # if cannot parse
+    # Parses this segment out of a string, puts the match into value, returns the rest of the string
+    # or +nil+ if unable to parse
     def parse(str)
       s = str
       #puts "Parsing segment #{name} from #{s} with regexp [#{regexp.source}]"
@@ -65,53 +66,18 @@ module X12
       s = do_repeats(s)
 
       #puts "Parsed segment "+self.inspect
-      return s
+      s
     end # parse
 
+    # Iterate through +self+ plus all the repeats of this segments (if +include_repeats+ is +true+),
+    # invoking the given block on each one.
     def each_segment(include_repeats = false, &block)
       segment = self
       while segment
-        block.call(segment)
+        yield segment
         segment = include_repeats && segment.next_repeat
       end
     end
-
-=begin
-    def segments_parsed(include_repeats = false)
-      (parsed_str.nil? ? 0 : 1) + ((include_repeats && next_repeat) ? next_repeat.segments_parsed(true) : 0)
-    end
-
-    def enumerate_segments_old(start = 0, include_repeats = false)
-      start = 0 if @initial_segment
-      start += 1 unless parsed_str.nil?
-      @segment_position = start
-      ((include_repeats && next_repeat) ? next_repeat.enumerate_segments_old(start, true) : start)
-    end
-
-    # Render all components of this segment and all its repears as string suitable for EDI
-    def render_old(root = self)
-      res = ''
-
-      if (self.repeats.begin > 0) || self.has_displayable_content? then
-        # Either a mandatory segment, or has content. Proceed to render.
-        if root.respond_to?(:segments_rendered) then
-          root.segments_rendered = 0 if initial_segment
-          # Current segment needs to be included in the count, so we increase in advance.
-          root.segments_rendered += 1 unless root.segments_rendered.nil? 
-        end
-
-        nodes_str = ''
-        nodes.reverse.each { |fld| # Building string in reverse in order to toss empty optional fields off the end.
-          field = fld.render(root)
-          nodes_str = root.field_separator + field + nodes_str if fld.required || nodes_str != '' || field != ''
-        }
-        res << (self.name + nodes_str + root.segment_separator)
-      end
-
-      res << next_repeat.render(root) if next_repeat # Recursively render the following segment
-      res
-    end # render
-=end
 
     # Render all components of this particular segment as string suitable for EDI
     # * +root+ - root loop of the hierarchy holding the separator information
@@ -147,12 +113,9 @@ module X12
       @regexp
     end
 
-    # Returns the hash of fields that have an alias with their corresponding content values
+    # Collect the fields that have an alias defined, with their corresponding +content+ values, into a hash.
     def to_hsh
       hsh = {}
-
-      # If the segment hasn't been parsed yet, let's parse it
-      parse_fields if @fields.nil? && @parsed_str
 
       nodes.each { |node|
         hsh[node.alias] = node.content unless node.alias.nil?
@@ -167,10 +130,8 @@ module X12
       find_field(name).content
     end
 
-    # Finds a field in the segment and returns the respective X12::Field object, or X12::Empty if not found.
-    # * +field_name+ can be either a field name as defined for the respective segment by X12 standard,
-    # a user-defined alias, or a string with the field numeric code
-    # (for example, "01" or "SN01", SN being the current segment name)
+    # Finds a field in the segment and returns the respective X12::Field object, or +nil+ if not found.
+    # * +field_name+ can be either a field name as defined for the respective segment by X12 standard, a user-defined alias, or a string with the field numeric code (for example, "01" or "SN01", SN being the current segment name)
     def find_field(field_name)
       #puts "Finding field [#{field_name}] in #{self.class} #{name}"
 
