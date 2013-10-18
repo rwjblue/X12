@@ -164,27 +164,17 @@ module X12
       @parsed_str || render
     end
 
-    # The main method implementing Ruby-like access methods for nested elements
+    # The main method implementing Ruby-like access methods for nested elements. 
+    # To address nodes with purely numeric names (i.e. 270, 997, etc.), prefix them with an underscore.
     def method_missing(meth, *args, &block)
-      str = meth.id2name
-      str = str[1..-1] if str =~ /^_\d+$/ # to avoid pure number names like 270, 997, etc.
+      str = meth.to_s
+      str = str[1..-1] if str =~ /^_\d+$/
       #puts "Missing #{str}"
-      if str =~ /=$/ # Assignment
-        str.chop!
-        #puts str
-        assign_value(str, args[0])
-      else # Retrieval
-        res = find(str)
-        yield res if block_given?
-        res
-      end # if assignment
+      res = find(str)
+      yield res if block_given?
+      res
     end
 
-    def assign_value(k, v)
-      throw Exception.new("Illegal assignment to #{k} of #{self.class}")
-    end
-    private :assign_value
-    
     # The main method implementing Ruby-like access methods for repeating elements
     def [](*args)
       #puts "squares #{args.inspect}"
@@ -224,10 +214,6 @@ module X12
                    end
       yield new_repeat if block_given?
       new_repeat
-    end
-
-    def empty?
-      false
     end
 
     def required?

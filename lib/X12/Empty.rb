@@ -42,9 +42,5 @@ module X12
       EMPTY
     end
 
-    def empty?
-      true
-    end
-
   end # Empty
 end # X12

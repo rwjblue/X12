@@ -80,6 +80,8 @@
     
     <li><a href="#method-i-find_field">#find_field</a>
     
+    <li><a href="#method-i-method_missing">#method_missing</a>
+    
     <li><a href="#method-i-parse">#parse</a>
     
     <li><a href="#method-i-regexp">#regexp</a>
@@ -380,7 +382,7 @@ respective segment by <a href="../X12.html">X12</a> standard,</p>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">field_name</span> <span class="ruby-operator">=~</span> <span class="ruby-node">/^(?:#{self.name})?(\d\d)$/</span> <span class="ruby-keyword">then</span>
     <span class="ruby-identifier">nodes</span>[<span class="ruby-node">$1</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>]
   <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> } <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY</span>
+    <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">field_name</span> }
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- find_field-source -->
@@ -391,6 +393,46 @@ respective segment by <a href="../X12.html">X12</a> standard,</p>
 
         
       </div><!-- find_field-method -->
+
+    
+      <div id="method-i-method_missing" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">method_missing</span><span
+            class="method-args">(meth, *args, &block)</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Provide access to individual fields in the segment using dot-notation.</p>
+          
+
+          
+          <div class="method-source-code" id="method_missing-source">
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 188</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+  <span class="ruby-identifier">str</span> = <span class="ruby-identifier">meth</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-comment">#puts &quot;Missing #{str}&quot;</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/=$/</span> <span class="ruby-comment"># Assignment</span>
+    <span class="ruby-identifier">str</span>.<span class="ruby-identifier">chop!</span>
+    <span class="ruby-comment">#puts str</span>
+    <span class="ruby-identifier">field</span> = <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">str</span>) <span class="ruby-comment"># Note that fields can not have pure numeric names, so we are in the clear here.</span>
+    <span class="ruby-identifier">raise</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;No field '#{str}' in segment '#{self.name}'&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">field</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">field</span>.<span class="ruby-identifier">content</span> = <span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]
+  <span class="ruby-keyword">else</span> <span class="ruby-comment"># Retrieval</span>
+    <span class="ruby-keyword">super</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment"># if assignment</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- method_missing-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- method_missing-method -->
 
     
       <div id="method-i-parse" class="method-detail ">
@@ -588,7 +630,7 @@ against X12's Basic or Advanced Character Set</p>
 
           
           <div class="method-source-code" id="valid-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 198</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 205</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">use_ext_charset</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-ivar">@error_code</span> = <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
 

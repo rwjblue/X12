@@ -144,7 +144,7 @@ EOT
     assert_equal('997', @r.ST.find_field('TransactionSetIdentifierCode').content)
     assert_equal('997', @r.ST.find_field('01').content)
     assert_equal('997', @r.ST.find_field('ST01').content)
-    assert_equal(true, @r.ST.find_field('should not find').empty?)
+    assert_nil(@r.ST.find_field('should not find'))
   end
 
   def test_segment_enumerator

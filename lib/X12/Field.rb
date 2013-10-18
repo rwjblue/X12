@@ -201,10 +201,6 @@ module X12
         end
     end
 
-    def empty?
-      false
-    end
-
     # Validate the field data - whether incoming or outgoing. use_ext_charset controls whether 
     #   the X12's Basic or Advanced Character Set is expected for alphanumeric values.
     def valid?(use_ext_charset = true)

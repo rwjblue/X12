@@ -180,17 +180,24 @@ module X12
       if field_name =~ /^(?:#{self.name})?(\d\d)$/ then
         nodes[$1.to_i - 1]
       else
-        nodes.find { |node| node.name == field_name || node.alias == field_name } || EMPTY
+        nodes.find { |node| node.name == field_name || node.alias == field_name }
       end
     end
 
-    def assign_value(k, v)
-      field = find_field(k)
-      raise Exception.new("No field '#{k}' in segment '#{self.name}'") if field.empty?
-      field.content = v
-      #puts res.inspect
+    # Provide access to individual fields in the segment using dot-notation.
+    def method_missing(meth, *args, &block)
+      str = meth.to_s
+      #puts "Missing #{str}"
+      if str =~ /=$/ # Assignment
+        str.chop!
+        #puts str
+        field = find_field(str) # Note that fields can not have pure numeric names, so we are in the clear here.
+        raise Exception.new("No field '#{str}' in segment '#{self.name}'") if field.nil?
+        field.content = args[0]
+      else # Retrieval
+        super
+      end # if assignment
     end
-    private :assign_value
 
     # Validate the segment - whether incoming or outgoing.
     # * +include_repeats+ - whether the repeats of this segment should be also validated
