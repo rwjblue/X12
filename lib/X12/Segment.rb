@@ -168,9 +168,9 @@ module X12
     end
 
     # Finds a field in the segment and returns the respective X12::Field object, or X12::Empty if not found.
-    # * +name+ can be either a field name as defined for the respective segment by X12 standard,
+    # * +field_name+ can be either a field name as defined for the respective segment by X12 standard,
     # a user-defined alias, or a string with the field numeric code
-    # ("01" or "SN01", SN being the current segment name)
+    # (for example, "01" or "SN01", SN being the current segment name)
     def find_field(field_name)
       #puts "Finding field [#{field_name}] in #{self.class} #{name}"
 
@@ -183,6 +183,14 @@ module X12
         nodes.find { |node| node.name == field_name || node.alias == field_name } || EMPTY
       end
     end
+
+    def assign_value(k, v)
+      field = find_field(k)
+      raise Exception.new("No field '#{k}' in segment '#{self.name}'") if field.empty?
+      field.content = v
+      #puts res.inspect
+    end
+    private :assign_value
 
     # Validate the segment - whether incoming or outgoing.
     # * +include_repeats+ - whether the repeats of this segment should be also validated
@@ -248,8 +256,7 @@ module X12
     # Take the X12 string that was determined as corresponding to this segment, and populate
     # this segment's individual fields with their respective content from that string.
     def parse_fields
-      segment_data = @parsed_str.gsub(Regexp.new("#{Regexp.escape(segment_separator)}$"), '')
-      @fields = segment_data.split(Regexp.new(Regexp.escape(field_separator)))
+      @fields = @parsed_str.chomp(segment_separator).split(field_separator)
       self.nodes.each_with_index{ |node, ind| node.parse(@fields[ind + 1]) }
     end
     private :parse_fields

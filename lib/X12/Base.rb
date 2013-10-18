@@ -80,16 +80,16 @@ module X12
     end
 
     # Prints a tree-like representation of the element
-    def show(ind = '')
+    def show(indent = '')
       count = 0
       self.to_a.each{ |i|
-        #puts "#{ind}#{i.name} #{i.object_id} #{i.super.object_id} [#{count}]: #{i.parsed_str} #{i.super.class}"
-        puts "#{ind}#{i.name} [#{count}]: #{i.to_s.sub(/^(.{30})(.*?)(.{30})$/, '\1...\3')}"
+        #puts "#{indent}#{i.name} #{i.object_id} #{i.super.object_id} [#{count}]: #{i.parsed_str} #{i.super.class}"
+        puts "#{indent}#{i.name} [#{count}]: #{i.to_s.sub(/^(.{30})(.*?)(.{30})$/, '\1...\3')}"
 
         i.nodes.each{ |j|
           case 
-          when j.kind_of?(X12::Base)  then j.show(ind + '  ')
-          when j.kind_of?(X12::Field) then puts "#{ind + '  '}#{j.name} -> '#{j.to_s}'"
+          when j.kind_of?(X12::Base)  then j.show(indent + '  ')
+          when j.kind_of?(X12::Field) then puts "#{indent}  #{j.name} -> '#{j.to_s}'"
           end
         } 
 
@@ -97,7 +97,8 @@ module X12
       }
     end
 
-    # Try to parse the current element one more time if allowed. Returns the unconsumed part of the string.
+    # Check if the source string contains one more repeat of the current element, and parse it if it is so.
+    # Returns the unconsumed part of the string.
     def do_repeats(s)
       if self.repeats.end > 1 then
         possible_repeat = self.dup
@@ -117,7 +118,8 @@ module X12
       self
     end
 
-    # Initialize the fresh copy of the object made by +dup+
+    # Initialize the fresh copy of the object made by +dup+ by cleaning up user data
+    # and cloneing all of the original's nodes.
     def initialize_copy(original_object)
       set_empty!
 
@@ -130,27 +132,27 @@ module X12
       #puts "Duped #{original_object.class} #{original_object.name} #{original_object.object_id} #{original_object.super.object_id} -> #{self.name} #{self.super.object_id} #{self.object_id} "
     end
 
-    # Method to be overloaded
+    # Prototype method to be overloaded
     def find(e)
-      return EMPTY
+      raise 'Subclass responsebility'
     end
 
-    # Returns number of repeats
+    # Number of repeats of this element, starting with self.
     def size
       s = 0
-      repeat = self
-      until repeat.nil? do
+      repeat = self        # Yes, this loop is used in a few places, but extracting it into a
+      until repeat.nil? do # separate method causes about 20% performance drop due to yield overhead.
         s += 1
         repeat = repeat.next_repeat
       end
       s
     end
 
-    # Present self and all repeats as an array with self being #0
+    # Returns the array of repeats of this element, starting with self.
     def to_a
       res = []
-      repeat = self
-      until repeat.nil? do
+      repeat = self        # Yes, this loop is used in a few places, but extracting it into a
+      until repeat.nil? do # separate method causes about 20% performance drop due to yield overhead.
         res << repeat
         repeat = repeat.next_repeat
       end
@@ -167,26 +169,21 @@ module X12
       str = meth.id2name
       str = str[1..-1] if str =~ /^_\d+$/ # to avoid pure number names like 270, 997, etc.
       #puts "Missing #{str}"
-      if str =~ /=$/
-        # Assignment
+      if str =~ /=$/ # Assignment
         str.chop!
         #puts str
-        case self
-        when X12::Segment
-          res = find_field(str)
-          throw Exception.new("No field '#{str}' in segment '#{self.name}'") if EMPTY == res
-          res.content = args[0]
-          #puts res.inspect
-        else
-          throw Exception.new("Illegal assignment to #{meth} of #{self.class}")
-        end # case
-      else
-        # Retrieval
+        assign_value(str, args[0])
+      else # Retrieval
         res = find(str)
         yield res if block_given?
         res
       end # if assignment
     end
+
+    def assign_value(k, v)
+      throw Exception.new("Illegal assignment to #{k} of #{self.class}")
+    end
+    private :assign_value
     
     # The main method implementing Ruby-like access methods for repeating elements
     def [](*args)
@@ -201,17 +198,22 @@ module X12
     
     # True if any of the nodes below have user-provided content. That does not include
     # variables or constants.
+    # There's no need to check repeats, because the only way for an element to be empty
+    # is to be the first and only in the repeats list.
     def has_content?
       self.nodes.any? { |i| i.has_content? }
     end
 
     # True if any of the nodes below have content that needs to be displayed - that includes
     # both user-provided content and variables.
+    # There's no need to check repeats, because the only way for an element to be empty
+    # is to be the first and only in the repeats list.
     def has_displayable_content?
       self.nodes.any? { |i| i.has_displayable_content? }
     end
 
-    # Adds a repeat to a segment or loop. Returns a new segment/loop or self if empty.
+    # Returns a fresh repeat of this segment/loop ready to be filled with user content - 
+    # either self, or a fresh copy.
     def repeat
       new_repeat = if self.has_content? # Do not repeat an empty segment
                      last_repeat = self

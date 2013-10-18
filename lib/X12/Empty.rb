@@ -38,6 +38,10 @@ module X12
       ''
     end
 
+    def find(x)
+      EMPTY
+    end
+
     def empty?
       true
     end
