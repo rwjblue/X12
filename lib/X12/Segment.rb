@@ -36,7 +36,7 @@ module X12
     def initialize(params, nodes)
       @initial_segment  = params[:initial_segment] || false
       @overrides        = params[:overrides] || []
-      @syntax_notes     = params[:syntax_notes]
+      @syntax_notes     = params[:syntax_notes] || []
       @segment_position = nil
       super
     end
@@ -81,7 +81,7 @@ module X12
     # Render all components of this particular segment as string suitable for EDI
     # * +root+ - root loop of the hierarchy holding the separator information
     def render(root = self)
-      return '' unless required? || self.has_displayable_content?
+      return '' unless required || self.has_displayable_content?
 
       nodes_str = ''
       nodes.reverse.each { |fld| # Building string in reverse in order to toss empty optional fields off the end.
@@ -211,7 +211,7 @@ module X12
           return false 
         end
       else
-        if required? then
+        if required then
           @error_code, @error = 3, "#{self.name}: mandatory segment missing"
           return false 
         end

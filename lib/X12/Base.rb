@@ -202,7 +202,7 @@ module X12
       self.nodes.any? { |i| i.has_displayable_content? }
     end
 
-    # Returns a fresh repeat of this segment/loop ready to be filled with user content - 
+    # Returns a fresh repeat of this element ready to be filled with user content - 
     # either self, or a fresh copy.
     def repeat
       new_repeat = if self.has_content? # Do not repeat an empty segment
@@ -216,7 +216,8 @@ module X12
       new_repeat
     end
 
-    def required?
+    # Returns +true+ is this element has to be present in the output ("Mandatory" per X12 standard)
+    def required
       self.repeats.begin > 0
     end
 

@@ -202,7 +202,7 @@ class FieldFormatting < Test::Unit::TestCase
 
     t = X12::Table.new({:name => 'T123'}, { 'XY' => 'Valid Value' })
     f = X12::Field.new({ :name => 'test', :data_type => 'AN', :min => 2, :max => 2, :validation => 'T123'})
-    f.validation_table = t
+    f.set_validation_table(t)
 
     f.content = 'XZ'
     assert_equal(false, f.valid?)

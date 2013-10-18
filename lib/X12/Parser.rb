@@ -148,7 +148,7 @@ module X12
 
           node.nodes.each { |n|
             # Make sure we have the validation table if any for this field. Try to read one in if missing.
-            n.validation_table = get_definition(X12::Table, n.validation) if n.validation
+            n.set_validation_table(get_definition(X12::Table, n.validation)) if n.validation
           }
         end
       }

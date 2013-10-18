@@ -28,9 +28,6 @@ module X12
   # Class to represent a segment field. Please note, it's not a descendant of Base.
 
   class Field
-    attr_reader :required, :validation
-    attr_accessor :content, :validation_table
-
     # Name of the node
     attr_reader :name
     # +alias+ can be used to access the node instead of +name+; also, nodes with aliases
@@ -48,10 +45,14 @@ module X12
     attr_reader :min_length
     # Maximal length of this field textual representation as per X12 specifications
     attr_reader :max_length
+    # Returns +true+ is this field must be present in the output ("Mandatory" per X12 standard)
+    attr_reader :required
     # Constant value in case this field is a constant field
     attr_reader :const_value
     # Parent node of this one
     attr_accessor :parent
+    # User-provider content of this field. The type of object it contains depends on +data_type+
+    attr_accessor :content
 
     # Create a new field with given parameters
     def initialize(params = {})
@@ -154,6 +155,17 @@ module X12
       @content || @const_value || var_value
     end
 
+    # Returns the name of the validation used for this field.
+    def validation
+      return @validation.name if @validation.is_a?(X12::Table)
+      @validation
+    end
+
+    # Updates validation to a validation table once the parser has them loaded in.
+    def set_validation_table(t)
+      @validation = t if t.is_a?(X12::Table)
+    end
+
     # Obtain the value from the closest ancestor of this object that supports the specified method
     def get_from_ancestor(meth)
       ancestor = self.parent
@@ -242,13 +254,13 @@ module X12
       else
         val2 = @parsed_str || self.render
 
-        if validation then
-          if validation_table.nil?
+        if @validation then
+          unless @validation.is_a?(X12::Table)
             @error = "Validation table #{validation} not provided"
             return false
           end
 
-          unless validation_table.has_key?(val2)
+          unless @validation.has_key?(val2)
             @error_code, @error = 7, "Invalid code value ([#{val}] not in validation table #{validation})"
             return false
           end

@@ -90,7 +90,7 @@
     
     <li><a href="#method-i-repeat">#repeat</a>
     
-    <li><a href="#method-i-required-3F">#required?</a>
+    <li><a href="#method-i-required">#required</a>
     
     <li><a href="#method-i-set_empty-21">#set_empty!</a>
     
@@ -690,8 +690,8 @@ them with an underscore.</p>
 
         <div class="method-description">
           
-          <p>Returns a fresh repeat of this segment/loop ready to be filled with user
-content -  either self, or a fresh copy.</p>
+          <p>Returns a fresh repeat of this element ready to be filled with user content
+-  either self, or a fresh copy.</p>
           
 
           
@@ -718,10 +718,10 @@ content -  either self, or a fresh copy.</p>
       </div><!-- repeat-method -->
 
     
-      <div id="method-i-required-3F" class="method-detail ">
+      <div id="method-i-required" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">required?</span><span
+          <span class="method-name">required</span><span
             class="method-args">()</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -729,23 +729,24 @@ content -  either self, or a fresh copy.</p>
 
         <div class="method-description">
           
-          
+          <p>Returns <code>true</code> is this element has to be present in the output
+(“Mandatory” per <a href="../X12.html">X12</a> standard)</p>
           
 
           
-          <div class="method-source-code" id="required-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 219</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">required?</span>
+          <div class="method-source-code" id="required-source">
+            <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 220</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">required</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">repeats</span>.<span class="ruby-identifier">begin</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">0</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- required-3F-source -->
+          </div><!-- required-source -->
           
         </div>
 
         
 
         
-      </div><!-- required-3F-method -->
+      </div><!-- required-method -->
 
     
       <div id="method-i-set_empty-21" class="method-detail ">

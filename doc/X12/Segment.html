@@ -227,7 +227,7 @@ href="Loop.html#method-i-enumerate_segments">X12::Loop#enumerate_segments</a>+)<
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span>, <span class="ruby-identifier">nodes</span>)
   <span class="ruby-ivar">@initial_segment</span>  = <span class="ruby-identifier">params</span>[<span class="ruby-value">:initial_segment</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
   <span class="ruby-ivar">@overrides</span>        = <span class="ruby-identifier">params</span>[<span class="ruby-value">:overrides</span>] <span class="ruby-operator">||</span> []
-  <span class="ruby-ivar">@syntax_notes</span>     = <span class="ruby-identifier">params</span>[<span class="ruby-value">:syntax_notes</span>]
+  <span class="ruby-ivar">@syntax_notes</span>     = <span class="ruby-identifier">params</span>[<span class="ruby-value">:syntax_notes</span>] <span class="ruby-operator">||</span> []
   <span class="ruby-ivar">@segment_position</span> = <span class="ruby-keyword">nil</span>
   <span class="ruby-keyword">super</span>
 <span class="ruby-keyword">end</span></pre>
@@ -545,7 +545,7 @@ information</p>
           <div class="method-source-code" id="render-source">
             <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 83</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
-  <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">required?</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_displayable_content?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">required</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">has_displayable_content?</span>
 
   <span class="ruby-identifier">nodes_str</span> = <span class="ruby-string">''</span>
   <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fld</span><span class="ruby-operator">|</span> <span class="ruby-comment"># Building string in reverse in order to toss empty optional fields off the end.</span>
@@ -675,7 +675,7 @@ against X12's Basic or Advanced Character Set</p>
       <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> 
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
-    <span class="ruby-keyword">if</span> <span class="ruby-identifier">required?</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">required</span> <span class="ruby-keyword">then</span>
       <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">3</span>, <span class="ruby-node">&quot;#{self.name}: mandatory segment missing&quot;</span>
       <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> 
     <span class="ruby-keyword">end</span>

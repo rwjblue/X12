@@ -155,7 +155,7 @@ module X12
           return false 
         end
       else
-        if required? then
+        if required then
           @error_code, @error = 3, "#{self.name}: mandatory loop missing"
           return false 
         end
