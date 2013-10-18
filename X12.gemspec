@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "X12"
-  s.version = "2.6.5"
+  s.version = "2.7.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["APP Design, Inc.", "Eligo Energy"]
-  s.date = "2013-10-17"
+  s.date = "2013-10-18"
   s.description = "Library to parse X12 messages and manipulate their loops, segments, fields, composites, and validation tables."
   s.email = "info@appdesign.com"
   s.extra_rdoc_files = [
@@ -33,7 +33,6 @@ Gem::Specification.new do |s|
     "doc/X12.html",
     "doc/X12/Base.html",
     "doc/X12/Composite.html",
-    "doc/X12/Empty.html",
     "doc/X12/Field.html",
     "doc/X12/Loop.html",
     "doc/X12/Parser.html",
@@ -79,7 +78,6 @@ Gem::Specification.new do |s|
     "lib/X12.rb",
     "lib/X12/Base.rb",
     "lib/X12/Composite.rb",
-    "lib/X12/Empty.rb",
     "lib/X12/Field.rb",
     "lib/X12/Loop.rb",
     "lib/X12/Parser.rb",
