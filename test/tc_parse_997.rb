@@ -118,15 +118,10 @@ EOT
   end # test_AK4
 
   def test_absent
-    assert_equal(X12::EMPTY, @r.L1000.AK8.TransactionSetIdentifierCode)
-    assert_equal(X12::EMPTY, @r.L1000.L1111)
-    assert_equal(X12::EMPTY, @r.L1000.L1111.L2222)
-    assert_equal(X12::EMPTY, @r.L1000.L1111.L2222.AFAFA)
-    assert_equal(X12::EMPTY, @r.L1000.L1010[-99])
-    assert_equal(X12::EMPTY, @r.L1000.L1010[99])
-    assert_equal(X12::EMPTY, @r.L1000.L1010[99].AK4)
-
-    assert_equal('', @r.L1000.AK8.TransactionSetIdentifierCode.to_s)
+    assert_nil(@r.L1000.AK8)
+    assert_nil(@r.L1000.L1111)
+    assert_nil(@r.L1000.L1010[-99])
+    assert_nil(@r.L1000.L1010[99])
   end # test_absent
 
   def test_validity

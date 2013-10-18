@@ -119,8 +119,6 @@
   
     <li><a href="../X12/Composite.html">X12::Composite</a>
   
-    <li><a href="../X12/Empty.html">X12::Empty</a>
-  
     <li><a href="../X12/Field.html">X12::Field</a>
   
     <li><a href="../X12/Loop.html">X12::Loop</a>
@@ -176,7 +174,8 @@
 
         <div class="method-description">
         
-        
+        <p>Control number of the loop to be accessed by respective
+<code>control_number</code> engine variable inside this loop</p>
         
         </div>
       </div>
@@ -184,12 +183,12 @@
       <div id="attribute-i-segments_rendered" class="method-detail">
         <div class="method-heading attribute-method-heading">
           <span class="method-name">segments_rendered</span><span
-            class="attribute-access-type">[RW]</span>
+            class="attribute-access-type">[R]</span>
         </div>
 
         <div class="method-description">
         
-        
+        <p>Number of segments rendered in the enumerated loop</p>
         
         </div>
       </div>
@@ -219,7 +218,7 @@
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 34</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 36</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">args</span>)
   <span class="ruby-ivar">@segments_rendered</span> = <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Needs to start as nil and only initialize once ST is actually rendered</span>
   <span class="ruby-ivar">@control_number</span> = <span class="ruby-keyword">nil</span>
@@ -259,7 +258,7 @@ block on each one.</p>
 
           
           <div class="method-source-code" id="each_segment-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 108</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 110</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">each_segment</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-keyword">true</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">x</span>) } }
   <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-value">:include_repeats</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">x</span>) } <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span>
@@ -292,7 +291,7 @@ according to <a href="../X12.html">X12</a> requirements.</p>
 
           
           <div class="method-source-code" id="enumerate_segments-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 97</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 99</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">enumerate_segments</span>
   <span class="ruby-identifier">n</span> = <span class="ruby-value">0</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-value">:include_repeats</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
@@ -327,18 +326,18 @@ according to <a href="../X12.html">X12</a> requirements.</p>
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 54</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 56</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-comment"># Breadth first</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">alias</span> }
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>
   <span class="ruby-comment"># Depth now</span>
-  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span>{<span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> 
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> 
     <span class="ruby-identifier">res</span> = <span class="ruby-identifier">i</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>)
-    <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword">or</span> <span class="ruby-constant">EMPTY</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">res</span> <span class="ruby-comment"># otherwise keep looping</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-comment"># otherwise keep looping</span>
   }
-  <span class="ruby-keyword">return</span> <span class="ruby-constant">EMPTY</span>
+  <span class="ruby-keyword">nil</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- find-source -->
           
@@ -368,7 +367,7 @@ nothing was parsed out.</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 69</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 71</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">source_string</span>)
   <span class="ruby-comment">#puts &quot;Parsing loop #{name}: &quot; + str</span>
 
@@ -413,15 +412,15 @@ X12-compliant string.</p>
 
           
           <div class="method-source-code" id="render-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 114</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 116</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>
-  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">segments_rendered</span> = <span class="ruby-value">0</span>
+  <span class="ruby-ivar">@segments_rendered</span> = <span class="ruby-value">0</span>
   <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-value">:include_repeats</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
-    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">segments_rendered</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">initial_segment</span> 
+    <span class="ruby-ivar">@segments_rendered</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">initial_segment</span> 
     <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">has_displayable_content?</span> <span class="ruby-keyword">then</span>
       <span class="ruby-comment"># Current segment needs to be included in the count, so we increase in advance.</span>
-      <span class="ruby-keyword">self</span>.<span class="ruby-identifier">segments_rendered</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+      <span class="ruby-ivar">@segments_rendered</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
       <span class="ruby-identifier">res</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">render</span>(<span class="ruby-keyword">self</span>)
     <span class="ruby-keyword">end</span>
   }
@@ -455,7 +454,7 @@ loop,  (and its repeats if <code>include_repeats</code> is
 
           
           <div class="method-source-code" id="segments_parsed-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 89</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 91</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">segments_parsed</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-identifier">res</span> = <span class="ruby-value">0</span>  
   <span class="ruby-keyword">self</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-identifier">include_repeats</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">res</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">parsed_str</span>.<span class="ruby-identifier">nil?</span> }
@@ -488,7 +487,7 @@ their respective values.</p>
 
           
           <div class="method-source-code" id="to_hsh-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 157</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 131</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
   <span class="ruby-identifier">hsh</span> = {}
 
@@ -531,7 +530,7 @@ against X12's Basic or Advanced Character Set</p>
 
           
           <div class="method-source-code" id="valid-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 170</span>
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 144</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">use_ext_charset</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-ivar">@error_code</span> = <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
 

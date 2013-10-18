@@ -135,8 +135,6 @@
   
     <li><a href="../X12/Composite.html">X12::Composite</a>
   
-    <li><a href="../X12/Empty.html">X12::Empty</a>
-  
     <li><a href="../X12/Field.html">X12::Field</a>
   
     <li><a href="../X12/Loop.html">X12::Loop</a>
@@ -428,7 +426,7 @@ elements</p>
             <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 179</span>
 <span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(*<span class="ruby-identifier">args</span>)
   <span class="ruby-comment">#puts &quot;squares #{args.inspect}&quot;</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>[<span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]] <span class="ruby-operator">||</span> <span class="ruby-constant">EMPTY</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>[<span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]]
 <span class="ruby-keyword">end</span></pre>
           </div><!-- 5B-5D-source -->
           
@@ -761,7 +759,7 @@ content -  either self, or a fresh copy.</p>
 
         <div class="method-description">
           
-          <p><a href="Empty.html">Empty</a> out the current element</p>
+          <p>Empty out the current element</p>
           
 
           

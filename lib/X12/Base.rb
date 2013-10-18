@@ -178,7 +178,7 @@ module X12
     # The main method implementing Ruby-like access methods for repeating elements
     def [](*args)
       #puts "squares #{args.inspect}"
-      return self.to_a[args[0]] || EMPTY
+      return self.to_a[args[0]]
     end
 
     # Yields to accompanying block passing self as a parameter.
