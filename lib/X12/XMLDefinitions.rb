@@ -33,9 +33,9 @@ module X12
 
   class XMLDefinitions < Hash
 
-    # Parse definitions out of XML file
-    def initialize(str)
-      doc = Document.new(str)
+    # Parse the +string+ that containins the X12 structure definitions in XML format
+    def initialize(string)
+      doc = Document.new(string)
       definitions = doc.root.name =~ /^Definition$/i ? doc.root.elements.to_a : [doc.root]
       definitions.each { |element|
         #puts element.name

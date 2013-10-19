@@ -157,21 +157,22 @@ expressed in XML format.</p>
         
         <div class="method-heading">
           <span class="method-name">new</span><span
-            class="method-args">(str)</span>
+            class="method-args">(string)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
         
 
         <div class="method-description">
           
-          <p>Parse definitions out of XML file</p>
+          <p>Parse the <code>string</code> that containins the <a
+href="../X12.html">X12</a> structure definitions in XML format</p>
           
 
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/X12/XMLDefinitions.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">str</span>)
-  <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">str</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">string</span>)
+  <span class="ruby-identifier">doc</span> = <span class="ruby-constant">Document</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">string</span>)
   <span class="ruby-identifier">definitions</span> = <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^Definition$/</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>.<span class="ruby-identifier">elements</span>.<span class="ruby-identifier">to_a</span> <span class="ruby-operator">:</span> [<span class="ruby-identifier">doc</span>.<span class="ruby-identifier">root</span>]
   <span class="ruby-identifier">definitions</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">element</span><span class="ruby-operator">|</span>
     <span class="ruby-comment">#puts element.name</span>

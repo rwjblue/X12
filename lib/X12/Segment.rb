@@ -33,6 +33,7 @@ module X12
     # Position of the segment in the enumerated loop (once filled out by +X12::Loop#enumerate_segments+)
     attr_accessor :segment_position
 
+    # Creates a new segment with given parameters and array of fields
     def initialize(params, nodes)
       @initial_segment  = params[:initial_segment] || false
       @overrides        = params[:overrides] || []

@@ -33,6 +33,7 @@ module X12
     # Control number of the loop to be accessed by respective +control_number+ engine variable inside this loop
     attr_accessor :control_number
 
+    # Creates a new loop with given parameters and array of sub-elements
     def initialize(*args)
       @segments_rendered = nil # Needs to start as nil and only initialize once ST is actually rendered
       @control_number = nil

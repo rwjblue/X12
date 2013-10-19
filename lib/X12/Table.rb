@@ -28,12 +28,13 @@ module X12
   # This just a named hash to store validation tables.
 
   class Table < Hash
+    # Name of the table
     attr_reader :name
 
     # Create a new table with given name and hash content.
-    def initialize(params, nodes)
+    def initialize(params, content)
       @name = params[:name]
-      self.merge!(nodes)
+      self.merge!(content)
     end
 
     # Return a printable string representing this table
