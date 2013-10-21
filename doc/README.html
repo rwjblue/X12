@@ -43,6 +43,38 @@
 </nav>
 
 
+  
+<div id="table-of-contents">
+  <nav class="section">
+    <h3 class="section-header">Table of Contents</h3>
+    <ul>
+      <li><a href="#label-X12Parser+-+a+library+to+manipulate+X12+structures+using+native+Ruby+syntax">X12Parser - a library to manipulate X12 structures using native Ruby syntax</a>
+      <li><a href="#label-The+goal">The goal</a>
+      <li><a href="#label-The+problem">The problem</a>
+      <li><a href="#label-The+solution">The solution</a>
+      <li><a href="#label-Message+structure">Message structure</a>
+      <li><a href="#label-X12+Structure+Definition+Language">X12 Structure Definition Language</a>
+      <li><a href="#label-Parsing">Parsing</a>
+      <li><a href="#label-Generating">Generating</a>
+      <li><a href="#label-Download">Download</a>
+      <li><a href="#label-Installation">Installation</a>
+      <li><a href="#label-License">License</a>
+      <li><a href="#label-Major+deficiencies">Major deficiencies</a>
+      <li><a href="#label-Support">Support</a>
+      <li><a href="#label-Acknowledgments">Acknowledgments</a>
+      <li><a href="#label-Appendix+A.+Structure+definition+language">Appendix A. Structure definition language</a>
+      <li><a href="#label-Definition">Definition</a>
+      <li><a href="#label-Loop">Loop</a>
+      <li><a href="#label-Segment">Segment</a>
+      <li><a href="#label-Composite">Composite</a>
+      <li><a href="#label-Table">Table</a>
+      <li><a href="#label-Field">Field</a>
+      <li><a href="#label-Appendix+B.+Microsoft%27s+device+file+names">Appendix B. Microsoft’s device file names</a>
+    </ul>
+  </nav>
+</div>
+
+
   <div id="project-metadata">
     <nav id="fileindex-section" class="section project-section">
   <h3 class="section-header">Pages</h3>
@@ -63,6 +95,8 @@
 
   <ul class="link-list">
   
+    <li><a href="./Object.html">Object</a>
+  
     <li><a href="./X12.html">X12</a>
   
     <li><a href="./X12/Base.html">X12::Base</a>
@@ -81,8 +115,6 @@
   
     <li><a href="./X12/XMLDefinitions.html">X12::XMLDefinitions</a>
   
-    <li><a href="./Object.html">Object</a>
-  
   </ul>
 </nav>
 
@@ -91,7 +123,7 @@
 
 <div id="documentation" class="description">
   
-<h1 id="label-X12Parser+-+a+library+to+manipulate+X12+structures+using+native+Ruby+syntax">X12Parser - a library to manipulate <a href="X12.html">X12</a> structures using native Ruby syntax</h1>
+<h1 id="label-X12Parser+-+a+library+to+manipulate+X12+structures+using+native+Ruby+syntax">X12Parser - a library to manipulate <a href="X12.html">X12</a> structures using native Ruby syntax<span><a href="#label-X12Parser+-+a+library+to+manipulate+X12+structures+using+native+Ruby+syntax">&para;</a> <a href="#documentation">&uarr;</a></span></h1>
 
 <p>$Id: <a href="README.html">README</a> 92 2009-05-13 22:12:10Z ikk $</p>
 
@@ -99,14 +131,14 @@
 are welcome.</code></p>
 
 <p>Project home is at <a
-href="http://rubyforge.org/projects/x12parser/.">rubyforge.org/projects/x12parser/.</a>
+href="http://rubyforge.org/projects/x12parser">rubyforge.org/projects/x12parser</a>/.
 Please note, this is a different project from <a
 href="http://rubyforge.org/projects/x12-parser/">Chris Parker’s port</a> of
 <a
 href="http://search.cpan.org/~prasad/X12-0.09/lib/X12/Parser.pm">X12::Parser
 Perl module</a>.</p>
 
-<h2 id="label-The+goal">The goal</h2>
+<h2 id="label-The+goal">The goal<span><a href="#label-The+goal">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>The idea is to access <a href="X12.html">X12</a> messages directly from
 Ruby, i.e., using a syntax like</p>
@@ -117,11 +149,11 @@ Ruby, i.e., using a syntax like</p>
 href="X12.html">X12</a> message and it makes <a href="X12.html">X12</a>
 parsing much more straightforward and self-documenting.</p>
 
-<h2 id="label-The+problem">The problem</h2>
+<h2 id="label-The+problem">The problem<span><a href="#label-The+problem">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p><a href="X12.html">X12</a> is a set of "standards" possessing all the
 elegance of an elephant designed by committee, and quite literally so, see
-<a href="http://www.x12.org.">www.x12.org.</a> <a href="X12.html">X12</a>
+<a href="http://www.x12.org">www.x12.org</a>. <a href="X12.html">X12</a>
 defines rough syntax for specifying text messages, but each of more than
 300 specifications defines its own message structure. While messages
 themselves are easy to parse with a simple tokenizer, their semantics is
@@ -163,9 +195,9 @@ anytime soon, unfortunately.</p>
 and its meaning not at all obvious until the message’s structure is
 interpreted and correct ‘AK4’ segment is found.</p>
 
-<h2 id="label-The+solution">The solution</h2>
+<h2 id="label-The+solution">The solution<span><a href="#label-The+solution">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
-<h3 id="label-Message+structure">Message structure</h3>
+<h3 id="label-Message+structure">Message structure<span><a href="#label-Message+structure">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>Each participant in EDI has to know the structure of the data coming across
 the wire - <a href="X12.html">X12</a> or no <a href="X12.html">X12</a>. The
@@ -237,13 +269,13 @@ enclosing loop ‘L1000’. The meaning of the value ‘66’ found in this fiel
 is still in the eye of the beholder, but, at least its location is clearly
 identified in the message.</p>
 
-<h3 id="label-X12+Structure+Definition+Language"><a href="X12.html">X12</a> Structure Definition Language</h3>
+<h3 id="label-X12+Structure+Definition+Language"><a href="X12.html">X12</a> Structure Definition Language<span><a href="#label-X12+Structure+Definition+Language">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>The syntax of the <a href="X12.html">X12</a> structure definition language
 should be apparent from the ‘997.xml’ file enclosed with the package. A
 more detailed description follows in Appendix A.</p>
 
-<h3 id="label-Parsing">Parsing</h3>
+<h3 id="label-Parsing">Parsing<span><a href="#label-Parsing">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>Here is how to parse an X12/997 message (the source is in
 example/parse.rb):</p>
@@ -271,7 +303,7 @@ example/parse.rb):</p>
 <span class="ruby-identifier">puts</span> <span class="ruby-identifier">r</span>.<span class="ruby-constant">L1000</span>.<span class="ruby-constant">L1010</span>.<span class="ruby-identifier">size</span>
 </pre>
 
-<h3 id="label-Generating">Generating</h3>
+<h3 id="label-Generating">Generating<span><a href="#label-Generating">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>Here is how to perform a reverse operation and generate a well-formed 997
 message (the source is in example/factory.rb):</p>
@@ -337,26 +369,26 @@ message (the source is in example/factory.rb):</p>
 <span class="ruby-identifier">puts</span> <span class="ruby-identifier">r</span>.<span class="ruby-identifier">render</span>
 </pre>
 
-<h2 id="label-Download">Download</h2>
+<h2 id="label-Download">Download<span><a href="#label-Download">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>The latest <a href="X12.html">X12</a> library version can be downloaded
 from <a
 href="http://rubyforge.org/frs/?group_id=7297">rubyforge.org/frs/?group_id=7297</a></p>
 
-<h2 id="label-Installation">Installation</h2>
+<h2 id="label-Installation">Installation<span><a href="#label-Installation">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>You can install <a href="X12.html">X12</a> library with the following
 command.</p>
 
 <pre>% gem install X12</pre>
 
-<h2 id="label-License">License</h2>
+<h2 id="label-License">License<span><a href="#label-License">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p><a href="X12.html">X12</a> library is released under the Lesser GPL
 license, see <a
 href="http://www.gnu.org/licenses/lgpl.txt">www.gnu.org/licenses/lgpl.txt</a></p>
 
-<h2 id="label-Major+deficiencies">Major deficiencies</h2>
+<h2 id="label-Major+deficiencies">Major deficiencies<span><a href="#label-Major+deficiencies">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 <ul><li>
 <p>Validation is not implemented.</p>
 </li><li>
@@ -365,7 +397,7 @@ href="http://www.gnu.org/licenses/lgpl.txt">www.gnu.org/licenses/lgpl.txt</a></p
 <p>No access methods for composites’ fields.</p>
 </li></ul>
 
-<h2 id="label-Support">Support</h2>
+<h2 id="label-Support">Support<span><a href="#label-Support">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>Please use the following:</p>
 <ul><li>
@@ -378,7 +410,7 @@ href="http://rubyforge.org/tracker/?group_id=7297">rubyforge.org/tracker/?group_
 <p>to contact the author, send mail to prelude rubyforge org</p>
 </li></ul>
 
-<h2 id="label-Acknowledgments">Acknowledgments</h2>
+<h2 id="label-Acknowledgments">Acknowledgments<span><a href="#label-Acknowledgments">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>The authors of the project were inspired by the following works:</p>
 <ol><li>
@@ -386,10 +418,10 @@ href="http://rubyforge.org/tracker/?group_id=7297">rubyforge.org/tracker/?group_
 href="http://search.cpan.org/~prasad/X12-0.09/lib/X12/Parser.pm">search.cpan.org/~prasad/X12-0.09/lib/X12/Parser.pm</a></p>
 </li><li>
 <p>The Ruby port of the above by Chris Parker, <a
-href="http://rubyforge.org/projects/x12-parser/">rubyforge.org/projects/x12-parser/</a></p>
+href="http://rubyforge.org/projects/x12-parser">rubyforge.org/projects/x12-parser</a>/</p>
 </li></ol>
 
-<h2 id="label-Appendix+A.+Structure+definition+language">Appendix A. Structure definition language</h2>
+<h2 id="label-Appendix+A.+Structure+definition+language">Appendix A. Structure definition language<span><a href="#label-Appendix+A.+Structure+definition+language">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>The structure definition language uses XML to describe <a
 href="X12.html">X12</a> message format. A message definition can be in a
@@ -415,7 +447,7 @@ Ruby. If an element’s ‘name’ attribute cannot be a valid Ruby identifier
 
 <p>Each XML file has to have a single root element, one of the following:</p>
 
-<h3 id="label-Definition">Definition</h3>
+<h3 id="label-Definition">Definition<span><a href="#label-Definition">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>The ‘Definition’ element can have nested loops, segments, composites, and
 tables. It is used to provide ‘artificial’ root element for XML document
@@ -463,7 +495,7 @@ when several definitions are in one physical file. For example, this is
 <p>This element does not have any attributes and cannot be addressed from
 Ruby’s API.</p>
 
-<h3 id="label-Loop">Loop</h3>
+<h3 id="label-Loop">Loop<span><a href="#label-Loop">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>The ‘Loop’ element is a main element to define either loops or whole
 messages. Loops can have nested segments and other loops.</p>
@@ -503,7 +535,7 @@ value implies min=“1”.</p>
 <p>comment - ignored</p>
 </li></ul>
 
-<h3 id="label-Segment">Segment</h3>
+<h3 id="label-Segment">Segment<span><a href="#label-Segment">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>Segments can only have nested fields. Attributes are as follows:</p>
 <ul><li>
@@ -521,16 +553,16 @@ value implies min=“1”.</p>
 <p>All attributed except ‘name’ are ignored in standalone definitions outside
 any loop.</p>
 
-<h3 id="label-Composite">Composite</h3>
+<h3 id="label-Composite">Composite<span><a href="#label-Composite">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>Same as a segment.</p>
 
-<h3 id="label-Table">Table</h3>
+<h3 id="label-Table">Table<span><a href="#label-Table">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>Tables can only have entries defined as name-value pairs. Order is not
 important. Only required attribute is ‘name’.</p>
 
-<h3 id="label-Field">Field</h3>
+<h3 id="label-Field">Field<span><a href="#label-Field">&para;</a> <a href="#documentation">&uarr;</a></span></h3>
 
 <p>A field cannot have any nested elements, but its attributes are very
 important:</p>
@@ -554,7 +586,7 @@ abbreviations are also valid: ‘str’, ‘int’.</p>
 <p>comment - ignored</p>
 </li></ul>
 
-<h2 id="label-Appendix+B.+Microsoft%27s+device+file+names">Appendix B. Microsoft’s device file names</h2>
+<h2 id="label-Appendix+B.+Microsoft%27s+device+file+names">Appendix B. Microsoft’s device file names<span><a href="#label-Appendix+B.+Microsoft%27s+device+file+names">&para;</a> <a href="#documentation">&uarr;</a></span></h2>
 
 <p>Apparently, in Microsoft’s operating systems one cannot create a file named
 like ‘device_name.whatever’, for example, ‘CON.xml’ is highly illegal. For
@@ -586,7 +618,7 @@ href="http://support.microsoft.com/kb/74496">support.microsoft.com/kb/74496</a>)
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

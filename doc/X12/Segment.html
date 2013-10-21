@@ -43,6 +43,8 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
@@ -64,33 +66,34 @@
 </nav>
 
     
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-c-new">::new</a>
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
     
-    <li><a href="#method-i-apply_overrides">#apply_overrides</a>
+    <li ><a href="#method-i-apply_overrides">#apply_overrides</a>
     
-    <li><a href="#method-i-each_segment">#each_segment</a>
+    <li ><a href="#method-i-each_segment">#each_segment</a>
     
-    <li><a href="#method-i-find">#find</a>
+    <li ><a href="#method-i-find">#find</a>
     
-    <li><a href="#method-i-find_field">#find_field</a>
+    <li ><a href="#method-i-find_field">#find_field</a>
     
-    <li><a href="#method-i-method_missing">#method_missing</a>
+    <li class="calls-super" ><a href="#method-i-method_missing">#method_missing</a>
     
-    <li><a href="#method-i-parse">#parse</a>
+    <li ><a href="#method-i-parse">#parse</a>
     
-    <li><a href="#method-i-regexp">#regexp</a>
+    <li ><a href="#method-i-regexp">#regexp</a>
     
-    <li><a href="#method-i-render">#render</a>
+    <li ><a href="#method-i-render">#render</a>
     
-    <li><a href="#method-i-to_hsh">#to_hsh</a>
+    <li ><a href="#method-i-to_hsh">#to_hsh</a>
     
-    <li><a href="#method-i-valid-3F">#valid?</a>
+    <li ><a href="#method-i-valid-3F">#valid?</a>
     
   </ul>
 </nav>
@@ -117,6 +120,8 @@
 
   <ul class="link-list">
   
+    <li><a href="../Object.html">Object</a>
+  
     <li><a href="../X12.html">X12</a>
   
     <li><a href="../X12/Base.html">X12::Base</a>
@@ -134,8 +139,6 @@
     <li><a href="../X12/Table.html">X12::Table</a>
   
     <li><a href="../X12/XMLDefinitions.html">X12::XMLDefinitions</a>
-  
-    <li><a href="../Object.html">Object</a>
   
   </ul>
 </nav>
@@ -192,8 +195,8 @@ counter (usually that would be ST)</p>
 
         <div class="method-description">
         
-        <p>Position of the segment in the enumerated loop (once filled out by +<a
-href="Loop.html#method-i-enumerate_segments">X12::Loop#enumerate_segments</a>+)</p>
+        <p>Position of the segment in the enumerated loop (once filled out by
++X12::Loop#enumerate_segments+)</p>
         
         </div>
       </div>
@@ -212,13 +215,21 @@ href="Loop.html#method-i-enumerate_segments">X12::Loop#enumerate_segments</a>+)<
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(params, nodes)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Creates a new segment with given parameters and array of fields</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Base.html#method-c-new">X12::Base.new</a>
+            </div>
           
 
           
@@ -252,7 +263,9 @@ href="Loop.html#method-i-enumerate_segments">X12::Loop#enumerate_segments</a>+)<
         <div class="method-heading">
           <span class="method-name">apply_overrides</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -260,6 +273,7 @@ href="Loop.html#method-i-enumerate_segments">X12::Loop#enumerate_segments</a>+)<
           
           <p>Replaces fields loaded from definition skeleton for which overrides exist
 with their clones with overrides applied.</p>
+          
           
 
           
@@ -285,7 +299,9 @@ with their clones with overrides applied.</p>
         <div class="method-heading">
           <span class="method-name">each_segment</span><span
             class="method-args">(include_repeats = false) { |segment| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -295,11 +311,12 @@ with their clones with overrides applied.</p>
 <code>include_repeats</code> is <code>true</code>), invoking the given
 block on each one.</p>
           
+          
 
           
           <div class="method-source-code" id="each_segment-source">
             <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 74</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_segment</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_segment</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">segment</span> = <span class="ruby-keyword">self</span>
   <span class="ruby-keyword">while</span> <span class="ruby-identifier">segment</span>
     <span class="ruby-keyword">yield</span> <span class="ruby-identifier">segment</span>
@@ -321,13 +338,16 @@ block on each one.</p>
         <div class="method-heading">
           <span class="method-name">find</span><span
             class="method-args">(name)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Finds a field in the segment and return its <code>content</code>.</p>
+          
           
 
           
@@ -352,7 +372,9 @@ block on each one.</p>
         <div class="method-heading">
           <span class="method-name">find_field</span><span
             class="method-args">(field_name)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -366,6 +388,7 @@ respective segment by <a href="../X12.html">X12</a> standard, a
 user-defined alias, or a string with the field numeric code (for example,
 "01" or "SN01", SN being the current segment name)</p>
 </li></ul>
+          
           
 
           
@@ -398,7 +421,9 @@ user-defined alias, or a string with the field numeric code (for example,
         <div class="method-heading">
           <span class="method-name">method_missing</span><span
             class="method-args">(meth, *args, &block)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -406,11 +431,17 @@ user-defined alias, or a string with the field numeric code (for example,
           
           <p>Provide access to individual fields in the segment using dot-notation.</p>
           
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Base.html#method-i-method_missing">X12::Base#method_missing</a>
+            </div>
+          
 
           
           <div class="method-source-code" id="method_missing-source">
             <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 149</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">str</span> = <span class="ruby-identifier">meth</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-comment">#puts &quot;Missing #{str}&quot;</span>
   <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/=$/</span> <span class="ruby-comment"># Assignment</span>
@@ -438,7 +469,9 @@ user-defined alias, or a string with the field numeric code (for example,
         <div class="method-heading">
           <span class="method-name">parse</span><span
             class="method-args">(str)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -446,6 +479,7 @@ user-defined alias, or a string with the field numeric code (for example,
           
           <p>Parses this segment out of a string, puts the match into value, returns the
 rest of the string or <code>nil</code> if unable to parse</p>
+          
           
 
           
@@ -483,13 +517,16 @@ rest of the string or <code>nil</code> if unable to parse</p>
         <div class="method-heading">
           <span class="method-name">regexp</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Returns a regexp that matches this particular segment</p>
+          
           
 
           
@@ -528,7 +565,9 @@ rest of the string or <code>nil</code> if unable to parse</p>
         <div class="method-heading">
           <span class="method-name">render</span><span
             class="method-args">(root = self)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -539,6 +578,7 @@ rest of the string or <code>nil</code> if unable to parse</p>
 <p><code>root</code> - root loop of the hierarchy holding the separator
 information</p>
 </li></ul>
+          
           
 
           
@@ -570,7 +610,9 @@ information</p>
         <div class="method-heading">
           <span class="method-name">to_hsh</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -578,6 +620,7 @@ information</p>
           
           <p>Collect the fields that have an alias defined, with their corresponding
 <code>content</code> values, into a hash.</p>
+          
           
 
           
@@ -607,7 +650,9 @@ information</p>
         <div class="method-heading">
           <span class="method-name">valid?</span><span
             class="method-args">(include_repeats = false, use_ext_charset = true)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -621,6 +666,7 @@ be also validated</p>
 <p><code>use_ext_charset</code> - whether to validate alphanumeric values
 against X12's Basic or Advanced Character Set</p>
 </li></ul>
+          
           
 
           
@@ -636,7 +682,7 @@ against X12's Basic or Advanced Character Set</p>
 
     <span class="ruby-keyword">if</span> <span class="ruby-operator">!</span><span class="ruby-ivar">@syntax_notes</span>.<span class="ruby-identifier">empty?</span> <span class="ruby-keyword">then</span>
       <span class="ruby-ivar">@syntax_notes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">note</span><span class="ruby-operator">|</span>
-        <span class="ruby-identifier">deps</span> = <span class="ruby-identifier">note</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">'a1a2a2a2a2a2a2a2a2'</span>).<span class="ruby-identifier">reject</span>(&amp;<span class="ruby-value">:empty?</span>) <span class="ruby-comment"># Never seen more than 5, but just in case...</span>
+        <span class="ruby-identifier">deps</span> = <span class="ruby-identifier">note</span>.<span class="ruby-identifier">unpack</span>(<span class="ruby-string">'a1a2a2a2a2a2a2a2a2'</span>).<span class="ruby-identifier">reject</span>(<span class="ruby-operator">&amp;</span><span class="ruby-value">:empty?</span>) <span class="ruby-comment"># Never seen more than 5, but just in case...</span>
         <span class="ruby-identifier">mode</span> = <span class="ruby-identifier">deps</span>.<span class="ruby-identifier">shift</span>
 
         <span class="ruby-keyword">case</span> <span class="ruby-identifier">mode</span>
@@ -702,7 +748,7 @@ against X12's Basic or Advanced Character Set</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

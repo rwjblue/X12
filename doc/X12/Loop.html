@@ -43,6 +43,8 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
@@ -64,29 +66,30 @@
 </nav>
 
     
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-c-new">::new</a>
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
     
-    <li><a href="#method-i-each_segment">#each_segment</a>
+    <li ><a href="#method-i-each_segment">#each_segment</a>
     
-    <li><a href="#method-i-enumerate_segments">#enumerate_segments</a>
+    <li ><a href="#method-i-enumerate_segments">#enumerate_segments</a>
     
-    <li><a href="#method-i-find">#find</a>
+    <li ><a href="#method-i-find">#find</a>
     
-    <li><a href="#method-i-parse">#parse</a>
+    <li ><a href="#method-i-parse">#parse</a>
     
-    <li><a href="#method-i-render">#render</a>
+    <li ><a href="#method-i-render">#render</a>
     
-    <li><a href="#method-i-segments_parsed">#segments_parsed</a>
+    <li ><a href="#method-i-segments_parsed">#segments_parsed</a>
     
-    <li><a href="#method-i-to_hsh">#to_hsh</a>
+    <li ><a href="#method-i-to_hsh">#to_hsh</a>
     
-    <li><a href="#method-i-valid-3F">#valid?</a>
+    <li ><a href="#method-i-valid-3F">#valid?</a>
     
   </ul>
 </nav>
@@ -113,6 +116,8 @@
 
   <ul class="link-list">
   
+    <li><a href="../Object.html">Object</a>
+  
     <li><a href="../X12.html">X12</a>
   
     <li><a href="../X12/Base.html">X12::Base</a>
@@ -130,8 +135,6 @@
     <li><a href="../X12/Table.html">X12::Table</a>
   
     <li><a href="../X12/XMLDefinitions.html">X12::XMLDefinitions</a>
-  
-    <li><a href="../Object.html">Object</a>
   
   </ul>
 </nav>
@@ -207,7 +210,9 @@
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(*args)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -215,14 +220,20 @@
           
           <p>Creates a new loop with given parameters and array of sub-elements</p>
           
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Base.html#method-c-new">X12::Base.new</a>
+            </div>
+          
 
           
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 37</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-ivar">@segments_rendered</span> = <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Needs to start as nil and only initialize once ST is actually rendered</span>
   <span class="ruby-ivar">@control_number</span> = <span class="ruby-keyword">nil</span>
-  <span class="ruby-keyword">super</span>(*<span class="ruby-identifier">args</span>)
+  <span class="ruby-keyword">super</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -245,7 +256,9 @@
         <div class="method-heading">
           <span class="method-name">each_segment</span><span
             class="method-args">(include_repeats = false) { |x| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -254,6 +267,7 @@
           <p>Iterate through all the segments within this loop (and its repeats if
 <code>include_repeats</code> is <code>true</code>), invoking the given
 block on each one.</p>
+          
           
 
           
@@ -278,7 +292,9 @@ block on each one.</p>
         <div class="method-heading">
           <span class="method-name">enumerate_segments</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -287,6 +303,7 @@ block on each one.</p>
           <p>Iterate through all the segments within this loop (and its repeats if
 <code>include_repeats</code> is <code>true</code>), enumerating them
 according to <a href="../X12.html">X12</a> requirements.</p>
+          
           
 
           
@@ -315,13 +332,16 @@ according to <a href="../X12.html">X12</a> requirements.</p>
         <div class="method-heading">
           <span class="method-name">find</span><span
             class="method-args">(name)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Recursively find a sub-element</p>
+          
           
 
           
@@ -354,7 +374,9 @@ according to <a href="../X12.html">X12</a> requirements.</p>
         <div class="method-heading">
           <span class="method-name">parse</span><span
             class="method-args">(source_string)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -363,6 +385,7 @@ according to <a href="../X12.html">X12</a> requirements.</p>
           <p>Parse a string and fill out internal structures with the pieces of it.
 Returns  an unparsed portion of the string or the original string if
 nothing was parsed out.</p>
+          
           
 
           
@@ -400,7 +423,9 @@ nothing was parsed out.</p>
         <div class="method-heading">
           <span class="method-name">render</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -408,6 +433,7 @@ nothing was parsed out.</p>
           
           <p>Convert all the segments within this loop and its successive repeats into
 X12-compliant string.</p>
+          
           
 
           
@@ -441,7 +467,9 @@ X12-compliant string.</p>
         <div class="method-heading">
           <span class="method-name">segments_parsed</span><span
             class="method-args">(include_repeats = false)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -450,6 +478,7 @@ X12-compliant string.</p>
           <p>Return the total count of segments that got successfilly parsed within this
 loop,  (and its repeats if <code>include_repeats</code> is
 <code>true</code>).</p>
+          
           
 
           
@@ -475,7 +504,9 @@ loop,  (and its repeats if <code>include_repeats</code> is
         <div class="method-heading">
           <span class="method-name">to_hsh</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -483,6 +514,7 @@ loop,  (and its repeats if <code>include_repeats</code> is
           
           <p>Returns recursive hash of nodes that have an alias defined, along with
 their respective values.</p>
+          
           
 
           
@@ -512,7 +544,9 @@ their respective values.</p>
         <div class="method-heading">
           <span class="method-name">valid?</span><span
             class="method-args">(include_repeats = false, use_ext_charset = true)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -526,6 +560,7 @@ also validated</p>
 <p><code>use_ext_charset</code> - whether to validate alphanumeric values
 against X12's Basic or Advanced Character Set</p>
 </li></ul>
+          
           
 
           
@@ -572,7 +607,7 @@ against X12's Basic or Advanced Character Set</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 

@@ -43,6 +43,8 @@
 </nav>
 
 
+  
+
   <div id="file-metadata">
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
@@ -64,45 +66,46 @@
 </nav>
 
     
+    
     <!-- Method Quickref -->
 <nav id="method-list-section" class="section">
   <h3 class="section-header">Methods</h3>
 
   <ul class="link-list">
     
-    <li><a href="#method-c-new">::new</a>
+    <li ><a href="#method-c-new">::new</a>
     
-    <li><a href="#method-i-5B-5D">#[]</a>
+    <li ><a href="#method-i-5B-5D">#[]</a>
     
-    <li><a href="#method-i-do_repeats">#do_repeats</a>
+    <li ><a href="#method-i-do_repeats">#do_repeats</a>
     
-    <li><a href="#method-i-find">#find</a>
+    <li ><a href="#method-i-find">#find</a>
     
-    <li><a href="#method-i-has_content-3F">#has_content?</a>
+    <li ><a href="#method-i-has_content-3F">#has_content?</a>
     
-    <li><a href="#method-i-has_displayable_content-3F">#has_displayable_content?</a>
+    <li ><a href="#method-i-has_displayable_content-3F">#has_displayable_content?</a>
     
-    <li><a href="#method-i-initialize_copy">#initialize_copy</a>
+    <li ><a href="#method-i-initialize_copy">#initialize_copy</a>
     
-    <li><a href="#method-i-inspect">#inspect</a>
+    <li ><a href="#method-i-inspect">#inspect</a>
     
-    <li><a href="#method-i-method_missing">#method_missing</a>
+    <li ><a href="#method-i-method_missing">#method_missing</a>
     
-    <li><a href="#method-i-repeat">#repeat</a>
+    <li ><a href="#method-i-repeat">#repeat</a>
     
-    <li><a href="#method-i-required">#required</a>
+    <li ><a href="#method-i-required">#required</a>
     
-    <li><a href="#method-i-set_empty-21">#set_empty!</a>
+    <li ><a href="#method-i-set_empty-21">#set_empty!</a>
     
-    <li><a href="#method-i-show">#show</a>
+    <li ><a href="#method-i-show">#show</a>
     
-    <li><a href="#method-i-size">#size</a>
+    <li ><a href="#method-i-size">#size</a>
     
-    <li><a href="#method-i-to_a">#to_a</a>
+    <li ><a href="#method-i-to_a">#to_a</a>
     
-    <li><a href="#method-i-to_s">#to_s</a>
+    <li ><a href="#method-i-to_s">#to_s</a>
     
-    <li><a href="#method-i-with">#with</a>
+    <li ><a href="#method-i-with">#with</a>
     
   </ul>
 </nav>
@@ -129,6 +132,8 @@
 
   <ul class="link-list">
   
+    <li><a href="../Object.html">Object</a>
+  
     <li><a href="../X12.html">X12</a>
   
     <li><a href="../X12/Base.html">X12::Base</a>
@@ -146,8 +151,6 @@
     <li><a href="../X12/Table.html">X12::Table</a>
   
     <li><a href="../X12/XMLDefinitions.html">X12::XMLDefinitions</a>
-  
-    <li><a href="../Object.html">Object</a>
   
   </ul>
 </nav>
@@ -362,13 +365,16 @@ determined by <code>valid?</code> method</p>
         <div class="method-heading">
           <span class="method-name">new</span><span
             class="method-args">(params = {}, nodes = [])</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Creates a new base element with given parameters and array of sub-elements</p>
+          
           
 
           
@@ -411,7 +417,9 @@ determined by <code>valid?</code> method</p>
         <div class="method-heading">
           <span class="method-name">[]</span><span
             class="method-args">(*args)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -420,11 +428,12 @@ determined by <code>valid?</code> method</p>
           <p>The main method implementing Ruby-like access methods for repeating
 elements</p>
           
+          
 
           
           <div class="method-source-code" id="5B-5D-source">
             <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 179</span>
-<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(*<span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-operator">[]</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
   <span class="ruby-comment">#puts &quot;squares #{args.inspect}&quot;</span>
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">to_a</span>[<span class="ruby-identifier">args</span>[<span class="ruby-value">0</span>]]
 <span class="ruby-keyword">end</span></pre>
@@ -443,7 +452,9 @@ elements</p>
         <div class="method-heading">
           <span class="method-name">do_repeats</span><span
             class="method-args">(s)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -451,6 +462,7 @@ elements</p>
           
           <p>Check if the source string contains one more repeat of the current element,
 and parse it if it is so. Returns the unconsumed part of the string.</p>
+          
           
 
           
@@ -482,13 +494,16 @@ and parse it if it is so. Returns the unconsumed part of the string.</p>
         <div class="method-heading">
           <span class="method-name">find</span><span
             class="method-args">(e)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Prototype method to be overloaded</p>
+          
           
 
           
@@ -512,7 +527,9 @@ and parse it if it is so. Returns the unconsumed part of the string.</p>
         <div class="method-heading">
           <span class="method-name">has_content?</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -522,6 +539,7 @@ and parse it if it is so. Returns the unconsumed part of the string.</p>
 include variables or constants. There’s no need to check repeats, because
 the only way for an element to be empty is to be the first and only in the
 repeats list.</p>
+          
           
 
           
@@ -545,7 +563,9 @@ repeats list.</p>
         <div class="method-heading">
           <span class="method-name">has_displayable_content?</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -555,6 +575,7 @@ repeats list.</p>
 that includes both user-provided content and variables. There’s no need to
 check repeats, because the only way for an element to be empty is to be the
 first and only in the repeats list.</p>
+          
           
 
           
@@ -578,7 +599,9 @@ first and only in the repeats list.</p>
         <div class="method-heading">
           <span class="method-name">initialize_copy</span><span
             class="method-args">(original_object)</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -586,6 +609,7 @@ first and only in the repeats list.</p>
           
           <p>Initialize the fresh copy of the object made by <code>dup</code> by
 cleaning up user data and cloning all of the original’s nodes.</p>
+          
           
 
           
@@ -617,13 +641,16 @@ cleaning up user data and cloning all of the original’s nodes.</p>
         <div class="method-heading">
           <span class="method-name">inspect</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Formats a printable string containing the element’s content</p>
+          
           
 
           
@@ -647,7 +674,9 @@ cleaning up user data and cloning all of the original’s nodes.</p>
         <div class="method-heading">
           <span class="method-name">method_missing</span><span
             class="method-args">(meth, *args) { |res| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -657,11 +686,12 @@ cleaning up user data and cloning all of the original’s nodes.</p>
 To address nodes with purely numeric names (i.e. 270, 997, etc.), prefix
 them with an underscore.</p>
           
+          
 
           
           <div class="method-source-code" id="method_missing-source">
             <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 169</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, *<span class="ruby-identifier">args</span>, &amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">str</span> = <span class="ruby-identifier">meth</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-identifier">str</span> = <span class="ruby-identifier">str</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>] <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp">/^_\d+$/</span>
   <span class="ruby-comment">#puts &quot;Missing #{str}&quot;</span>
@@ -684,7 +714,9 @@ them with an underscore.</p>
         <div class="method-heading">
           <span class="method-name">repeat</span><span
             class="method-args">() { |new_repeat| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -692,6 +724,7 @@ them with an underscore.</p>
           
           <p>Returns a fresh repeat of this element ready to be filled with user content
 -  either self, or a fresh copy.</p>
+          
           
 
           
@@ -723,7 +756,9 @@ them with an underscore.</p>
         <div class="method-heading">
           <span class="method-name">required</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -731,6 +766,7 @@ them with an underscore.</p>
           
           <p>Returns <code>true</code> is this element has to be present in the output
 (“Mandatory” per <a href="../X12.html">X12</a> standard)</p>
+          
           
 
           
@@ -754,13 +790,16 @@ them with an underscore.</p>
         <div class="method-heading">
           <span class="method-name">set_empty!</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Empty out the current element</p>
+          
           
 
           
@@ -786,13 +825,16 @@ them with an underscore.</p>
         <div class="method-heading">
           <span class="method-name">show</span><span
             class="method-args">(indent = '')</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Prints a tree-like representation of the element</p>
+          
           
 
           
@@ -829,13 +871,16 @@ them with an underscore.</p>
         <div class="method-heading">
           <span class="method-name">size</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Number of repeats of this element, starting with self.</p>
+          
           
 
           
@@ -865,13 +910,16 @@ them with an underscore.</p>
         <div class="method-heading">
           <span class="method-name">to_a</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Returns the array of repeats of this element, starting with self.</p>
+          
           
 
           
@@ -901,13 +949,16 @@ them with an underscore.</p>
         <div class="method-heading">
           <span class="method-name">to_s</span><span
             class="method-args">()</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
         <div class="method-description">
           
           <p>Returns a parsed string representation of the element</p>
+          
           
 
           
@@ -931,7 +982,9 @@ them with an underscore.</p>
         <div class="method-heading">
           <span class="method-name">with</span><span
             class="method-args">() { |self| ... }</span>
+          
           <span class="method-click-advice">click to toggle source</span>
+          
         </div>
         
 
@@ -939,11 +992,12 @@ them with an underscore.</p>
           
           <p>Yields to accompanying block passing self as a parameter.</p>
           
+          
 
           
           <div class="method-source-code" id="with-source">
             <pre><span class="ruby-comment"># File lib/X12/Base.rb, line 185</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">with</span>(&amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">with</span>(<span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-keyword">yield</span>(<span class="ruby-keyword">self</span>)
 <span class="ruby-keyword">end</span></pre>
           </div><!-- with-source -->
@@ -965,7 +1019,7 @@ them with an underscore.</p>
 
 <footer id="validator-badges">
   <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
-  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.2.
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
   <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
 </footer>
 
