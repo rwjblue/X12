@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "X12"
-  s.version = "2.7.1"
+  s.version = "2.7.2"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["APP Design, Inc.", "Eligo Energy"]
-  s.date = "2013-10-19"
+  s.date = "2013-10-21"
   s.description = "Library to parse X12 messages and manipulate their loops, segments, fields, composites, and validation tables."
   s.email = "info@appdesign.com"
   s.extra_rdoc_files = [
@@ -41,6 +41,7 @@ Gem::Specification.new do |s|
     "doc/X12/XMLDefinitions.html",
     "doc/created.rid",
     "doc/images/add.png",
+    "doc/images/arrow_up.png",
     "doc/images/brick.png",
     "doc/images/brick_link.png",
     "doc/images/bug.png",
@@ -1906,18 +1907,18 @@ Gem::Specification.new do |s|
     s.specification_version = 3
 
     if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_development_dependency(%q<rdoc>, ["~> 3.12"])
+      s.add_development_dependency(%q<rdoc>, ["> 3.12"])
       s.add_development_dependency(%q<bundler>, ["> 1.0.0"])
       s.add_development_dependency(%q<jeweler>, [">= 0"])
       s.add_development_dependency(%q<uuid>, [">= 0"])
     else
-      s.add_dependency(%q<rdoc>, ["~> 3.12"])
+      s.add_dependency(%q<rdoc>, ["> 3.12"])
       s.add_dependency(%q<bundler>, ["> 1.0.0"])
       s.add_dependency(%q<jeweler>, [">= 0"])
       s.add_dependency(%q<uuid>, [">= 0"])
     end
   else
-    s.add_dependency(%q<rdoc>, ["~> 3.12"])
+    s.add_dependency(%q<rdoc>, ["> 3.12"])
     s.add_dependency(%q<bundler>, ["> 1.0.0"])
     s.add_dependency(%q<jeweler>, [">= 0"])
     s.add_dependency(%q<uuid>, [">= 0"])
