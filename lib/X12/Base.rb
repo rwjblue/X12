@@ -196,8 +196,8 @@ module X12
 
     # True if any of the nodes below have content that needs to be displayed - that includes
     # both user-provided content and variables.
-    # There's no need to check repeats, because the only way for an element to be empty
-    # is to be the first and only in the repeats list.
+    # There's no need to check repeats, because only the first and only element
+    # on the repeats list may be empty.
     def has_displayable_content?
       self.nodes.any? { |i| i.has_displayable_content? }
     end

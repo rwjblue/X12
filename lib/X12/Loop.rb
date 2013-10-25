@@ -29,7 +29,7 @@ module X12
 
   class Loop < Base
     # Number of segments rendered in the enumerated loop
-    attr_reader :segments_rendered
+    attr_accessor :segments_rendered
     # Control number of the loop to be accessed by respective +control_number+ engine variable inside this loop
     attr_accessor :control_number
 
@@ -113,18 +113,15 @@ module X12
       next_repeat.each_segment(:include_repeats) { |x| yield(x) } if include_repeats && next_repeat
     end
 
-    # Convert all the segments within this loop and its successive repeats into X12-compliant string.
-    def render
-      @segments_rendered = 0
+    # Render this loop and its successive repeats as an X12-compliant string.
+    def render(root = self, include_repeats = false)
       res = ''
-      self.each_segment(:include_repeats) { |s|
-        @segments_rendered = 0 if s.initial_segment 
-        if s.has_displayable_content? then
-          # Current segment needs to be included in the count, so we increase in advance.
-          @segments_rendered += 1
-          res += s.render(self)
-        end
-      }
+
+      if required || has_displayable_content? then
+        self.nodes.each { |n| res += n.render(root, :include_repeats) }
+        res += next_repeat.render(root, :include_repeats) if include_repeats && next_repeat
+      end
+
       res
     end
 

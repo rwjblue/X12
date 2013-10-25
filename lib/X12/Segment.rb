@@ -81,8 +81,13 @@ module X12
 
     # Render all components of this particular segment as string suitable for EDI
     # * +root+ - root loop of the hierarchy holding the separator information
-    def render(root = self)
-      return '' unless required || self.has_displayable_content?
+    def render(root = self, include_repeats = false)
+      return '' unless required || has_displayable_content?
+
+      root.segments_rendered = 0 if initial_segment || root.segments_rendered.nil?
+
+      # Current segment needs to be included in the count, so we increase the count ahead of time
+      root.segments_rendered += 1
 
       nodes_str = ''
       nodes.reverse.each { |fld| # Building string in reverse in order to toss empty optional fields off the end.
@@ -90,7 +95,11 @@ module X12
         nodes_str = root.field_separator + field + nodes_str if fld.required || nodes_str != '' || field != ''
       }
 
-      self.name + nodes_str + root.segment_separator
+      res = self.name + nodes_str + root.segment_separator
+
+      res += next_repeat.render(root, :include_repeats) if include_repeats && next_repeat
+
+      res
     end # render
 
     # Returns a regexp that matches this particular segment
