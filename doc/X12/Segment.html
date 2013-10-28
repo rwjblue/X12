@@ -352,7 +352,7 @@ block on each one.</p>
 
           
           <div class="method-source-code" id="find-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 137</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 138</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
   <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
   <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">name</span>).<span class="ruby-identifier">content</span>
@@ -393,7 +393,7 @@ user-defined alias, or a string with the field numeric code (for example,
 
           
           <div class="method-source-code" id="find_field-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 144</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 145</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">find_field</span>(<span class="ruby-identifier">field_name</span>)
   <span class="ruby-comment">#puts &quot;Finding field [#{field_name}] in #{self.class} #{name}&quot;</span>
 
@@ -440,7 +440,7 @@ user-defined alias, or a string with the field numeric code (for example,
 
           
           <div class="method-source-code" id="method_missing-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 158</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 159</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">method_missing</span>(<span class="ruby-identifier">meth</span>, <span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">str</span> = <span class="ruby-identifier">meth</span>.<span class="ruby-identifier">to_s</span>
   <span class="ruby-comment">#puts &quot;Missing #{str}&quot;</span>
@@ -531,7 +531,7 @@ rest of the string or <code>nil</code> if unable to parse</p>
 
           
           <div class="method-source-code" id="regexp-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 106</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 107</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">regexp</span>
   <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@regexp</span>
     <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">is_constant?</span> } <span class="ruby-keyword">then</span>
@@ -587,10 +587,11 @@ information</p>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>, <span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">required</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">has_displayable_content?</span>
 
-  <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">initial_segment</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span>.<span class="ruby-identifier">nil?</span>
-
-  <span class="ruby-comment"># Current segment needs to be included in the count, so we increase the count ahead of time</span>
-  <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">respond_to?</span>(<span class="ruby-value">:segments_rendered</span>) <span class="ruby-keyword">then</span>
+    <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">initial_segment</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-comment"># Current segment needs to be included in the count, so we increase the count ahead of time</span>
+    <span class="ruby-identifier">root</span>.<span class="ruby-identifier">segments_rendered</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>
+  <span class="ruby-keyword">end</span>
 
   <span class="ruby-identifier">nodes_str</span> = <span class="ruby-string">''</span>
   <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">reverse</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">fld</span><span class="ruby-operator">|</span> <span class="ruby-comment"># Building string in reverse in order to toss empty optional fields off the end.</span>
@@ -634,7 +635,7 @@ information</p>
 
           
           <div class="method-source-code" id="to_hsh-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 126</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 127</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
   <span class="ruby-identifier">hsh</span> = {}
 
@@ -680,7 +681,7 @@ against X12's Basic or Advanced Character Set</p>
 
           
           <div class="method-source-code" id="valid-3F-source">
-            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 175</span>
+            <pre><span class="ruby-comment"># File lib/X12/Segment.rb, line 176</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">use_ext_charset</span> = <span class="ruby-keyword">true</span>)
   <span class="ruby-ivar">@error_code</span> = <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
 
