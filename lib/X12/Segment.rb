@@ -84,10 +84,11 @@ module X12
     def render(root = self, include_repeats = false)
       return '' unless required || has_displayable_content?
 
-      root.segments_rendered = 0 if initial_segment || root.segments_rendered.nil?
-
-      # Current segment needs to be included in the count, so we increase the count ahead of time
-      root.segments_rendered += 1
+      if root.respond_to?(:segments_rendered) then
+        root.segments_rendered = 0 if initial_segment || root.segments_rendered.nil?
+        # Current segment needs to be included in the count, so we increase the count ahead of time
+        root.segments_rendered += 1
+      end
 
       nodes_str = ''
       nodes.reverse.each { |fld| # Building string in reverse in order to toss empty optional fields off the end.

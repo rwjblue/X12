@@ -151,13 +151,15 @@ class FieldFormatting < Test::Unit::TestCase
     s = X12::Segment.new({ :name => 'test_segment', :min => 1, :max => 999 }, [ f1, f2 ] )
     l = X12::Loop.new({ :name => 'test_loop', :min => 1, :max => 1 }, [ s ] )
 
+    l.control_number = rand(1000) + 2000
+    assert_equal("%04d" % l.control_number,    f2.render)
+    assert_equal(l.control_number,    f2.parse(f2.render))
+
     l.render
     assert_equal("%04d" % l.segments_rendered, f1.render)
     assert_equal(l.segments_rendered, f1.parse(f1.render))
 
-    l.control_number = rand(1000) + 2000
-    assert_equal("%04d" % l.control_number,    f2.render)
-    assert_equal(l.control_number,    f2.parse(f2.render))
+    assert_nothing_raised do s.render end
 
     tmp = $-w  
     $-w = nil  # Temporarily suppress warnings
