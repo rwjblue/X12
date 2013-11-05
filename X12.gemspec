@@ -5,11 +5,11 @@
 
 Gem::Specification.new do |s|
   s.name = "X12"
-  s.version = "2.7.4"
+  s.version = "2.8.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["APP Design, Inc.", "Eligo Energy"]
-  s.date = "2013-10-28"
+  s.date = "2013-11-05"
   s.description = "Library to parse X12 messages and manipulate their loops, segments, fields, composites, and validation tables."
   s.email = "info@appdesign.com"
   s.extra_rdoc_files = [
@@ -1890,6 +1890,8 @@ Gem::Specification.new do |s|
     "misc/ZD.xml",
     "misc/ZR.xml",
     "misc/ZT.xml",
+    "test/config_inheritance.xml",
+    "test/tc_config_inheritance.rb",
     "test/tc_factory_270.rb",
     "test/tc_factory_270interchange.rb",
     "test/tc_factory_997.rb",
