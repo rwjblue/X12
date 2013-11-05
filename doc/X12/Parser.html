@@ -194,8 +194,17 @@ factories.</p>
           <div class="method-source-code" id="new-source">
             <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 54</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">file_name</span>)
-  <span class="ruby-ivar">@x12_definition</span> = {}
-  <span class="ruby-identifier">load_definition_file</span>(<span class="ruby-identifier">file_name</span>)
+  <span class="ruby-comment">#puts &quot;Reading definition from #{file_name}&quot;</span>
+  <span class="ruby-identifier">file_name</span> = <span class="ruby-identifier">cleanup_file_name</span>(<span class="ruby-identifier">file_name</span>)
+
+  <span class="ruby-comment"># Read and parse the definition</span>
+  <span class="ruby-ivar">@local_cache</span> = <span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">XMLDefinitions</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">file_name</span>, <span class="ruby-string">'r'</span>).<span class="ruby-identifier">read</span>)
+
+  <span class="ruby-comment"># Populate fields in all segments found in all the loops</span>
+  <span class="ruby-ivar">@local_cache</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>].<span class="ruby-identifier">each_pair</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">k</span>, <span class="ruby-identifier">v</span><span class="ruby-operator">|</span>
+    <span class="ruby-comment">#puts &quot;Populating definitions for loop #{k}&quot;</span>
+    <span class="ruby-identifier">resolve_dependencies</span>(<span class="ruby-identifier">v</span>)
+  } <span class="ruby-keyword">if</span> <span class="ruby-ivar">@local_cache</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>]
 <span class="ruby-keyword">end</span></pre>
           </div><!-- new-source -->
           
@@ -217,7 +226,7 @@ factories.</p>
         
         <div class="method-heading">
           <span class="method-name">factory</span><span
-            class="method-args">(loop_name)</span>
+            class="method-args">(name, klass = X12::Loop)</span>
           
           <span class="method-click-advice">click to toggle source</span>
           
@@ -232,12 +241,11 @@ factories.</p>
 
           
           <div class="method-source-code" id="factory-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 70</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">factory</span>(<span class="ruby-identifier">loop_name</span>)
-  <span class="ruby-identifier">loop</span> = <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>][<span class="ruby-identifier">loop_name</span>]
-  <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Cannot find a definition for loop #{loop_name}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">loop</span>
-  <span class="ruby-identifier">loop</span> = <span class="ruby-identifier">loop</span>.<span class="ruby-identifier">dup</span>
-  <span class="ruby-keyword">return</span> <span class="ruby-identifier">loop</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">factory</span>(<span class="ruby-identifier">name</span>, <span class="ruby-identifier">klass</span> = <span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>)
+  <span class="ruby-identifier">definition</span> = <span class="ruby-ivar">@local_cache</span>[<span class="ruby-identifier">klass</span>][<span class="ruby-identifier">name</span>]
+  <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Cannot find a definition for #{name}&quot;</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">definition</span>.<span class="ruby-identifier">nil?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">definition</span>.<span class="ruby-identifier">dup</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- factory-source -->
           
@@ -269,11 +277,11 @@ loop name is not defined.</p>
 
           
           <div class="method-source-code" id="parse-source">
-            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 60</span>
+            <pre><span class="ruby-comment"># File lib/X12/Parser.rb, line 69</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">loop_name</span>, <span class="ruby-identifier">str</span>)
-  <span class="ruby-identifier">loop</span> = <span class="ruby-ivar">@x12_definition</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>][<span class="ruby-identifier">loop_name</span>]
-  <span class="ruby-comment">#puts &quot;Loops to parse #{@x12_definition[X12::Loop].keys}&quot;</span>
-  <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Cannot find a definition for loop #{loop_name}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">loop</span>
+  <span class="ruby-identifier">loop</span> = <span class="ruby-ivar">@local_cache</span>[<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>][<span class="ruby-identifier">loop_name</span>]
+  <span class="ruby-comment">#puts &quot;Loops to parse #{@local_cache[X12::Loop].keys}&quot;</span>
+  <span class="ruby-identifier">throw</span> <span class="ruby-constant">Exception</span>.<span class="ruby-identifier">new</span>(<span class="ruby-node">&quot;Cannot find a definition for #{loop_name}&quot;</span>) <span class="ruby-keyword">unless</span> <span class="ruby-identifier">loop</span>
   <span class="ruby-identifier">loop</span> = <span class="ruby-identifier">loop</span>.<span class="ruby-identifier">dup</span>
   <span class="ruby-identifier">loop</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>)
   <span class="ruby-keyword">return</span> <span class="ruby-identifier">loop</span>

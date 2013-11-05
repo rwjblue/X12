@@ -82,13 +82,13 @@ module X12
       return definition.dup
     end # factory
 
+    private
+
     def self.get_file(file_name)
       @@cache ||= {}
       @@cache[file_name] ||= new(file_name)
       @@cache[file_name]
     end
-
-    private
 
     def cleanup_file_name(file_name)
       # Deal with Microsoft devices
