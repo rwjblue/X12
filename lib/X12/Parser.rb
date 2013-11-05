@@ -52,51 +52,43 @@ module X12
 
     # Creates a parser out of a definition
     def initialize(file_name)
-      @x12_definition = {}
-      load_definition_file(file_name)
+      #puts "Reading definition from #{file_name}"
+      file_name = cleanup_file_name(file_name)
+
+      # Read and parse the definition
+      @local_cache = X12::XMLDefinitions.new(File.open(file_name, 'r').read)
+
+      # Populate fields in all segments found in all the loops
+      @local_cache[X12::Loop].each_pair{ |k, v|
+        #puts "Populating definitions for loop #{k}"
+        resolve_dependencies(v)
+      } if @local_cache[X12::Loop]
     end # initialize
 
     # Parse a loop of a given name out of a string. Throws an exception if the loop name is not defined.
     def parse(loop_name, str)
-      loop = @x12_definition[X12::Loop][loop_name]
-      #puts "Loops to parse #{@x12_definition[X12::Loop].keys}"
-      throw Exception.new("Cannot find a definition for loop #{loop_name}") unless loop
+      loop = @local_cache[X12::Loop][loop_name]
+      #puts "Loops to parse #{@local_cache[X12::Loop].keys}"
+      throw Exception.new("Cannot find a definition for #{loop_name}") unless loop
       loop = loop.dup
       loop.parse(str)
       return loop
     end # parse
 
     # Make an empty loop to be filled out with information
-    def factory(loop_name)
-      loop = @x12_definition[X12::Loop][loop_name]
-      throw Exception.new("Cannot find a definition for loop #{loop_name}") unless loop
-      loop = loop.dup
-      return loop
+    def factory(name, klass = X12::Loop)
+      definition = @local_cache[klass][name]
+      throw Exception.new("Cannot find a definition for #{name}") if definition.nil?
+      return definition.dup
     end # factory
 
-    private
-
-    def load_definition_file(file_name)
-      file_name = cleanup_file_name(file_name)
-      #puts "Reading definition from #{file_name}"
-
-      # Read and parse the definition
-      new_definition = X12::XMLDefinitions.new(File.open(file_name, 'r').read)
-
-      # Populate fields in all segments found in all the loops
-      new_definition[X12::Loop].each_pair{|k, v|
-        #puts "Populating definitions for loop #{k}"
-        process_loop(v)
-      } if new_definition[X12::Loop]
-
-      # Merge the newly parsed definition into a saved one, if any.
-      new_definition.keys.each { |t|
-        @x12_definition[t] ||= {}
-        new_definition[t].keys.each { |u|
-          @x12_definition[t][u] = new_definition[t][u] 
-        }
-      }
+    def self.get_file(file_name)
+      @@cache ||= {}
+      @@cache[file_name] ||= new(file_name)
+      @@cache[file_name]
     end
+
+    private
 
     def cleanup_file_name(file_name)
       # Deal with Microsoft devices
@@ -114,35 +106,34 @@ module X12
     end
 
     def get_definition(klass, name)
-      # Attempt to retrieve the definition from the cache
-      definition = @x12_definition[klass] && @x12_definition[klass][name]
+      definition = @local_cache[klass] && @local_cache[klass][name]
 
-      if definition.nil? then # If not, load from the library and attempt to retrieve it again
-        load_definition_file(name + '.xml')
-        definition = @x12_definition[klass][name]
+      if definition.nil? then # If not found, attempt to load from the library file
+        definition = X12::Parser.get_file(name + '.xml').factory(name, klass)
         throw Exception.new("Cannot find a definition for #{name}") if definition.nil?
       end
 
       definition
     end
 
-    def load_from_library(obj)
+    # Populate the nodes of the current object 
+    def populate_nodes_from_library(obj)
       get_definition(obj.class, obj.name).nodes.each_with_index { |node, i| obj.nodes[i] = node }
       obj
     end
 
     # Recursively scan the loop and instantiate fields' definitions for all its segments
-    def process_loop(loop)
+    def resolve_dependencies(loop)
       #puts "Trying to process loop #{loop.inspect}"
-      load_from_library(loop) if loop.nodes.empty?
+      populate_nodes_from_library(loop) if loop.nodes.empty?
 
       loop.nodes.each { |node|
         case node
         when X12::Loop    then
-          process_loop(node)
+          resolve_dependencies(node)
         when X12::Segment then
           if node.nodes.empty? then
-            load_from_library(node) 
+            populate_nodes_from_library(node) 
             node.apply_overrides
           end
 

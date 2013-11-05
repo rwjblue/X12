@@ -30,7 +30,7 @@ module X12
   # $Id: XMLDefinitions.rb 90 2009-05-13 19:51:27Z ikk $
   #
   # A class for parsing X12 message definition expressed in XML format.
-
+  # The XML file must contain all the necessary definitions in it as external references are not resolved.
   class XMLDefinitions < Hash
 
     # Parse the +string+ that containins the X12 structure definitions in XML format
