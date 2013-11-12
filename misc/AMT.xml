@@ -24,7 +24,7 @@
 -->
 
 <Segment name="AMT" comment="To indicate the total monetary amount">
-  <Field name="AmountQualifierCode" min="1" max="3" validation="T522" comment="Code to qualify amount"/>
-  <Field name="MonetaryAmount" type="double" min="1" max="18" comment="Monetary amount"/>
-  <Field name="CreditDebitFlagCode" required="y" min="1" max="1" validation="T478" comment="Code indicating whether amount is a credit or debit"/>
+  <Field name="AmountQualifierCode" required="y" min="1" max="3"  validation="T522" comment="Code to qualify amount"/>
+  <Field name="MonetaryAmount"      required="y" min="1" max="18" type="double"     comment="Monetary amount"/>
+  <Field name="CreditDebitFlagCode" required="n" min="1" max="1"  validation="T478" comment="Code indicating whether amount is a credit or debit"/>
 </Segment>
