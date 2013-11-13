@@ -78,7 +78,7 @@ module X12
 
       return nil if source_string == unconsumed_string
 
-      @parsed_str = source_string[0..-(unconsumed_string.length - 1)]
+      @parsed_str = source_string[0..-(unconsumed_string.length + 1)]
 
       str = do_repeats(unconsumed_string)
 
