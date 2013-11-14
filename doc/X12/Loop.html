@@ -400,7 +400,7 @@ nothing was parsed out.</p>
 
   <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">source_string</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unconsumed_string</span>
 
-  <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-identifier">source_string</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-operator">-</span>(<span class="ruby-identifier">unconsumed_string</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)]
+  <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-identifier">source_string</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-operator">-</span>(<span class="ruby-identifier">unconsumed_string</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)]
 
   <span class="ruby-identifier">str</span> = <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">unconsumed_string</span>)
 
