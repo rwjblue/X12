@@ -134,6 +134,15 @@ module X12
       raise 'Subclass responsebility'
     end
 
+    # Iterates through all the repeats of this object without putting them into array first (to_a.each)
+    def each_repeat
+      repeat = self
+      until repeat.nil? do
+        yield(repeat)
+        repeat = repeat.next_repeat
+      end
+    end
+
     # Number of repeats of this element, starting with self.
     def size
       s = 0

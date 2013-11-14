@@ -1,9 +1,9 @@
-Wed, 13 Nov 2013 18:25:51 -0600
+Wed, 13 Nov 2013 20:28:24 -0600
 README	Tue, 21 May 2013 17:08:17 -0500
 CHANGELOG	Tue, 21 May 2013 17:08:17 -0500
 TODO	Tue, 21 May 2013 17:08:17 -0500
 lib/X12.rb	Thu, 24 Oct 2013 14:22:01 -0500
-lib/X12/Base.rb	Wed, 13 Nov 2013 18:24:14 -0600
+lib/X12/Base.rb	Wed, 13 Nov 2013 20:26:45 -0600
 lib/X12/Composite.rb	Thu, 24 Oct 2013 14:22:01 -0500
 lib/X12/Field.rb	Fri, 25 Oct 2013 17:04:12 -0500
 lib/X12/Loop.rb	Wed, 13 Nov 2013 16:39:44 -0600
