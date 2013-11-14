@@ -81,19 +81,16 @@ module X12
 
     # Prints a tree-like representation of the element
     def show(indent = '')
-      count = 0
-      self.to_a.each{ |i|
-        #puts "#{indent}#{i.name} #{i.object_id} #{i.super.object_id} [#{count}]: #{i.parsed_str} #{i.super.class}"
-        puts "#{indent}#{i.name} [#{count}]: #{i.to_s.sub(/^(.{30})(.*?)(.{30})$/, '\1...\3')}"
+      self.to_a.each.with_index { |n, i|
+        #puts "#{indent}#{n.name} #{n.object_id} #{n.super.object_id} [#{i}]: #{n.parsed_str} #{n.super.class}"
+        puts "#{indent}#{n.name} [#{i}]: #{n.to_s.sub(/^(.{30})(.*?)(.{30})$/, '\1...\3')}"
 
-        i.nodes.each{ |j|
+        n.nodes.each{ |j|
           case 
           when j.kind_of?(X12::Base)  then j.show(indent + '  ')
           when j.kind_of?(X12::Field) then puts "#{indent}  #{j.name} -> '#{j.to_s}'"
           end
         } 
-
-        count += 1
       }
     end
 
