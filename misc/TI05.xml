@@ -24,7 +24,7 @@
 -->
 
 <Table name="TI05">
-  <Entry name="01" value="Duns (Dun & Bradstreet)"/>
+  <Entry name="01" value="Duns (Dun &amp; Bradstreet)"/>
   <Entry name="02" value="SCAC (Standard Carrier Alpha Code)"/>
   <Entry name="03" value="FMC (Federal Maritime Commission)"/>
   <Entry name="04" value="IATA (International Air Transport Association)"/>
