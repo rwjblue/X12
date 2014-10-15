@@ -65,12 +65,10 @@ task :example do |x|
   }
 end
 
-task :test do |x|
-  Rake::TestTask.new { |t|
-    t.test_files = Dir['test/tc_*.rb']
-    t.verbose = true
-  }
-end # :test
+Rake::TestTask.new { |t|
+  t.test_files = Dir['test/tc_*.rb']
+  t.verbose = true
+}
 
 # Generate the RDoc documentation
 Rake::RDocTask.new { |rdoc|
