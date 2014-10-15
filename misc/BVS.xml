@@ -36,4 +36,5 @@
   <Field name="BillOfLadingWaybillNumber" required="y" min="1" max="25" comment="Identification number assigned to the shipment by the carrier or consolidator"/>
   <Field name="AccountNumber" required="y" min="1" max="35" comment="Account number assigned"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0809" comment="If either BVS08 or BVS09 is present, then the other is required."/>
 </Segment>

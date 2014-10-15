@@ -38,4 +38,7 @@
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="YesNoConditionOrResponseCode3" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="Temperature2" type="double" required="y" min="1" max="4" comment="Temperature"/>
+  <SyntaxNote name="L030414" comment="If PS03 is present, then at least one of PS04 or PS14 is required."/>
+  <SyntaxNote name="C0403" comment="If PS04 is present, then PS03 is required."/>
+  <SyntaxNote name="C1403" comment="If PS14 is present, then PS03 is required."/>
 </Segment>

@@ -34,4 +34,7 @@
   <Field name="CommodityCodeQualifier2" required="y" min="1" max="1" validation="T23" comment="Code identifying the commodity coding system used for Commodity Code"/>
   <Field name="CommodityCode2" required="y" min="1" max="30" comment="Code describing a commodity or group of commodities"/>
   <Field name="CompartmentIdCode" required="y" min="1" max="1" validation="T595" comment="Code identifying the compartment in a compartmentalized tank car"/>
+  <SyntaxNote name="P0304" comment="If either L503 or L504 is present, then the other is required."/>
+  <SyntaxNote name="C0706" comment="If L507 is present, then L506 is required."/>
+  <SyntaxNote name="P0809" comment="If either L508 or L509 is present, then the other is required."/>
 </Segment>

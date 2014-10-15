@@ -28,4 +28,5 @@
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="PurchaseOrderNumber" required="y" min="1" max="22" comment="Identifying number for Purchase Order assigned by the orderer/purchaser"/>
   <Field name="ApplicationErrorConditionCode" required="y" min="1" max="3" validation="T647" comment="Code indicating application error condition"/>
+  <SyntaxNote name="C0403" comment="If SSD04 is present, then SSD03 is required."/>
 </Segment>

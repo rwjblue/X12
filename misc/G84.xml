@@ -25,6 +25,7 @@
 
 <Segment name="G84" comment="To specify summary details of total items in terms of quantity or amount">
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
-  <Field name="TotalInvoiceAmount" type="double" required="y" min="1" max="10" comment="Amount of invoice (including charges, less allowances) before terms discount (if discount is applicable)"/>
-  <Field name="TotalDepositDollarAmount" type="double" required="y" min="1" max="6" comment="Sum of deposit amounts separately identified"/>
+  <Field name="TotalInvoiceAmount" type="N2" required="y" min="1" max="10" comment="Amount of invoice (including charges, less allowances) before terms discount (if discount is applicable)"/>
+  <Field name="TotalDepositDollarAmount" type="N2" required="y" min="1" max="6" comment="Sum of deposit amounts separately identified"/>
+  <SyntaxNote name="R0102" comment="At least one of G8401 or G8402 is required."/>
 </Segment>

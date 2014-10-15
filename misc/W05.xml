@@ -32,4 +32,5 @@
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="PurchaseOrderTypeCode" required="y" min="2" max="2" validation="T92" comment="Code specifying the type of Purchase Order"/>
+  <SyntaxNote name="P0405" comment="If either W0504 or W0505 is present, then the other is required."/>
 </Segment>

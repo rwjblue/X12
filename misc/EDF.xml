@@ -35,4 +35,6 @@
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="MonetaryAmount" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
+  <SyntaxNote name="P0405" comment="If either EDF04 or EDF05 is present, then the other is required."/>
+  <SyntaxNote name="C0604" comment="If EDF06 is present, then EDF04 is required."/>
 </Segment>

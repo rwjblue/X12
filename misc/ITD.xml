@@ -27,16 +27,19 @@
   <Field name="TermsTypeCode" required="y" min="2" max="2" validation="T336" comment="Code identifying type of payment terms"/>
   <Field name="TermsBasisDateCode" required="y" min="1" max="2" validation="T333" comment="Code identifying the beginning of the terms period"/>
   <Field name="TermsDiscountPercent" type="double" required="y" min="1" max="6" comment="Terms discount percentage, expressed as a percent, available to the purchaser if an invoice is paid on or before the Terms Discount Due Date"/>
-  <Field name="TermsDiscountDueDate" required="y" min="8" max="8" comment="Date payment is due if discount is to be earned expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="TermsDiscountDueDate" type="date" required="y" min="8" max="8" comment="Date payment is due if discount is to be earned expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TermsDiscountDaysDue" type="long" required="y" min="1" max="3" comment="Number of days in the terms discount period by which payment is due if terms discount is earned"/>
-  <Field name="TermsNetDueDate" required="y" min="8" max="8" comment="Date when total invoice amount becomes due expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="TermsNetDueDate" type="date" required="y" min="8" max="8" comment="Date when total invoice amount becomes due expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TermsNetDays" type="long" required="y" min="1" max="3" comment="Number of days until total invoice amount is due (discount not applicable)"/>
-  <Field name="TermsDiscountAmount" type="double" required="y" min="1" max="10" comment="Total amount of terms discount"/>
-  <Field name="TermsDeferredDueDate" required="y" min="8" max="8" comment="Date deferred payment or percent of invoice payable is due expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="DeferredAmountDue" type="double" required="y" min="1" max="10" comment="Deferred amount due for payment"/>
+  <Field name="TermsDiscountAmount" type="N2" required="y" min="1" max="10" comment="Total amount of terms discount"/>
+  <Field name="TermsDeferredDueDate" type="date" required="y" min="8" max="8" comment="Date deferred payment or percent of invoice payable is due expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="DeferredAmountDue" type="N2" required="y" min="1" max="10" comment="Deferred amount due for payment"/>
   <Field name="PercentOfInvoicePayable" type="double" required="y" min="1" max="5" comment="Amount of invoice payable expressed in percent"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="DayOfMonth" type="long" required="y" min="1" max="2" comment="The numeric value of the day of the month between 1 and the maximum day of the month being referenced"/>
   <Field name="PaymentMethodCode" required="y" min="1" max="2" validation="T107" comment="Code identifying type of payment procedures"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
+  <SyntaxNote name="L03040513" comment="If ITD03 is present, then at least one of ITD04, ITD05 or ITD13 is required."/>
+  <SyntaxNote name="L08040513" comment="If ITD08 is present, then at least one of ITD04, ITD05 or ITD13 is required."/>
+  <SyntaxNote name="L091011" comment="If ITD09 is present, then at least one of ITD10 or ITD11 is required."/>
 </Segment>

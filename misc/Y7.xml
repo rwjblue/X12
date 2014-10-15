@@ -28,5 +28,6 @@
   <Field name="PriorityCode" type="long" required="y" min="1" max="1" comment="Code indicating level of priority: 1-highest, 0-implies priority not assigned"/>
   <Field name="PriorityCodeQualifier" required="y" min="1" max="1" comment="Number indicating the number of levels of priority (1 to 9) used for data element 470, Priority Code"/>
   <Field name="PortCallFileNumber" type="long" required="y" min="4" max="4" comment="Reference number assigned by a shipper"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="P0203" comment="If either Y702 or Y703 is present, then the other is required."/>
 </Segment>

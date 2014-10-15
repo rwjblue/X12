@@ -27,18 +27,33 @@
   <Field name="AdjustmentApplicationCode" min="1" max="2" validation="T952" comment="Code for area to which adjustment applies"/>
   <Field name="MonetaryAmount1" type="double" min="1" max="18" comment="Monetary amount"/>
   <Field name="MonetaryAmount2" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="ProductServiceIdQualifier" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
-  <Field name="Amount1" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="Amount2" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="Amount3" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount1" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount2" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount3" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity3" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0809" comment="If either ADJ08 or ADJ09 is present, then the other is required."/>
+  <SyntaxNote name="L101112" comment="If ADJ10 is present, then at least one of ADJ11 or ADJ12 is required."/>
+  <SyntaxNote name="C1009" comment="If ADJ10 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L111012" comment="If ADJ11 is present, then at least one of ADJ10 or ADJ12 is required."/>
+  <SyntaxNote name="C1109" comment="If ADJ11 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L121011" comment="If ADJ12 is present, then at least one of ADJ10 or ADJ11 is required."/>
+  <SyntaxNote name="C1209" comment="If ADJ12 is present, then ADJ09 is required."/>
+  <SyntaxNote name="C1309" comment="If ADJ13 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L131415" comment="If ADJ13 is present, then at least one of ADJ14 or ADJ15 is required."/>
+  <SyntaxNote name="C1409" comment="If ADJ14 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L141315" comment="If ADJ14 is present, then at least one of ADJ13 or ADJ15 is required."/>
+  <SyntaxNote name="C1509" comment="If ADJ15 is present, then ADJ09 is required."/>
+  <SyntaxNote name="L151314" comment="If ADJ15 is present, then at least one of ADJ13 or ADJ14 is required."/>
+  <SyntaxNote name="P1617" comment="If either ADJ16 or ADJ17 is present, then the other is required."/>
+  <SyntaxNote name="C1709" comment="If ADJ17 is present, then ADJ09 is required."/>
 </Segment>

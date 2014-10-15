@@ -29,4 +29,7 @@
   <Field name="FreightStationAccountingCode" required="y" min="1" max="5" comment="Code (Freight Station Accounting) (AAR Managed Code for Locations)"/>
   <Field name="CityName" required="y" min="2" max="30" comment="Free-form text for city name"/>
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
+  <SyntaxNote name="P0203" comment="If either W402 or W403 is present, then the other is required."/>
+  <SyntaxNote name="R0204" comment="At least one of W402 or W404 is required."/>
+  <SyntaxNote name="P0405" comment="If either W404 or W405 is present, then the other is required."/>
 </Segment>

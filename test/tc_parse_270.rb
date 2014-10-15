@@ -25,6 +25,7 @@ require 'X12'
 require 'test/unit'
 
 class Test270Parse < Test::Unit::TestCase
+  TEST_REPEAT = 100
 
   @@p = nil
   @@parser = X12::Parser.new('misc/270.xml')
@@ -76,14 +77,41 @@ EOT
   end
 
   def test_absent
-    assert_equal(X12::EMPTY, @r.L2000D.HHH)
-    assert_equal(X12::EMPTY, @r.L2000B.L2111)
-    assert_equal('', @r.L2000C.L2100C.N3.AddressInformation1)
+    assert_nil(@r.L2000D.HHH)
+    assert_nil(@r.L2000B.L2111)
+    assert_nil(@r.L2000C.L2100C.N3.AddressInformation1)
   end # test_absent
+
+  def test_validity
+    assert_equal(true, @r.valid?)
+  end
+
+  def test_segment_counter
+    assert_equal(12, @r.segments_parsed)
+    assert_equal(4, @r.L2000C.L2100C.segments_parsed)
+    assert_equal(1, @r.L2000C.L2100C.L2110C.segments_parsed)
+    assert_equal(0, @r.L2000D.segments_parsed)
+  end
+
+  def test_segment_enumerator
+    @r.enumerate_segments
+    assert_equal(1, @r.ST.segment_position)
+    assert_equal(2, @r.BHT.segment_position)
+    assert_equal(3, @r.L2000A.HL.segment_position)
+    assert_equal(4, @r.L2000A.L2100A.NM1.segment_position)
+    assert_equal(5, @r.L2000B.HL.segment_position)
+    assert_equal(6, @r.L2000B.L2100B.NM1.segment_position)
+    assert_equal(7, @r.L2000C.HL.segment_position)
+    assert_equal(8, @r.L2000C.L2100C.NM1.segment_position)
+    assert_equal(9, @r.L2000C.L2100C.DMG.segment_position)
+    assert_equal(10, @r.L2000C.L2100C.DTP.segment_position)
+    assert_equal(11, @r.L2000C.L2100C.EQ.segment_position)
+    assert_equal(12, @r.SE.segment_position)
+  end
 
   def test_timing
     start = Time::now
-    X12::TEST_REPEAT.times do
+    TEST_REPEAT.times do
       @r = @@parser.parse('270', @@m)
       test_ST
       test_L2000A_NM1
@@ -92,7 +120,7 @@ EOT
       test_absent
     end
     finish = Time::now
-    puts sprintf("Parses per second, 270: %.2f, elapsed: %.1f", X12::TEST_REPEAT.to_f/(finish-start), finish-start)
+    puts sprintf("Parses per second, 270: %.2f, elapsed: %.1f", TEST_REPEAT.to_f/(finish-start), finish-start)
   end # test_timing
 
 end # TestParse

@@ -25,10 +25,11 @@
 
 <Segment name="G50" comment="To transmit identifying dates and numbers for this transaction set">
   <Field name="OrderStatusCode" min="1" max="1" validation="T473" comment="Code identifying purpose of transaction set"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="PurchaseOrderNumber" min="1" max="22" comment="Identifying number for Purchase Order assigned by the orderer/purchaser"/>
   <Field name="TaxExemptCode" required="y" min="1" max="1" validation="T441" comment="Code identifying exemption status from sales and use tax"/>
   <Field name="MasterReference" required="y" min="1" max="22" comment="Reference number assigned by the sender to relate a transaction set to a master transaction (When associating a group of purchase orders, invoices or other transaction sets, use the master reference (link) number to identify the group and the link sequence number to identify individual transaction sets within the group)"/>
   <Field name="LinkSequenceNumber" type="long" required="y" min="6" max="6" comment="A two-part number in the form &quot;SSSTTT&quot; where &quot;SSS&quot; is a sequentially assigned number and &quot;TTT&quot; equals the highest sequential number being used within the associated (linked) group (Leading zeros are required for both &quot;SSS&quot; and &quot;TTT&quot;)"/>
   <Field name="PurchaseOrderTypeCode" required="y" min="2" max="2" validation="T92" comment="Code specifying the type of Purchase Order"/>
+  <SyntaxNote name="P0506" comment="If either G5005 or G5006 is present, then the other is required."/>
 </Segment>

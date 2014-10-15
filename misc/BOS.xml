@@ -25,9 +25,9 @@
 
 <Segment name="BOS" comment="To indicate the beginning of a joint interest billing and operating expense statement transaction and to transmit the identifying numbers and dates">
   <Field name="StatementNumber" min="1" max="16" comment="Identifying number for statement assigned by issuer for charges"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="StatementFormatCode" required="y" min="6" max="6" comment="Code supplied by the sender indicating the level of detail being communicated"/>
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
 </Segment>

@@ -26,7 +26,7 @@
 <Segment name="M1" comment="To specify details related to insurance">
   <Field name="CountryCode" min="2" max="3" comment="Code identifying the country"/>
   <Field name="CarriageValue" type="long" required="y" min="2" max="8" comment="Carriage value expressed in whole units of the standard monetary denomination for the currency specified"/>
-  <Field name="DeclaredValue" type="double" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
+  <Field name="DeclaredValue" type="N2" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
   <Field name="RateValueQualifier1" required="y" min="2" max="2" validation="T122" comment="Code qualifying how to extend charges or interpret value"/>
   <Field name="EntityIdentifierCode" required="y" min="2" max="3" validation="T98" comment="Code identifying an organizational entity, a physical location, property or an individual"/>
   <Field name="FreeFormMessage" required="y" min="1" max="30" comment="Free-form information"/>
@@ -36,4 +36,7 @@
   <Field name="Percent1" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="PercentQualifier2" required="y" min="1" max="2" validation="T1004" comment="Code to qualify percent"/>
   <Field name="Percent2" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
+  <SyntaxNote name="P0708" comment="If either M107 or M108 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either M109 or M110 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either M111 or M112 is present, then the other is required."/>
 </Segment>

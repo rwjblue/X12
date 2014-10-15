@@ -34,4 +34,8 @@
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="IndustryCode3" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
   <Field name="CodeListQualifierCode3" required="y" min="1" max="3" validation="T1270" comment="Code identifying a specific industry code list"/>
+  <SyntaxNote name="C0201" comment="If DD02 is present, then DD01 is required."/>
+  <SyntaxNote name="P030405" comment="If either DD03, DD04 or DD05 are present, then the others are required."/>
+  <SyntaxNote name="C0605" comment="If DD06 is present, then DD05 is required."/>
+  <SyntaxNote name="C1009" comment="If DD10 is present, then DD09 is required."/>
 </Segment>

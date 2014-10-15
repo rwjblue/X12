@@ -26,7 +26,7 @@
 <Segment name="TS3" comment="To supply provider-level control information">
   <Field name="ReferenceIdentification" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="FacilityCodeValue" min="1" max="2" comment="Code identifying the type of facility where services were performed; the first and second positions of the Uniform Bill Type code or the Place of Service code from the Electronic Media Claims National Standard Format"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Quantity1" type="double" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="MonetaryAmount1" type="double" min="1" max="18" comment="Monetary amount"/>
   <Field name="MonetaryAmount2" type="double" required="y" min="1" max="18" comment="Monetary amount"/>

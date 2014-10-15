@@ -34,4 +34,7 @@
   <Field name="AcademicCreditTypeCode" required="y" min="1" max="1" validation="T1141" comment="Code indicating the type of credit used (awarded) by the institution"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
+  <SyntaxNote name="P0304" comment="If either CSU03 or CSU04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either CSU05 or CSU06 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either CSU09 or CSU10 is present, then the other is required."/>
 </Segment>

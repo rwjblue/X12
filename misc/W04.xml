@@ -39,4 +39,9 @@
   <Field name="InboundConditionHoldCode" required="y" min="2" max="2" validation="T844" comment="Code designating condition status of units being shipped"/>
   <Field name="ProductServiceIdQualifier3" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId3" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="R0304" comment="At least one of W0403 or W0404 is required."/>
+  <SyntaxNote name="P0405" comment="If either W0404 or W0405 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either W0406 or W0407 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either W0410 or W0411 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either W0414 or W0415 is present, then the other is required."/>
 </Segment>

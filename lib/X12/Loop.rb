@@ -28,6 +28,17 @@ module X12
   # Implements nested loops of segments
 
   class Loop < Base
+    # Number of segments rendered in the enumerated loop
+    attr_accessor :segments_rendered
+    # Control number of the loop to be accessed by respective +control_number+ engine variable inside this loop
+    attr_accessor :control_number
+
+    # Creates a new loop with given parameters and array of sub-elements
+    def initialize(*args)
+      @segments_rendered = nil # Needs to start as nil and only initialize once ST is actually rendered
+      @control_number = nil
+      super(*args)
+    end
 
 #     def regexp
 #       @regexp ||= 
@@ -42,37 +53,114 @@ module X12
 #                    })
 #     end
 
+    # Recursively find a sub-element
+    def find(name)
+      #puts "Finding [#{name}] in #{self.class} #{name}"
+      # Breadth first
+      res = nodes.find{ |n| name == n.name || name == n.alias }
+      return res if res
+      # Depth now
+      nodes.each{ |i| 
+        res = i.find(name) if i.kind_of?(X12::Loop)
+        return res unless res.nil? # otherwise keep looping
+      }
+      nil
+    end
+
     # Parse a string and fill out internal structures with the pieces of it. Returns 
     # an unparsed portion of the string or the original string if nothing was parsed out.
-    def parse(str)
-      #puts "Parsing loop #{name}: "+str
-      s = str
-      nodes.each{|i|
-        m = i.parse(s)
-        s = m if m
-      } 
-      if str == s
-        return nil
-      else
-        self.parsed_str = str[0..-s.length-1]
-        s = do_repeats(s)
-      end
-      #puts 'Parsed loop '+self.inspect
-      return s
+    def parse(source_string)
+      #puts "Parsing loop #{name}: " + str
+
+      # Ask each node to attempt to grab its matching piece of string. +parse+ will return unconsumed
+      # portion of the string or nil if unable to match. If nothing got consumed
+      unconsumed_string = nodes.inject(source_string){ |remainder, node| node.parse(remainder) || remainder }
+
+      return nil if source_string == unconsumed_string
+
+      @parsed_str = source_string[0..-(unconsumed_string.length + 1)]
+
+      str = do_repeats(unconsumed_string)
+
+      #puts 'Parsed loop ' + self.inspect
+
+      return str
     end # parse
 
-    # Render all components of this loop as string suitable for EDI
-    def render(parent = self)
-      if self.has_content?
-        self.to_a.inject(''){|loop_str, i|
-          loop_str += i.nodes.inject(''){|nodes_str, j|
-            nodes_str += j.render(parent)
-          } 
-        }
-      else
-        ''
+    # Return the total count of segments that got successfilly parsed within this loop, 
+    # (and its repeats if +include_repeats+ is +true+).
+    def segments_parsed(include_repeats = false)
+      res = 0  
+      self.each_segment(include_repeats) { |s| res += 1 unless s.parsed_str.nil? }
+      res
+    end
+
+    # Iterate through all the segments within this loop (and its repeats if +include_repeats+ is +true+),
+    # enumerating them according to X12 requirements.
+    def enumerate_segments
+      n = 0
+      self.each_segment(:include_repeats) { |s|
+        next if s.parsed_str.nil?
+        n = 0 if s.initial_segment 
+        s.segment_position = (n += 1) 
+      }
+    end
+
+    # Iterate through all the segments within this loop (and its repeats if +include_repeats+ is +true+),
+    # invoking the given block on each one.
+    def each_segment(include_repeats = false)
+      nodes.each { |node| node.each_segment(true) { |x| yield(x) } }
+      next_repeat.each_segment(:include_repeats) { |x| yield(x) } if include_repeats && next_repeat
+    end
+
+    # Render this loop and its successive repeats as an X12-compliant string.
+    def render(root = self, include_repeats = false)
+      res = ''
+
+      if required || has_displayable_content? then
+        self.nodes.each { |n| res += n.render(root, :include_repeats) }
+        res += next_repeat.render(root, :include_repeats) if include_repeats && next_repeat
       end
-    end # render
+
+      res
+    end
+
+    # Returns recursive hash of nodes that have an alias defined, along with their respective values.
+    def to_hsh
+      hsh = {}
+
+      nodes.each { |node|
+        hsh[node.alias] = node.to_a.collect { |n| n.to_hsh } unless node.alias.nil?
+      }
+
+      hsh
+    end
+
+    # Validate the loop - whether incoming or outgoing. 
+    # * +include_repeats+ - whether the repeats of this loop should be also validated
+    # * +use_ext_charset+ - whether to validate alphanumeric values against X12's Basic or Advanced Character Set
+    def valid?(include_repeats = false, use_ext_charset = true)
+      @error_code = @error = nil
+
+      if has_displayable_content? then
+        return false if nodes.any? { |node|
+          @error_code, @error = 5, '#{self.name}: one or more segments in error' unless node.valid?(true, use_ext_charset)
+        }
+
+        # Recursively check if all the repeats of this loop are correct.
+        if include_repeats && next_repeat && !next_repeat.valid?(true, use_ext_charset) then
+          @error_code, @error = next_repeat.error_code, next_repeat.error
+          return false 
+        end
+      else
+        if required then
+          @error_code, @error = 3, "#{self.name}: mandatory loop missing"
+          return false 
+        end
+      end
+
+      return true
+    end
 
   end # Loop
 end # X12

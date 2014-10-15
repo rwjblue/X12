@@ -27,7 +27,7 @@
   <Field name="StatusCode1" min="2" max="2" validation="T546" comment="Code identifying the status of a business transaction, such as a claim, policy, real estate, or securities transaction"/>
   <Field name="StatusCode2" required="y" min="2" max="2" validation="T546" comment="Code identifying the status of a business transaction, such as a claim, policy, real estate, or securities transaction"/>
   <Field name="UnderwritingDecisionCode" required="y" min="1" max="1" validation="T1209" comment="Code indicating the decision made by the underwriter"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Description1" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="OfferBasisCode1" required="y" min="2" max="3" validation="T1123" comment="Code specifying the basis on which the underwriter offers to provide coverage"/>
   <Field name="AssignedNumber1" type="long" required="y" min="1" max="6" comment="Number assigned for differentiation within a transaction set"/>
@@ -35,10 +35,11 @@
   <Field name="AssignedNumber2" type="long" required="y" min="1" max="6" comment="Number assigned for differentiation within a transaction set"/>
   <Field name="Description2" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="StateOrProvinceCode1" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CountryCode1" required="y" min="2" max="3" comment="Code identifying the country"/>
   <Field name="StateOrProvinceCode2" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CountryCode2" required="y" min="2" max="3" comment="Code identifying the country"/>
+  <SyntaxNote name="L101112" comment="If UD10 is present, then at least one of UD11 or UD12 is required."/>
 </Segment>

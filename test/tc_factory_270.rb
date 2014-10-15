@@ -25,6 +25,7 @@ require 'X12'
 require 'test/unit'
 
 class Test270Factory < Test::Unit::TestCase
+  TEST_REPEAT = 100
 
   @@p = nil
 @@result=<<-EOT
@@ -56,27 +57,22 @@ EOT
 
   def test_all
     @r = @@p.factory('270')
-    count = 0
 
-    @r.ST.TransactionSetControlNumber  = '1001'
-    count += 1
+    @r.control_number = 1001
 
     @r.BHT {|bht|
       bht.HierarchicalStructureCode='0022'
       bht.TransactionSetPurposeCode='13'
       bht.ReferenceIdentification='LNKJNFGRWDLR'
-      bht.Date='20070724'
-      bht.Time='1726'
+      bht.Date = Date.new(2007, 07, 24)
+      bht.Time = Time.new(0, nil, nil, 17, 26)
     }
-    count += 1
 
-    @r.L2000A {|l2000A|
-      l2000A.HL{|hl|
-        hl.HierarchicalIdNumber='1'
-        hl.HierarchicalParentIdNumber=''
-        hl.HierarchicalChildCode='1'
+    @r.L2000A { |l2000A|
+      l2000A.HL{ |hl|
+        hl.HierarchicalIdNumber = '1'
+        hl.HierarchicalChildCode = '1'
       }
-      count += 1
 
       l2000A.L2100A {|l2100A|
         l2100A.NM1 {|nm1|
@@ -86,7 +82,6 @@ EOT
           nm1.IdentificationCodeQualifier='PI'
           nm1.IdentificationCode='CHICAGO BLUES'
         }
-        count += 1
       }
     }
 
@@ -96,17 +91,14 @@ EOT
         hl.HierarchicalParentIdNumber='1'
         hl.HierarchicalChildCode='1'
       }
-      count += 1
       
       l2000B.L2100B {|l2100B|
         l2100B.NM1 {|nm1|
           nm1.EntityIdentifierCode1='1P'
           nm1.EntityTypeQualifier='1'
-          nm1.NameLastOrOrganizationName=''
           nm1.IdentificationCodeQualifier='SV'
           nm1.IdentificationCode='daw'
         }
-        count += 1
       }
     }
 
@@ -116,7 +108,6 @@ EOT
         hl.HierarchicalParentIdNumber='2'
         hl.HierarchicalChildCode='0'
       }
-      count += 1
 
       l2000C.L2100C {|l2100C|
         l2100C.NM1 {|nm1|
@@ -125,46 +116,41 @@ EOT
           nm1.NameLastOrOrganizationName='Doe'
           nm1.NameFirst='Joe'
         }
-        count += 1
 
         l2100C.DMG {|dmg|
           dmg.DateTimePeriodFormatQualifier='D8'
           dmg.DateTimePeriod='19700725'
         }
-        count += 1
 
         l2100C.DTP {|dtp|
           dtp.DateTimeQualifier='307'
           dtp.DateTimePeriodFormatQualifier='D8'
           dtp.DateTimePeriod='20070724'
         }
-        count += 1
 
         l2100C.L2110C {|l2110C|
           l2110C.EQ {|eq|
             eq.ServiceTypeCode='60'
           }
-          count += 1
         }
       }
-    }
-
-    count += 1
-    @r.SE {|se|
-      se.NumberOfIncludedSegments = count
-      se.TransactionSetControlNumber = '1001'
     }
 
     assert_equal(@@result, @r.render)
   end # test_all
 
+  def test_validity
+    test_all
+    assert_equal(true, @r.valid?)
+  end
+
   def test_timing
     start = Time::now
-    X12::TEST_REPEAT.times do
+    TEST_REPEAT.times do
       test_all
     end
     finish = Time::now
-    puts sprintf("Factories per second, 270: %.2f, elapsed: %.1f", X12::TEST_REPEAT.to_f/(finish-start), finish-start)
+    puts sprintf("Factories per second, 270: %.2f, elapsed: %.1f", TEST_REPEAT.to_f/(finish-start), finish-start)
   end # test_timing
 
 end # TestList

@@ -26,4 +26,5 @@
 <Segment name="E8" comment="To identify a block of cars and the response information">
   <Field name="BlockIdentification" required="y" min="1" max="12" comment="Identifier for a block of cars"/>
   <Field name="MovementAuthorityCode" required="y" min="1" max="2" validation="T748" comment="Code indicating the interchange authority"/>
+  <SyntaxNote name="R0102" comment="At least one of E801 or E802 is required."/>
 </Segment>

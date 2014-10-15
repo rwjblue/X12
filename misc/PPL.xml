@@ -25,8 +25,8 @@
 
 <Segment name="PPL" comment="To provide information about pricing support">
   <Field name="AcquisitionDataCode" required="y" min="2" max="2" validation="T1309" comment="Code identifying acquisition data"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="ProposalDataDetailIdentifierCode" required="y" min="1" max="3" validation="T1401" comment="Code identifying the basis of a cited value in a proposal"/>
 </Segment>

@@ -27,4 +27,5 @@
   <Field name="EquipmentAttributeCode" min="2" max="3" validation="T1402" comment="Code specifying attributes of a piece of equipment"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="P0203" comment="If either EA02 or EA03 is present, then the other is required."/>
 </Segment>

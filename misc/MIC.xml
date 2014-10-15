@@ -36,10 +36,11 @@
   <Field name="YesNoConditionOrResponseCode1" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="TermsTypeCode" required="y" min="2" max="2" validation="T336" comment="Code identifying type of payment terms"/>
   <Field name="MortgageInsurancePremiumTypeCode" required="y" min="1" max="1" validation="T1098" comment="Code indicating the type of the initial mortgage insurance premium"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="PremiumSourceEntityCode" required="y" min="1" max="1" validation="T1657" comment="Code identifying the entity or entities responsible for payment of the premium"/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="ProductServiceId" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="YesNoConditionOrResponseCode3" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="YesNoConditionOrResponseCode4" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0708" comment="If either MIC07 or MIC08 is present, then the other is required."/>
 </Segment>

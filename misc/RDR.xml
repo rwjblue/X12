@@ -29,4 +29,5 @@
   <Field name="ReturnResponseReasonCode" required="y" min="2" max="2" validation="T1294" comment="Code indicating the response to a request to return items"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="E0203" comment="Only one of RDR02 or RDR03 may be present."/>
 </Segment>

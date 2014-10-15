@@ -31,4 +31,5 @@
   <Field name="MonthOfTheYearCode" min="2" max="2" validation="T1108" comment="Code identifying the month of the year"/>
   <Field name="Year" type="long" required="y" min="4" max="4" comment="Four position designation of the year expressed as CCYY"/>
   <Field name="TermsTypeCode" required="y" min="2" max="2" validation="T336" comment="Code identifying type of payment terms"/>
+  <Field name="NetAmountDue" type="N2" min="1" max="15" comment="Total charges to be paid by the receiver of this transaction set expressed in the standard monetary denomination for the currency specified"/>
 </Segment>

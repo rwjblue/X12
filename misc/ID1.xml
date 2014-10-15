@@ -43,7 +43,7 @@
   <Field name="Pack" type="long" required="y" min="1" max="6" comment="The number of inner containers, or number of eaches if there are no inner containers, per outer container"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
   <Field name="DateQualifier" required="y" min="2" max="2" validation="T432" comment="Code specifying type of date"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="NestingCode" required="y" min="1" max="1" validation="T814" comment="Code indicating orientation of exposure"/>
   <Field name="Nesting" type="double" required="y" min="1" max="6" comment="The amount of distance that one product fits into (or nests within) another product"/>
   <Field name="UnitOrBasisForMeasurementCode5" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
@@ -58,4 +58,16 @@
   <Field name="ReferenceIdentification3" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="XPeg3" type="double" required="y" min="1" max="6" comment="Horizontal distance from the edge to the center of the peg hole (measured from the left)"/>
   <Field name="YPeg3" type="double" required="y" min="1" max="6" comment="The vertical distance from the edge to the center of the peg hole as specified by the peg code"/>
+  <SyntaxNote name="R0102" comment="At least one of ID101 or ID102 is required."/>
+  <SyntaxNote name="P0203" comment="If either ID102 or ID103 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either ID111 or ID112 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either ID113 or ID114 is present, then the other is required."/>
+  <SyntaxNote name="P1920" comment="If either ID119 or ID120 is present, then the other is required."/>
+  <SyntaxNote name="P212223" comment="If either ID121, ID122 or ID123 are present, then the others are required."/>
+  <SyntaxNote name="P262728" comment="If either ID126, ID127 or ID128 are present, then the others are required."/>
+  <SyntaxNote name="C2625" comment="If ID126 is present, then ID125 is required."/>
+  <SyntaxNote name="P293031" comment="If either ID129, ID130 or ID131 are present, then the others are required."/>
+  <SyntaxNote name="C2925" comment="If ID129 is present, then ID125 is required."/>
+  <SyntaxNote name="P323334" comment="If either ID132, ID133 or ID134 are present, then the others are required."/>
+  <SyntaxNote name="C3225" comment="If ID132 is present, then ID125 is required."/>
 </Segment>

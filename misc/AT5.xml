@@ -30,4 +30,9 @@
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Temperature1" type="double" required="y" min="1" max="4" comment="Temperature"/>
   <Field name="Temperature2" type="double" required="y" min="1" max="4" comment="Temperature"/>
+  <SyntaxNote name="E0103" comment="Only one of AT501 or AT503 may be present."/>
+  <SyntaxNote name="E0203" comment="Only one of AT502 or AT503 may be present."/>
+  <SyntaxNote name="L040506" comment="If AT504 is present, then at least one of AT505 or AT506 is required."/>
+  <SyntaxNote name="C0504" comment="If AT505 is present, then AT504 is required."/>
+  <SyntaxNote name="C0604" comment="If AT506 is present, then AT504 is required."/>
 </Segment>

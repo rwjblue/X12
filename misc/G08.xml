@@ -28,4 +28,5 @@
   <Field name="QuantityOfPalletsReturned" type="long" required="y" min="1" max="3" comment="Number of pallets returned or exchanged"/>
   <Field name="QuantityContested" type="double" required="y" min="1" max="7" comment="Number of units representing any difference between quantity shipped and quantity received"/>
   <Field name="ReceivingConditionCode" required="y" min="2" max="2" validation="T412" comment="Code designating physical condition or status of units received in a specific shipment"/>
+  <SyntaxNote name="P0304" comment="If either G0803 or G0804 is present, then the other is required."/>
 </Segment>

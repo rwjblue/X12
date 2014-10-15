@@ -26,7 +26,7 @@
 <Segment name="B1" comment="To transmit identifying numbers, dates, and other basic data relating to the transaction set">
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="ShipmentIdentificationNumber" min="1" max="30" comment="Identification number assigned to the shipment by the shipper that uniquely identifies the shipment from origin to ultimate destination and is not subject to modification; (Does not contain blanks or special characters)"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ReservationActionCode" required="y" min="1" max="1" validation="T558" comment="Code identifying action on reservation or offering"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="ShipmentOrWorkAssignmentDeclineReasonCode" required="y" min="3" max="3" validation="T1658" comment="Code indicating the reason for declining a shipment or work assignment"/>

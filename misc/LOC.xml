@@ -48,4 +48,12 @@
   <Field name="ReferenceIdentificationQualifier3" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification5" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="Description3" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0607" comment="If either LOC06 or LOC07 is present, then the other is required."/>
+  <SyntaxNote name="C1110" comment="If LOC11 is present, then LOC10 is required."/>
+  <SyntaxNote name="C1312" comment="If LOC13 is present, then LOC12 is required."/>
+  <SyntaxNote name="C1514" comment="If LOC15 is present, then LOC14 is required."/>
+  <SyntaxNote name="C1716" comment="If LOC17 is present, then LOC16 is required."/>
+  <SyntaxNote name="C1918" comment="If LOC19 is present, then LOC18 is required."/>
+  <SyntaxNote name="C2120" comment="If LOC21 is present, then LOC20 is required."/>
+  <SyntaxNote name="P2223" comment="If either LOC22 or LOC23 is present, then the other is required."/>
 </Segment>

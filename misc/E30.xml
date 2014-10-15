@@ -33,4 +33,5 @@
   <Field name="NoteIdentificationNumber" type="long" required="y" min="1" max="6" comment="A number providing a reference to a segment or file which contains notes or comments related to X12 standards documentation"/>
   <Field name="DataElementReferenceNumber2" type="long" required="y" min="1" max="4" comment="Reference number used to locate the data element in the Data Element Dictionary"/>
   <Field name="CodeListReference" required="y" min="1" max="6" comment="The reference to the code list table for the electronic form"/>
+  <SyntaxNote name="P0809" comment="If either E3008 or E3009 is present, then the other is required."/>
 </Segment>

@@ -25,9 +25,9 @@
 
 <Segment name="P1" comment="To specify the pick-up details including time, date, and equipment">
   <Field name="PickUpOrDeliveryCode" required="y" min="1" max="2" validation="T108" comment="Specifies the location or type of pickup or delivery"/>
-  <Field name="PickUpDate" min="8" max="8" comment="Date the carrier picks up the shipment from the shipper or supplier expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="PickUpDate" type="date" min="8" max="8" comment="Date the carrier picks up the shipment from the shipper or supplier expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="DateTimeQualifier" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
-  <Field name="PickUpTime" required="y" min="4" max="4" comment="Time (HHMM) that the carrier is to pick up the shipment"/>
+  <Field name="PickUpTime" type="time" required="y" min="4" max="4" comment="Time (HHMM) that the carrier is to pick up the shipment"/>
   <Field name="EquipmentInitial" required="y" min="1" max="4" comment="Prefix or alphabetic part of an equipment unit's identifying number"/>
   <Field name="EquipmentNumber" required="y" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
   <Field name="NumberOfShipments" type="long" required="y" min="1" max="5" comment="Total number of shipments on this transaction"/>

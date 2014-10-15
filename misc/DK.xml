@@ -30,8 +30,8 @@
   <Field name="RevisionNumber" type="long" min="1" max="4" comment="A number which indicates the chronological sequence of revisions and updates to a ratemaking docket"/>
   <Field name="ConveyanceCode" required="y" min="1" max="1" validation="T692" comment="Code indicating rate application"/>
   <Field name="DocketTypeCode" required="y" min="1" max="1" validation="T693" comment="Code indicating the revenue construction of a freight rate"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ApplicationType" required="y" min="2" max="2" validation="T346" comment="Code identifying an application"/>
   <Field name="GroupTitle" required="y" min="2" max="30" comment="The descriptive title of a data group"/>
 </Segment>

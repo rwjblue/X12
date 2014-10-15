@@ -30,4 +30,7 @@
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="ChangeTypeCode" required="y" min="1" max="1" validation="T259" comment="Code indicating change type"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="C0302" comment="If DRT03 is present, then DRT02 is required."/>
+  <SyntaxNote name="E0304" comment="Only one of DRT03 or DRT04 may be present."/>
+  <SyntaxNote name="C0402" comment="If DRT04 is present, then DRT02 is required."/>
 </Segment>

@@ -30,4 +30,5 @@
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="ProviderSpecialtyInformation" type="C035" required="y" min="0" max="inf" comment="To provide provider specialty information"/>
   <Field name="ProviderOrganizationCode" required="y" min="3" max="3" validation="T1223" comment="Code identifying the organizational structure of a provider"/>
+  <SyntaxNote name="P0203" comment="If either PRV02 or PRV03 is present, then the other is required."/>
 </Segment>

@@ -26,9 +26,9 @@
 <Segment name="Q2" comment="To transmit identifying information relative to identification of vessel, transportation dates, lading quantity, weight, and cube">
   <Field name="VesselCode" required="y" min="1" max="8" comment="Code identifying vessel"/>
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date3" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date3" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="LadingQuantity" type="long" required="y" min="1" max="7" comment="Number of units (pieces) of the lading commodity"/>
   <Field name="Weight" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
   <Field name="WeightQualifier" required="y" min="1" max="2" validation="T187" comment="Code defining the type of weight"/>
@@ -40,4 +40,7 @@
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="VolumeUnitQualifier" required="y" min="1" max="1" validation="T184" comment="Code identifying the volume unit"/>
   <Field name="WeightUnitCode" required="y" min="1" max="1" validation="T188" comment="Code specifying the weight unit"/>
+  <SyntaxNote name="P070816" comment="If either Q207, Q208 or Q216 are present, then the others are required."/>
+  <SyntaxNote name="C1011" comment="If Q210 is present, then Q211 is required."/>
+  <SyntaxNote name="P1415" comment="If either Q214 or Q215 is present, then the other is required."/>
 </Segment>

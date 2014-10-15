@@ -24,13 +24,14 @@
 -->
 
 <Segment name="F01" comment="To identify a loss or damage claim">
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ReferenceIdentification" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-  <Field name="Amount" type="double" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" min="1" max="15" comment="Monetary amount"/>
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="SupportingEvidenceCode" min="1" max="1" validation="T544" comment="Code indicating whether documents are provided to support evidence to a loss or damage claim"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
   <Field name="ExchangeRate" type="double" required="y" min="4" max="10" comment="Value to be used as a multiplier conversion factor to convert monetary value from one currency to another"/>
   <Field name="IdentificationCodeQualifier" required="y" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>
   <Field name="IdentificationCode" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
+  <SyntaxNote name="P0809" comment="If either F0108 or F0109 is present, then the other is required."/>
 </Segment>

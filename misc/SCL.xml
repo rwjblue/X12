@@ -34,4 +34,8 @@
   <Field name="TariffAddOnFactor" type="double" required="y" min="1" max="6" comment="Rate Basis Add-on factor"/>
   <Field name="TariffClassAdjustmentReference1" required="y" min="1" max="6" comment="Reference number used by some carriers to indicate another table or pointer used for class adjustments; reference number will appear in the rates and class adjustments sections of the tariff so that the two sections can be cross referenced"/>
   <Field name="TariffClassAdjustmentReference2" required="y" min="1" max="6" comment="Reference number used by some carriers to indicate another table or pointer used for class adjustments; reference number will appear in the rates and class adjustments sections of the tariff so that the two sections can be cross referenced"/>
+  <SyntaxNote name="C0302" comment="If SCL03 is present, then SCL02 is required."/>
+  <SyntaxNote name="C0504" comment="If SCL05 is present, then SCL04 is required."/>
+  <SyntaxNote name="C0605" comment="If SCL06 is present, then SCL05 is required."/>
+  <SyntaxNote name="C0704" comment="If SCL07 is present, then SCL04 is required."/>
 </Segment>

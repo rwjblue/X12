@@ -31,4 +31,7 @@
   <Field name="Description2" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="TaxServicePaymentCode" required="y" min="1" max="1" validation="T1719" comment="Code identifying the tax payment requirements of a taxing authority"/>
   <Field name="StatusCode" required="y" min="2" max="2" validation="T546" comment="Code identifying the status of a business transaction, such as a claim, policy, real estate, or securities transaction"/>
+  <SyntaxNote name="P0102" comment="If either TA01 or TA02 is present, then the other is required."/>
+  <SyntaxNote name="R0203" comment="At least one of TA02 or TA03 is required."/>
+  <SyntaxNote name="P0405" comment="If either TA04 or TA05 is present, then the other is required."/>
 </Segment>

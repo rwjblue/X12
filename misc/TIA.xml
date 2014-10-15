@@ -31,4 +31,7 @@
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="MonetaryAmount2" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
+  <SyntaxNote name="R0203040607" comment="At least one of TIA02, TIA03, TIA04, TIA06 or TIA07 is required."/>
+  <SyntaxNote name="C0504" comment="If TIA05 is present, then TIA04 is required."/>
+  <SyntaxNote name="E0607" comment="Only one of TIA06 or TIA07 may be present."/>
 </Segment>

@@ -29,4 +29,5 @@
   <Field name="PackagingCode" required="y" min="3" max="5" validation="T103.2" comment="Code identifying the type of packaging; Part 1: Packaging Form, Part 2: Packaging Material; if the Data Element is used, then Part 1 is always required"/>
   <Field name="Size" type="double" required="y" min="1" max="8" comment="Size of supplier units in pack"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="C0504" comment="If CLD05 is present, then CLD04 is required."/>
 </Segment>

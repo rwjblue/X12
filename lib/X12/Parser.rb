@@ -34,7 +34,6 @@ module X12
   # Main class for creating X12 parsers and factories.
 
   class Parser
-
     # These constitute prohibited file names under Microsoft
     MS_DEVICES = [   
                   'CON',
@@ -53,92 +52,95 @@ module X12
 
     # Creates a parser out of a definition
     def initialize(file_name)
-      save_definition = @x12_definition
-
-      # Deal with Microsoft devices
-      base_name = File.basename(file_name, '.xml')
-      if MS_DEVICES.find{|i| i == base_name}
-        file_name = File.join(File.dirname, "#{base_name}_.xml")
-      end
       #puts "Reading definition from #{file_name}"
+      file_name = cleanup_file_name(file_name)
 
       # Read and parse the definition
-      str = File.open(file_name, 'r').read
-      @dir_name = File.dirname(File.expand_path(file_name)) # to look up other files if needed
-      @x12_definition = X12::XMLDefinitions.new(str)
+      @local_cache = X12::XMLDefinitions.new(File.open(file_name, 'r').read)
 
       # Populate fields in all segments found in all the loops
-      @x12_definition[X12::Loop].each_pair{|k, v|
+      @local_cache[X12::Loop].each_pair{ |k, v|
         #puts "Populating definitions for loop #{k}"
-        process_loop(v)
-      } if @x12_definition[X12::Loop]
-
-      # Merge the newly parsed definition into a saved one, if any.
-      if save_definition
-        @x12_definition.keys.each{|t|
-          save_definition[t] ||= {}
-          @x12_definition[t].keys.each{|u|
-            save_definition[t][u] = @x12_definition[t][u] 
-          }
-          @x12_definition = save_definition
-        }
-      end
-
-      #puts PP.pp(self, '')
+        resolve_dependencies(v)
+      } if @local_cache[X12::Loop]
     end # initialize
 
     # Parse a loop of a given name out of a string. Throws an exception if the loop name is not defined.
     def parse(loop_name, str)
-      loop = @x12_definition[X12::Loop][loop_name]
-      #puts "Loops to parse #{@x12_definition[X12::Loop].keys}"
-      throw Exception.new("Cannot find a definition for loop #{loop_name}") unless loop
+      loop = @local_cache[X12::Loop][loop_name]
+      #puts "Loops to parse #{@local_cache[X12::Loop].keys}"
+      throw Exception.new("Cannot find a definition for #{loop_name}") unless loop
       loop = loop.dup
       loop.parse(str)
       return loop
     end # parse
 
     # Make an empty loop to be filled out with information
-    def factory(loop_name)
-      loop = @x12_definition[X12::Loop][loop_name]
-      throw Exception.new("Cannot find a definition for loop #{loop_name}") unless loop
-      loop = loop.dup
-      return loop
+    def factory(name, klass = X12::Loop)
+      definition = @local_cache[klass][name]
+      throw Exception.new("Cannot find a definition for #{name}") if definition.nil?
+      return definition.dup
     end # factory
 
     private
 
-    # Recursively scan the loop and instantiate fields' definitions for all its
-    # segments
-    def process_loop(loop)
-      loop.nodes.each{|i|
-        case i
-          when X12::Loop    then process_loop(i)
-          when X12::Segment then process_segment(i) unless i.nodes.size > 0
-          else return
-        end
-      }
+    def self.get_file(file_name)
+      @@cache ||= {}
+      @@cache[file_name] ||= new(file_name)
+      @@cache[file_name]
     end
 
-    # Instantiate segment's fields as previously defined
-    def process_segment(segment)
-      #puts "Trying to process segment #{segment.inspect}"
-      unless @x12_definition[X12::Segment] && @x12_definition[X12::Segment][segment.name]
-        # Try to find it in a separate file if missing from the @x12_definition structure
-        initialize(File.join(@dir_name, segment.name+'.xml'))
-        segment_definition = @x12_definition[X12::Segment][segment.name]
-        throw Exception.new("Cannot find a definition for segment #{segment.name}") unless segment_definition
-      else
-        segment_definition = @x12_definition[X12::Segment][segment.name]
+    def cleanup_file_name(file_name)
+      # Deal with Microsoft devices
+      base_name = File.basename(file_name, '.xml')
+      if MS_DEVICES.include?(base_name) then
+        file_name = File.join(File.dirname, "#{base_name}_.xml")
       end
-      segment_definition.nodes.each_index{|i|
-        segment.nodes[i] = segment_definition.nodes[i] 
-        # Make sure we have the validation table if any for this field. Try to read one in if missing.
-        table = segment.nodes[i].validation
-        if table
-          unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
-            initialize(File.join(@dir_name, table+'.xml'))
-            throw Exception.new("Cannot find a definition for table #{table}") unless @x12_definition[X12::Table] && @x12_definition[X12::Table][table]
+
+      # If just the file name is given and it is not actually present, fall back to the library files
+      if File.dirname(file_name) == '.' && !File.readable?(file_name) then
+        file_name = File.join(File.dirname(__FILE__), '..', '..', 'misc', File.basename(file_name))
+      end
+
+      file_name
+    end
+
+    def get_definition(klass, name)
+      definition = @local_cache[klass] && @local_cache[klass][name]
+
+      if definition.nil? then # If not found, attempt to load from the library file
+        definition = X12::Parser.get_file(name + '.xml').factory(name, klass)
+        throw Exception.new("Cannot find a definition for #{name}") if definition.nil?
+      end
+
+      definition
+    end
+
+    # Populate the nodes of the current object 
+    def populate_nodes_from_library(obj)
+      get_definition(obj.class, obj.name).nodes.each_with_index { |node, i| obj.nodes[i] = node }
+      obj
+    end
+
+    # Recursively scan the loop and instantiate fields' definitions for all its segments
+    def resolve_dependencies(loop)
+      #puts "Trying to process loop #{loop.inspect}"
+      populate_nodes_from_library(loop) if loop.nodes.empty?
+
+      loop.nodes.each { |node|
+        case node
+        when X12::Loop    then
+          resolve_dependencies(node)
+        when X12::Segment then
+          if node.nodes.empty? then
+            populate_nodes_from_library(node) 
+            node.apply_overrides
           end
+
+          node.nodes.each { |n|
+            # Make sure we have the validation table if any for this field. Try to read one in if missing.
+            n.set_validation_table(get_definition(X12::Table, n.validation)) if n.validation
+          }
         end
       }
     end

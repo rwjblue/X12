@@ -35,4 +35,11 @@
   <Field name="AgencyQualifierCode3" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="SourceSubqualifier3" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
   <Field name="SeverityConditionCode" required="y" min="1" max="2" validation="T1234" comment="Code specifying the severity or urgency of the condition causing a repair, a service notification, or a product recall"/>
+  <SyntaxNote name="C0204" comment="If PRR02 is present, then PRR04 is required."/>
+  <SyntaxNote name="C0302" comment="If PRR03 is present, then PRR02 is required."/>
+  <SyntaxNote name="R0405" comment="At least one of PRR04 or PRR05 is required."/>
+  <SyntaxNote name="C0608" comment="If PRR06 is present, then PRR08 is required."/>
+  <SyntaxNote name="C0706" comment="If PRR07 is present, then PRR06 is required."/>
+  <SyntaxNote name="C0911" comment="If PRR09 is present, then PRR11 is required."/>
+  <SyntaxNote name="C1009" comment="If PRR10 is present, then PRR09 is required."/>
 </Segment>

@@ -37,4 +37,8 @@
   <Field name="Temperature3" type="double" required="y" min="1" max="4" comment="Temperature"/>
   <Field name="WeightUnitCode" required="y" min="1" max="1" validation="T188" comment="Code specifying the weight unit"/>
   <Field name="NetExplosiveQuantity" type="long" required="y" min="1" max="10" comment="Net weight of the explosive quantity of the hazardous commodity"/>
+  <SyntaxNote name="P0607" comment="If either LH206 or LH207 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either LH208 or LH209 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either LH210 or LH211 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either LH212 or LH213 is present, then the other is required."/>
 </Segment>

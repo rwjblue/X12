@@ -25,8 +25,8 @@
 
 <Segment name="BCM" comment="To indicate the beginning of the contractor cost data reports and transmit identifying numbers, descriptions, action codes, program and contract type, funding identification, and security level">
   <Field name="TransactionSetPurposeCode" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ContractNumber" required="y" min="1" max="30" comment="Contract number"/>
   <Field name="FreeFormDescription1" required="y" min="1" max="45" comment="Free-form descriptive text"/>
   <Field name="ContractActionCode" required="y" min="2" max="2" validation="T1308" comment="Code identifying the expected resultant type of contract action or current type of contract action"/>
@@ -36,4 +36,5 @@
   <Field name="ContractTypeCode" required="y" min="2" max="2" validation="T1166" comment="Code identifying a contract type"/>
   <Field name="SecurityLevelCode" required="y" min="2" max="2" validation="T786" comment="Code indicating the level of confidentiality assigned by the sender to the information following"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
+  <SyntaxNote name="R0405" comment="At least one of BCM04 or BCM05 is required."/>
 </Segment>

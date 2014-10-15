@@ -35,4 +35,7 @@
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="ProductDescriptionCode" required="y" min="1" max="12" comment="A code from an industry code list which provides specific data about a product characteristic"/>
   <Field name="SourceSubqualifier" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
+  <SyntaxNote name="P0203" comment="If either SPA02 or SPA03 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either SPA04 or SPA05 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either SPA09 or SPA10 is present, then the other is required."/>
 </Segment>

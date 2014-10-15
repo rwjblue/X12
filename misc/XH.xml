@@ -27,8 +27,8 @@
   <Field name="CurrencyCode" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
   <Field name="RelatedCompanyIndicationCode" required="y" min="1" max="1" validation="T645" comment="Code indicating parties to a transaction"/>
   <Field name="SpecialChargeOrAllowanceCode" required="y" min="3" max="3" validation="T150" comment="Code identifying type of special charge or allowance"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Block20Code" required="y" min="1" max="1" validation="T503" comment="Code defining Block 20 characteristics"/>
-  <Field name="ChemicalAnalysisPercentage" type="double" required="y" min="2" max="9" comment="Chemical analysis percentage"/>
+  <Field name="ChemicalAnalysisPercentage" type="N2" required="y" min="2" max="9" comment="Chemical analysis percentage"/>
   <Field name="UnitPrice" type="double" required="y" min="1" max="17" comment="Price per unit of product, service, commodity, etc."/>
 </Segment>

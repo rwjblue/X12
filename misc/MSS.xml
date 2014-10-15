@@ -31,4 +31,6 @@
   <Field name="ChangeTypeCode" required="y" min="1" max="1" validation="T259" comment="Code indicating change type"/>
   <Field name="ReportSectionNumber" required="y" min="1" max="15" comment="Number identifying a specified section or subsection of a report"/>
   <Field name="SafetyCharacteristicHazardCode" required="y" min="3" max="3" validation="T821" comment="Code indicating precautionary measures, means of treatment and hazard information and warnings"/>
+  <SyntaxNote name="R010206" comment="At least one of MSS01, MSS02 or MSS06 is required."/>
+  <SyntaxNote name="E0107" comment="Only one of MSS01 or MSS07 may be present."/>
 </Segment>

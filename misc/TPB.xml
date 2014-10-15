@@ -28,4 +28,7 @@
   <Field name="FreeFormMessageText" required="y" min="1" max="264" comment="Free-form message text"/>
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="SourceSubqualifier" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
+  <SyntaxNote name="R0102" comment="At least one of TPB01 or TPB02 is required."/>
+  <SyntaxNote name="C0301" comment="If TPB03 is present, then TPB01 is required."/>
+  <SyntaxNote name="C0403" comment="If TPB04 is present, then TPB03 is required."/>
 </Segment>

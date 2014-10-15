@@ -27,4 +27,5 @@
   <Field name="InvestorReportingActionCode" min="2" max="2" validation="T1376" comment="Code identifying the type of investor reporting action that was needed"/>
   <Field name="DateTimePeriodFormatQualifier" required="y" min="2" max="3" validation="T1250" comment="Code indicating the date format, time format, or date and time format"/>
   <Field name="DateTimePeriod" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
+  <SyntaxNote name="P0203" comment="If either IRA02 or IRA03 is present, then the other is required."/>
 </Segment>

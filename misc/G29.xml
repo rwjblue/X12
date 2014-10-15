@@ -27,4 +27,5 @@
   <Field name="DisplayTypeCode" min="1" max="2" validation="T1520" comment="Code indicating the type of displays"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="P0203" comment="If either G2902 or G2903 is present, then the other is required."/>
 </Segment>

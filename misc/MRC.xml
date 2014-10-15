@@ -33,4 +33,6 @@
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="ContactMethodCode3" required="y" min="1" max="1" validation="T1079" comment="Code indicating the type of contact"/>
   <Field name="Quantity3" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="P0607" comment="If either MRC06 or MRC07 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either MRC08 or MRC09 is present, then the other is required."/>
 </Segment>

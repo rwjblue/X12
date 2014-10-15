@@ -32,4 +32,6 @@
   <Field name="UPCEanConsumerPackageCode" required="y" min="12" max="12" comment="Code (Universal Product Code - U.P.C.) identifying the retail shelf unit; consists of 2 high order digits identifying the system (U.S. Grocery = 00, 06 or 07, U.S. Drug = 03); the next ten digits are manufacturer ID: 5, Item ID: 5"/>
   <Field name="ProductServiceIdQualifier" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="P0102" comment="If either G5101 or G5102 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either G5107 or G5108 is present, then the other is required."/>
 </Segment>

@@ -27,7 +27,7 @@
   <Field name="TransactionTypeCode" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
   <Field name="ReferenceIdentificationQualifier" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="Week" type="long" min="6" max="6" comment="Week expressed as year/week (CCYYWW), where week is a number between 01 and 53 inclusive"/>
   <Field name="MarketAreaCodeQualifier" required="y" min="1" max="3" validation="T771" comment="Code qualifying the identifier represented in &quot;Market Area Code Identifier (767)&quot;"/>
   <Field name="MarketAreaCodeIdentifier" required="y" min="1" max="13" comment="A unique identification of a market area"/>
@@ -35,4 +35,5 @@
   <Field name="MarketProfile" required="y" min="1" max="8" comment="Indicates a specific market group"/>
   <Field name="ContractNumber" required="y" min="1" max="30" comment="Contract number"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
+  <SyntaxNote name="P0607" comment="If either CMA06 or CMA07 is present, then the other is required."/>
 </Segment>

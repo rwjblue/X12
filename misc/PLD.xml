@@ -28,4 +28,5 @@
   <Field name="PalletExchangeCode" required="y" min="1" max="1" validation="T399" comment="Code specifying pallet exchange instructions"/>
   <Field name="WeightUnitCode" required="y" min="1" max="1" validation="T188" comment="Code specifying the weight unit"/>
   <Field name="Weight" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
+  <SyntaxNote name="P0304" comment="If either PLD03 or PLD04 is present, then the other is required."/>
 </Segment>

@@ -30,4 +30,7 @@
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="UnitOrBasisForMeasurementCode2" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="OrderSizingFactor" type="double" required="y" min="1" max="10" comment="A product specification other than gross or net weight, or cubic feet for a line item or transaction used for order sizing and pricing purposes"/>
+  <SyntaxNote name="P0203" comment="If either W7602 or W7603 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either W7604 or W7605 is present, then the other is required."/>
+  <SyntaxNote name="C0603" comment="If W7606 is present, then W7603 is required."/>
 </Segment>

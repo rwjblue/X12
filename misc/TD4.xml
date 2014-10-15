@@ -29,4 +29,6 @@
   <Field name="HazardousMaterialClassCode" required="y" min="1" max="4" comment="Code specifying the kind of hazard for a material"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="R010204" comment="At least one of TD401, TD402 or TD404 is required."/>
+  <SyntaxNote name="C0203" comment="If TD402 is present, then TD403 is required."/>
 </Segment>

@@ -30,4 +30,6 @@
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="CodeForLicensingCertificationRegistrationOrAccreditationAgency" required="y" min="1" max="2" validation="T83" comment="Code identifying a licensing, certification, registration, or accreditation agency."/>
+  <SyntaxNote name="P0102" comment="If either HPL01 or HPL02 is present, then the other is required."/>
+  <SyntaxNote name="R0206" comment="At least one of HPL02 or HPL06 is required."/>
 </Segment>

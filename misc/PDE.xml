@@ -28,4 +28,5 @@
   <Field name="DirectionIdentifierCode" required="y" min="1" max="1" validation="T1280" comment="Code identifying geographic direction"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="MeasurementValue" type="double" required="y" min="1" max="20" comment="The value of the measurement"/>
+  <SyntaxNote name="P0304" comment="If either PDE03 or PDE04 is present, then the other is required."/>
 </Segment>

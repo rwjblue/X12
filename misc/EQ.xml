@@ -28,4 +28,5 @@
   <Field name="CompositeMedicalProcedureIdentifier" type="C003" required="n" min="0" max="inf" comment="To identify a medical procedure by its standardized codes and applicable modifiers"/>
   <Field name="CoverageLevelCode" required="n" min="3" max="3" validation="T1207" comment="Code indicating the level of coverage being provided for this insured"/>
   <Field name="InsuranceTypeCode" required="n" min="1" max="3" validation="T1336" comment="Code identifying the type of insurance policy within a specific insurance program"/>
+  <SyntaxNote name="R0102" comment="At least one of EQ01 or EQ02 is required."/>
 </Segment>

@@ -36,4 +36,7 @@
   <Field name="QuantityQualifier" required="y" min="2" max="2" validation="T673" comment="Code specifying the type of quantity"/>
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="P0304" comment="If either LN203 or LN204 is present, then the other is required."/>
+  <SyntaxNote name="C1110" comment="If LN211 is present, then LN210 is required."/>
+  <SyntaxNote name="C1210" comment="If LN212 is present, then LN210 is required."/>
 </Segment>

@@ -38,4 +38,10 @@
   <Field name="ShipmentOrderStatusCode" required="y" min="2" max="2" validation="T368" comment="Code indicating the status of an order or shipment or the disposition of any difference between the quantity ordered and the quantity shipped for a line item or transaction"/>
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="R0102" comment="At least one of SHD01 or SHD02 is required."/>
+  <SyntaxNote name="C0103" comment="If SHD01 is present, then SHD03 is required."/>
+  <SyntaxNote name="C0203" comment="If SHD02 is present, then SHD03 is required."/>
+  <SyntaxNote name="P0405" comment="If either SHD04 or SHD05 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either SHD06 or SHD07 is present, then the other is required."/>
+  <SyntaxNote name="C1314" comment="If SHD13 is present, then SHD14 is required."/>
 </Segment>

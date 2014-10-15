@@ -40,4 +40,8 @@
   <Field name="BlockLength" type="double" required="y" min="1" max="5" comment="Quantity of data elements in a block, usually specified in units such as records, words or characters; synonym for &quot;block size&quot;"/>
   <Field name="VersionIdentifier4" required="y" min="1" max="30" comment="Revision level of a particular format, program, technique or algorithm"/>
   <Field name="FilterIdCode" required="y" min="3" max="3" validation="T1570" comment="Code specifying the type of filter used to convert data code values"/>
+  <SyntaxNote name="C0504" comment="If EFI05 is present, then EFI04 is required."/>
+  <SyntaxNote name="C0706" comment="If EFI07 is present, then EFI06 is required."/>
+  <SyntaxNote name="C0908" comment="If EFI09 is present, then EFI08 is required."/>
+  <SyntaxNote name="P1516" comment="If either EFI15 or EFI16 is present, then the other is required."/>
 </Segment>

@@ -29,9 +29,11 @@
   <Field name="EventCode" min="3" max="3" validation="T304" comment="Code identifying the event about which a report is made"/>
   <Field name="DateTimePeriodFormatQualifier" required="y" min="2" max="3" validation="T1250" comment="Code indicating the date format, time format, or date and time format"/>
   <Field name="DateTimePeriod" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
-  <Field name="Time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <Field name="Time" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="NumberOfDays" type="long" required="y" min="1" max="3" comment="Count of Days"/>
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="InterchangeTrainIdentification" required="y" min="1" max="10" comment="Train identification (free-form)"/>
   <Field name="BlockIdentification" required="y" min="1" max="12" comment="Identifier for a block of cars"/>
+  <SyntaxNote name="P0405" comment="If either ISC04 or ISC05 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either ISC11 or ISC12 is present, then the other is required."/>
 </Segment>

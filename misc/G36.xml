@@ -26,6 +26,6 @@
 <Segment name="G36" comment="To provide price list references and descriptions">
   <Field name="PriceListNumber" min="1" max="16" comment="Identification number assigned by a vendor to a price list"/>
   <Field name="PriceListIssueNumber" required="y" min="1" max="16" comment="Number assigned to revised or new issues of a price list"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="PriceConditionAppliesCode" required="y" min="3" max="3" validation="T291" comment="Code indicating whether price conditions apply to a price change"/>
 </Segment>

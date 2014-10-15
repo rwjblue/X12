@@ -34,4 +34,9 @@
   <Field name="UnitOrBasisForMeasurementCode1" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="UnitOrBasisForMeasurementCode2" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="C0102" comment="If TD101 is present, then TD102 is required."/>
+  <SyntaxNote name="C0304" comment="If TD103 is present, then TD104 is required."/>
+  <SyntaxNote name="C0607" comment="If TD106 is present, then TD107 is required."/>
+  <SyntaxNote name="P0708" comment="If either TD107 or TD108 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either TD109 or TD110 is present, then the other is required."/>
 </Segment>

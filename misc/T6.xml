@@ -31,4 +31,6 @@
   <Field name="FreightRate2" type="double" required="y" min="1" max="9" comment="Rate that applies to the specific commodity"/>
   <Field name="RateValueQualifier2" required="y" min="2" max="2" validation="T122" comment="Code qualifying how to extend charges or interpret value"/>
   <Field name="CityName2" required="y" min="2" max="30" comment="Free-form text for city name"/>
+  <SyntaxNote name="P0203" comment="If either T602 or T603 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either T605 or T606 is present, then the other is required."/>
 </Segment>

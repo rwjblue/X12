@@ -30,6 +30,8 @@
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="IdentificationCodeQualifier" required="y" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>
   <Field name="IdentificationCode" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="NameControlIdentifier" required="y" min="1" max="4" comment="Name control field for tax information consisting of the first four characters of a business name or of an individual's name, or the entire name, if fewer than four characters"/>
+  <SyntaxNote name="P0304" comment="If either TFS03 or TFS04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either TFS05 or TFS06 is present, then the other is required."/>
 </Segment>

@@ -32,4 +32,5 @@
   <Field name="UnitOrBasisForMeasurementCode2" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="ReturnableContainerLoadMakeUpCode" required="y" min="1" max="2" validation="T728" comment="Code identifying the load make-up of the returnable containers in the shipment"/>
   <Field name="LineItemStatusCode" required="y" min="2" max="2" validation="T668" comment="Code specifying the action taken by the seller on a line item requested by the buyer"/>
+  <SyntaxNote name="P0506" comment="If either SN105 or SN106 is present, then the other is required."/>
 </Segment>

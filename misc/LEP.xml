@@ -28,4 +28,5 @@
   <Field name="WasteCharacteristicsCode" required="y" min="12" max="16" comment="Waste characteristics as defined by regulatory requirements"/>
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0304" comment="If either LEP03 or LEP04 is present, then the other is required."/>
 </Segment>

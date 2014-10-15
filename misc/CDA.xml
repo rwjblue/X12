@@ -46,4 +46,11 @@
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="MaintenanceTypeCode" required="y" min="3" max="3" validation="T875" comment="Code identifying the specific type of item maintenance"/>
   <Field name="StatusCode" required="y" min="2" max="2" validation="T546" comment="Code identifying the status of a business transaction, such as a claim, policy, real estate, or securities transaction"/>
+  <SyntaxNote name="L101112131415" comment="If CDA10 is present, then at least one of CDA11, CDA12, CDA13, CDA14 or CDA15 is required."/>
+  <SyntaxNote name="C1110" comment="If CDA11 is present, then CDA10 is required."/>
+  <SyntaxNote name="C1210" comment="If CDA12 is present, then CDA10 is required."/>
+  <SyntaxNote name="C1310" comment="If CDA13 is present, then CDA10 is required."/>
+  <SyntaxNote name="C1410" comment="If CDA14 is present, then CDA10 is required."/>
+  <SyntaxNote name="C1510" comment="If CDA15 is present, then CDA10 is required."/>
+  <SyntaxNote name="C1905" comment="If CDA19 is present, then CDA05 is required."/>
 </Segment>

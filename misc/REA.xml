@@ -26,9 +26,9 @@
 <Segment name="REA" comment="To provide a description of real estate or general property information">
   <Field name="CompositeTypeOfRealEstateAssetCode" type="C047" min="0" max="inf" comment="To identify one or more real estate asset attributes"/>
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="PropertyOwnershipRightsCode" required="y" min="1" max="1" validation="T1078" comment="Code identifying legal basis for property ownership or residence status"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="StatusOfPlansForRealEstateAssetCode" required="y" min="1" max="1" validation="T1075" comment="Code identifying plans for real estate"/>
   <Field name="DateTimePeriodFormatQualifier" required="y" min="2" max="3" validation="T1250" comment="Code indicating the date format, time format, or date and time format"/>
   <Field name="DateTimePeriod" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
@@ -38,4 +38,6 @@
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="TypeOfResidenceCode" required="y" min="1" max="1" validation="T1070" comment="Code identifying type of residence"/>
   <Field name="ConditionIndicator" required="y" min="2" max="3" validation="T1321" comment="Code indicating a condition"/>
+  <SyntaxNote name="P0708" comment="If either REA07 or REA08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either REA09 or REA10 is present, then the other is required."/>
 </Segment>

@@ -42,4 +42,5 @@
   <Field name="TermsTypeCode2" required="y" min="2" max="2" validation="T336" comment="Code identifying type of payment terms"/>
   <Field name="YesNoConditionOrResponseCode1" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0405" comment="If either CS04 or CS05 is present, then the other is required."/>
 </Segment>

@@ -29,4 +29,5 @@
   <Field name="ProductServiceId" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="ProgramTypeCode" required="y" min="2" max="2" validation="T1193" comment="Codes identifying a program type"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P0203" comment="If either DLV02 or DLV03 is present, then the other is required."/>
 </Segment>

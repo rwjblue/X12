@@ -31,8 +31,12 @@
   <Field name="WeightQualifier" required="y" min="1" max="2" validation="T187" comment="Code defining the type of weight"/>
   <Field name="FreightRate" type="double" required="y" min="1" max="9" comment="Rate that applies to the specific commodity"/>
   <Field name="RateValueQualifier" required="y" min="2" max="2" validation="T122" comment="Code qualifying how to extend charges or interpret value"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="SpecialChargeOrAllowanceCode" required="y" min="3" max="3" validation="T150" comment="Code identifying type of special charge or allowance"/>
   <Field name="SpecialChargeDescription" required="y" min="2" max="25" comment="Identification of special charge; this data element is used whenever an applicable code cannot be found in data element 150"/>
   <Field name="ChargeMethodOfPayment" required="y" min="1" max="1" validation="T16" comment="Code defining method of payment"/>
+  <SyntaxNote name="P0102" comment="If either L801 or L802 is present, then the other is required."/>
+  <SyntaxNote name="P030405" comment="If either L803, L804 or L805 are present, then the others are required."/>
+  <SyntaxNote name="P0607" comment="If either L806 or L807 is present, then the other is required."/>
+  <SyntaxNote name="C0908" comment="If L809 is present, then L808 is required."/>
 </Segment>

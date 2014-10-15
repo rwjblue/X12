@@ -37,4 +37,10 @@
   <Field name="LocationIdentifier5" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="TaxExemptCode" required="y" min="1" max="1" validation="T441" comment="Code identifying exemption status from sales and use tax"/>
   <Field name="CustomsEntryTypeGroupCode" required="y" min="1" max="1" validation="T1179" comment="Code identifying a group of entry types as filed with U.S. Customs when goods enter the country"/>
+  <SyntaxNote name="R0103" comment="At least one of TAX01 or TAX03 is required."/>
+  <SyntaxNote name="P0203" comment="If either TAX02 or TAX03 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either TAX04 or TAX05 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either TAX06 or TAX07 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either TAX08 or TAX09 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either TAX10 or TAX11 is present, then the other is required."/>
 </Segment>

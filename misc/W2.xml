@@ -32,7 +32,7 @@
   <Field name="NetTons" type="long" required="y" min="1" max="3" comment="Net weight in tons"/>
   <Field name="IntermodalServiceCode" required="y" min="1" max="2" comment="Code identifying the Intermodal Service Plan"/>
   <Field name="CarServiceOrderCode" required="y" min="3" max="5" validation="T240" comment="Code specifying car service order"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TypeOfLocomotiveMaintenanceCode" required="y" min="2" max="2" comment="Value defining locomotive maintenance schedule"/>
   <Field name="EquipmentInitial2" required="y" min="1" max="4" comment="Prefix or alphabetic part of an equipment unit's identifying number"/>
   <Field name="EquipmentNumber2" required="y" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
@@ -40,4 +40,6 @@
   <Field name="Position" required="y" min="1" max="3" comment="Relative position of shipment in car, trailer, or container (mutually defined)"/>
   <Field name="CarTypeCode" required="y" min="1" max="4" comment="Code specifying type of rail car or intermodal equipment type and its general characteristics"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0910" comment="If either W209 or W210 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either W211 or W212 is present, then the other is required."/>
 </Segment>

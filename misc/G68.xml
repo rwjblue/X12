@@ -33,10 +33,14 @@
   <Field name="ProductServiceIdQualifier2" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId2" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="PriceBracketIdentifier" required="y" min="1" max="3" comment="Identifier assigned by the vendor for a specific price bracket"/>
-  <Field name="QuantityCost" type="double" required="y" min="1" max="9" comment="Cost per unit as expressed in the associated data element 355 (Unit of Measure) whenever unit is different than the quantity ordered"/>
+  <Field name="QuantityCost" type="N4" required="y" min="1" max="9" comment="Cost per unit as expressed in the associated data element 355 (Unit of Measure) whenever unit is different than the quantity ordered"/>
   <Field name="UnitOrBasisForMeasurementCode2" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="PriceListNumber" required="y" min="1" max="16" comment="Identification number assigned by a vendor to a price list"/>
   <Field name="PriceListIssueNumber" required="y" min="1" max="16" comment="Number assigned to revised or new issues of a price list"/>
-  <Field name="PrePriceQuantityDesignator" type="double" required="y" min="1" max="9" comment="Number of units for which retail value is quoted"/>
+  <Field name="PrePriceQuantityDesignator" type="N6" required="y" min="1" max="9" comment="Number of units for which retail value is quoted"/>
   <Field name="RetailPrePrice" type="double" required="y" min="1" max="9" comment="Retail value to be placed/printed for an item appearing on the transmitted purchase order"/>
+  <SyntaxNote name="R0405" comment="At least one of G6804 or G6805 is required."/>
+  <SyntaxNote name="P0506" comment="If either G6805 or G6806 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either G6807 or G6808 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either G6810 or G6811 is present, then the other is required."/>
 </Segment>

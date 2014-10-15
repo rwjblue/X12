@@ -25,7 +25,7 @@
 
 <Segment name="DN" comment="To indicate a change in dealer status">
   <Field name="DateQualifier" min="2" max="2" validation="T432" comment="Code specifying type of date"/>
-  <Field name="Date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="DemandArea" required="y" min="3" max="3" comment="Demographic sales area"/>
   <Field name="FinancialStatus" required="y" min="3" max="3" comment="Current credit condition of consignee"/>
 </Segment>

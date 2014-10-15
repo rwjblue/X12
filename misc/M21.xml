@@ -39,4 +39,7 @@
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0708" comment="If either M2107 or M2108 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either M2109 or M2110 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either M2114 or M2115 is present, then the other is required."/>
 </Segment>

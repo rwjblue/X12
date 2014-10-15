@@ -35,4 +35,6 @@
   <Field name="TotalQualifier3" required="y" min="1" max="1" validation="T516" comment="Code identifying the span of the total specified by data element 518, Total"/>
   <Field name="DataElementTotaled3" required="y" min="4" max="5" comment="Reference designator for the data element used in calculating the total"/>
   <Field name="Total3" type="double" required="y" min="1" max="11" comment="Algebraic sum of values in all data elements totaled"/>
+  <SyntaxNote name="P0608" comment="If either BT106 or BT108 is present, then the other is required."/>
+  <SyntaxNote name="P0911" comment="If either BT109 or BT111 is present, then the other is required."/>
 </Segment>

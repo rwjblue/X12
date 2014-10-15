@@ -28,4 +28,5 @@
   <Field name="HazardousMaterialShippingNameQualifier" required="y" min="1" max="1" validation="T984" comment="Qualifier indicating the source (regulatory) of the proper shipping name"/>
   <Field name="NOSIndicatorCode" required="y" min="3" max="3" validation="T985" comment="Code indicating the type of regulatory requirements that apply to a description; N.O.S. stands for Not Otherwise Specified"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0102" comment="If either LH301 or LH302 is present, then the other is required."/>
 </Segment>

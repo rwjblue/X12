@@ -33,4 +33,5 @@
   <Field name="MonetaryAmount2" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="LoanRateTypeCode" required="y" min="1" max="1" validation="T1086" comment="Code indicating the characteristics of the loan rate"/>
+  <SyntaxNote name="P0506" comment="If either PLI05 or PLI06 is present, then the other is required."/>
 </Segment>

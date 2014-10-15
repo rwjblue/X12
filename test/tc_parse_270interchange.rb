@@ -25,6 +25,7 @@ require 'X12'
 require 'test/unit'
 
 class Test270ParseInterchange < Test::Unit::TestCase
+  TEST_REPEAT = 100
 
   @@p = nil
   @@parser = X12::Parser.new('misc/270interchange.xml')
@@ -129,8 +130,7 @@ EOT
    def test_ISA_IEA
      assert_equal('ISA*03*user      *01*password  *ZZ*0000000Eliginet*ZZ*CHICAGO BLUES*070724*1726*U*00401*230623206*0*T*:~', @r.ISA.to_s)
      assert_equal('0000000Eliginet', @r.ISA.InterchangeSenderId)
-     assert_equal('3', @r.IEA.NumberOfIncludedFunctionalGroups)
-
+     assert_equal(3, @r.IEA.NumberOfIncludedFunctionalGroups)
    end # test_ST
 
   def test_FG
@@ -140,9 +140,9 @@ EOT
     assert_equal(3, fg[0].find('270').to_a.size)
     assert_equal(2, fg[1].find('270').size)
     assert_equal(1, fg[2]._270.size)
-    assert_equal('3', fg[0].GE.NumberOfTransactionSetsIncluded)
-    assert_equal('001', fg[1].GE.GroupControlNumber)
-    assert_equal('002', fg[2].GS.GroupControlNumber)
+    assert_equal(3, fg[0].GE.NumberOfTransactionSetsIncluded)
+    assert_equal(1, fg[1].GE.GroupControlNumber)
+    assert_equal(2, fg[2].GS.GroupControlNumber)
   end
 
   def test_ST
@@ -172,13 +172,28 @@ EOT
     assert_equal('', @r.FG[1]._270[1].L2000A.HL.HierarchicalParentIdNumber)
   end
 
+  def test_segment_counter
+    assert_equal(80, @r.segments_parsed)
+    assert_equal(12, @r.FG[1]._270[1].segments_parsed)
+  end
+
+  def test_segment_enumerator
+    @r.enumerate_segments
+    assert_equal(1, @r.FG[0].ST.segment_position)
+    assert_equal(12, @r.FG[0].SE.segment_position)
+    assert_equal(1, @r.FG[1].ST.segment_position)
+    assert_equal(12, @r.FG[1].SE.segment_position)
+    assert_equal(1, @r.FG[2].ST.segment_position)
+    assert_equal(12, @r.FG[2].SE.segment_position)
+  end
+
   def test_timing
     start = Time::now
-    X12::TEST_REPEAT.times do
+    TEST_REPEAT.times do
       @r = @@parser.parse('270interchange', @@m)
     end
     finish = Time::now
-    puts sprintf("Parses per second, 270interchange: %.2f, elapsed: %.1f", X12::TEST_REPEAT.to_f/(finish-start), finish-start)
+    puts sprintf("Parses per second, 270interchange: %.2f, elapsed: %.1f", TEST_REPEAT.to_f/(finish-start), finish-start)
   end # test_timing
 
 end # TestParse

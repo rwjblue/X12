@@ -29,4 +29,6 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
+  <SyntaxNote name="R0203" comment="At least one of NCA02 or NCA03 is required."/>
+  <SyntaxNote name="P0405" comment="If either NCA04 or NCA05 is present, then the other is required."/>
 </Segment>

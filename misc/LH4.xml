@@ -36,4 +36,6 @@
   <Field name="SpecialCommodityIndicatorCode" required="y" min="1" max="1" validation="T986" comment="Code indicating 'Special Commodity' notation on operational waybill as identified by the Transportation of Dangerous Goods Act and Regulation (TDG)"/>
   <Field name="CommunicationNumber2" required="y" min="1" max="256" comment="Complete communications number including country or area code when applicable"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="P0102" comment="If either LH401 or LH402 is present, then the other is required."/>
+  <SyntaxNote name="P0812" comment="If either LH408 or LH412 is present, then the other is required."/>
 </Segment>

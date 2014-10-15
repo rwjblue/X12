@@ -33,4 +33,9 @@
   <Field name="SourceSubqualifier" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="LanguageCode" required="y" min="2" max="3" comment="Code designating the language used in text, from a standard code list maintained by the International Standards Organization (ISO 639)"/>
+  <SyntaxNote name="C0403" comment="If PID04 is present, then PID03 is required."/>
+  <SyntaxNote name="R0405" comment="At least one of PID04 or PID05 is required."/>
+  <SyntaxNote name="C0703" comment="If PID07 is present, then PID03 is required."/>
+  <SyntaxNote name="C0804" comment="If PID08 is present, then PID04 is required."/>
+  <SyntaxNote name="C0905" comment="If PID09 is present, then PID05 is required."/>
 </Segment>

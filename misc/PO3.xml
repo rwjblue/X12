@@ -25,11 +25,12 @@
 
 <Segment name="PO3" comment="To specify additional item-related data involving variations in normal price/quantity structure">
   <Field name="ChangeReasonCode" min="2" max="2" validation="T371" comment="Code specifying the reason for price or quantity change"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="PriceIdentifierCode" required="y" min="3" max="3" validation="T236" comment="Code identifying pricing specification"/>
   <Field name="UnitPrice" type="double" required="y" min="1" max="17" comment="Price per unit of product, service, commodity, etc."/>
   <Field name="BasisOfUnitPriceCode" required="y" min="2" max="2" validation="T639" comment="Code identifying the type of unit price for an item"/>
   <Field name="Quantity" type="double" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="L040305" comment="If PO304 is present, then at least one of PO303 or PO305 is required."/>
 </Segment>

@@ -31,4 +31,5 @@
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="IndividualRelationshipCode" required="y" min="2" max="2" validation="T1069" comment="Code indicating the relationship between two individuals or entities"/>
   <Field name="LevelOfIndividualTestOrCourseCode" required="y" min="2" max="2" validation="T1131" comment="Code identifying level of course, test, or individual"/>
+  <SyntaxNote name="P0405" comment="If either IN104 or IN105 is present, then the other is required."/>
 </Segment>

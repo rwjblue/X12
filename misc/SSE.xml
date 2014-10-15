@@ -24,8 +24,8 @@
 -->
 
 <Segment name="SSE" comment="To provide information concerning the entry into or withdrawal from a school, school program, school district, or postsecondary institution">
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="StatusReasonCode1" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="StatusReasonCode2" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>

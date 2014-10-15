@@ -33,4 +33,5 @@
   <Field name="VersionIdentifier" required="y" min="1" max="30" comment="Revision level of a particular format, program, technique or algorithm"/>
   <Field name="LengthOfData" type="double" required="y" min="1" max="18" comment="Length of data is the number of character positions of the compressed or encrypted/filtered text; when data is plain text, this field shall be absent"/>
   <Field name="SecurityValue" type="C033" required="y" min="0" max="inf" comment="Value of the Security Token"/>
+  <SyntaxNote name="P06070809" comment="If either CSC06, CSC07, CSC08 or CSC09 are present, then the others are required."/>
 </Segment>

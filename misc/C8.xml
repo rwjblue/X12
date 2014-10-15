@@ -28,4 +28,5 @@
   <Field name="CertificationClauseCode" required="y" min="2" max="4" validation="T246" comment="Code identifying certification/clause information"/>
   <Field name="CertificationClauseText" required="y" min="2" max="60" comment="Free-form description of commercial invoice certification/clause"/>
   <Field name="ShippersExportDeclarationRequirements" required="y" min="1" max="2" comment="Code identifying which Shipper's Export Declaration (SED) requirements are being met"/>
+  <SyntaxNote name="R0302" comment="At least one of C803 or C802 is required."/>
 </Segment>

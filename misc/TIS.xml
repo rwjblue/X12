@@ -25,7 +25,8 @@
 
 <Segment name="TIS" comment="To provide the type, extent, and dates for title insurance service">
   <Field name="TitleInsuranceServicesCode" min="2" max="2" validation="T1420" comment="Code identifying the title insurance services"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ProductServiceIdQualifier" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="P0304" comment="If either TIS03 or TIS04 is present, then the other is required."/>
 </Segment>

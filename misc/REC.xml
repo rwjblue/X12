@@ -37,4 +37,10 @@
   <Field name="OccupancyVerificationCode" required="y" min="2" max="2" validation="T816" comment="Code indicating the method used to verify the occupancy of the property"/>
   <Field name="NoteReferenceCode" required="y" min="3" max="3" validation="T363" comment="Code identifying the functional area or purpose for which the note applies"/>
   <Field name="FreeFormMessage" required="y" min="1" max="60" comment="Free-form text"/>
+  <SyntaxNote name="C0602" comment="If REC06 is present, then REC02 is required."/>
+  <SyntaxNote name="P0809" comment="If either REC08 or REC09 is present, then the other is required."/>
+  <SyntaxNote name="L08060709101213" comment="If REC08 is present, then at least one of REC06, REC07, REC09, REC10, REC12 or REC13 is required."/>
+  <SyntaxNote name="C0906" comment="If REC09 is present, then REC06 is required."/>
+  <SyntaxNote name="C1009" comment="If REC10 is present, then REC09 is required."/>
+  <SyntaxNote name="C1213" comment="If REC12 is present, then REC13 is required."/>
 </Segment>

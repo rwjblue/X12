@@ -28,7 +28,7 @@
   <Field name="EquipmentInitial" required="y" min="1" max="4" comment="Prefix or alphabetic part of an equipment unit's identifying number"/>
   <Field name="EquipmentNumber" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
   <Field name="TransactionReferenceNumber" min="1" max="15" comment="Sender's assigned number for referenced transaction set"/>
-  <Field name="TransactionReferenceDate" min="8" max="8" comment="Date of referenced transaction set expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="TransactionReferenceDate" type="date" min="8" max="8" comment="Date of referenced transaction set expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="CorrectionIndicator" min="2" max="2" validation="T202" comment="Code used to indicate that the transaction set contains information which corrects previous information"/>
   <Field name="StandardCarrierAlphaCode" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="TransportationMethodTypeCode" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>

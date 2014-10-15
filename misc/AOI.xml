@@ -34,7 +34,12 @@
   <Field name="TestPeriodOrIntervalValue2" type="long" required="y" min="1" max="6" comment="Numeric value of period or interval signifying when a test event occurs"/>
   <Field name="UnitOfTimePeriodOrInterval2" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TestPeriodOrIntervalValue3" type="long" required="y" min="1" max="6" comment="Numeric value of period or interval signifying when a test event occurs"/>
   <Field name="UnitOfTimePeriodOrInterval3" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
+  <SyntaxNote name="P040506" comment="If either AOI04, AOI05 or AOI06 are present, then the others are required."/>
+  <SyntaxNote name="P0708" comment="If either AOI07 or AOI08 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either AOI08 or AOI09 is present, then the other is required."/>
+  <SyntaxNote name="L101112" comment="If AOI10 is present, then at least one of AOI11 or AOI12 is required."/>
+  <SyntaxNote name="P1213" comment="If either AOI12 or AOI13 is present, then the other is required."/>
 </Segment>

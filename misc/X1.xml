@@ -27,7 +27,7 @@
   <Field name="CodeForLicensingCertificationRegistrationOrAccreditationAgency" required="y" min="1" max="2" validation="T83" comment="Code identifying a licensing, certification, registration, or accreditation agency."/>
   <Field name="ExportLicenseNumber" required="y" min="6" max="35" comment="Government assigned identification number for exporter"/>
   <Field name="ExportLicenseStatusCode" required="y" min="1" max="1" validation="T51" comment="Code defining whether the shipment completes the terms of the license, or the shipment is only a partial delivery relative to the license terms"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ExportLicenseSymbolCode" required="y" min="1" max="2" validation="T52" comment="Code which specifies the export symbol marked on a shipment"/>
   <Field name="ExportLicenseControlCode" required="y" min="1" max="1" validation="T48" comment="Code indicating the type of control applicable to the export license"/>
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>

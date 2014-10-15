@@ -39,4 +39,8 @@
   <Field name="IdentificationCodeQualifier2" required="y" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>
   <Field name="IdentificationCode2" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="EmploymentClassCode2" required="y" min="2" max="3" validation="T1176" comment="Code indicating category of employee"/>
+  <SyntaxNote name="P0506" comment="If either EMS05 or EMS06 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either EMS07 or EMS08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either EMS09 or EMS10 is present, then the other is required."/>
+  <SyntaxNote name="P1314" comment="If either EMS13 or EMS14 is present, then the other is required."/>
 </Segment>

@@ -27,7 +27,7 @@
   <Field name="AdjustmentReasonCode" min="2" max="2" validation="T426" comment="Code indicating reason for debit or credit memo or adjustment to invoice, debit or credit memo, or payment"/>
   <Field name="CreditDebitFlagCode" min="1" max="1" validation="T478" comment="Code indicating whether amount is a credit or debit"/>
   <Field name="AssignedIdentification" required="y" min="1" max="20" comment="Alphanumeric characters assigned for differentiation within a transaction set"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="PriceBracketIdentifier" required="y" min="1" max="3" comment="Identifier assigned by the vendor for a specific price bracket"/>
   <Field name="CreditDebitQuantity" type="double" required="y" min="1" max="10" comment="Number of supplier units credited or debited"/>
@@ -38,4 +38,9 @@
   <Field name="PriceIdentifierCode2" required="y" min="3" max="3" validation="T236" comment="Code identifying pricing specification"/>
   <Field name="UnitPrice2" type="double" required="y" min="1" max="17" comment="Price per unit of product, service, commodity, etc."/>
   <Field name="FreeFormMessageText" required="y" min="1" max="264" comment="Free-form message text"/>
+  <SyntaxNote name="R0407" comment="At least one of CDD04 or CDD07 is required."/>
+  <SyntaxNote name="C0711" comment="If CDD07 is present, then CDD11 is required."/>
+  <SyntaxNote name="P0708" comment="If either CDD07 or CDD08 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either CDD10 or CDD11 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either CDD12 or CDD13 is present, then the other is required."/>
 </Segment>

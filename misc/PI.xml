@@ -35,8 +35,8 @@
   <Field name="TariffSupplementIdentifier" required="y" min="1" max="4" comment="Identifier for the tariff supplement which contains the rate used"/>
   <Field name="TariffSection" required="y" min="1" max="2" comment="Number used as an extension of the basic tariff number to identify the rates published within specific sections of the tariff"/>
   <Field name="ContractSuffix2" required="y" min="1" max="2" comment="Used to identify a type of contract"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="AlternationPrecedenceCode1" required="y" min="1" max="1" validation="T629" comment="Code identifying the priority of rate application when two or more rates apply to a given movement; if rate application includes two or more rates of the same value for this element, individual carrier rules and procedures shall govern"/>
   <Field name="AlternationPrecedenceCode2" required="y" min="1" max="1" validation="T629" comment="Code identifying the priority of rate application when two or more rates apply to a given movement; if rate application includes two or more rates of the same value for this element, individual carrier rules and procedures shall govern"/>
 </Segment>

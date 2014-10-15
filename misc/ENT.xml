@@ -33,4 +33,7 @@
   <Field name="IdentificationCode2" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="ReferenceIdentificationQualifier" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P020304" comment="If either ENT02, ENT03 or ENT04 are present, then the others are required."/>
+  <SyntaxNote name="P050607" comment="If either ENT05, ENT06 or ENT07 are present, then the others are required."/>
+  <SyntaxNote name="P0809" comment="If either ENT08 or ENT09 is present, then the other is required."/>
 </Segment>

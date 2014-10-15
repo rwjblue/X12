@@ -31,4 +31,5 @@
   <Field name="Category" required="y" min="1" max="6" comment="An alphanumeric identifier to represent the category to which the item belongs"/>
   <Field name="ServiceCharacteristicsQualifier2" required="y" min="2" max="3" comment="Code from an industry code list qualifying the type of service characteristics"/>
   <Field name="MeasurementValue" type="double" required="y" min="1" max="20" comment="The value of the measurement"/>
+  <SyntaxNote name="P0607" comment="If either ADV06 or ADV07 is present, then the other is required."/>
 </Segment>

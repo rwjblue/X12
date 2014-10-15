@@ -33,8 +33,9 @@
   <Field name="IntermediateSwitchCarrier1" required="y" min="2" max="4" comment="Code defining a road which neither originates nor terminates the shipment but provides a switching service between two roadhaul rail carriers (SCAC code for rail switch carrier)"/>
   <Field name="IntermediateSwitchCarrier2" required="y" min="2" max="4" comment="Code defining a road which neither originates nor terminates the shipment but provides a switching service between two roadhaul rail carriers (SCAC code for rail switch carrier)"/>
   <Field name="InvoiceNumber" required="y" min="1" max="22" comment="Identifying number assigned by issuer"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="FreeFormDescription" required="y" min="1" max="45" comment="Free-form descriptive text"/>
   <Field name="TypeOfServiceCode" required="y" min="2" max="2" validation="T56" comment="Code specifying extent of transportation service requested"/>
   <Field name="RouteDescription" required="y" min="1" max="35" comment="Point to point routing description"/>
+  <SyntaxNote name="C0807" comment="If R208 is present, then R207 is required."/>
 </Segment>

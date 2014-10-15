@@ -32,4 +32,5 @@
   <Field name="MonetaryAmount" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="AccrualRateMethodCode" required="y" min="1" max="1" validation="T1579" comment="Code identifying the method of interest accrual"/>
   <Field name="CertificationTypeCode" required="y" min="1" max="1" validation="T1322" comment="Code indicating the type of certification"/>
+  <SyntaxNote name="P030405" comment="If either MPP03, MPP04 or MPP05 are present, then the others are required."/>
 </Segment>

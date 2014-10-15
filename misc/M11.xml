@@ -43,4 +43,11 @@
   <Field name="ExportExceptionCode" required="y" min="2" max="2" validation="T1578" comment="Code specifying why a Shipper's Export Declaration (SED) is not required"/>
   <Field name="StandardCarrierAlphaCode5" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="StandardCarrierAlphaCode6" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
+  <SyntaxNote name="P0304" comment="If either M1103 or M1104 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either M1105 or M1106 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either M1107 or M1108 is present, then the other is required."/>
+  <SyntaxNote name="P1113" comment="If either M1111 or M1113 is present, then the other is required."/>
+  <SyntaxNote name="C1514" comment="If M1115 is present, then M1114 is required."/>
+  <SyntaxNote name="C1815" comment="If M1118 is present, then M1115 is required."/>
+  <SyntaxNote name="C1918" comment="If M1119 is present, then M1118 is required."/>
 </Segment>

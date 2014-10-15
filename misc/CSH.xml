@@ -26,12 +26,15 @@
 <Segment name="CSH" comment="To specify general conditions or requirements of the sale">
   <Field name="SalesRequirementCode" required="y" min="1" max="2" validation="T563" comment="Code to identify a specific requirement or agreement of sale"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="AccountNumber" required="y" min="1" max="35" comment="Account number assigned"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="SpecialServicesCode" required="y" min="2" max="10" validation="T560" comment="Code identifying the special service"/>
   <Field name="ProductServiceSubstitutionCode" required="y" min="1" max="2" validation="T566" comment="Code indicating product or service substitution conditions"/>
   <Field name="Percent" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
   <Field name="PercentQualifier" required="y" min="1" max="2" validation="T1004" comment="Code to qualify percent"/>
+  <SyntaxNote name="C0203" comment="If CSH02 is present, then CSH03 is required."/>
+  <SyntaxNote name="P0607" comment="If either CSH06 or CSH07 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either CSH09 or CSH10 is present, then the other is required."/>
 </Segment>

@@ -46,4 +46,6 @@
   <Field name="YesNoConditionOrResponseCode3" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="Number2" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="P1213" comment="If either TLN12 or TLN13 is present, then the other is required."/>
+  <SyntaxNote name="P1617" comment="If either TLN16 or TLN17 is present, then the other is required."/>
 </Segment>

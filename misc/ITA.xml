@@ -30,7 +30,7 @@
   <Field name="AllowanceOrChargeMethodOfHandlingCode" min="2" max="2" validation="T331" comment="Code indicating method of handling for an allowance or charge"/>
   <Field name="AllowanceOrChargeNumber" required="y" min="1" max="16" comment="The number assigned by a vendor referencing an allowance, promotion, deal or charge"/>
   <Field name="AllowanceOrChargeRate" type="double" required="y" min="1" max="15" comment="Allowance or Charge Rate per Unit"/>
-  <Field name="AllowanceOrChargeTotalAmount" type="double" required="y" min="1" max="15" comment="Total dollar amount for the allowance or charge"/>
+  <Field name="AllowanceOrChargeTotalAmount" type="N2" required="y" min="1" max="15" comment="Total dollar amount for the allowance or charge"/>
   <Field name="AllowanceChargePercentQualifier" required="y" min="1" max="1" validation="T378" comment="Code indicating on what basis allowance or charge percent is calculated"/>
   <Field name="Percent" type="double" required="y" min="1" max="6" comment="Percent expressed as a percent"/>
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
@@ -41,4 +41,9 @@
   <Field name="SourceSubqualifier" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
   <Field name="RelationshipCode" required="y" min="1" max="1" validation="T662" comment="Code indicating the relationship between entities"/>
   <Field name="UnitOrBasisForMeasurementCode2" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="L02031314" comment="If ITA02 is present, then at least one of ITA03, ITA13 or ITA14 is required."/>
+  <SyntaxNote name="C0809" comment="If ITA08 is present, then ITA09 is required."/>
+  <SyntaxNote name="P1011" comment="If either ITA10 or ITA11 is present, then the other is required."/>
+  <SyntaxNote name="C1502" comment="If ITA15 is present, then ITA02 is required."/>
+  <SyntaxNote name="C1712" comment="If ITA17 is present, then ITA12 is required."/>
 </Segment>

@@ -1,0 +1,609 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class X12::Loop - X12 -- an X12 parsing library</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/X12/Loop.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="Base.html">X12::Base</a>
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li class="calls-super" ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-each_segment">#each_segment</a>
+    
+    <li ><a href="#method-i-enumerate_segments">#enumerate_segments</a>
+    
+    <li ><a href="#method-i-find">#find</a>
+    
+    <li ><a href="#method-i-parse">#parse</a>
+    
+    <li ><a href="#method-i-render">#render</a>
+    
+    <li ><a href="#method-i-segments_parsed">#segments_parsed</a>
+    
+    <li ><a href="#method-i-to_hsh">#to_hsh</a>
+    
+    <li ><a href="#method-i-valid-3F">#valid?</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../CHANGELOG.html">CHANGELOG</a>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+    <li class="file"><a href="../TODO.html">TODO</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Object.html">Object</a>
+  
+    <li><a href="../X12.html">X12</a>
+  
+    <li><a href="../X12/Base.html">X12::Base</a>
+  
+    <li><a href="../X12/Composite.html">X12::Composite</a>
+  
+    <li><a href="../X12/Field.html">X12::Field</a>
+  
+    <li><a href="../X12/Loop.html">X12::Loop</a>
+  
+    <li><a href="../X12/Parser.html">X12::Parser</a>
+  
+    <li><a href="../X12/Segment.html">X12::Segment</a>
+  
+    <li><a href="../X12/Table.html">X12::Table</a>
+  
+    <li><a href="../X12/XMLDefinitions.html">X12::XMLDefinitions</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class X12::Loop</h1>
+
+  <div id="description" class="description">
+    
+<p>$Id: Loop.rb 59 2009-03-19 22:32:13Z ikk $</p>
+
+<p>Implements nested loops of segments</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-control_number" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">control_number</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Control number of the loop to be accessed by respective
+<code>control_number</code> engine variable inside this loop</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-segments_rendered" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">segments_rendered</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Number of segments rendered in the enumerated loop</p>
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(*args)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Creates a new loop with given parameters and array of sub-elements</p>
+          
+          
+            <div class="method-calls-super">
+              Calls superclass method
+              <a href="Base.html#method-c-new">X12::Base.new</a>
+            </div>
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 37</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+  <span class="ruby-ivar">@segments_rendered</span> = <span class="ruby-keyword">nil</span> <span class="ruby-comment"># Needs to start as nil and only initialize once ST is actually rendered</span>
+  <span class="ruby-ivar">@control_number</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">super</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-each_segment" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">each_segment</span><span
+            class="method-args">(include_repeats = false) { |x| ... }</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Iterate through all the segments within this loop (and its repeats if
+<code>include_repeats</code> is <code>true</code>), invoking the given
+block on each one.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="each_segment-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 111</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">each_segment</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-keyword">true</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">x</span>) } }
+  <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-value">:include_repeats</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">x</span><span class="ruby-operator">|</span> <span class="ruby-keyword">yield</span>(<span class="ruby-identifier">x</span>) } <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- each_segment-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- each_segment-method -->
+
+    
+      <div id="method-i-enumerate_segments" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">enumerate_segments</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Iterate through all the segments within this loop (and its repeats if
+<code>include_repeats</code> is <code>true</code>), enumerating them
+according to <a href="../X12.html">X12</a> requirements.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="enumerate_segments-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 100</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">enumerate_segments</span>
+  <span class="ruby-identifier">n</span> = <span class="ruby-value">0</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-value">:include_repeats</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span>
+    <span class="ruby-keyword">next</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">parsed_str</span>.<span class="ruby-identifier">nil?</span>
+    <span class="ruby-identifier">n</span> = <span class="ruby-value">0</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">initial_segment</span> 
+    <span class="ruby-identifier">s</span>.<span class="ruby-identifier">segment_position</span> = (<span class="ruby-identifier">n</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span>) 
+  }
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- enumerate_segments-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- enumerate_segments-method -->
+
+    
+      <div id="method-i-find" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">find</span><span
+            class="method-args">(name)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Recursively find a sub-element</p>
+          
+          
+
+          
+          <div class="method-source-code" id="find-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>)
+  <span class="ruby-comment">#puts &quot;Finding [#{name}] in #{self.class} #{name}&quot;</span>
+  <span class="ruby-comment"># Breadth first</span>
+  <span class="ruby-identifier">res</span> = <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">find</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">name</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">name</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">alias</span> }
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>
+  <span class="ruby-comment"># Depth now</span>
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span>{ <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span> 
+    <span class="ruby-identifier">res</span> = <span class="ruby-identifier">i</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">name</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Loop</span>)
+    <span class="ruby-keyword">return</span> <span class="ruby-identifier">res</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-comment"># otherwise keep looping</span>
+  }
+  <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- find-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- find-method -->
+
+    
+      <div id="method-i-parse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse</span><span
+            class="method-args">(source_string)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Parse a string and fill out internal structures with the pieces of it.
+Returns  an unparsed portion of the string or the original string if
+nothing was parsed out.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="parse-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 72</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">source_string</span>)
+  <span class="ruby-comment">#puts &quot;Parsing loop #{name}: &quot; + str</span>
+
+  <span class="ruby-comment"># Ask each node to attempt to grab its matching piece of string. +parse+ will return unconsumed</span>
+  <span class="ruby-comment"># portion of the string or nil if unable to match. If nothing got consumed</span>
+  <span class="ruby-identifier">unconsumed_string</span> = <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">inject</span>(<span class="ruby-identifier">source_string</span>){ <span class="ruby-operator">|</span><span class="ruby-identifier">remainder</span>, <span class="ruby-identifier">node</span><span class="ruby-operator">|</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">parse</span>(<span class="ruby-identifier">remainder</span>) <span class="ruby-operator">||</span> <span class="ruby-identifier">remainder</span> }
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">nil</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">source_string</span> <span class="ruby-operator">==</span> <span class="ruby-identifier">unconsumed_string</span>
+
+  <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-identifier">source_string</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-operator">-</span>(<span class="ruby-identifier">unconsumed_string</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">+</span> <span class="ruby-value">1</span>)]
+
+  <span class="ruby-identifier">str</span> = <span class="ruby-identifier">do_repeats</span>(<span class="ruby-identifier">unconsumed_string</span>)
+
+  <span class="ruby-comment">#puts 'Parsed loop ' + self.inspect</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-identifier">str</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse-method -->
+
+    
+      <div id="method-i-render" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">render</span><span
+            class="method-args">(root = self, include_repeats = false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Render this loop and its successive repeats as an X12-compliant string.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="render-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 117</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>, <span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">res</span> = <span class="ruby-string">''</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">required</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">has_displayable_content?</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">res</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span>, <span class="ruby-value">:include_repeats</span>) }
+    <span class="ruby-identifier">res</span> <span class="ruby-operator">+=</span> <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span>, <span class="ruby-value">:include_repeats</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- render-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- render-method -->
+
+    
+      <div id="method-i-segments_parsed" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">segments_parsed</span><span
+            class="method-args">(include_repeats = false)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Return the total count of segments that got successfilly parsed within this
+loop,  (and its repeats if <code>include_repeats</code> is
+<code>true</code>).</p>
+          
+          
+
+          
+          <div class="method-source-code" id="segments_parsed-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 92</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">segments_parsed</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>)
+  <span class="ruby-identifier">res</span> = <span class="ruby-value">0</span>  
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">each_segment</span>(<span class="ruby-identifier">include_repeats</span>) { <span class="ruby-operator">|</span><span class="ruby-identifier">s</span><span class="ruby-operator">|</span> <span class="ruby-identifier">res</span> <span class="ruby-operator">+=</span> <span class="ruby-value">1</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">s</span>.<span class="ruby-identifier">parsed_str</span>.<span class="ruby-identifier">nil?</span> }
+  <span class="ruby-identifier">res</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- segments_parsed-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- segments_parsed-method -->
+
+    
+      <div id="method-i-to_hsh" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">to_hsh</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns recursive hash of nodes that have an alias defined, along with
+their respective values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="to_hsh-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 129</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">to_hsh</span>
+  <span class="ruby-identifier">hsh</span> = {}
+
+  <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">each</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+    <span class="ruby-identifier">hsh</span>[<span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>] = <span class="ruby-identifier">node</span>.<span class="ruby-identifier">to_a</span>.<span class="ruby-identifier">collect</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">n</span><span class="ruby-operator">|</span> <span class="ruby-identifier">n</span>.<span class="ruby-identifier">to_hsh</span> } <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">alias</span>.<span class="ruby-identifier">nil?</span>
+  }
+
+  <span class="ruby-identifier">hsh</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- to_hsh-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- to_hsh-method -->
+
+    
+      <div id="method-i-valid-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">valid?</span><span
+            class="method-args">(include_repeats = false, use_ext_charset = true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Validate the loop - whether incoming or outgoing.</p>
+<ul><li>
+<p><code>include_repeats</code> - whether the repeats of this loop should be
+also validated</p>
+</li><li>
+<p><code>use_ext_charset</code> - whether to validate alphanumeric values
+against X12's Basic or Advanced Character Set</p>
+</li></ul>
+          
+          
+
+          
+          <div class="method-source-code" id="valid-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Loop.rb, line 142</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">include_repeats</span> = <span class="ruby-keyword">false</span>, <span class="ruby-identifier">use_ext_charset</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-ivar">@error_code</span> = <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">has_displayable_content?</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">nodes</span>.<span class="ruby-identifier">any?</span> { <span class="ruby-operator">|</span><span class="ruby-identifier">node</span><span class="ruby-operator">|</span>
+      <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">5</span>, <span class="ruby-string">'#{self.name}: one or more segments in error'</span> <span class="ruby-keyword">unless</span> <span class="ruby-identifier">node</span>.<span class="ruby-identifier">valid?</span>(<span class="ruby-keyword">true</span>, <span class="ruby-identifier">use_ext_charset</span>)
+    }
+
+    <span class="ruby-comment"># Recursively check if all the repeats of this loop are correct.</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">include_repeats</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">next_repeat</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">valid?</span>(<span class="ruby-keyword">true</span>, <span class="ruby-identifier">use_ext_charset</span>) <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">error_code</span>, <span class="ruby-identifier">next_repeat</span>.<span class="ruby-identifier">error</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> 
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">required</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">3</span>, <span class="ruby-node">&quot;#{self.name}: mandatory loop missing&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span> 
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- valid-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- valid-3F-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

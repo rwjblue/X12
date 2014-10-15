@@ -33,6 +33,7 @@
   <Field name="DateTimePeriod" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
   <Field name="StandardCarrierAlphaCode2" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="InterchangeTrainIdentification" required="y" min="1" max="10" comment="Train identification (free-form)"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="LoadEmptyStatusCode" required="y" min="1" max="1" validation="T322" comment="Code which specifies the loaded condition of transportation equipment"/>
+  <SyntaxNote name="C0910" comment="If ER09 is present, then ER10 is required."/>
 </Segment>

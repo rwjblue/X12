@@ -32,4 +32,7 @@
   <Field name="FixedFormatInformation1" required="y" min="1" max="80" comment="Data in fixed format agreed upon by sender and receiver"/>
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="FixedFormatInformation2" required="y" min="1" max="80" comment="Data in fixed format agreed upon by sender and receiver"/>
+  <SyntaxNote name="R0102" comment="At least one of PBI01 or PBI02 is required."/>
+  <SyntaxNote name="E0506" comment="Only one of PBI05 or PBI06 may be present."/>
+  <SyntaxNote name="E0708" comment="Only one of PBI07 or PBI08 may be present."/>
 </Segment>

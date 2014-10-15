@@ -38,4 +38,7 @@
   <Field name="PriceListNumber" required="y" min="1" max="16" comment="Identification number assigned by a vendor to a price list"/>
   <Field name="PriceListIssueNumber" required="y" min="1" max="16" comment="Number assigned to revised or new issues of a price list"/>
   <Field name="MonetaryAmount" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
+  <SyntaxNote name="R0314" comment="At least one of G1703 or G1714 is required."/>
+  <SyntaxNote name="P0708" comment="If either G1707 or G1708 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either G1710 or G1711 is present, then the other is required."/>
 </Segment>

@@ -32,4 +32,6 @@
   <Field name="MonetaryAmount3" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="AdjustmentReasonCode" required="y" min="2" max="2" validation="T426" comment="Code indicating reason for debit or credit memo or adjustment to invoice, debit or credit memo, or payment"/>
   <Field name="MonetaryAmount4" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
+  <SyntaxNote name="P0102" comment="If either RMR01 or RMR02 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either RMR07 or RMR08 is present, then the other is required."/>
 </Segment>

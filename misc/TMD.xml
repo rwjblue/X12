@@ -30,7 +30,9 @@
   <Field name="TestAdministrationMethodCode" required="y" min="2" max="2" validation="T937" comment="Code specifying the method of administering the test"/>
   <Field name="TestMediumCode" required="y" min="2" max="2" validation="T938" comment="Code specifying organism on which the test was performed"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="SourceSubqualifier" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
+  <SyntaxNote name="P0203" comment="If either TMD02 or TMD03 is present, then the other is required."/>
+  <SyntaxNote name="C0902" comment="If TMD09 is present, then TMD02 is required."/>
 </Segment>

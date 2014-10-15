@@ -39,4 +39,10 @@
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="PackagingFormCode2" required="y" min="3" max="3" validation="T211" comment="Code for packaging form of the lading quantity"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0203" comment="If either L002 or L003 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either L004 or L005 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either L006 or L007 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either L008 or L009 is present, then the other is required."/>
+  <SyntaxNote name="C1104" comment="If L011 is present, then L004 is required."/>
+  <SyntaxNote name="P1315" comment="If either L013 or L015 is present, then the other is required."/>
 </Segment>

@@ -43,4 +43,19 @@
   <Field name="ClaimAdjustmentReasonCode6" required="y" min="1" max="5" comment="Code identifying the detailed reason the adjustment was made"/>
   <Field name="MonetaryAmount6" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="Quantity6" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="L050607" comment="If CAS05 is present, then at least one of CAS06 or CAS07 is required."/>
+  <SyntaxNote name="C0605" comment="If CAS06 is present, then CAS05 is required."/>
+  <SyntaxNote name="C0705" comment="If CAS07 is present, then CAS05 is required."/>
+  <SyntaxNote name="L080910" comment="If CAS08 is present, then at least one of CAS09 or CAS10 is required."/>
+  <SyntaxNote name="C0908" comment="If CAS09 is present, then CAS08 is required."/>
+  <SyntaxNote name="C1008" comment="If CAS10 is present, then CAS08 is required."/>
+  <SyntaxNote name="L111213" comment="If CAS11 is present, then at least one of CAS12 or CAS13 is required."/>
+  <SyntaxNote name="C1211" comment="If CAS12 is present, then CAS11 is required."/>
+  <SyntaxNote name="C1311" comment="If CAS13 is present, then CAS11 is required."/>
+  <SyntaxNote name="L141516" comment="If CAS14 is present, then at least one of CAS15 or CAS16 is required."/>
+  <SyntaxNote name="C1514" comment="If CAS15 is present, then CAS14 is required."/>
+  <SyntaxNote name="C1614" comment="If CAS16 is present, then CAS14 is required."/>
+  <SyntaxNote name="L171819" comment="If CAS17 is present, then at least one of CAS18 or CAS19 is required."/>
+  <SyntaxNote name="C1817" comment="If CAS18 is present, then CAS17 is required."/>
+  <SyntaxNote name="C1917" comment="If CAS19 is present, then CAS17 is required."/>
 </Segment>

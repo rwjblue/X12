@@ -26,7 +26,7 @@
 <Segment name="W06" comment="To provide identifying numbers, dates, and other basic data for this transaction set">
   <Field name="ReportingCode" min="1" max="1" validation="T514" comment="Code specifying the basis used when reporting shipment information"/>
   <Field name="DepositorOrderNumber" required="y" min="1" max="22" comment="Identifying number for warehouse shipping order assigned by the depositor"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ShipmentIdentificationNumber" required="y" min="1" max="30" comment="Identification number assigned to the shipment by the shipper that uniquely identifies the shipment from origin to ultimate destination and is not subject to modification; (Does not contain blanks or special characters)"/>
   <Field name="AgentShipmentIdNumber" required="y" min="1" max="12" comment="Identification number assigned to the shipment by the agent (Number does not contain blank or punctuation characters)"/>
   <Field name="PurchaseOrderNumber" required="y" min="1" max="22" comment="Identifying number for Purchase Order assigned by the orderer/purchaser"/>
@@ -36,4 +36,5 @@
   <Field name="ShippingDateChangeReasonCode" required="y" min="2" max="2" validation="T891" comment="Code informing a depositor why shipment of an order was delayed"/>
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
+  <SyntaxNote name="P0708" comment="If either W0607 or W0608 is present, then the other is required."/>
 </Segment>

@@ -33,4 +33,8 @@
   <Field name="Description2" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="RiskOfLossCode" required="y" min="2" max="2" validation="T54" comment="Code specifying where responsibility for risk of loss passes"/>
   <Field name="Description3" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="C0302" comment="If FOB03 is present, then FOB02 is required."/>
+  <SyntaxNote name="C0405" comment="If FOB04 is present, then FOB05 is required."/>
+  <SyntaxNote name="C0706" comment="If FOB07 is present, then FOB06 is required."/>
+  <SyntaxNote name="C0809" comment="If FOB08 is present, then FOB09 is required."/>
 </Segment>

@@ -26,7 +26,7 @@
 <Segment name="VAT" comment="Identifies attributes associated with a vehicle">
   <Field name="IndustryCode1" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
   <Field name="AmountQualifierCode" required="y" min="1" max="3" validation="T522" comment="Code to qualify amount"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
   <Field name="ProductProcessCharacteristicCode" required="y" min="2" max="3" validation="T750" comment="Code identifying the general class of a product or process characteristic"/>
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
@@ -36,4 +36,8 @@
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="SurfaceLayerPositionCode" required="y" min="2" max="2" validation="T752" comment="Code indicating the product surface, layer or position that is being described"/>
+  <SyntaxNote name="P0203" comment="If either VAT02 or VAT03 is present, then the other is required."/>
+  <SyntaxNote name="P060708" comment="If either VAT06, VAT07 or VAT08 are present, then the others are required."/>
+  <SyntaxNote name="C0805" comment="If VAT08 is present, then VAT05 is required."/>
+  <SyntaxNote name="C1110" comment="If VAT11 is present, then VAT10 is required."/>
 </Segment>

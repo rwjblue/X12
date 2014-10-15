@@ -37,4 +37,8 @@
   <Field name="AirportCode5" required="y" min="3" max="5" comment="Code (IATA) for airport"/>
   <Field name="AirCarrierCode5" required="y" min="3" max="3" comment="Code (IATA) for the air carrier"/>
   <Field name="AirportCode6" required="y" min="3" max="5" comment="Code (IATA) for airport"/>
+  <SyntaxNote name="P0607" comment="If either R106 or R107 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either R108 or R109 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either R110 or R111 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either R112 or R113 is present, then the other is required."/>
 </Segment>

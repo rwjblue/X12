@@ -31,4 +31,6 @@
   <Field name="Description2" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="Quantity1" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="P0203" comment="If either FOS02 or FOS03 is present, then the other is required."/>
+  <SyntaxNote name="R0204" comment="At least one of FOS02 or FOS04 is required."/>
 </Segment>

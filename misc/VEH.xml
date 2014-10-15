@@ -36,8 +36,18 @@
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="YesNoConditionOrResponseCode1" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
-  <Field name="Amount1" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount1" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
-  <Field name="Amount2" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount2" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
+  <SyntaxNote name="L040507" comment="If VEH04 is present, then at least one of VEH05 or VEH07 is required."/>
+  <SyntaxNote name="C0504" comment="If VEH05 is present, then VEH04 is required."/>
+  <SyntaxNote name="C060405" comment="If VEH06 is present, then VEH04 and VEH05 are required."/>
+  <SyntaxNote name="C0704" comment="If VEH07 is present, then VEH04 is required."/>
+  <SyntaxNote name="E1026" comment="Only one of VEH10 or VEH26 may be present."/>
+  <SyntaxNote name="C1017" comment="If VEH10 is present, then VEH17 is required."/>
+  <SyntaxNote name="P1819" comment="If either VEH18 or VEH19 is present, then the other is required."/>
+  <SyntaxNote name="L200221" comment="If VEH20 is present, then at least one of VEH02 or VEH21 is required."/>
+  <SyntaxNote name="P2122" comment="If either VEH21 or VEH22 is present, then the other is required."/>
+  <SyntaxNote name="C2617" comment="If VEH26 is present, then VEH17 is required."/>
 </Segment>

@@ -33,8 +33,8 @@
   <Field name="CompositeUnitOfMeasure1" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="Count" type="long" required="y" min="1" max="9" comment="Occurrence counter"/>
   <Field name="DateTimeQualifier" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="CompositeUnitOfMeasure2" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="RangeMaximum" type="double" required="y" min="1" max="20" comment="The value specifying the maximum of the measurement range"/>
   <Field name="RangeMinimum" type="double" required="y" min="1" max="20" comment="The value specifying the minimum of the measurement range"/>
@@ -49,4 +49,13 @@
   <Field name="UnitPrice" type="double" required="y" min="1" max="17" comment="Price per unit of product, service, commodity, etc."/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="ContactMethodCode" required="y" min="1" max="1" validation="T1079" comment="Code indicating the type of contact"/>
+  <SyntaxNote name="P0708" comment="If either PSC07 or PSC08 is present, then the other is required."/>
+  <SyntaxNote name="L12131415" comment="If PSC12 is present, then at least one of PSC13, PSC14 or PSC15 is required."/>
+  <SyntaxNote name="C1312" comment="If PSC13 is present, then PSC12 is required."/>
+  <SyntaxNote name="C1412" comment="If PSC14 is present, then PSC12 is required."/>
+  <SyntaxNote name="C1512" comment="If PSC15 is present, then PSC12 is required."/>
+  <SyntaxNote name="L160810" comment="If PSC16 is present, then at least one of PSC08 or PSC10 is required."/>
+  <SyntaxNote name="C1613" comment="If PSC16 is present, then PSC13 is required."/>
+  <SyntaxNote name="C1820" comment="If PSC18 is present, then PSC20 is required."/>
+  <SyntaxNote name="C1918" comment="If PSC19 is present, then PSC18 is required."/>
 </Segment>

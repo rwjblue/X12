@@ -29,4 +29,5 @@
   <Field name="BillOfLadingWaybillNumber1" min="1" max="25" comment="Identification number assigned to the shipment by the carrier or consolidator"/>
   <Field name="StandardCarrierAlphaCode3" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="BillOfLadingWaybillNumber2" required="y" min="1" max="25" comment="Identification number assigned to the shipment by the carrier or consolidator"/>
+  <SyntaxNote name="P0405" comment="If either X0204 or X0205 is present, then the other is required."/>
 </Segment>

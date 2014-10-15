@@ -24,9 +24,9 @@
 -->
 
 <Segment name="G88" comment="To transmit adjustments for identification data">
-  <Field name="PhysicalDeliveryOrReturnDate" required="y" min="8" max="8" comment="Actual or intended date of physical delivery or return expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="ProductOwnershipTransferDate" required="y" min="8" max="8" comment="Date which is meaningful for both supplier and distributor for various mutually defined purposes (i.e., date of product ownership transfer) expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="PhysicalDeliveryOrReturnDate" type="date" required="y" min="8" max="8" comment="Actual or intended date of physical delivery or return expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="ProductOwnershipTransferDate" type="date" required="y" min="8" max="8" comment="Date which is meaningful for both supplier and distributor for various mutually defined purposes (i.e., date of product ownership transfer) expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="PurchaseOrderNumber" required="y" min="1" max="22" comment="Identifying number for Purchase Order assigned by the orderer/purchaser"/>
-  <Field name="PurchaseOrderDate" required="y" min="8" max="8" comment="Date assigned by the purchaser to Purchase Order expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="PurchaseOrderDate" type="date" required="y" min="8" max="8" comment="Date assigned by the purchaser to Purchase Order expressed in format CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="ReceiversLocationNumber" required="y" min="1" max="6" comment="Number assigned by the customer that when combined with receiver Duns number uniquely identifies the receiving location"/>
 </Segment>

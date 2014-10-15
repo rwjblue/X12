@@ -27,15 +27,21 @@
   <Field name="WeightQualifier" required="y" min="1" max="2" validation="T187" comment="Code defining the type of weight"/>
   <Field name="Weight" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
   <Field name="Zone" required="y" min="2" max="3" comment="To identify zone"/>
-  <Field name="ServiceStandard" type="double" required="y" min="1" max="4" comment="To report the time period of carrier's standard service for the shipment"/>
+  <Field name="ServiceStandard" type="N1" required="y" min="1" max="4" comment="To report the time period of carrier's standard service for the shipment"/>
   <Field name="ServiceLevelCode1" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
   <Field name="PickUpOrDeliveryCode" required="y" min="1" max="2" validation="T108" comment="Specifies the location or type of pickup or delivery"/>
   <Field name="RateValueQualifier1" required="y" min="2" max="2" validation="T122" comment="Code qualifying how to extend charges or interpret value"/>
-  <Field name="Charge1" type="double" required="y" min="1" max="12" comment="For a line item: freight or special charge; for the total invoice: the total charges -- expressed in the standard monetary denomination for the currency specified"/>
+  <Field name="Charge1" type="N2" required="y" min="1" max="12" comment="For a line item: freight or special charge; for the total invoice: the total charges -- expressed in the standard monetary denomination for the currency specified"/>
   <Field name="RateValueQualifier2" required="y" min="2" max="2" validation="T122" comment="Code qualifying how to extend charges or interpret value"/>
-  <Field name="Charge2" type="double" required="y" min="1" max="12" comment="For a line item: freight or special charge; for the total invoice: the total charges -- expressed in the standard monetary denomination for the currency specified"/>
+  <Field name="Charge2" type="N2" required="y" min="1" max="12" comment="For a line item: freight or special charge; for the total invoice: the total charges -- expressed in the standard monetary denomination for the currency specified"/>
   <Field name="ServiceLevelCode2" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
   <Field name="ServiceLevelCode3" required="y" min="2" max="2" validation="T284" comment="Code indicating the level of transportation service or the billing service offered by the transportation carrier"/>
   <Field name="PaymentMethodCode" required="y" min="3" max="3" validation="T591" comment="Code identifying the method for the movement of payment instructions"/>
   <Field name="CountryCode" required="y" min="2" max="3" comment="Code identifying the country"/>
+  <SyntaxNote name="P0102" comment="If either CD301 or CD302 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either CD307 or CD308 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either CD309 or CD310 is present, then the other is required."/>
+  <SyntaxNote name="C1105" comment="If CD311 is present, then CD305 is required."/>
+  <SyntaxNote name="C1211" comment="If CD312 is present, then CD311 is required."/>
+  <SyntaxNote name="C1405" comment="If CD314 is present, then CD305 is required."/>
 </Segment>

@@ -26,7 +26,9 @@
 <Segment name="AOC" comment="To report offspring counts for the parent animal">
   <Field name="OffspringCountCode" min="2" max="2" validation="T1620" comment="Code indicating the type of offspring count collected for a specific animal"/>
   <Field name="Count" type="long" min="1" max="9" comment="Occurrence counter"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="TestPeriodOrIntervalValue" type="long" required="y" min="1" max="6" comment="Numeric value of period or interval signifying when a test event occurs"/>
   <Field name="UnitOfTimePeriodOrInterval" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
+  <SyntaxNote name="R0304" comment="At least one of AOC03 or AOC04 is required."/>
+  <SyntaxNote name="P0405" comment="If either AOC04 or AOC05 is present, then the other is required."/>
 </Segment>

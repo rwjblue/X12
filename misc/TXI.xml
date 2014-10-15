@@ -34,4 +34,7 @@
   <Field name="DollarBasisForPercent" type="double" required="y" min="1" max="9" comment="Dollar basis to be used in the percent calculation of the allowance, charge or tax"/>
   <Field name="TaxIdentificationNumber" required="y" min="1" max="20" comment="Number assigned to a purchaser (buyer, orderer) by a taxing jurisdiction (state, county, etc.); often called a tax exemption number or certificate number"/>
   <Field name="AssignedIdentification" required="y" min="1" max="20" comment="Alphanumeric characters assigned for differentiation within a transaction set"/>
+  <SyntaxNote name="R020306" comment="At least one of TXI02, TXI03 or TXI06 is required."/>
+  <SyntaxNote name="P0405" comment="If either TXI04 or TXI05 is present, then the other is required."/>
+  <SyntaxNote name="C0803" comment="If TXI08 is present, then TXI03 is required."/>
 </Segment>

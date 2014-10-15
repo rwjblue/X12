@@ -36,4 +36,5 @@
   <Field name="StandardPointLocationCode2" required="y" min="6" max="9" comment="Code (Standard Point Location) defined by National Motor Freight Tariff Association (NMFTA) or the Canadian Transportation Agency (CTA) point development group as the official code assigned to a city or point (for ratemaking purposes) within a city"/>
   <Field name="PostalCode2" required="y" min="3" max="15" comment="Code defining international postal zone code excluding punctuation and blanks (zip code for United States)"/>
   <Field name="CountryCode2" required="y" min="2" max="3" comment="Code identifying the country"/>
+  <SyntaxNote name="P0607" comment="If either D906 or D907 is present, then the other is required."/>
 </Segment>

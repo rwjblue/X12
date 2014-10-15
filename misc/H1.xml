@@ -33,4 +33,5 @@
   <Field name="FlashpointTemperature" type="double" required="y" min="1" max="3" comment="The flashpoint temperature for hazardous material"/>
   <Field name="UnitOrBasisForMeasurementCode" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="PackingGroupCode" required="y" min="1" max="3" comment="Code indicating degree of danger in terms of Roman number I, II or III"/>
+  <SyntaxNote name="P0708" comment="If either H107 or H108 is present, then the other is required."/>
 </Segment>

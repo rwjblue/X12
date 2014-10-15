@@ -25,6 +25,6 @@
 
 <Segment name="F05" comment="To report allowances or charges relative to a shipment against which a claim is made">
   <Field name="ChargeAllowanceQualifier" min="2" max="2" validation="T538" comment="Code indicating reason for charge or allowance"/>
-  <Field name="Amount" type="double" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" min="1" max="15" comment="Monetary amount"/>
   <Field name="CreditDebitFlagCode" min="1" max="1" validation="T478" comment="Code indicating whether amount is a credit or debit"/>
 </Segment>

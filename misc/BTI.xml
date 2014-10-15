@@ -28,7 +28,7 @@
   <Field name="ReferenceIdentification" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="IdentificationCodeQualifier1" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>
   <Field name="IdentificationCode1" min="2" max="80" comment="Code identifying a party or other code"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="NameControlIdentifier" required="y" min="1" max="4" comment="Name control field for tax information consisting of the first four characters of a business name or of an individual's name, or the entire name, if fewer than four characters"/>
   <Field name="IdentificationCodeQualifier2" required="y" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>
   <Field name="IdentificationCode2" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
@@ -38,4 +38,7 @@
   <Field name="IdentificationCode4" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
+  <SyntaxNote name="P0708" comment="If either BTI07 or BTI08 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either BTI09 or BTI10 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either BTI11 or BTI12 is present, then the other is required."/>
 </Segment>

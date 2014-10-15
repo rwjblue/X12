@@ -35,4 +35,8 @@
   <Field name="WarehouseDetailAdjustmentIdentifier" required="y" min="1" max="1" validation="T893" comment="Code to identify detail line item as an adjustment to inventory levels"/>
   <Field name="ProductServiceIdQualifier3" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId3" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="R0304" comment="At least one of W0703 or W0704 is required."/>
+  <SyntaxNote name="P0405" comment="If either W0704 or W0705 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either W0706 or W0707 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either W0710 or W0711 is present, then the other is required."/>
 </Segment>

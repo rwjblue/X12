@@ -35,4 +35,11 @@
   <Field name="DocketControlNumber" required="y" min="1" max="7" comment="A grouping identification which, when combined with elements 140 and 690, provides a unique identity to a parcel of ratemaking activity"/>
   <Field name="DocketIdentification" required="y" min="1" max="11" comment="A sequence number which, when combined with elements 140 and 697, provides a unique identity to a parcel of ratemaking activity"/>
   <Field name="GroupTitle" required="y" min="2" max="30" comment="The descriptive title of a data group"/>
+  <SyntaxNote name="E0208" comment="Only one of CD02 or CD08 may be present."/>
+  <SyntaxNote name="R0208" comment="At least one of CD02 or CD08 is required."/>
+  <SyntaxNote name="C0302" comment="If CD03 is present, then CD02 is required."/>
+  <SyntaxNote name="C0402" comment="If CD04 is present, then CD02 is required."/>
+  <SyntaxNote name="C0502" comment="If CD05 is present, then CD02 is required."/>
+  <SyntaxNote name="P080910" comment="If either CD08, CD09 or CD10 are present, then the others are required."/>
+  <SyntaxNote name="C11080910" comment="If CD11 is present, then CD08, CD09 and CD10 are required."/>
 </Segment>

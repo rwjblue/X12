@@ -34,5 +34,6 @@
   <Field name="ApplicationErrorConditionCode2" required="y" min="1" max="3" validation="T647" comment="Code indicating application error condition"/>
   <Field name="ApplicationErrorConditionCode3" required="y" min="1" max="3" validation="T647" comment="Code indicating application error condition"/>
   <Field name="DateTimeQualifier" required="y" min="3" max="3" validation="T374" comment="Code specifying type of date or time, or both date and time"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="P1011" comment="If either VAD10 or VAD11 is present, then the other is required."/>
 </Segment>

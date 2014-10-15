@@ -36,4 +36,6 @@
   <Field name="StandardCarrierAlphaCode3" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
   <Field name="IdentificationCodeQualifier" required="y" min="1" max="2" validation="T66" comment="Code designating the system/method of code structure used for Identification Code (67)"/>
   <Field name="IdentificationCode" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
+  <SyntaxNote name="P0810" comment="If either M1308 or M1310 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either M1311 or M1312 is present, then the other is required."/>
 </Segment>

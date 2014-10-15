@@ -38,4 +38,7 @@
   <Field name="IdentificationCode" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="Name2" required="y" min="1" max="60" comment="Free-form name"/>
   <Field name="StatusReasonCode" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
+  <SyntaxNote name="P0607" comment="If either SES06 or SES07 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either SES08 or SES09 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either SES11 or SES12 is present, then the other is required."/>
 </Segment>

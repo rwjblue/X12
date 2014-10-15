@@ -29,4 +29,5 @@
   <Field name="CarTypeCode" required="y" min="1" max="4" comment="Code specifying type of rail car or intermodal equipment type and its general characteristics"/>
   <Field name="EquipmentNumber2" required="y" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
   <Field name="MechanicalCarCode" required="y" min="4" max="4" comment="Association of American Railroads Mechanical Car Code"/>
+  <SyntaxNote name="E0305" comment="Only one of CIC03 or CIC05 may be present."/>
 </Segment>

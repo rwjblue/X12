@@ -32,4 +32,5 @@
   <Field name="DateTimePeriod" required="y" min="1" max="35" comment="Expression of a date, a time, or range of dates, times or dates and times"/>
   <Field name="ReportTypeCode" required="y" min="2" max="2" validation="T755" comment="Code indicating the title or contents of a document, report or supporting item"/>
   <Field name="CurrencyCode" required="y" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
+  <SyntaxNote name="P0506" comment="If either BCI05 or BCI06 is present, then the other is required."/>
 </Segment>

@@ -30,4 +30,5 @@
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="CodeListQualifierCode" required="y" min="1" max="3" validation="T1270" comment="Code identifying a specific industry code list"/>
   <Field name="IndustryCode" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
+  <SyntaxNote name="P0506" comment="If either DEX05 or DEX06 is present, then the other is required."/>
 </Segment>

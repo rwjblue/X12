@@ -1,0 +1,1130 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=UTF-8" http-equiv="Content-Type">
+
+<title>class X12::Field - X12 -- an X12 parsing library</title>
+
+<link type="text/css" media="screen" href="../rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "../";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="../js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="../js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="../index.html">Home</a>
+    <a href="../table_of_contents.html#classes">Classes</a>
+    <a href="../table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>lib/X12/Field.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link"><a href="../Object.html">Object</a>
+  
+</nav>
+
+    
+    
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li ><a href="#method-c-new">::new</a>
+    
+    <li ><a href="#method-i-apply_overrides">#apply_overrides</a>
+    
+    <li ><a href="#method-i-has_content-3F">#has_content?</a>
+    
+    <li ><a href="#method-i-has_displayable_content-3F">#has_displayable_content?</a>
+    
+    <li ><a href="#method-i-initialize_copy">#initialize_copy</a>
+    
+    <li ><a href="#method-i-inspect">#inspect</a>
+    
+    <li ><a href="#method-i-is_constant-3F">#is_constant?</a>
+    
+    <li ><a href="#method-i-is_variable-3F">#is_variable?</a>
+    
+    <li ><a href="#method-i-parse">#parse</a>
+    
+    <li ><a href="#method-i-proper_regexp">#proper_regexp</a>
+    
+    <li ><a href="#method-i-raw_value">#raw_value</a>
+    
+    <li ><a href="#method-i-render">#render</a>
+    
+    <li ><a href="#method-i-set_empty-21">#set_empty!</a>
+    
+    <li ><a href="#method-i-set_validation_table">#set_validation_table</a>
+    
+    <li ><a href="#method-i-simple_regexp">#simple_regexp</a>
+    
+    <li ><a href="#method-i-valid-3F">#valid?</a>
+    
+    <li ><a href="#method-i-validation">#validation</a>
+    
+    <li ><a href="#method-i-var_value">#var_value</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="../CHANGELOG.html">CHANGELOG</a>
+  
+    <li class="file"><a href="../README.html">README</a>
+  
+    <li class="file"><a href="../TODO.html">TODO</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="../Object.html">Object</a>
+  
+    <li><a href="../X12.html">X12</a>
+  
+    <li><a href="../X12/Base.html">X12::Base</a>
+  
+    <li><a href="../X12/Composite.html">X12::Composite</a>
+  
+    <li><a href="../X12/Field.html">X12::Field</a>
+  
+    <li><a href="../X12/Loop.html">X12::Loop</a>
+  
+    <li><a href="../X12/Parser.html">X12::Parser</a>
+  
+    <li><a href="../X12/Segment.html">X12::Segment</a>
+  
+    <li><a href="../X12/Table.html">X12::Table</a>
+  
+    <li><a href="../X12/XMLDefinitions.html">X12::XMLDefinitions</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class X12::Field</h1>
+
+  <div id="description" class="description">
+    
+<p>$Id: Field.rb 90 2009-05-13 19:51:27Z ikk $</p>
+
+<p>Class to represent a segment field. Please note, it’s not a descendant of
+<a href="Base.html">Base</a>.</p>
+
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+    <!-- Attributes -->
+    <section id="attribute-method-details" class="method-section section">
+      <h3 class="section-header">Attributes</h3>
+
+      
+      <div id="attribute-i-alias" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">alias</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p><code>alias</code> can be used to access the node instead of
+<code>name</code>; also, nodes with aliases are collected in
+<code>to_hsh</code> call</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-const_value" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">const_value</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Constant value in case this field is a constant field</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-content" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">content</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>User-provider content of this field. The type of object it contains depends
+on <code>data_type</code></p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-data_type" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">data_type</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Data type this field contatins as per <a href="../X12.html">X12</a>
+specifications</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-error" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">error</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Human readable error message as determined by <code>valid?</code> method</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-error_code" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">error_code</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Error code as per <a href="../X12.html">X12</a> specifications as
+determined by <code>valid?</code> method</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-max_length" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">max_length</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Maximal length of this field textual representation as per <a
+href="../X12.html">X12</a> specifications</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-min_length" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">min_length</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Minimal length of this field textual representation as per <a
+href="../X12.html">X12</a> specifications</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-name" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">name</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Name of the node</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-parent" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">parent</span><span
+            class="attribute-access-type">[RW]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Parent node of this one</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-parsed_str" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">parsed_str</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>String from which the particular node was generated during parsing</p>
+        
+        </div>
+      </div>
+      
+      <div id="attribute-i-required" class="method-detail">
+        <div class="method-heading attribute-method-heading">
+          <span class="method-name">required</span><span
+            class="attribute-access-type">[R]</span>
+        </div>
+
+        <div class="method-description">
+        
+        <p>Returns <code>true</code> is this field must be present in the output
+(“Mandatory” per <a href="../X12.html">X12</a> standard)</p>
+        
+        </div>
+      </div>
+      
+    </section><!-- attribute-method-details -->
+    
+
+    <!-- Methods -->
+    
+     <section id="public-class-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Class Methods</h3>
+
+    
+      <div id="method-c-new" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">new</span><span
+            class="method-args">(params = {})</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Create a new field with given parameters</p>
+          
+          
+
+          
+          <div class="method-source-code" id="new-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 58</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">params</span> = {})
+  <span class="ruby-ivar">@content</span>     = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@parent</span>      = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@error</span>       = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@error_code</span>  = <span class="ruby-keyword">nil</span>
+  <span class="ruby-ivar">@name</span>        = <span class="ruby-identifier">params</span>[<span class="ruby-value">:name</span>]
+  <span class="ruby-ivar">@data_type</span>   = <span class="ruby-identifier">params</span>[<span class="ruby-value">:data_type</span>]
+  <span class="ruby-ivar">@required</span>    = <span class="ruby-identifier">params</span>[<span class="ruby-value">:required</span>] <span class="ruby-operator">||</span> <span class="ruby-keyword">false</span>
+  <span class="ruby-ivar">@min_length</span>  = <span class="ruby-identifier">params</span>[<span class="ruby-value">:min</span>]
+  <span class="ruby-ivar">@max_length</span>  = <span class="ruby-identifier">params</span>[<span class="ruby-value">:max</span>]
+  <span class="ruby-ivar">@validation</span>  = <span class="ruby-identifier">params</span>[<span class="ruby-value">:validation</span>]
+  <span class="ruby-ivar">@const_value</span> = <span class="ruby-identifier">params</span>[<span class="ruby-value">:const_value</span>]
+  <span class="ruby-ivar">@var_name</span>    = <span class="ruby-identifier">params</span>[<span class="ruby-value">:var_name</span>]
+  <span class="ruby-ivar">@alias</span>       = <span class="ruby-identifier">params</span>[<span class="ruby-value">:alias</span>]
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- new-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- new-method -->
+
+    
+    </section><!-- public-class-method-details -->
+  
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-apply_overrides" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">apply_overrides</span><span
+            class="method-args">(override_field)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Paste overrides from the local definition of the field over the library
+definition.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="apply_overrides-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">apply_overrides</span>(<span class="ruby-identifier">override_field</span>)
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">class</span>.<span class="ruby-identifier">new</span>({ <span class="ruby-value">:name</span>        =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@name</span>,
+                   <span class="ruby-value">:data_type</span>   =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@data_type</span>,
+                   <span class="ruby-value">:required</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@required</span>,
+                   <span class="ruby-value">:min</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">override_field</span>.<span class="ruby-identifier">min_length</span>  <span class="ruby-operator">||</span> <span class="ruby-ivar">@min_length</span>,
+                   <span class="ruby-value">:max</span>         =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">override_field</span>.<span class="ruby-identifier">max_length</span>  <span class="ruby-operator">||</span> <span class="ruby-ivar">@max_length</span>,
+                   <span class="ruby-value">:validation</span>  =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@validation</span>,
+                   <span class="ruby-value">:const_value</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">override_field</span>.<span class="ruby-identifier">const_value</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@const_value</span>,
+                   <span class="ruby-value">:var_name</span>    =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@var_name</span>,
+                   <span class="ruby-value">:alias</span>       =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">override_field</span>.<span class="ruby-identifier">alias</span>       <span class="ruby-operator">||</span> <span class="ruby-ivar">@alias</span> })
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- apply_overrides-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- apply_overrides-method -->
+
+    
+      <div id="method-i-has_content-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_content?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies if the field has user-provided data (as opposed to static data)</p>
+          
+          
+
+          
+          <div class="method-source-code" id="has_content-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 134</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_content?</span>
+  <span class="ruby-operator">!</span><span class="ruby-ivar">@content</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_content-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- has_content-3F-method -->
+
+    
+      <div id="method-i-has_displayable_content-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">has_displayable_content?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Specifies if the field has anything to render at all</p>
+          
+          
+
+          
+          <div class="method-source-code" id="has_displayable_content-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 139</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">has_displayable_content?</span>
+  <span class="ruby-identifier">has_content?</span> <span class="ruby-operator">||</span> (<span class="ruby-identifier">is_variable?</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">var_value</span>.<span class="ruby-identifier">nil?</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- has_displayable_content-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- has_displayable_content-3F-method -->
+
+    
+      <div id="method-i-initialize_copy" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">initialize_copy</span><span
+            class="method-args">(original_object)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Initialize the fresh copy of the object made by <code>dup</code> by
+cleaning up user data.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="initialize_copy-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 88</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">initialize_copy</span>(<span class="ruby-identifier">original_object</span>)
+  <span class="ruby-identifier">set_empty!</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- initialize_copy-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- initialize_copy-method -->
+
+    
+      <div id="method-i-inspect" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">inspect</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns printable string with field’s content</p>
+          
+          
+
+          
+          <div class="method-source-code" id="inspect-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 93</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">inspect</span>
+  <span class="ruby-node">&quot;&lt;Field #{name}::#{data_type}#{ is_constant? ? &quot; const(#{@const_value})&quot; : '' } (#{required ? 'required' : 'optional'})|#{min_length}...#{max_length}|#{validation} \&quot;#{@content}\&quot;&gt;&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- inspect-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- inspect-method -->
+
+    
+      <div id="method-i-is_constant-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">is_constant?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>True if this is a constant field</p>
+          
+          
+
+          
+          <div class="method-source-code" id="is_constant-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 144</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">is_constant?</span>
+  <span class="ruby-operator">!</span><span class="ruby-ivar">@const_value</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- is_constant-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- is_constant-3F-method -->
+
+    
+      <div id="method-i-is_variable-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">is_variable?</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>True if this is an engine variable field</p>
+          
+          
+
+          
+          <div class="method-source-code" id="is_variable-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 149</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">is_variable?</span>
+  <span class="ruby-operator">!</span><span class="ruby-ivar">@var_name</span>.<span class="ruby-identifier">nil?</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- is_variable-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- is_variable-3F-method -->
+
+    
+      <div id="method-i-parse" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">parse</span><span
+            class="method-args">(str)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Convert <code>str</code> into an object of the respective class as defined
+in the field definition and assign it to this field.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="parse-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 224</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">parse</span>(<span class="ruby-identifier">str</span>)
+  <span class="ruby-ivar">@parsed_str</span> = <span class="ruby-identifier">str</span>
+  <span class="ruby-ivar">@content</span> =
+    <span class="ruby-keyword">case</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_type</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^N(\d)*/</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">to_i</span> <span class="ruby-operator">/</span> (<span class="ruby-value">10.0</span><span class="ruby-operator">**</span>(<span class="ruby-node">$1</span>.<span class="ruby-identifier">to_i</span>)) <span class="ruby-comment"># Numeric with implied decimal point</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'R'</span>       <span class="ruby-keyword">then</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">to_f</span>                     <span class="ruby-comment"># Real</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'DT'</span>      <span class="ruby-keyword">then</span>                              <span class="ruby-comment"># [CC]YYMMDD</span>
+      <span class="ruby-identifier">y</span> = (<span class="ruby-identifier">str</span>[<span class="ruby-value">-8</span><span class="ruby-operator">..</span><span class="ruby-value">-5</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">-</span> ( <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>.<span class="ruby-identifier">year</span> <span class="ruby-operator">%</span> <span class="ruby-value">100</span>) <span class="ruby-operator">+</span> <span class="ruby-identifier">str</span>[<span class="ruby-value">-6</span><span class="ruby-operator">..</span><span class="ruby-value">-5</span>].<span class="ruby-identifier">to_i</span>).<span class="ruby-identifier">to_i</span>
+      <span class="ruby-ivar">@content</span> = <span class="ruby-constant">Date</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">y</span>, <span class="ruby-identifier">str</span>[<span class="ruby-value">-4</span><span class="ruby-operator">..</span><span class="ruby-value">-3</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">str</span>[<span class="ruby-value">-2</span><span class="ruby-operator">..</span><span class="ruby-value">-1</span>].<span class="ruby-identifier">to_i</span>)
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'TM'</span>      <span class="ruby-keyword">then</span>                              <span class="ruby-comment"># HHMM[SS[D[D]]]</span>
+      <span class="ruby-keyword">if</span> <span class="ruby-identifier">str</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-identifier">str</span> <span class="ruby-operator">+=</span> <span class="ruby-string">'0000'</span>
+        <span class="ruby-constant">Time</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value">0</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-keyword">nil</span>, <span class="ruby-identifier">str</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">str</span>[<span class="ruby-value">2</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>].<span class="ruby-identifier">to_i</span>, <span class="ruby-identifier">str</span>[<span class="ruby-value">4</span><span class="ruby-operator">..</span><span class="ruby-value">7</span>].<span class="ruby-identifier">to_f</span> <span class="ruby-operator">/</span> <span class="ruby-value">100</span>)
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">when</span> <span class="ruby-string">'AN'</span>      <span class="ruby-keyword">then</span> <span class="ruby-identifier">str</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">str</span>.<span class="ruby-identifier">rstrip</span>
+    <span class="ruby-keyword">else</span> <span class="ruby-identifier">str</span>
+    <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- parse-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- parse-method -->
+
+    
+      <div id="method-i-proper_regexp" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">proper_regexp</span><span
+            class="method-args">(field_sep, segment_sep)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns proper validating string regexp for this field, takes field
+separator and segment separator as arguments</p>
+          
+          
+
+          
+          <div class="method-source-code" id="proper_regexp-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 210</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">proper_regexp</span>(<span class="ruby-identifier">field_sep</span>, <span class="ruby-identifier">segment_sep</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-ivar">@const_value</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_constant?</span>
+
+  <span class="ruby-keyword">case</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_type</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'DT'</span>, <span class="ruby-string">'TM'</span> <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;\\d{#{@min_length},#{@max_length}}&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^N\d*/</span>    <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;[0-9+-]{#{@min_length},#{@max_length}}&quot;</span>  <span class="ruby-comment"># Numeric with implied decimal point; may contain sign</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'R'</span>        <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;[0-9+-.]{#{@min_length},#{@max_length}}&quot;</span> <span class="ruby-comment"># Real; may contain leading sign and a decimal point</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'AN'</span>       <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-regexp">/C.*/</span>      <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]{#{@min_length},#{@max_length}}&quot;</span>
+  <span class="ruby-keyword">else</span>                 <span class="ruby-node">&quot;[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*&quot;</span>
+  <span class="ruby-keyword">end</span> <span class="ruby-comment"># case</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- proper_regexp-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- proper_regexp-method -->
+
+    
+      <div id="method-i-raw_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">raw_value</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Obtain the pre-processed value of the field (which can be user-provided,
+constant or variable).</p>
+          
+          
+
+          
+          <div class="method-source-code" id="raw_value-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 154</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">raw_value</span>
+  <span class="ruby-ivar">@content</span> <span class="ruby-operator">||</span> <span class="ruby-ivar">@const_value</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">var_value</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- raw_value-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- raw_value-method -->
+
+    
+      <div id="method-i-render" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">render</span><span
+            class="method-args">(root = self)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns string representation of the field’s content formatted to <a
+href="../X12.html">X12</a> specs</p>
+          
+          
+
+          
+          <div class="method-source-code" id="render-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 98</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">render</span>(<span class="ruby-identifier">root</span> = <span class="ruby-keyword">self</span>)
+  <span class="ruby-identifier">val</span> = <span class="ruby-identifier">raw_value</span>
+
+  <span class="ruby-keyword">return</span> <span class="ruby-string">''</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">nil?</span>
+
+  <span class="ruby-keyword">case</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_type</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'DT'</span>      <span class="ruby-keyword">then</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">'%Y%m%d'</span>)[<span class="ruby-operator">-</span>(<span class="ruby-identifier">max_length</span>)<span class="ruby-operator">..</span><span class="ruby-value">-1</span>]
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'TM'</span>      <span class="ruby-keyword">then</span> 
+    <span class="ruby-identifier">res</span> = <span class="ruby-identifier">val</span>.<span class="ruby-identifier">strftime</span>(<span class="ruby-string">&quot;%H%M%S%L&quot;</span>)[<span class="ruby-value">0</span><span class="ruby-operator">..</span>(<span class="ruby-identifier">max_length</span> <span class="ruby-operator">-</span> <span class="ruby-value">1</span>)].<span class="ruby-identifier">sub</span>(<span class="ruby-node">/0{0,#{max_length - min_length}}$/</span>, <span class="ruby-string">''</span>)
+    <span class="ruby-identifier">res</span> <span class="ruby-operator">+=</span> <span class="ruby-string">&quot;0&quot;</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">res</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">5</span> <span class="ruby-comment"># Special case to not allow minutes to lose the units digit if it's zero</span>
+    <span class="ruby-identifier">res</span>
+  <span class="ruby-comment"># &quot;AN: Alphanumeric data elements containing the numerals 0-9, the characters A-Z and any</span>
+  <span class="ruby-comment"># special characters except asterisk (*), the greater than sign (&gt;) and the characters with a</span>
+  <span class="ruby-comment"># hexadecimal value of '40' or less. These characters are control characters and should not be</span>
+  <span class="ruby-comment"># used for data. The significant characters shall be left justified. Leading spaces, when they occur,</span>
+  <span class="ruby-comment"># are presumed to be significant characters. Trailing spaces should be suppressed unless</span>
+  <span class="ruby-comment"># necessary to satisfy the minimum length requirement.&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'AN'</span>      <span class="ruby-keyword">then</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">rstrip</span>.<span class="ruby-identifier">ljust</span>(<span class="ruby-identifier">min_length</span>)
+  <span class="ruby-comment"># &quot;Nn: Numeric data containing the numerals 0-9, and an implied decimal point. The 'N' indicates</span>
+  <span class="ruby-comment"># that the element contains a numeric value and the 'n' indicates the number of decimal places to</span>
+  <span class="ruby-comment"># the right of the implied decimal point. The actual decimal point is not transmitted. A leading + or -</span>
+  <span class="ruby-comment"># sign may be used. The minus sign must be used for negative values. Leading zeroes should be</span>
+  <span class="ruby-comment"># suppressed unless they are necessary to satisfy the minimum number of digits required by the</span>
+  <span class="ruby-comment"># data element specification. For a data element defined as N4 with a minimum length of 4, the</span>
+  <span class="ruby-comment"># value 0.0001 would be transmitted as '0001'. For an N4 data element with the minimum length of</span>
+  <span class="ruby-comment"># 1, the value 0.0001 would be transmitted '1'.&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^N(\d)*/</span> <span class="ruby-keyword">then</span> <span class="ruby-node">&quot;%0#{min_length}d&quot;</span> <span class="ruby-operator">%</span> (<span class="ruby-identifier">val</span> <span class="ruby-operator">*</span> (<span class="ruby-value">10</span><span class="ruby-operator">**</span>(<span class="ruby-node">$1</span>.<span class="ruby-identifier">to_i</span>)))
+  <span class="ruby-comment"># &quot;R: (Real) numeric data containing the numerals 0-9 and a decimal point in the proper position.</span>
+  <span class="ruby-comment"># The decimal point is optional for integer values but required for fractional values. A leading + or -</span>
+  <span class="ruby-comment"># sign may be used. The minus sign must be used for negative values.&quot;</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'R'</span>       <span class="ruby-keyword">then</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">else</span>                <span class="ruby-identifier">val</span>.<span class="ruby-identifier">to_s</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- render-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- render-method -->
+
+    
+      <div id="method-i-set_empty-21" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_empty!</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Erase the user-provided content.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="set_empty-21-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 199</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_empty!</span>
+  <span class="ruby-ivar">@content</span> = <span class="ruby-keyword">nil</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_empty-21-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_empty-21-method -->
+
+    
+      <div id="method-i-set_validation_table" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">set_validation_table</span><span
+            class="method-args">(t)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Updates validation to a validation table once the parser has them loaded
+in.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="set_validation_table-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 165</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">set_validation_table</span>(<span class="ruby-identifier">t</span>)
+  <span class="ruby-ivar">@validation</span> = <span class="ruby-identifier">t</span> <span class="ruby-keyword">if</span> <span class="ruby-identifier">t</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>)
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- set_validation_table-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- set_validation_table-method -->
+
+    
+      <div id="method-i-simple_regexp" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">simple_regexp</span><span
+            class="method-args">(field_sep, segment_sep)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns simplified string regexp for this field, takes field separator and
+segment separator as arguments</p>
+          
+          
+
+          
+          <div class="method-source-code" id="simple_regexp-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 204</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">simple_regexp</span>(<span class="ruby-identifier">field_sep</span>, <span class="ruby-identifier">segment_sep</span>)
+  <span class="ruby-keyword">return</span> <span class="ruby-constant">Regexp</span>.<span class="ruby-identifier">escape</span>(<span class="ruby-ivar">@const_value</span>) <span class="ruby-keyword">if</span> <span class="ruby-identifier">is_constant?</span>
+  <span class="ruby-node">&quot;[^#{Regexp.escape(field_sep)}#{Regexp.escape(segment_sep)}]*&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- simple_regexp-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- simple_regexp-method -->
+
+    
+      <div id="method-i-valid-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">valid?</span><span
+            class="method-args">(use_ext_charset = true)</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Validate the field data - whether incoming or outgoing.
+<code>use_ext_charset</code> controls whether  the X12’s Basic or Advanced
+Character Set is expected for alphanumeric values.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="valid-3F-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 245</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">valid?</span>(<span class="ruby-identifier">use_ext_charset</span> = <span class="ruby-keyword">true</span>)
+  <span class="ruby-ivar">@error_code</span> = <span class="ruby-ivar">@error</span> = <span class="ruby-keyword">nil</span>
+  <span class="ruby-identifier">val</span> = <span class="ruby-ivar">@parsed_str</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">raw_value</span>
+
+  <span class="ruby-keyword">if</span> <span class="ruby-identifier">val</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">||</span> <span class="ruby-identifier">val</span> <span class="ruby-operator">==</span> <span class="ruby-string">''</span> <span class="ruby-keyword">then</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">required</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-operator">!</span><span class="ruby-identifier">is_variable?</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">1</span>, <span class="ruby-string">'Mandatory data element missing'</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+  <span class="ruby-keyword">else</span>
+    <span class="ruby-identifier">val2</span> = <span class="ruby-ivar">@parsed_str</span> <span class="ruby-operator">||</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">render</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-ivar">@validation</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@validation</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>)
+        <span class="ruby-ivar">@error</span> = <span class="ruby-node">&quot;Validation table #{validation} not provided&quot;</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+      <span class="ruby-keyword">end</span>
+
+      <span class="ruby-keyword">unless</span> <span class="ruby-ivar">@validation</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">val2</span>)
+        <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">7</span>, <span class="ruby-node">&quot;Invalid code value ([#{val}] not in validation table #{validation})&quot;</span>
+        <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+      <span class="ruby-keyword">end</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">val2</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-identifier">max_length</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">5</span>, <span class="ruby-node">&quot;Data element too long (data=[#{val2}], max_length=#{max_length})&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">val2</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&lt;</span> <span class="ruby-identifier">min_length</span> <span class="ruby-keyword">then</span>
+        <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">4</span>, <span class="ruby-node">&quot;Data element too short (data=[#{val2}], (min_length=#{min_length})&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># Note that regexps MUST be written as to ALWAYS succeed, even if zero characters are captured (see below).</span>
+    <span class="ruby-identifier">re</span> = <span class="ruby-keyword">case</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">data_type</span>
+         <span class="ruby-keyword">when</span> <span class="ruby-string">'DT'</span>, <span class="ruby-string">'TM'</span>  <span class="ruby-keyword">then</span> <span class="ruby-regexp">/^\d*/</span>
+         <span class="ruby-keyword">when</span> <span class="ruby-regexp">/^N\d*/</span>     <span class="ruby-keyword">then</span> <span class="ruby-regexp">/^[+-]?\d*/</span>       <span class="ruby-comment"># Numeric with implied decimal point; may contain sign</span>
+         <span class="ruby-keyword">when</span> <span class="ruby-string">'R'</span>         <span class="ruby-keyword">then</span> <span class="ruby-regexp">/^[+-]?\d*\.?\d*/</span> <span class="ruby-comment"># Real; may contain leading sign and a decimal point</span>
+         <span class="ruby-comment"># http://www.x12.org/rfis/Basic%20Character%20Set%20X222A1.pdf</span>
+         <span class="ruby-keyword">when</span> <span class="ruby-string">'AN'</span>, <span class="ruby-regexp">/C.*/</span> <span class="ruby-keyword">then</span> 
+           <span class="ruby-keyword">if</span> <span class="ruby-identifier">use_ext_charset</span> <span class="ruby-keyword">then</span> 
+             <span class="ruby-node">/^[A-Za-z0-9!&quot;&amp;'()*+,-.\/:;?= %@\[\]_{}\|&lt;&gt;~#\$]*/</span>
+           <span class="ruby-keyword">else</span>
+             <span class="ruby-regexp">/^[A-Z0-9!&quot;&amp;'()*+,-.\/:;?= ]*/</span>      <span class="ruby-comment">#'</span>
+           <span class="ruby-keyword">end</span>
+         <span class="ruby-keyword">else</span>             <span class="ruby-keyword">nil</span>
+         <span class="ruby-keyword">end</span>
+
+    <span class="ruby-comment"># If regexp left something behind ($' stands for match_data.post_match), the first uncosumed character</span>
+    <span class="ruby-comment">#   will be the one that failed the match.</span>
+    <span class="ruby-keyword">if</span> <span class="ruby-identifier">re</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">re</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">val2</span>) <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-node">$'</span> <span class="ruby-operator">!=</span> <span class="ruby-string">''</span> <span class="ruby-keyword">then</span>
+      <span class="ruby-ivar">@error_code</span>, <span class="ruby-ivar">@error</span> = <span class="ruby-value">6</span>, <span class="ruby-node">&quot;Invalid character in data element (data=[#{val2}], char='#{$'[0]}')&quot;</span>
+      <span class="ruby-keyword">return</span> <span class="ruby-keyword">false</span>
+    <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">end</span>
+
+  <span class="ruby-keyword">true</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- valid-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- valid-3F-method -->
+
+    
+      <div id="method-i-validation" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validation</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Returns the name of the validation used for this field.</p>
+          
+          
+
+          
+          <div class="method-source-code" id="validation-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 159</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">validation</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-ivar">@validation</span>.<span class="ruby-identifier">name</span> <span class="ruby-keyword">if</span> <span class="ruby-ivar">@validation</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">X12</span><span class="ruby-operator">::</span><span class="ruby-constant">Table</span>)
+  <span class="ruby-ivar">@validation</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- validation-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- validation-method -->
+
+    
+      <div id="method-i-var_value" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">var_value</span><span
+            class="method-args">()</span>
+          
+          <span class="method-click-advice">click to toggle source</span>
+          
+        </div>
+        
+
+        <div class="method-description">
+          
+          <p>Obtain the value corresponding to the engine variable</p>
+          
+          
+
+          
+          <div class="method-source-code" id="var_value-source">
+            <pre><span class="ruby-comment"># File lib/X12/Field.rb, line 184</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">var_value</span>
+  <span class="ruby-keyword">case</span> <span class="ruby-ivar">@var_name</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'segments_rendered'</span> <span class="ruby-keyword">then</span> <span class="ruby-identifier">get_from_ancestor</span>(<span class="ruby-value">:segments_rendered</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'control_number'</span>    <span class="ruby-keyword">then</span> <span class="ruby-identifier">get_from_ancestor</span>(<span class="ruby-value">:control_number</span>)
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'today'</span>             <span class="ruby-keyword">then</span> <span class="ruby-constant">Date</span>.<span class="ruby-identifier">today</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'now'</span>               <span class="ruby-keyword">then</span> <span class="ruby-constant">Time</span>.<span class="ruby-identifier">now</span>
+  <span class="ruby-keyword">when</span> <span class="ruby-string">'fg_count'</span>          <span class="ruby-keyword">then</span>     <span class="ruby-comment"># Find the parent loop of this field's </span>
+    <span class="ruby-identifier">loop</span> = <span class="ruby-identifier">parent</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">parent</span>.<span class="ruby-identifier">parent</span>  <span class="ruby-comment">#   parent segment (which would be IEA)</span>
+    <span class="ruby-identifier">fg_loop</span> = <span class="ruby-identifier">loop</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">loop</span>.<span class="ruby-identifier">nodes</span>[<span class="ruby-value">1</span>] <span class="ruby-comment"># Second node of that loop should be the functional group loop</span>
+    <span class="ruby-identifier">fg_loop</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">fg_loop</span>.<span class="ruby-identifier">size</span>         <span class="ruby-comment">#   so return its count</span>
+  <span class="ruby-keyword">else</span> <span class="ruby-keyword">nil</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- var_value-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- var_value-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 4.0.1.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

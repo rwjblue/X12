@@ -48,4 +48,8 @@
   <Field name="EquipmentInitial" required="y" min="1" max="4" comment="Prefix or alphabetic part of an equipment unit's identifying number"/>
   <Field name="EquipmentNumber1" required="y" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
   <Field name="EquipmentNumber2" required="y" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
+  <SyntaxNote name="R0319" comment="At least one of SCR03 or SCR19 is required."/>
+  <SyntaxNote name="C1803" comment="If SCR18 is present, then SCR03 is required."/>
+  <SyntaxNote name="P222324" comment="If either SCR22, SCR23 or SCR24 are present, then the others are required."/>
+  <SyntaxNote name="L250708" comment="If SCR25 is present, then at least one of SCR07 or SCR08 is required."/>
 </Segment>

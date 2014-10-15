@@ -29,4 +29,5 @@
   <Field name="OwnersShare" type="double" min="1" max="8" comment="To indicate owner's share of the property"/>
   <Field name="MonetaryAmount" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="AmountQualifierCode" required="y" min="1" max="3" validation="T522" comment="Code to qualify amount"/>
+  <SyntaxNote name="C0504" comment="If PSA05 is present, then PSA04 is required."/>
 </Segment>

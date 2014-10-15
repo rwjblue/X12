@@ -25,9 +25,9 @@
 
 <Segment name="F13" comment="To transmit check number and amount information associated with a remittance">
   <Field name="CheckNumber" min="1" max="16" comment="Check identification number"/>
-  <Field name="Date1" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Amount" type="double" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Date1" type="date" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Amount" type="N2" min="1" max="15" comment="Monetary amount"/>
   <Field name="MicrNumber" required="y" min="16" max="16" comment="Identification on a bank check which includes routing and account information"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="CurrencyCode" min="3" max="3" comment="Code (Standard ISO) for country in whose currency the charges are specified"/>
 </Segment>

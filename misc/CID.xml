@@ -31,4 +31,8 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="SourceSubqualifier" required="y" min="1" max="15" comment="A reference that indicates the table or text maintained by the Source Qualifier"/>
   <Field name="YesNoConditionOrResponseCode" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="R01020405" comment="At least one of CID01, CID02, CID04 or CID05 is required."/>
+  <SyntaxNote name="P0304" comment="If either CID03 or CID04 is present, then the other is required."/>
+  <SyntaxNote name="C060304" comment="If CID06 is present, then CID03 and CID04 are required."/>
+  <SyntaxNote name="L070405" comment="If CID07 is present, then at least one of CID04 or CID05 is required."/>
 </Segment>

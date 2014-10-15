@@ -29,4 +29,6 @@
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="UseOfLanguageIndicator" required="y" min="1" max="2" validation="T1303" comment="Code indicating the use of a language"/>
   <Field name="LanguageProficiencyIndicator" required="y" min="1" max="1" validation="T1476" comment="Code indicating language proficiency"/>
+  <SyntaxNote name="P0102" comment="If either LUI01 or LUI02 is present, then the other is required."/>
+  <SyntaxNote name="L040203" comment="If LUI04 is present, then at least one of LUI02 or LUI03 is required."/>
 </Segment>

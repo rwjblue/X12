@@ -29,4 +29,5 @@
   <Field name="ReferenceIdentification" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="ProductTransferTypeCode" required="y" min="2" max="2" validation="T521" comment="Code identifying the type of product transfer"/>
   <Field name="StatusCode" required="y" min="2" max="2" validation="T546" comment="Code identifying the status of a business transaction, such as a claim, policy, real estate, or securities transaction"/>
+  <SyntaxNote name="R0203" comment="At least one of SHI02 or SHI03 is required."/>
 </Segment>

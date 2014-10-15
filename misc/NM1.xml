@@ -26,13 +26,16 @@
 <Segment name="NM1" comment="To supply the full name of an individual or organizational entity">
   <Field name="EntityIdentifierCode1"       required="y" min="2" max="3"  validation="T98"   comment="Code identifying an organizational entity, a physical location, property or an individual"/>
   <Field name="EntityTypeQualifier"         required="y" min="1" max="1"  validation="T1065" comment="Code qualifying the type of entity"/>
-  <Field name="NameLastOrOrganizationName"  required="n" min="1" max="60"                    comment="Individual last name or organizational name"/>
-  <Field name="NameFirst"                   required="n" min="1" max="35"                    comment="Individual first name"/>
-  <Field name="NameMiddle"                  required="n" min="1" max="25"                    comment="Individual middle name or initial"/>
-  <Field name="NamePrefix"                  required="n" min="1" max="10"                    comment="Prefix to individual name"/>
-  <Field name="NameSuffix"                  required="n" min="1" max="10"                    comment="Suffix to individual name"/>
-  <Field name="IdentificationCodeQualifier" required="y" min="1" max="2"  validation="T66"   comment="Code designating the system/method of code structure used for Identification Code (67)"/>
-  <Field name="IdentificationCode"          required="y" min="2" max="80"                    comment="Code identifying a party or other code"/>
-  <Field name="EntityRelationshipCode"      required="n" min="2" max="2"  validation="T706"  comment="Code describing entity relationship"/>
-  <Field name="EntityIdentifierCode"        required="n" min="2" max="3"  validation="T98"   comment="Code identifying an organizational entity, a physical location, property or an individual"/>
+  <Field name="NameLastOrOrganizationName"  min="1" max="60"                    comment="Individual last name or organizational name"/>
+  <Field name="NameFirst"                   min="1" max="35"                    comment="Individual first name"/>
+  <Field name="NameMiddle"                  min="1" max="25"                    comment="Individual middle name or initial"/>
+  <Field name="NamePrefix"                  min="1" max="10"                    comment="Prefix to individual name"/>
+  <Field name="NameSuffix"                  min="1" max="10"                    comment="Suffix to individual name"/>
+  <Field name="IdentificationCodeQualifier" min="1" max="2"  validation="T66"   comment="Code designating the system/method of code structure used for Identification Code (67)"/>
+  <Field name="IdentificationCode"          min="2" max="80"                    comment="Code identifying a party or other code"/>
+  <Field name="EntityRelationshipCode"      min="2" max="2"  validation="T706"  comment="Code describing entity relationship"/>
+  <Field name="EntityIdentifierCode"        min="2" max="3"  validation="T98"   comment="Code identifying an organizational entity, a physical location, property or an individual"/>
+  <SyntaxNote name="P0809" comment="If either NM108 or NM109 is present, then the other is required."/>
+  <SyntaxNote name="C1110" comment="If NM111 is present, then NM110 is required."/>
+  <SyntaxNote name="C1203" comment="If NM112 is present, then NM103 is required."/>
 </Segment>

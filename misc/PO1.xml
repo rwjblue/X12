@@ -49,4 +49,16 @@
   <Field name="ProductServiceId9" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="ProductServiceIdQualifier10" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId10" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="C0302" comment="If PO103 is present, then PO102 is required."/>
+  <SyntaxNote name="C0504" comment="If PO105 is present, then PO104 is required."/>
+  <SyntaxNote name="P0607" comment="If either PO106 or PO107 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either PO108 or PO109 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either PO110 or PO111 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either PO112 or PO113 is present, then the other is required."/>
+  <SyntaxNote name="P1415" comment="If either PO114 or PO115 is present, then the other is required."/>
+  <SyntaxNote name="P1617" comment="If either PO116 or PO117 is present, then the other is required."/>
+  <SyntaxNote name="P1819" comment="If either PO118 or PO119 is present, then the other is required."/>
+  <SyntaxNote name="P2021" comment="If either PO120 or PO121 is present, then the other is required."/>
+  <SyntaxNote name="P2223" comment="If either PO122 or PO123 is present, then the other is required."/>
+  <SyntaxNote name="P2425" comment="If either PO124 or PO125 is present, then the other is required."/>
 </Segment>

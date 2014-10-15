@@ -34,4 +34,5 @@
   <Field name="ActionCode" required="y" min="1" max="2" validation="T306" comment="Code indicating type of action"/>
   <Field name="StatusReasonCode" required="y" min="3" max="3" validation="T641" comment="Code indicating the status reason"/>
   <Field name="LanguageCode" required="y" min="2" max="3" comment="Code designating the language used in text, from a standard code list maintained by the International Standards Organization (ISO 639)"/>
+  <SyntaxNote name="P0506" comment="If either BOR05 or BOR06 is present, then the other is required."/>
 </Segment>

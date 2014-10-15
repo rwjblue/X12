@@ -28,7 +28,7 @@
   <Field name="ServicePromotionAllowanceOrChargeCode" required="y" min="4" max="4" validation="T1300" comment="Code identifying the service, promotion, allowance, or charge"/>
   <Field name="AgencyQualifierCode" required="y" min="2" max="2" validation="T559" comment="Code identifying the agency assigning the code values"/>
   <Field name="AgencyServicePromotionAllowanceOrChargeCode" required="y" min="1" max="10" comment="Agency maintained code identifying the service, promotion, allowance, or charge"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="AllowanceChargePercentQualifier" required="y" min="1" max="1" validation="T378" comment="Code indicating on what basis allowance or charge percent is calculated"/>
   <Field name="Percent" type="double" required="y" min="1" max="6" comment="Percent expressed as a percent"/>
   <Field name="Rate" type="double" required="y" min="1" max="9" comment="Rate expressed in the standard monetary denomination for the currency specified"/>
@@ -40,4 +40,11 @@
   <Field name="OptionNumber" required="y" min="1" max="20" comment="A unique number identifying available promotion or allowance options when more than one is offered"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
   <Field name="LanguageCode" required="y" min="2" max="3" comment="Code designating the language used in text, from a standard code list maintained by the International Standards Organization (ISO 639)"/>
+  <SyntaxNote name="R0203" comment="At least one of SAC02 or SAC03 is required."/>
+  <SyntaxNote name="P0304" comment="If either SAC03 or SAC04 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either SAC06 or SAC07 is present, then the other is required."/>
+  <SyntaxNote name="P0910" comment="If either SAC09 or SAC10 is present, then the other is required."/>
+  <SyntaxNote name="C1110" comment="If SAC11 is present, then SAC10 is required."/>
+  <SyntaxNote name="C1413" comment="If SAC14 is present, then SAC13 is required."/>
+  <SyntaxNote name="C1615" comment="If SAC16 is present, then SAC15 is required."/>
 </Segment>

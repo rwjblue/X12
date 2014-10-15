@@ -34,4 +34,7 @@
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="UnitOrBasisForMeasurementCode2" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Color" required="y" min="1" max="10" comment="Free-form description of color"/>
+  <SyntaxNote name="P0203" comment="If either W2002 or W2003 is present, then the other is required."/>
+  <SyntaxNote name="P040506" comment="If either W2004, W2005 or W2006 are present, then the others are required."/>
+  <SyntaxNote name="P0809" comment="If either W2008 or W2009 is present, then the other is required."/>
 </Segment>

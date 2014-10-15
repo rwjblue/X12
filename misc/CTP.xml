@@ -35,4 +35,9 @@
   <Field name="BasisOfUnitPriceCode" required="y" min="2" max="2" validation="T639" comment="Code identifying the type of unit price for an item"/>
   <Field name="ConditionValue" required="y" min="1" max="10" comment="Identifies rate restrictions or provisions"/>
   <Field name="MultiplePriceQuantity" type="long" required="y" min="1" max="2" comment="Quantity of units for a given price, e.g., 3 for $10.00"/>
+  <SyntaxNote name="P0405" comment="If either CTP04 or CTP05 is present, then the other is required."/>
+  <SyntaxNote name="C0607" comment="If CTP06 is present, then CTP07 is required."/>
+  <SyntaxNote name="C0902" comment="If CTP09 is present, then CTP02 is required."/>
+  <SyntaxNote name="C1002" comment="If CTP10 is present, then CTP02 is required."/>
+  <SyntaxNote name="C1103" comment="If CTP11 is present, then CTP03 is required."/>
 </Segment>

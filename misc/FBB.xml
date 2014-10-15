@@ -31,4 +31,7 @@
   <Field name="IdentificationCode" required="y" min="2" max="80" comment="Code identifying a party or other code"/>
   <Field name="MonetaryAmount2" type="double" required="y" min="1" max="18" comment="Monetary amount"/>
   <Field name="Percent2" type="double" required="y" min="1" max="10" comment="Percentage expressed as a decimal"/>
+  <SyntaxNote name="R0203" comment="At least one of FBB02 or FBB03 is required."/>
+  <SyntaxNote name="L040607" comment="If FBB04 is present, then at least one of FBB06 or FBB07 is required."/>
+  <SyntaxNote name="P0405" comment="If either FBB04 or FBB05 is present, then the other is required."/>
 </Segment>

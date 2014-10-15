@@ -45,4 +45,12 @@
   <Field name="CompositeUnitOfMeasure7" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="ReceivingConditionCode5" required="y" min="2" max="2" validation="T412" comment="Code designating physical condition or status of units received in a specific shipment"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="R020406" comment="At least one of RCD02, RCD04 or RCD06 is required."/>
+  <SyntaxNote name="P0203" comment="If either RCD02 or RCD03 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either RCD04 or RCD05 is present, then the other is required."/>
+  <SyntaxNote name="P060708" comment="If either RCD06, RCD07 or RCD08 are present, then the others are required."/>
+  <SyntaxNote name="P091011" comment="If either RCD09, RCD10 or RCD11 are present, then the others are required."/>
+  <SyntaxNote name="P121314" comment="If either RCD12, RCD13 or RCD14 are present, then the others are required."/>
+  <SyntaxNote name="P151617" comment="If either RCD15, RCD16 or RCD17 are present, then the others are required."/>
+  <SyntaxNote name="P181920" comment="If either RCD18, RCD19 or RCD20 are present, then the others are required."/>
 </Segment>

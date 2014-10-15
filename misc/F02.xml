@@ -24,7 +24,7 @@
 -->
 
 <Segment name="F02" comment="To specify date of shipment, carrier, equipment, and carrier's reference number">
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="EquipmentInitial" required="y" min="1" max="4" comment="Prefix or alphabetic part of an equipment unit's identifying number"/>
   <Field name="EquipmentNumber" required="y" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
   <Field name="ReferenceIdentificationQualifier1" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
@@ -33,4 +33,6 @@
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="VesselCode" required="y" min="1" max="8" comment="Code identifying vessel"/>
   <Field name="VesselName" required="y" min="2" max="28" comment="Name of ship as documented in &quot;Lloyd's Register of Ships&quot;"/>
+  <SyntaxNote name="P0405" comment="If either F0204 or F0205 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either F0206 or F0207 is present, then the other is required."/>
 </Segment>

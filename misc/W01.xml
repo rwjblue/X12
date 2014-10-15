@@ -40,4 +40,9 @@
   <Field name="ProductServiceConditionCode" required="y" min="2" max="2" validation="T286" comment="Code identifying condition of product/service"/>
   <Field name="ProductServiceIdQualifier3" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId3" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="R0304" comment="At least one of W0103 or W0104 is required."/>
+  <SyntaxNote name="P0405" comment="If either W0104 or W0105 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either W0106 or W0107 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either W0110 or W0111 is present, then the other is required."/>
+  <SyntaxNote name="P1516" comment="If either W0115 or W0116 is present, then the other is required."/>
 </Segment>

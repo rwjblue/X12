@@ -42,4 +42,10 @@
   <Field name="ProductOptionCode3" required="y" min="1" max="2" validation="T1161" comment="Code indicating an option chosen for the product"/>
   <Field name="ProductOptionCode4" required="y" min="1" max="2" validation="T1161" comment="Code indicating an option chosen for the product"/>
   <Field name="FrequencyCode" required="y" min="1" max="1" validation="T594" comment="Code indicating frequency or type of activities or actions being reported"/>
+  <SyntaxNote name="C0403" comment="If BLI04 is present, then BLI03 is required."/>
+  <SyntaxNote name="P0506" comment="If either BLI05 or BLI06 is present, then the other is required."/>
+  <SyntaxNote name="C0706" comment="If BLI07 is present, then BLI06 is required."/>
+  <SyntaxNote name="P0809" comment="If either BLI08 or BLI09 is present, then the other is required."/>
+  <SyntaxNote name="P1011" comment="If either BLI10 or BLI11 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either BLI12 or BLI13 is present, then the other is required."/>
 </Segment>

@@ -33,4 +33,7 @@
   <Field name="UnitOrBasisForMeasurementCode3" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="Color" required="y" min="1" max="10" comment="Free-form description of color"/>
   <Field name="InnerPack" type="long" required="y" min="1" max="6" comment="The number of eaches per inner container"/>
+  <SyntaxNote name="P0203" comment="If either G2002 or G2003 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either G2004 or G2005 is present, then the other is required."/>
+  <SyntaxNote name="P0607" comment="If either G2006 or G2007 is present, then the other is required."/>
 </Segment>

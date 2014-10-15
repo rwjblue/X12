@@ -29,7 +29,7 @@
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
   <Field name="CityName" required="y" min="2" max="30" comment="Free-form text for city name"/>
   <Field name="Rule260JunctionCode" required="y" min="1" max="5" comment="Code indicating railroad interchange locations"/>
-  <Field name="PercentageDivision" type="double" required="y" min="1" max="5" comment="A number which indicates the portion of freight revenue to be apportioned to an identified carrier; the number is expressed as a percent; the value of this element shall not exceed 100.00"/>
+  <Field name="PercentageDivision" type="N2" required="y" min="1" max="5" comment="A number which indicates the portion of freight revenue to be apportioned to an identified carrier; the number is expressed as a percent; the value of this element shall not exceed 100.00"/>
   <Field name="FactorAmount1" type="double" required="y" min="1" max="9" comment="Number indicating the portion of freight rate revenue to be apportioned to an identified carrier"/>
   <Field name="FactorAmount2" type="double" required="y" min="1" max="9" comment="Number indicating the portion of freight rate revenue to be apportioned to an identified carrier"/>
   <Field name="FactorAmount3" type="double" required="y" min="1" max="9" comment="Number indicating the portion of freight rate revenue to be apportioned to an identified carrier"/>
@@ -38,4 +38,6 @@
   <Field name="FactorAmount6" type="double" required="y" min="1" max="9" comment="Number indicating the portion of freight rate revenue to be apportioned to an identified carrier"/>
   <Field name="FactorAmount7" type="double" required="y" min="1" max="9" comment="Number indicating the portion of freight rate revenue to be apportioned to an identified carrier"/>
   <Field name="FactorAmount8" type="double" required="y" min="1" max="9" comment="Number indicating the portion of freight rate revenue to be apportioned to an identified carrier"/>
+  <SyntaxNote name="P0304" comment="If either FK03 or FK04 is present, then the other is required."/>
+  <SyntaxNote name="E0305" comment="Only one of FK03 or FK05 may be present."/>
 </Segment>

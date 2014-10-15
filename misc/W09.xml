@@ -33,4 +33,6 @@
   <Field name="VentSettingCode" required="y" min="1" max="1" validation="T1122" comment="Code describing the setting on the air vents on ocean-type containers"/>
   <Field name="Percent" type="long" required="y" min="1" max="3" comment="Percent expressed as 0 to 100"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
+  <SyntaxNote name="P0203" comment="If either W0902 or W0903 is present, then the other is required."/>
+  <SyntaxNote name="P0405" comment="If either W0904 or W0905 is present, then the other is required."/>
 </Segment>

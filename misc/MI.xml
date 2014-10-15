@@ -25,8 +25,8 @@
 
 <Segment name="MI" comment="Defines the advertising media and the related costs">
   <Field name="MediaTypeIdentifier" min="2" max="2" validation="T1393" comment="Identifies a specific media type"/>
-  <Field name="Amount1" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="Amount2" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="Amount3" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount1" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount2" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount3" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="Description" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
 </Segment>

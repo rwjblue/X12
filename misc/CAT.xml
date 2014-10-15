@@ -31,4 +31,8 @@
   <Field name="IndustryCode1" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
   <Field name="IndustryCode2" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
   <Field name="VersionIdentifier2" required="y" min="1" max="30" comment="Revision level of a particular format, program, technique or algorithm"/>
+  <SyntaxNote name="C0302" comment="If CAT03 is present, then CAT02 is required."/>
+  <SyntaxNote name="P0405" comment="If either CAT04 or CAT05 is present, then the other is required."/>
+  <SyntaxNote name="C0605" comment="If CAT06 is present, then CAT05 is required."/>
+  <SyntaxNote name="C0704" comment="If CAT07 is present, then CAT04 is required."/>
 </Segment>

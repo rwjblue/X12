@@ -36,4 +36,10 @@
   <Field name="VolumeUnitQualifier" required="y" min="1" max="1" validation="T184" comment="Code identifying the volume unit"/>
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="PalletExchangeCode" required="y" min="1" max="1" validation="T399" comment="Code specifying pallet exchange instructions"/>
+  <SyntaxNote name="P0405" comment="If either LCT04 or LCT05 is present, then the other is required."/>
+  <SyntaxNote name="L06070809" comment="If LCT06 is present, then at least one of LCT07, LCT08 or LCT09 is required."/>
+  <SyntaxNote name="C0706" comment="If LCT07 is present, then LCT06 is required."/>
+  <SyntaxNote name="C0806" comment="If LCT08 is present, then LCT06 is required."/>
+  <SyntaxNote name="C0906" comment="If LCT09 is present, then LCT06 is required."/>
+  <SyntaxNote name="P1011" comment="If either LCT10 or LCT11 is present, then the other is required."/>
 </Segment>

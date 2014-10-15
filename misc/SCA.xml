@@ -31,4 +31,8 @@
   <Field name="Quantity2" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="RangeMinimum" type="double" required="y" min="1" max="20" comment="The value specifying the minimum of the measurement range"/>
   <Field name="RangeMaximum" type="double" required="y" min="1" max="20" comment="The value specifying the maximum of the measurement range"/>
+  <SyntaxNote name="P0102" comment="If either SCA01 or SCA02 is present, then the other is required."/>
+  <SyntaxNote name="L030407" comment="If SCA03 is present, then at least one of SCA04 or SCA07 is required."/>
+  <SyntaxNote name="C0504" comment="If SCA05 is present, then SCA04 is required."/>
+  <SyntaxNote name="P0607" comment="If either SCA06 or SCA07 is present, then the other is required."/>
 </Segment>

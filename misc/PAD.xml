@@ -29,4 +29,6 @@
   <Field name="ChangeOrResponseTypeCode" required="y" min="2" max="2" validation="T670" comment="Code specifying the type of change to the line item"/>
   <Field name="PriceMultiplierQualifier" required="y" min="3" max="3" validation="T648" comment="Code indicating the type of price multiplier"/>
   <Field name="Multiplier" type="double" required="y" min="1" max="10" comment="Value to be used as a multiplier to obtain a new value"/>
+  <SyntaxNote name="R0102" comment="At least one of PAD01 or PAD02 is required."/>
+  <SyntaxNote name="P0405" comment="If either PAD04 or PAD05 is present, then the other is required."/>
 </Segment>

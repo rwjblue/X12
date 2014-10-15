@@ -30,4 +30,5 @@
   <Field name="DirectionIdentifierCode1" required="y" min="1" max="1" validation="T1280" comment="Code identifying geographic direction"/>
   <Field name="LatitudeCode" required="y" min="7" max="7" comment="Code indicating the latitude in degrees (3 positions), minutes (2 positions), seconds (2 positions)"/>
   <Field name="DirectionIdentifierCode2" required="y" min="1" max="1" validation="T1280" comment="Code identifying geographic direction"/>
+  <SyntaxNote name="P03040506" comment="If either PPA03, PPA04, PPA05 or PPA06 are present, then the others are required."/>
 </Segment>

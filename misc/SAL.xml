@@ -25,10 +25,12 @@
 
 <Segment name="SAL" comment="To specify details of commission salary information">
   <Field name="YesNoConditionOrResponseCode" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
-  <Field name="LaborRate" type="double" required="y" min="3" max="6" comment="The labor/time guide rate used by the division to reimburse the dealer for repair work"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="LaborRate" type="N2" required="y" min="3" max="6" comment="The labor/time guide rate used by the division to reimburse the dealer for repair work"/>
   <Field name="NumberOfPeriods" type="long" required="y" min="1" max="3" comment="Total number of periods"/>
   <Field name="UnitOfTimePeriodOrInterval" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <SyntaxNote name="C0203" comment="If SAL02 is present, then SAL03 is required."/>
+  <SyntaxNote name="P030405" comment="If either SAL03, SAL04 or SAL05 are present, then the others are required."/>
 </Segment>

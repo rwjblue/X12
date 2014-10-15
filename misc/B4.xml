@@ -27,8 +27,8 @@
   <Field name="SpecialHandlingCode" required="y" min="2" max="3" validation="T152" comment="Code specifying special transportation handling instructions"/>
   <Field name="InquiryRequestNumber" type="long" required="y" min="1" max="3" comment="Identifying number assigned by inquirer"/>
   <Field name="ShipmentStatusCode" required="y" min="1" max="2" validation="T157" comment="Code indicating the status of a shipment"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Time" type="time" required="y" min="4" max="8" comment="Time expressed in 24-hour clock time as follows: HHMM, or HHMMSS, or HHMMSSD, or HHMMSSDD, where H = hours (00-23), M = minutes (00-59), S = integer seconds (00-59) and DD = decimal seconds; decimal seconds are expressed as follows: D = tenths (0-9) and DD = hundredths (00-99)"/>
   <Field name="StatusLocation" required="y" min="3" max="5" comment="Air shipment: Airport code for last reported status for a shipment; (Note: If the shipment is in-flight, the status location is the origin airport for this flight) Ground transportation: Code of carrier's terminal"/>
   <Field name="EquipmentInitial" required="y" min="1" max="4" comment="Prefix or alphabetic part of an equipment unit's identifying number"/>
   <Field name="EquipmentNumber" required="y" min="1" max="15" comment="Sequencing or serial part of an equipment unit's identifying number (pure numeric form for equipment number is preferred)"/>
@@ -37,4 +37,6 @@
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="LocationQualifier" required="y" min="1" max="2" validation="T309" comment="Code identifying type of location"/>
   <Field name="EquipmentNumberCheckDigit" type="long" required="y" min="1" max="1" comment="Number which designates the check digit applied to a piece of equipment"/>
+  <SyntaxNote name="P0708" comment="If either B407 or B408 is present, then the other is required."/>
+  <SyntaxNote name="P1112" comment="If either B411 or B412 is present, then the other is required."/>
 </Segment>

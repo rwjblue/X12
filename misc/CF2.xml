@@ -25,13 +25,16 @@
 
 <Segment name="CF2" comment="To identify the freight bill number, net amount due, and other basic data related to the freight bill such as date of pick-up">
   <Field name="InvoiceNumber" min="1" max="22" comment="Identifying number assigned by issuer"/>
-  <Field name="NetAmountDue" type="double" min="1" max="12" comment="Total charges to be paid by the receiver of this transaction set expressed in the standard monetary denomination for the currency specified"/>
+  <Field name="NetAmountDue" type="N2" min="1" max="12" comment="Total charges to be paid by the receiver of this transaction set expressed in the standard monetary denomination for the currency specified"/>
   <Field name="ShipmentIdentificationNumber" required="y" min="1" max="30" comment="Identification number assigned to the shipment by the shipper that uniquely identifies the shipment from origin to ultimate destination and is not subject to modification; (Does not contain blanks or special characters)"/>
   <Field name="ShipmentMethodOfPayment" required="y" min="2" max="2" validation="T146" comment="Code identifying payment terms for transportation charges"/>
-  <Field name="Date1" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
-  <Field name="Date2" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date1" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date2" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="WeightQualifier" required="y" min="1" max="2" validation="T187" comment="Code defining the type of weight"/>
   <Field name="WeightUnitCode" required="y" min="1" max="1" validation="T188" comment="Code specifying the weight unit"/>
   <Field name="Weight" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
   <Field name="TransactionTypeCode" required="y" min="2" max="2" validation="T640" comment="Code specifying the type of transaction"/>
+  <SyntaxNote name="C0709" comment="If CF207 is present, then CF209 is required."/>
+  <SyntaxNote name="C0809" comment="If CF208 is present, then CF209 is required."/>
+  <SyntaxNote name="L090708" comment="If CF209 is present, then at least one of CF207 or CF208 is required."/>
 </Segment>

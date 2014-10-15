@@ -37,4 +37,9 @@
   <Field name="TypeOfServiceCode" required="y" min="2" max="2" validation="T56" comment="Code specifying extent of transportation service requested"/>
   <Field name="LocationIdentifier" required="y" min="1" max="30" comment="Code which identifies a specific location"/>
   <Field name="StandardCarrierAlphaCode" required="y" min="2" max="4" comment="Standard Carrier Alpha Code"/>
+  <SyntaxNote name="L141518" comment="If VID14 is present, then at least one of VID15 or VID18 is required."/>
+  <SyntaxNote name="E1518" comment="Only one of VID15 or VID18 may be present."/>
+  <SyntaxNote name="C1516" comment="If VID15 is present, then VID16 is required."/>
+  <SyntaxNote name="L161518" comment="If VID16 is present, then at least one of VID15 or VID18 is required."/>
+  <SyntaxNote name="C1816" comment="If VID18 is present, then VID16 is required."/>
 </Segment>

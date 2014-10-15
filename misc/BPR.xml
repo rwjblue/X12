@@ -39,10 +39,16 @@
   <Field name="DFIIdentificationNumber2" required="y" min="3" max="12" comment="Depository Financial Institution (DFI) identification number"/>
   <Field name="AccountNumberQualifier2" required="y" min="1" max="3" validation="T569" comment="Code indicating the type of account"/>
   <Field name="AccountNumber2" required="y" min="1" max="35" comment="Account number assigned"/>
-  <Field name="Date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
+  <Field name="Date" type="date" required="y" min="8" max="8" comment="Date expressed as CCYYMMDD where CC represents the first two digits of the calendar year"/>
   <Field name="BusinessFunctionCode" required="y" min="1" max="3" validation="T1048" comment="Code identifying the business reason for this payment"/>
   <Field name="DFIIdNumberQualifier3" required="y" min="2" max="2" validation="T506" comment="Code identifying the type of identification number of Depository Financial Institution (DFI)"/>
   <Field name="DFIIdentificationNumber3" required="y" min="3" max="12" comment="Depository Financial Institution (DFI) identification number"/>
   <Field name="AccountNumberQualifier3" required="y" min="1" max="3" validation="T569" comment="Code indicating the type of account"/>
   <Field name="AccountNumber3" required="y" min="1" max="35" comment="Account number assigned"/>
+  <SyntaxNote name="P0607" comment="If either BPR06 or BPR07 is present, then the other is required."/>
+  <SyntaxNote name="C0809" comment="If BPR08 is present, then BPR09 is required."/>
+  <SyntaxNote name="P1213" comment="If either BPR12 or BPR13 is present, then the other is required."/>
+  <SyntaxNote name="C1415" comment="If BPR14 is present, then BPR15 is required."/>
+  <SyntaxNote name="P1819" comment="If either BPR18 or BPR19 is present, then the other is required."/>
+  <SyntaxNote name="C2021" comment="If BPR20 is present, then BPR21 is required."/>
 </Segment>

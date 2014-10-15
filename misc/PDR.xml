@@ -28,4 +28,5 @@
   <Field name="CodeListQualifierCode" required="y" min="1" max="3" validation="T1270" comment="Code identifying a specific industry code list"/>
   <Field name="IndustryCode" required="y" min="1" max="30" comment="Code indicating a code from a specific industry code list"/>
   <Field name="OccupancyCode" required="y" min="2" max="2" validation="T689" comment="Code specifying occupancy status of real estate property"/>
+  <SyntaxNote name="P0203" comment="If either PDR02 or PDR03 is present, then the other is required."/>
 </Segment>

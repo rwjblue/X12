@@ -29,4 +29,6 @@
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="TransportationMethodTypeCode" required="y" min="1" max="2" validation="T91" comment="Code specifying the method or type of transportation for the shipment"/>
   <Field name="UnitOfTimePeriodOrInterval" required="y" min="2" max="2" validation="T344" comment="Code indicating the time period or interval"/>
+  <SyntaxNote name="P0102" comment="If either IV101 or IV102 is present, then the other is required."/>
+  <SyntaxNote name="C0502" comment="If IV105 is present, then IV102 is required."/>
 </Segment>

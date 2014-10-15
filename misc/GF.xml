@@ -33,4 +33,7 @@
   <Field name="ReleaseNumber" required="y" min="1" max="30" comment="Number identifying a release against a Purchase Order previously placed by the parties involved in the transaction"/>
   <Field name="ReferenceIdentificationQualifier3" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification3" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
+  <SyntaxNote name="P0102" comment="If either GF01 or GF02 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either GF05 or GF06 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either GF08 or GF09 is present, then the other is required."/>
 </Segment>

@@ -32,4 +32,9 @@
   <Field name="UnitOrBasisForMeasurementCode3" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="LadingQuantity" type="long" required="y" min="1" max="7" comment="Number of units (pieces) of the lading commodity"/>
   <Field name="UnitOrBasisForMeasurementCode4" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="P0102" comment="If either G0501 or G0502 is present, then the other is required."/>
+  <SyntaxNote name="R010305" comment="At least one of G0501, G0503 or G0505 is required."/>
+  <SyntaxNote name="P0304" comment="If either G0503 or G0504 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either G0505 or G0506 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either G0507 or G0508 is present, then the other is required."/>
 </Segment>

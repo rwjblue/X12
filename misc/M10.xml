@@ -38,4 +38,6 @@
   <Field name="ReferenceIdentification2" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
   <Field name="ApplicationType" required="y" min="2" max="2" validation="T346" comment="Code identifying an application"/>
+  <SyntaxNote name="P0410" comment="If either M1004 or M1010 is present, then the other is required."/>
+  <SyntaxNote name="P1516" comment="If either M1015 or M1016 is present, then the other is required."/>
 </Segment>

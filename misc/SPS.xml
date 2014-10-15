@@ -30,4 +30,5 @@
   <Field name="ConfidenceLimit" type="double" required="y" min="1" max="4" comment="Percent value expressing the confidence that a true value falls within a certain confidence interval"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="SampleFrequencyValuePerUnitOfMeasurementCode" type="long" required="y" min="1" max="9" comment="The number of samples collected"/>
+  <SyntaxNote name="P0506" comment="If either SPS05 or SPS06 is present, then the other is required."/>
 </Segment>

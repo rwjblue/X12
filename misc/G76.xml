@@ -31,7 +31,10 @@
   <Field name="Volume" type="double" required="y" min="1" max="8" comment="Value of volumetric measure"/>
   <Field name="UnitOrBasisForMeasurementCode3" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
   <Field name="OrderSizingFactor" type="double" required="y" min="1" max="10" comment="A product specification other than gross or net weight, or cubic feet for a line item or transaction used for order sizing and pricing purposes"/>
-  <Field name="Amount" type="double" required="y" min="1" max="15" comment="Monetary amount"/>
+  <Field name="Amount" type="N2" required="y" min="1" max="15" comment="Monetary amount"/>
   <Field name="PriceBracketIdentifier" required="y" min="1" max="3" comment="Identifier assigned by the vendor for a specific price bracket"/>
   <Field name="PaymentMethodCode" required="y" min="1" max="2" validation="T107" comment="Code identifying type of payment procedures"/>
+  <SyntaxNote name="P0304" comment="If either G7603 or G7604 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either G7605 or G7606 is present, then the other is required."/>
+  <SyntaxNote name="C0704" comment="If G7607 is present, then G7604 is required."/>
 </Segment>

@@ -28,4 +28,6 @@
   <Field name="StandardPointLocationCode" required="y" min="6" max="9" comment="Code (Standard Point Location) defined by National Motor Freight Tariff Association (NMFTA) or the Canadian Transportation Agency (CTA) point development group as the official code assigned to a city or point (for ratemaking purposes) within a city"/>
   <Field name="CityName" required="y" min="2" max="30" comment="Free-form text for city name"/>
   <Field name="StateOrProvinceCode" required="y" min="2" max="2" comment="Code (Standard State/Province) as defined by appropriate government agency"/>
+  <SyntaxNote name="R0203" comment="At least one of SMR02 or SMR03 is required."/>
+  <SyntaxNote name="P0304" comment="If either SMR03 or SMR04 is present, then the other is required."/>
 </Segment>

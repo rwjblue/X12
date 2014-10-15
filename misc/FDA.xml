@@ -33,4 +33,9 @@
   <Field name="ConstructionType1" required="y" min="1" max="2" validation="T1429" comment="Contains the primary construction material"/>
   <Field name="ConstructionType2" required="y" min="1" max="2" validation="T1429" comment="Contains the primary construction material"/>
   <Field name="Description2" required="y" min="1" max="80" comment="A free-form description to clarify the related data elements and their content"/>
+  <SyntaxNote name="R0102" comment="At least one of FDA01 or FDA02 is required."/>
+  <SyntaxNote name="C0403" comment="If FDA04 is present, then FDA03 is required."/>
+  <SyntaxNote name="E0405" comment="Only one of FDA04 or FDA05 may be present."/>
+  <SyntaxNote name="C0503" comment="If FDA05 is present, then FDA03 is required."/>
+  <SyntaxNote name="C0807" comment="If FDA08 is present, then FDA07 is required."/>
 </Segment>

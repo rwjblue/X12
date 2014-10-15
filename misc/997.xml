@@ -31,16 +31,24 @@
 
 <Definition>
   <Loop name="997" comment="This X12 Transaction Set contains the format and establishes the data contents of the Functional Acknowledgment Transaction Set (997) for use within the context of an Electronic Data Interchange (EDI) environment. The transaction set can be used to define the control structures for a set of acknowledgments to indicate the results of the syntactical analysis of the electronically encoded documents. The encoded documents are the transaction sets, which are grouped in functional groups, used in defining transactions for business data interchange. This standard does not cover the semantic meaning of the information encoded in the transaction sets.">
-    <Segment name="ST"  max="1">
-      <Field name="TransactionSetIdentifierCode" const="997" min="3" max="3" validation="T143" comment="Code uniquely identifying a Transaction Set"/>
-      <Field name="TransactionSetControlNumber" min="4" max="9" comment="Identifying control number that must be unique within the transaction set functional group assigned by the originator for a transaction set"/>
+    <Segment name="ST" initial_segment="y" max="1">
+      <Override name="TransactionSetIdentifierCode" const="997"/>
     </Segment>
     <Segment name="AK1" max="1"/>
-    <Loop name="L1000" max="999999" required="y">
+    <Loop name="L1000" alias="functional_group_responses" max="999999" required="y">
       <Segment name="AK2" max="1" required="n"/>
-      <Loop name="L1010" max="999999" required="n">
-        <Segment name="AK3" max="1" required="n"/>
-        <Segment name="AK4" max="99" required="n"/>
+      <Loop name="L1010" alias="transactional_set_responses" max="999999" required="n">
+        <Segment name="AK3" alias="data_segment_notes" max="1" required="n">
+          <Override name="SegmentIdCode" alias="segment"/>
+          <Override name="SegmentPositionInTransactionSet" alias="position"/>
+          <Override name="SegmentSyntaxErrorCode" alias="error"/>
+        </Segment>
+        <Segment name="AK4" alias="data_element_notes" max="99" required="n">
+          <Override name="PositionInSegment"          alias="position" />
+          <Override name="DataElementReferenceNumber" alias="bad_element" />
+          <Override name="DataElementSyntaxErrorCode" alias="error" />
+          <Override name="CopyOfBadDataElement"       alias="bad_value" />
+        </Segment>
       </Loop>
       <Segment name="AK5" max="1" required="y"/>
     </Loop>

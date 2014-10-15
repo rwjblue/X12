@@ -32,4 +32,7 @@
   <Field name="ProductServiceId" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="CompositeUnitOfMeasure" type="C001" required="y" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
+  <SyntaxNote name="P0304" comment="If either UCS03 or UCS04 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either UCS05 or UCS06 is present, then the other is required."/>
+  <SyntaxNote name="P0708" comment="If either UCS07 or UCS08 is present, then the other is required."/>
 </Segment>

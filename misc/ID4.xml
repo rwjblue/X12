@@ -24,7 +24,7 @@
 -->
 
 <Segment name="ID4" comment="To identify shipment details that may impact the rates requested">
-  <Field name="DeclaredValue" type="double" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
+  <Field name="DeclaredValue" type="N2" required="y" min="2" max="12" comment="Monetary assigned value expressed in the standard monetary denomination for the currency specified"/>
   <Field name="PickUpOrDeliveryCode" required="y" min="1" max="2" validation="T108" comment="Specifies the location or type of pickup or delivery"/>
   <Field name="WeightQualifier" required="y" min="1" max="2" validation="T187" comment="Code defining the type of weight"/>
   <Field name="Weight" type="double" required="y" min="1" max="10" comment="Numeric value of weight"/>
@@ -33,4 +33,6 @@
   <Field name="Number" type="long" required="y" min="1" max="9" comment="A generic number"/>
   <Field name="YesNoConditionOrResponseCode1" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
   <Field name="YesNoConditionOrResponseCode2" required="y" min="1" max="1" validation="T1073" comment="Code indicating a Yes or No condition or response"/>
+  <SyntaxNote name="P0304" comment="If either ID403 or ID404 is present, then the other is required."/>
+  <SyntaxNote name="P0506" comment="If either ID405 or ID406 is present, then the other is required."/>
 </Segment>

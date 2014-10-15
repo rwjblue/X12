@@ -45,4 +45,12 @@
   <Field name="NestingCode" required="y" min="1" max="1" validation="T814" comment="Code indicating orientation of exposure"/>
   <Field name="Nesting" type="double" required="y" min="1" max="6" comment="The amount of distance that one product fits into (or nests within) another product"/>
   <Field name="UnitOrBasisForMeasurementCode5" required="y" min="2" max="2" validation="T355" comment="Code specifying the units in which a value is being expressed, or manner in which a measurement has been taken"/>
+  <SyntaxNote name="R0102" comment="At least one of ID301 or ID302 is required."/>
+  <SyntaxNote name="P0203" comment="If either ID302 or ID303 is present, then the other is required."/>
+  <SyntaxNote name="P06070809" comment="If either ID306, ID307, ID308 or ID309 are present, then the others are required."/>
+  <SyntaxNote name="P1011" comment="If either ID310 or ID311 is present, then the other is required."/>
+  <SyntaxNote name="P1213" comment="If either ID312 or ID313 is present, then the other is required."/>
+  <SyntaxNote name="C14151617" comment="If ID314 is present, then ID315, ID316 and ID317 are required."/>
+  <SyntaxNote name="P15161718" comment="If either ID315, ID316, ID317 or ID318 are present, then the others are required."/>
+  <SyntaxNote name="P2021" comment="If either ID320 or ID321 is present, then the other is required."/>
 </Segment>

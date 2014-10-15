@@ -31,4 +31,5 @@
   <Field name="CapacityQualifier" required="y" min="2" max="2" validation="T1239" comment="Code indicating the method of determining vehicle storage facility capacity"/>
   <Field name="Quantity" type="double" required="y" min="1" max="15" comment="Numeric value of quantity"/>
   <Field name="TransactionSetPurposeCode" required="y" min="2" max="2" validation="T353" comment="Code identifying purpose of transaction set"/>
+  <SyntaxNote name="P0506" comment="If either BVB05 or BVB06 is present, then the other is required."/>
 </Segment>

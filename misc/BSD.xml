@@ -33,4 +33,5 @@
   <Field name="Level2" required="y" min="1" max="3" comment="Reporting structure identification"/>
   <Field name="SecurityLevelCode" required="y" min="2" max="2" validation="T786" comment="Code indicating the level of confidentiality assigned by the sender to the information following"/>
   <Field name="CalculationOperationCode" required="y" min="1" max="1" validation="T1311" comment="Code identifying what type of calculation will take place"/>
+  <SyntaxNote name="R0203" comment="At least one of BSD02 or BSD03 is required."/>
 </Segment>

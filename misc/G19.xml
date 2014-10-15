@@ -33,4 +33,7 @@
   <Field name="UPCCaseCode" required="y" min="12" max="12" comment="Code (Universal Product Code - U.P.C.) including two high order digits identifying the &quot;system&quot; (U.S. Grocery = 00, 06 or 07; U.S. Drug = 03); using the U.S. Grocery system, the next ten digits are: Manufacturer (5) Case Code (5)"/>
   <Field name="ProductServiceIdQualifier" required="y" min="2" max="2" validation="T235" comment="Code identifying the type/source of the descriptive number used in Product/Service ID (234)"/>
   <Field name="ProductServiceId" required="y" min="1" max="48" comment="Identifying number for a product or service"/>
+  <SyntaxNote name="P0102" comment="If either G1901 or G1902 is present, then the other is required."/>
+  <SyntaxNote name="P0304" comment="If either G1903 or G1904 is present, then the other is required."/>
+  <SyntaxNote name="P0809" comment="If either G1908 or G1909 is present, then the other is required."/>
 </Segment>

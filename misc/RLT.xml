@@ -36,4 +36,7 @@
   <Field name="ReferenceIdentificationQualifier3" required="y" min="2" max="3" validation="T128" comment="Code qualifying the Reference Identification"/>
   <Field name="ReferenceIdentification3" required="y" min="1" max="50" comment="Reference information as defined for a particular Transaction Set or as specified by the Reference Identification Qualifier"/>
   <Field name="ProgramTypeCode" required="y" min="2" max="2" validation="T1193" comment="Codes identifying a program type"/>
+  <SyntaxNote name="P0304" comment="If either RLT03 or RLT04 is present, then the other is required."/>
+  <SyntaxNote name="P070809" comment="If either RLT07, RLT08 or RLT09 are present, then the others are required."/>
+  <SyntaxNote name="C1110" comment="If RLT11 is present, then RLT10 is required."/>
 </Segment>

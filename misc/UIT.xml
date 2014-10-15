@@ -27,4 +27,5 @@
   <Field name="CompositeUnitOfMeasure" type="C001" min="0" max="inf" comment="To identify a composite unit of measure (See Figures Appendix for examples of use)"/>
   <Field name="UnitPrice" type="double" required="y" min="1" max="17" comment="Price per unit of product, service, commodity, etc."/>
   <Field name="BasisOfUnitPriceCode" required="y" min="2" max="2" validation="T639" comment="Code identifying the type of unit price for an item"/>
+  <SyntaxNote name="C0302" comment="If UIT03 is present, then UIT02 is required."/>
 </Segment>
