@@ -1,0 +1,66 @@
+name: build
+
+on: [push, workflow_dispatch]
+
+env:
+  DOXO_APP: x12
+  BUNDLE_JOBS: 4
+  BUNDLE_RETRY: 4
+  BUNDLE_PATH: vendor/bundle
+jobs:
+
+  build:
+    runs-on: ubuntu-latest
+    permissions:
+      packages: write
+      contents: read
+      issues: read
+      checks: write
+      pull-requests: write
+
+    defaults:
+      run:
+        shell: bash
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v1
+
+      - name: Set up Ruby 2.5.5
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.5.5 
+
+      - name: bundler version
+        run: bundle -v
+        working-directory: /home/runner/work/x12/x12
+
+      - name: bundle install
+        run: bundle install
+        working-directory: /home/runner/work/x12/x12
+
+      - name: Run rspec
+        run: |
+            bundle exec rspec --profile 10 \
+                              --format RspecJunitFormatter \
+                              --out test_results/rspec.xml \
+                              --format progress
+        working-directory: /home/runner/work/x12/x12
+
+      - name: Publish to GitHub Packages
+        run: |
+          gem build x12.gemspec
+          printf -- "---\n:github: ${GEM_HOST_API_KEY}\n" > $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          gem push  --KEY github --host https://rubygems.pkg.github.com/$OWNER *.gem
+        working-directory: /home/runner/work/x12/x12
+        env:
+          GEM_HOST_API_KEY: "Bearer ${{secrets.GITHUB_TOKEN}}"
+          OWNER: "doxo"
+        if: ${{ github.ref == 'refs/heads/master' }}
+
+      - name: Store test results
+        if: always()
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        with:
+          junit_files: "test_results/rspec.xml"
+
