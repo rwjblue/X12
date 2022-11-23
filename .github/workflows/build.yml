@@ -25,10 +25,10 @@ jobs:
       - name: Check out code
         uses: actions/checkout@v1
 
-      - name: Set up Ruby 2.5.5
+      - name: Set up Ruby 2.3.8
         uses: ruby/setup-ruby@v1
         with:
-          ruby-version: 2.5.5 
+          ruby-version: 2.3.8
 
       - name: bundler version
         run: bundle -v
@@ -62,5 +62,4 @@ jobs:
         if: always()
         uses: EnricoMi/publish-unit-test-result-action@v2
         with:
-          junit_files: "test_results/rspec.xml"
-
+         junit_files: "test_results/rspec.xml"
